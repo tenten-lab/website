@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>日本地圖首頁</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -19,18 +20,19 @@
       display: flex;
       flex-direction: row;
       gap: 30px;
-      padding: 20px;
+      align-items: flex-start;
       flex-wrap: wrap;
-      justify-content: center;
+      padding: 20px;
     }
 
     .map {
       max-width: 400px;
+      width: 100%;
       height: auto;
     }
 
     .sidebar {
-      width: 300px;
+      flex: 1 1 300px;
       background: #fff;
       border: 2px solid #ccc;
       border-radius: 10px;
@@ -71,6 +73,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 15px;
+      justify-content: center;
     }
 
     .prefecture-item {
@@ -81,70 +84,43 @@
     }
 
     .prefecture-item img {
-      width: 80px;
-      height: 60px;
-      object-fit: cover;
+      width: 100%;
+      height: auto;
+      max-width: 80px;
       border-radius: 6px;
       margin-top: 5px;
+      object-fit: cover;
     }
 
-    /* Modal 樣式 */
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0,0,0,0.6);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modal-content {
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 90%;
-      max-height: 90%;
-      overflow-y: auto;
-      text-align: center;
-    }
-
-    .modal-content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 6px;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #333;
-      cursor: pointer;
-    }
-
-    /* 響應式 */
+    /* 手機響應式 */
     @media (max-width: 768px) {
-      .container {
+      body {
         flex-direction: column;
         align-items: center;
       }
-      .sidebar {
-        width: 90%;
-        max-height: none;
+
+      .container {
+        gap: 20px;
       }
+
       .map {
         max-width: 90%;
+        margin-bottom: 20px;
+      }
+
+      .prefecture-item {
+        width: 22%; /* 4個一排 */
+        font-size: 12px;
+      }
+
+      .prefecture-item img {
+        max-width: 100%;
+        height: auto;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <img src="日本地圖.png" alt="日本地圖" class="map">
@@ -152,7 +128,7 @@
     <div class="sidebar">
       <h2>日本地區</h2>
 
-      <!-- 範例：北海道 -->
+      <!-- 北海道 -->
       <div class="region" onclick="togglePrefectures('hokkaido')">北海道地區</div>
       <div id="hokkaido" class="prefecture-list">
         <div class="prefecture-table">
@@ -163,17 +139,96 @@
         </div>
       </div>
 
-      <!-- 其他區域依此類推，可自行補全 -->
-    </div>
-  </div>
+      <!-- 東北 -->
+      <div class="region" onclick="togglePrefectures('tohoku')">東北地區</div>
+      <div id="tohoku" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('青森', 'img/aomori.jpg')">青森<img src="img/aomori.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('秋田', 'img/akita.jpg')">秋田<img src="img/akita.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('岩手', 'img/iwate.jpg')">岩手<img src="img/iwate.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('宮城', 'img/miyagi.jpg')">宮城<img src="img/miyagi.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('山形', 'img/yamagata.jpg')">山形<img src="img/yamagata.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('福島', 'img/fukushima.jpg')">福島<img src="img/fukushima.jpg"></div>
+        </div>
+      </div>
 
-  <!-- Modal -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <h3 id="modal-title"></h3>
-      <img id="modal-img" src="" alt="">
-      <p id="modal-text"></p>
+      <!-- 關東 -->
+      <div class="region" onclick="togglePrefectures('kanto')">關東地區</div>
+      <div id="kanto" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('東京', 'img/tokyo.jpg')">東京<img src="img/tokyo.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('神奈川', 'img/kanagawa.jpg')">神奈川<img src="img/kanagawa.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('埼玉', 'img/saitama.jpg')">埼玉<img src="img/saitama.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('千葉', 'img/chiba.jpg')">千葉<img src="img/chiba.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('茨城', 'img/ibaraki.jpg')">茨城<img src="img/ibaraki.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('栃木', 'img/tochigi.jpg')">栃木<img src="img/tochigi.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('群馬', 'img/gunma.jpg')">群馬<img src="img/gunma.jpg"></div>
+        </div>
+      </div>
+
+      <!-- 中部 -->
+      <div class="region" onclick="togglePrefectures('chubu')">中部地區</div>
+      <div id="chubu" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('新潟', 'img/niigata.jpg')">新潟<img src="img/niigata.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('富山', 'img/toyama.jpg')">富山<img src="img/toyama.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('石川', 'img/ishikawa.jpg')">石川<img src="img/ishikawa.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('福井', 'img/fukui.jpg')">福井<img src="img/fukui.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('長野', 'img/nagano.jpg')">長野<img src="img/nagano.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('山梨', 'img/yamanashi.jpg')">山梨<img src="img/yamanashi.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('愛知', 'img/aichi.jpg')">愛知<img src="img/aichi.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('岐阜', 'img/gifu.jpg')">岐阜<img src="img/gifu.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('靜岡', 'img/shizuoka.jpg')">靜岡<img src="img/shizuoka.jpg"></div>
+        </div>
+      </div>
+
+      <!-- 近畿 -->
+      <div class="region" onclick="togglePrefectures('kinki')">近畿地區</div>
+      <div id="kinki" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('大阪', 'img/osaka.jpg')">大阪<img src="img/osaka.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('兵庫', 'img/hyogo.jpg')">兵庫<img src="img/hy.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('滋賀', 'img/shiga.jpg')">滋賀<img src="img/shiga.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('京都', 'img/kyoto.jpg')">京都<img src="kyouto.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('奈良', 'img/nara.jpg')">奈良<img src="img/nara.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('和歌山', 'img/wakayama.jpg')">和歌山<img src="img/wakayama.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('三重', 'img/mie.jpg')">三重<img src="img/mie.jpg"></div>
+        </div>
+      </div>
+
+      <!-- 四國 -->
+      <div class="region" onclick="togglePrefectures('shikoku')">四國地區</div>
+      <div id="shikoku" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('香川', 'img/kagawa.jpg')">香川<img src="img/kagawa.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('德島', 'img/tokushima.jpg')">德島<img src="img/tokushima.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('愛媛', 'img/ehime.jpg')">愛媛<img src="img/ehime.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('高知', 'img/kochi.jpg')">高知<img src="img/kochi.jpg"></div>
+        </div>
+      </div>
+
+      <!-- 九州 -->
+      <div class="region" onclick="togglePrefectures('kyushu')">九州地區</div>
+      <div id="kyushu" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('福岡', 'img/fukuoka.jpg')">福岡<img src="img/fukuoka.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('大分', 'img/oita.jpg')">大分<img src="img/oita.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('宮崎', 'img/miyazaki.jpg')">宮崎<img src="img/miyazaki.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('熊本', 'img/kumamoto.jpg')">熊本<img src="img/kumamoto.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('佐賀', 'img/saga.jpg')">佐賀<img src="img/saga.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('長崎', 'img/nagasaki.jpg')">長崎<img src="img/nagasaki.jpg"></div>
+          <div class="prefecture-item" onclick="openModal('鹿兒島', 'img/kagoshima.jpg')">鹿兒島<img src="img/kagoshima.jpg"></div>
+        </div>
+      </div>
+
+      <!-- 沖繩 -->
+      <div class="region" onclick="togglePrefectures('okinawa')">沖繩地區</div>
+      <div id="okinawa" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('沖繩', 'img/okinawa.jpg')">沖繩<img src="img/okinawa.jpg"></div>
+        </div>
+      </div>
+
     </div>
   </div>
 
@@ -185,24 +240,9 @@
       if (target) target.style.display = 'block';
     }
 
-    // 打開 modal
-    function openModal(name, imgSrc, text = "") {
-      document.getElementById('modal-title').innerText = name;
-      document.getElementById('modal-img').src = imgSrc;
-      document.getElementById('modal-text').innerText = text;
-      document.getElementById('modal').style.display = 'flex';
-    }
-
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-    }
-
-    // 點 modal 外部關閉
-    window.onclick = function(event) {
-      const modal = document.getElementById('modal');
-      if (event.target == modal) {
-        closeModal();
-      }
+    function openModal(prefecture, imgPath) {
+      // 這裡先簡單用 alert 示範，之後可以改成彈窗
+      alert(prefecture);
     }
   </script>
 </body>
