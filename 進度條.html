@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="0">
+<head>
+  <meta charset="UTF-8">
+  <title>進度條進首頁</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-image: url('新背景-澄.png');    
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      overflow: hidden;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: slideIn 1s ease-out forwards;
+      transform: translateX(-100%);
+    }
+
+    @keyframes slideIn {
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    .progress-wrapper {
+      width: 300px;
+      height: 30px;
+      border: 3px solid #ff9ccf;
+      border-radius: 30px;
+      overflow: hidden;
+      background: #fff0f7;
+      box-shadow: 0 4px 10px rgba(255, 156, 207, 0.3);
+      margin-bottom: 10px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #ffa5b3, #ff77c0);
+      border-radius: 30px 0 0 30px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 20px;
+      color: #cc3388;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .fade-in.show {
+      opacity: 1;
+    }
+
+    .link-text {
+      font-size: 32px;
+      margin-top: 10px;
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container" id="container">
+    <div class="progress-text" id="progressText">0%</div>
+    <div class="progress-wrapper">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <img src="首頁圖-已修.png"
+      class="fade-in" id="sideImage" alt="完成圖片" width="300" height="300">
+      <span class="fade-in link-text" id="linkText">まだまだよ。3、2、1スタット！</span>
+  </div>
+
+  <script>
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    const sideImage = document.getElementById('sideImage');
+    const linkText = document.getElementById('linkText');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 1;
+      progressBar.style.width = progress + '%';
+      progressText.textContent = progress + '%';
+
+      if (progress >= 100) {
+        clearInterval(interval);
+
+        linkText.classList.add('show');
+        setTimeout(() => {
+          sideImage.classList.add('show');
+        }, 500);
+
+        <!--跳轉//-->
+        setTimeout(() => {
+          window.location.href = "html功課1.html";
+        }, 3000); 
+      }
+    }, 30);
+  </script>
+
+</body>
+</html>

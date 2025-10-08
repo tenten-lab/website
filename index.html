@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>日本地圖首頁</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: #f7f7f7;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      padding: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .map {
+      max-width: 400px;
+      height: auto;
+    }
+
+    .sidebar {
+      width: 300px;
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #cc3388;
+      text-align: center;
+    }
+
+    .region {
+      margin: 8px 0;
+      padding: 10px;
+      background: #ffe6f0;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+      text-align: center;
+    }
+
+    .region:hover {
+      background: #ffb3d9;
+    }
+
+    .prefecture-list {
+      display: none;
+      margin-top: 10px;
+      padding: 5px;
+    }
+
+    .prefecture-table {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .prefecture-item {
+      width: 80px;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .prefecture-item img {
+      width: 80px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+
+    /* Modal 樣式 */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 90%;
+      max-height: 90%;
+      overflow-y: auto;
+      text-align: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 6px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* 響應式 */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar {
+        width: 90%;
+        max-height: none;
+      }
+      .map {
+        max-width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="日本地圖.png" alt="日本地圖" class="map">
+
+    <div class="sidebar">
+      <h2>日本地區</h2>
+
+      <!-- 範例：北海道 -->
+      <div class="region" onclick="togglePrefectures('hokkaido')">北海道地區</div>
+      <div id="hokkaido" class="prefecture-list">
+        <div class="prefecture-table">
+          <div class="prefecture-item" onclick="openModal('北海道', 'img/hokkaido.jpg')">
+            北海道
+            <img src="img/hokkaido.jpg" alt="北海道">
+          </div>
+        </div>
+      </div>
+
+      <!-- 其他區域依此類推，可自行補全 -->
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title"></h3>
+      <img id="modal-img" src="" alt="">
+      <p id="modal-text"></p>
+    </div>
+  </div>
+
+  <script>
+    function togglePrefectures(regionId) {
+      const lists = document.querySelectorAll('.prefecture-list');
+      lists.forEach(list => list.style.display = 'none');
+      const target = document.getElementById(regionId);
+      if (target) target.style.display = 'block';
+    }
+
+    // 打開 modal
+    function openModal(name, imgSrc, text = "") {
+      document.getElementById('modal-title').innerText = name;
+      document.getElementById('modal-img').src = imgSrc;
+      document.getElementById('modal-text').innerText = text;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    // 點 modal 外部關閉
+    window.onclick = function(event) {
+      const modal = document.getElementById('modal');
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
+  </script>
+</body>
+</html>
