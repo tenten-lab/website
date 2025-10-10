@@ -108,7 +108,33 @@
       background-color: #754b34;
     }
 
-  </style>
+/* 手機響應式 */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .container {
+        gap: 20px;
+      }
+
+      .map {
+        max-width: 90%;
+        margin-bottom: 20px;
+      }
+
+      .prefecture-item {
+        width: 22%; /* 4個一排 */
+        font-size: 12px;
+      }
+
+      .prefecture-item img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+</style>
 </head>
 <body>
 
