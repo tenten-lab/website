@@ -157,17 +157,20 @@
       100% { left: 110%; opacity: 0; }
     }
 
-    @media (max-width: 768px) {
-      h1 { font-size: 36px; }
-      .map { max-width: 90%; }
-      .sidebar { width: 90%; }
-      .container { flex-direction: column; 
-    align-items: center; 
-    gap: 20px; 
-    padding-top: 20px; }
-      .prefecture-item { width: 22%; font-size: 12px; }
-      .prefecture-item img { max-width: 100%; }
-    }
+   @media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 70px; /* 手機可以稍微小一點 */
+  }
+
+  h1 { font-size: 36px; }
+  .map { max-width: 90%; }
+  .sidebar { width: 90%; }
+  .prefecture-item { width: 22%; font-size: 12px; }
+  .prefecture-item img { max-width: 100%; }
+}
   </style>
 </head>
 
