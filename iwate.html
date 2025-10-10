@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>岩手の物語</title>
+  <style>
+    /* 背景設定 + 霧氣效果 */
+    body {
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      background: url('img/shrine-night.jpg') no-repeat center center/cover;
+      position: relative;
+    }
+
+    /* 霧氣效果 */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.6) 80%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 標題 */
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      color: #ffdddd;
+      text-shadow: 0 0 20px #ff0000, 0 0 40px #aa0000;
+      position: relative;
+      z-index: 2; /* 讓標題在霧氣之上 */
+    }
+
+    /* 故事圖片 */
+    .story-image {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 故事文字 */
+  .story-text {
+  max-width: 700px;
+  margin: 20px auto;
+  font-size: 20px;
+  line-height: 1.8;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+  padding: 0 15px;
+  position: relative;
+  z-index: 2;
+  color: #642100; /* 暖黃色，更陰森又明顯 */
+}
+
+    /* 選項按鈕 */
+    .options {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin: 30px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .option-btn {
+      background-color: #8c5c3d;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .option-btn:hover {
+      background-color: #a97456;
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 10;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 15px;
+      width: 300px;
+      text-align: center;
+      animation: fadeIn 0.4s ease;
+    }
+
+    /* Modal 文字 */
+    .modal-content p {
+    color: #000; /* 黑色文字 */
+    font-weight: bold;
+     }
+
+      @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .home-btn {
+      margin-top: 20px;
+      background-color: #4b2e1e;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .home-btn:hover {
+      background-color: #754b34;
+    }
+
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
+         max-width: 90%;       /* 手機版收窄 */
+    text-align: center;   /* 可以保留置中 */
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 0 10px;
+      }
+
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
+
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>岩手 - 慰霊の森</h1>
+
+  <img src="iwate.png" alt="岩手" class="story-image">
+
+  <div class="story-text">
+   「ねえ、知ってる？　昔この上空で大きな飛行機事故があって、162人が亡くなったらしいよ。」 
+スマホをいじりながら、後輩の小林がそうつぶやいた。 
+飲み会ではしゃぎすぎた勢いで、気がつけば肝試しのような流れになり、私たちは“慰霊の森”と呼ばれる恐怖の名所に足を踏み入れていた。 
+暗い道を歩き続けると、やがてある石碑が目の前に現れる。石碑の表には、飛行機事故の犠牲者たちの名前がびっしりと刻まれていた。 
+空気が一気に重くなり、その場に立った瞬間、背筋を冷たいものが走る――。  <br><br>
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong>
+  </div>
+
+  <div class="options">
+    <button class="option-btn" onclick="showResult('石碑に祈りを捧げる')">① 石碑に祈りを捧げる</button>
+    <button class="option-btn" onclick="showResult('石碑の写真を撮る')">② 石碑の写真を撮る</button>
+    <button class="option-btn" onclick="showResult('不気味さを感じて帰る')">③ 不気味さを感じて帰る</button>
+  </div>
+
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <p id="resultText"></p>
+      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+    </div>
+  </div>
+
+  <script>
+    function showResult(choice) {
+      const text = {
+        "石碑に祈りを捧げる": "体力－1、霊圧－1",
+        "石碑の写真を撮る": "体力－2、右へ進む",
+        "不気味さを感じて帰る": "体力－3、霊圧＋2",
+      };
+      document.getElementById("resultText").innerText = text[choice];
+      document.getElementById("resultModal").style.display = "flex";
+    }
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById("resultModal");
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+
+</body>
+</html>

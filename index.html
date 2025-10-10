@@ -7,45 +7,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
   <style>
+    <style>
     body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
       background: url('img/japan-bg.jpg') no-repeat center center/cover;
-      position: relative;
       overflow-x: hidden;
     }
 
+    /* 標題固定 */
     h1 {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 48px;
-  color: #cc3388;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  background: rgba(255,255,255,0.8);
-  z-index: 10;
-  margin: 0;
-  padding: 20px 0;
-  }
-
-    @keyframes dropIn {
-      0% { transform: translateY(-100px); opacity: 0; }
-      100% { transform: translateY(0); opacity: 1; }
+      position: fixed;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+      color: #cc3388;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      background: rgba(255,255,255,0.8);
+      z-index: 10;
+      margin: 0;
+      padding: 20px 0;
     }
 
     /* 主內容容器 */
     .container {
-     display: flex;
-    flex-direction: row; /* 電腦版左右排列 */
-    gap: 30px;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
+      flex-wrap: wrap; /* 桌機小螢幕自動換行 */
     }
 
     .map {
@@ -107,9 +101,14 @@
 
     .prefecture-item {
       width: 80px;
-      text-align: center;
-      font-size: 14px;
-      cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  cursor: pointer;
+  word-break: break-word;/* 避免文字超出 */
+  border: 2px solid transparent; /* 預設透明框 */
+  border-radius: 6px;
+  padding: 3px;
+  transition: all 0.2s; 
     }
 
     .prefecture-item img {
@@ -122,9 +121,9 @@
       transition: transform 0.3s;
     }
 
-    .prefecture-item img:hover {
-      transform: scale(1.05);
-    }
+   .prefecture-item:hover {
+  border-color: #cc3388; /* 滑鼠 hover 變成粉紅色框 */
+}
 
     /* 跑步人物動畫 */
     .transition-overlay {
@@ -135,7 +134,7 @@
       height: 100%;
       background: rgba(0,0,0,0.5);
       display: flex;
-      align-items: flex-end; /* 貼近地面 */
+      align-items: flex-end;
       justify-content: flex-start;
       z-index: 1000;
       overflow: hidden;
@@ -157,20 +156,36 @@
       100% { left: 110%; opacity: 0; }
     }
 
-   @media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-    padding-top: 70px; /* 手機可以稍微小一點 */
-  }
+    /* 手機版調整 */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 90px;
+        gap: 20px;
+      }
 
-  h1 { font-size: 36px; }
-  .map { max-width: 90%; }
-  .sidebar { width: 90%; }
-  .prefecture-item { width: 22%; font-size: 12px; }
-  .prefecture-item img { max-width: 100%; }
-}
+      h1 {
+        font-size: 36px;
+      }
+
+      .map {
+        max-width: 90%;
+      }
+
+      .sidebar {
+        width: 90%;
+      }
+
+      .prefecture-item {
+        width: 22%;
+        font-size: 12px;
+      }
+
+      .prefecture-item img {
+        max-width: 100%;
+      }
+    }
   </style>
 </head>
 
@@ -180,18 +195,17 @@
   <div class="container">
     <img src="日本地圖.png" alt="日本地圖" class="map">
     <div class="sidebar">
+
       <h2>日本地區</h2>
 
       <!-- 北海道 -->
       <div class="region" onclick="togglePrefectures('hokkaido')">北海道地區</div>
       <div id="hokkaido" class="prefecture-list">
         <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('北海道', 'img/hokkaido.jpg')">
-            北海道
-            <img src="img/hokkaido.jpg" alt="北海道">
+           <div class="prefecture-item" onclick="goToPage('hokaido.html')">北海道
+           <img src="hokaido.png" alt="北海道"></div>
           </div>
         </div>
-      </div>
 
       <!-- 東北 -->
       <div class="region" onclick="togglePrefectures('tohoku')">東北地區</div>
@@ -199,7 +213,7 @@
         <div class="prefecture-table">
           <div class="prefecture-item" onclick="openModal('青森', 'img/aomori.jpg')">青森<img src="img/aomori.jpg"></div>
           <div class="prefecture-item" onclick="openModal('秋田', 'img/akita.jpg')">秋田<img src="img/akita.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('岩手', 'img/iwate.jpg')">岩手<img src="img/iwate.jpg"></div>
+          <div class="prefecture-item" onclick="goToPage('iwate.html')">岩手縣<img src="iwate.png" alt="岩手"></div>
           <div class="prefecture-item" onclick="openModal('宮城', 'img/miyagi.jpg')">宮城<img src="img/miyagi.jpg"></div>
           <div class="prefecture-item" onclick="openModal('山形', 'img/yamagata.jpg')">山形<img src="img/yamagata.jpg"></div>
           <div class="prefecture-item" onclick="openModal('福島', 'img/fukushima.jpg')">福島<img src="img/fukushima.jpg"></div>
