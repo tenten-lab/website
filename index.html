@@ -7,8 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
   <style>
-    <style>
-    body {
+     body {
       margin: 0;
       padding: 0;
       font-family: sans-serif;
@@ -31,6 +30,31 @@
       padding: 20px 0;
     }
 
+    /* 語言切換框 */
+    .lang-switch {
+      position: fixed;
+      top: 90px; /* 距離標題下方 */
+      right: 20px;
+      background: rgba(255,255,255,0.9);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 20;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .lang-switch a {
+      text-decoration: none;
+      color: #cc3388;
+      font-weight: bold;
+      margin: 0 5px;
+      transition: color 0.2s;
+    }
+
+    .lang-switch a:hover {
+      color: #ff66b2;
+    }
+
     /* 主內容容器 */
     .container {
       display: flex;
@@ -39,7 +63,7 @@
       justify-content: center;
       align-items: flex-start;
       padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
-      flex-wrap: wrap; /* 桌機小螢幕自動換行 */
+      flex-wrap: wrap;
     }
 
     .map {
@@ -101,14 +125,9 @@
 
     .prefecture-item {
       width: 80px;
-  text-align: center;
-  font-size: 14px;
-  cursor: pointer;
-  word-break: break-word;/* 避免文字超出 */
-  border: 2px solid transparent; /* 預設透明框 */
-  border-radius: 6px;
-  padding: 3px;
-  transition: all 0.2s; 
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
     }
 
     .prefecture-item img {
@@ -121,9 +140,9 @@
       transition: transform 0.3s;
     }
 
-   .prefecture-item:hover {
-  border-color: #cc3388; /* 滑鼠 hover 變成粉紅色框 */
-}
+    .prefecture-item img:hover {
+      transform: scale(1.05);
+    }
 
     /* 跑步人物動畫 */
     .transition-overlay {
@@ -161,7 +180,7 @@
       .container {
         flex-direction: column;
         align-items: center;
-        padding-top: 90px;
+        padding-top: 130px; /* 避免被標題和語言框蓋住 */
         gap: 20px;
       }
 
@@ -185,12 +204,25 @@
       .prefecture-item img {
         max-width: 100%;
       }
+
+      .lang-switch {
+        top: 70px; /* 手機稍微往上 */
+        right: 10px;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
     }
   </style>
 </head>
 
 <body>
- <h1>ボードゲーム</h1>
+  <h1>ボードゲーム</h1>
+
+  <!-- 語言切換 -->
+  <div class="lang-switch">
+    <a href="index.html">日本語</a> | 
+    <a href="index-ch.html">中文</a>
+  </div>
 
   <div class="container">
     <img src="日本地圖.png" alt="日本地圖" class="map">
