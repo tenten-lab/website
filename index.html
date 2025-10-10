@@ -14,44 +14,46 @@
       display: flex;
       justify-content: center;
       align-items: flex-start;
-      background: #f7f7f7;
+      background: url('img/japan-bg.jpg') no-repeat center center/cover;
+      position: relative;
+      overflow-x: hidden;
     }
- /* 🎮 大標題樣式 */
+
     h1 {
-      font-size: 48px;
-      color: #cc3388;
-      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      margin: 40px 0 20px 0;
-      opacity: 0;
-      animation: dropIn 1.2s ease-out forwards;
-    }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 48px;
+  color: #cc3388;
+  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  background: rgba(255,255,255,0.8);
+  z-index: 10;
+  margin: 0;
+  padding: 20px 0;
+  }
 
-    /* ✨ 飛下來的動畫效果 */
     @keyframes dropIn {
-      0% {
-        transform: translateY(-100px);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
     }
 
+    /* 主內容容器 */
     .container {
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
-      align-items: flex-start;
-      justify-content: center;
-      flex-wrap: wrap;
+     display: flex;
+    flex-direction: row; /* 電腦版左右排列 */
+    gap: 30px;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
     }
 
     .map {
       max-width: 400px;
+      width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
       transition: transform 0.3s;
     }
 
@@ -60,106 +62,11 @@
     }
 
     .sidebar {
-      width: 300px;
-      background: #fff;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      overflow-y: auto;
-      max-height: 90vh;
-    }
-
-    .sidebar h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #cc3388;
-      text-align: center;
-    }
-
-    .region {
-      margin: 8px 0;
-      padding: 10px;
-      background: #ffe6f0;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-      text-align: center;
-    }
-
-    .region:hover {
-      background: #ffb3d9;
-    }
-
-    .prefecture-list {
-      display: none;
-      margin-top: 10px;
-      padding: 5px;
-    }
-
-    .prefecture-table {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-
-    .prefecture-item {
-      width: 80px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .prefecture-item img {
-      width: 80px;
-      height: 60px;
-      object-fit: cover;
-      border-radius: 6px;
-      margin-top: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .prefecture-item img:hover {
-      transform: scale(1.05);
-    }
-
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 36px;
-      }
-      .map {
-        max-width: 90%;
-      }
-      .sidebar {
-        width: 90%;
-      }
-      .container {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-    .container {
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      padding: 20px;
-    }
-
-    .map {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-    }
-
-    .sidebar {
       flex: 1 1 300px;
-      background: #fff;
-      border: 2px solid #ccc;
+      background: rgba(255,255,255,0.9);
       border-radius: 10px;
       padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
       overflow-y: auto;
       max-height: 90vh;
     }
@@ -212,42 +119,63 @@
       border-radius: 6px;
       margin-top: 5px;
       object-fit: cover;
+      transition: transform 0.3s;
     }
 
-    /* 手機響應式 */
+    .prefecture-item img:hover {
+      transform: scale(1.05);
+    }
+
+    /* 跑步人物動畫 */
+    .transition-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: flex-end; /* 貼近地面 */
+      justify-content: flex-start;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .transition-gif {
+      width: 120px;
+      height: auto;
+      position: absolute;
+      bottom: 10%;
+      left: -150px;
+      animation: runAcross 1.5s linear forwards;
+    }
+
+    @keyframes runAcross {
+      0% { left: -150px; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { left: 110%; opacity: 0; }
+    }
+
     @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .container {
-        gap: 20px;
-      }
-
-      .map {
-        max-width: 90%;
-        margin-bottom: 20px;
-      }
-
-      .prefecture-item {
-        width: 22%; /* 4個一排 */
-        font-size: 12px;
-      }
-
-      .prefecture-item img {
-        max-width: 100%;
-        height: auto;
-      }
+      h1 { font-size: 36px; }
+      .map { max-width: 90%; }
+      .sidebar { width: 90%; }
+      .container { flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+    padding-top: 20px; }
+      .prefecture-item { width: 22%; font-size: 12px; }
+      .prefecture-item img { max-width: 100%; }
     }
   </style>
 </head>
 
 <body>
-  <h1>ボードゲーム</h1>
+ <h1>ボードゲーム</h1>
+
   <div class="container">
     <img src="日本地圖.png" alt="日本地圖" class="map">
-
     <div class="sidebar">
       <h2>日本地區</h2>
 
@@ -364,7 +292,19 @@
     }
 
     function goToPage(page) {
-    window.location.href = page;
+      const overlay = document.createElement("div");
+      overlay.classList.add("transition-overlay");
+
+      const gif = document.createElement("img");
+      gif.src = "扭扭.gif"; // 替換你的跑步 GIF
+      gif.classList.add("transition-gif");
+
+      overlay.appendChild(gif);
+      document.body.appendChild(overlay);
+
+      setTimeout(() => {
+        window.location.href = page;
+      }, 1500);
     }
   </script>
 </body>
