@@ -1,360 +1,131 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>日本地圖首頁</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームページ</title>
+<style>
+body{
+  margin: 0;
+  font-family: "Noto Serif JP", serif;
+  min-height: 100vh; /* 讓 body 高度至少是視窗高度 */
+  background: url('web.png') no-repeat center center;
+  background-size: cover; /* 讓圖片覆蓋整個背景 */
+}
 
-  <style>
-     body {
-      margin: 0;
-      padding: 0;
-      font-family: sans-serif;
-      background: url('img/japan-bg.jpg') no-repeat center center/cover;
-      overflow-x: hidden;
-    }
+header{
+  position: fixed;
+  top:0;
+  width:100%;
+  background: rgba(255,255,255,0.9);
+  text-align:center;
+  padding:20px 0;
+  z-index:100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 
-    /* 標題固定 */
-    h1 {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      text-align: center;
-      font-size: 48px;
-      color: #cc3388;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      background: rgba(255,255,255,0.8);
-      z-index: 10;
-      margin: 0;
-      padding: 20px 0;
-    }
+header h1{
+  margin:0;
+  font-size:48px;
+  color:#CE0000;
+}
 
-    /* 語言切換框 */
-    .lang-switch {
-      position: fixed;
-      top: 90px; /* 距離標題下方 */
-      right: 20px;
-      background: rgba(255,255,255,0.9);
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      z-index: 20;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+.lang-switch{
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+}
 
-    .lang-switch a {
-      text-decoration: none;
-      color: #cc3388;
-      font-weight: bold;
-      margin: 0 5px;
-      transition: color 0.2s;
-    }
+.lang-switch button{
+  margin-left:5px;
+  padding:5px 10px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  background:#cc3388;
+  color:#fff;
+}
 
-    .lang-switch a:hover {
-      color: #ff66b2;
-    }
+.main{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:30px;
+  padding:160px 20px 20px 20px;
+  flex-wrap:wrap;
+}
 
-    /* 主內容容器 */
-    .container {
-      display: flex;
-      flex-direction: row;
-      gap: 30px;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
-      flex-wrap: wrap;
-    }
+.card{
+  width:200px;
+  height:150px;
+  background:#FFB5B5;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  color:#600030;
+  font-weight: 900; /* 加粗文字 */
+  cursor:pointer;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  opacity:0;
+  transform: translateY(50px);
+  animation: floatIn 0.8s forwards;
+}
 
-    .map {
-      max-width: 400px;
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-    }
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
 
-    .map:hover {
-      transform: scale(1.05);
-    }
+@keyframes floatIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
 
-    .sidebar {
-      flex: 1 1 300px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      overflow-y: auto;
-      max-height: 90vh;
-    }
+@media(max-width:768px){
+  header h1{font-size:36px;}
+  .main{flex-direction:column; gap:20px; padding-top:120px;}
+  body {
+    background-position: center top; /* 讓重要部分在手機上可見 */
+  }
+}
 
-    .sidebar h2 {
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: #cc3388;
-      text-align: center;
-    }
-
-    .region {
-      margin: 8px 0;
-      padding: 10px;
-      background: #ffe6f0;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: 0.2s;
-      text-align: center;
-    }
-
-    .region:hover {
-      background: #ffb3d9;
-    }
-
-    .prefecture-list {
-      display: none;
-      margin-top: 10px;
-      padding: 5px;
-    }
-
-    .prefecture-table {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .prefecture-item {
-      width: 80px;
-      text-align: center;
-      font-size: 14px;
-      cursor: pointer;
-    }
-
-    .prefecture-item img {
-      width: 100%;
-      height: auto;
-      max-width: 80px;
-      border-radius: 6px;
-      margin-top: 5px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .prefecture-item img:hover {
-      transform: scale(1.05);
-    }
-
-    /* 跑步人物動畫 */
-    .transition-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      align-items: flex-end;
-      justify-content: flex-start;
-      z-index: 1000;
-      overflow: hidden;
-    }
-
-    .transition-gif {
-      width: 120px;
-      height: auto;
-      position: absolute;
-      bottom: 10%;
-      left: -150px;
-      animation: runAcross 1.5s linear forwards;
-    }
-
-    @keyframes runAcross {
-      0% { left: -150px; opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { left: 110%; opacity: 0; }
-    }
-
-    /* 手機版調整 */
-    @media (max-width: 768px) {
-      .container {
-        flex-direction: column;
-        align-items: center;
-        padding-top: 130px; /* 避免被標題和語言框蓋住 */
-        gap: 20px;
-      }
-
-      h1 {
-        font-size: 36px;
-      }
-
-      .map {
-        max-width: 90%;
-      }
-
-      .sidebar {
-        width: 90%;
-      }
-
-      .prefecture-item {
-        width: 22%;
-        font-size: 12px;
-      }
-
-      .prefecture-item img {
-        max-width: 100%;
-      }
-
-      .lang-switch {
-        top: 70px; /* 手機稍微往上 */
-        right: 10px;
-        font-size: 12px;
-        padding: 4px 8px;
-      }
-    }
-  </style>
+</style>
 </head>
-
 <body>
-  <h1>ボードゲーム</h1>
-
-  <!-- 語言切換 -->
+<header>
+  <h1 id="main-title">ボードゲーム</h1>
   <div class="lang-switch">
-    <a href="index.html">日本語</a> | 
+    <a href="index.html">日本語</a> |
     <a href="index-ch.html">中文</a>
   </div>
+</header>
 
-  <div class="container">
-    <img src="日本地圖.png" alt="日本地圖" class="map">
-    <div class="sidebar">
+<div class="main">
+  <div class="card" onclick="location.href='index2.html'">ゲームストーリ</div>
+  <div class="card" onclick="location.href='event.html'">特殊イベント</div>
+  <div class="card" onclick="location.href='play.html'">あみだくじ</div>
+</div>
 
-      <h2>日本地區</h2>
-
-      <!-- 北海道 -->
-      <div class="region" onclick="togglePrefectures('hokkaido')">北海道地區</div>
-      <div id="hokkaido" class="prefecture-list">
-        <div class="prefecture-table">
-           <div class="prefecture-item" onclick="goToPage('hokaido.html')">北海道
-           <img src="hokaido.png" alt="北海道"></div>
-          </div>
-        </div>
-
-      <!-- 東北 -->
-      <div class="region" onclick="togglePrefectures('tohoku')">東北地區</div>
-      <div id="tohoku" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('青森', 'img/aomori.jpg')">青森<img src="img/aomori.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('秋田', 'img/akita.jpg')">秋田<img src="img/akita.jpg"></div>
-          <div class="prefecture-item" onclick="goToPage('iwate.html')">岩手縣<img src="iwate.png" alt="岩手"></div>
-          <div class="prefecture-item" onclick="openModal('宮城', 'img/miyagi.jpg')">宮城<img src="img/miyagi.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('山形', 'img/yamagata.jpg')">山形<img src="img/yamagata.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('福島', 'img/fukushima.jpg')">福島<img src="img/fukushima.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 關東 -->
-      <div class="region" onclick="togglePrefectures('kanto')">關東地區</div>
-      <div id="kanto" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('東京', 'img/tokyo.jpg')">東京<img src="img/tokyo.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('神奈川', 'img/kanagawa.jpg')">神奈川<img src="img/kanagawa.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('埼玉', 'img/saitama.jpg')">埼玉<img src="img/saitama.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('千葉', 'img/chiba.jpg')">千葉<img src="img/chiba.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('茨城', 'img/ibaraki.jpg')">茨城<img src="img/ibaraki.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('栃木', 'img/tochigi.jpg')">栃木<img src="img/tochigi.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('群馬', 'img/gunma.jpg')">群馬<img src="img/gunma.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 中部 -->
-      <div class="region" onclick="togglePrefectures('chubu')">中部地區</div>
-      <div id="chubu" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('新潟', 'img/niigata.jpg')">新潟<img src="img/niigata.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('富山', 'img/toyama.jpg')">富山<img src="img/toyama.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('石川', 'img/ishikawa.jpg')">石川<img src="img/ishikawa.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('福井', 'img/fukui.jpg')">福井<img src="img/fukui.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('長野', 'img/nagano.jpg')">長野<img src="img/nagano.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('山梨', 'img/yamanashi.jpg')">山梨<img src="img/yamanashi.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('愛知', 'img/aichi.jpg')">愛知<img src="img/aichi.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('岐阜', 'img/gifu.jpg')">岐阜<img src="img/gifu.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('靜岡', 'img/shizuoka.jpg')">靜岡<img src="img/shizuoka.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 近畿 -->
-      <div class="region" onclick="togglePrefectures('kinki')">近畿地區</div>
-      <div id="kinki" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('大阪', 'img/osaka.jpg')">大阪<img src="img/osaka.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('兵庫', 'img/hyogo.jpg')">兵庫<img src="img/hy.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('滋賀', 'img/shiga.jpg')">滋賀<img src="img/shiga.jpg"></div>
-          <div class="prefecture-item" onclick="goToPage('kyoto.html')">京都<img src="kyouto.jpg" alt="京都"></div>
-          <div class="prefecture-item" onclick="openModal('奈良', 'img/nara.jpg')">奈良<img src="img/nara.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('和歌山', 'img/wakayama.jpg')">和歌山<img src="img/wakayama.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('三重', 'img/mie.jpg')">三重<img src="img/mie.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 四國 -->
-      <div class="region" onclick="togglePrefectures('shikoku')">四國地區</div>
-      <div id="shikoku" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('香川', 'img/kagawa.jpg')">香川<img src="img/kagawa.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('德島', 'img/tokushima.jpg')">德島<img src="img/tokushima.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('愛媛', 'img/ehime.jpg')">愛媛<img src="img/ehime.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('高知', 'img/kochi.jpg')">高知<img src="img/kochi.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 九州 -->
-      <div class="region" onclick="togglePrefectures('kyushu')">九州地區</div>
-      <div id="kyushu" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('福岡', 'img/fukuoka.jpg')">福岡<img src="img/fukuoka.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('大分', 'img/oita.jpg')">大分<img src="img/oita.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('宮崎', 'img/miyazaki.jpg')">宮崎<img src="img/miyazaki.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('熊本', 'img/kumamoto.jpg')">熊本<img src="img/kumamoto.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('佐賀', 'img/saga.jpg')">佐賀<img src="img/saga.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('長崎', 'img/nagasaki.jpg')">長崎<img src="img/nagasaki.jpg"></div>
-          <div class="prefecture-item" onclick="openModal('鹿兒島', 'img/kagoshima.jpg')">鹿兒島<img src="img/kagoshima.jpg"></div>
-        </div>
-      </div>
-
-      <!-- 沖繩 -->
-      <div class="region" onclick="togglePrefectures('okinawa')">沖繩地區</div>
-      <div id="okinawa" class="prefecture-list">
-        <div class="prefecture-table">
-          <div class="prefecture-item" onclick="openModal('沖繩', 'img/okinawa.jpg')">沖繩<img src="img/okinawa.jpg"></div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <script>
-    function togglePrefectures(regionId) {
-      const lists = document.querySelectorAll('.prefecture-list');
-      lists.forEach(list => list.style.display = 'none');
-      const target = document.getElementById(regionId);
-      if (target) target.style.display = 'block';
-    }
-
-    function goToPage(page) {
-      const overlay = document.createElement("div");
-      overlay.classList.add("transition-overlay");
-
-      const gif = document.createElement("img");
-      gif.src = "扭扭.gif"; // 替換你的跑步 GIF
-      gif.classList.add("transition-gif");
-
-      overlay.appendChild(gif);
-      document.body.appendChild(overlay);
-
-      setTimeout(() => {
-        window.location.href = page;
-      }, 1500);
-    }
-  </script>
+<script>
+function switchLang(lang){
+  if(lang==='zh'){
+    document.getElementById('main-title').textContent='桌上遊戲';
+    const cards=document.querySelectorAll('.card');
+    cards[0].textContent='遊戲故事';
+    cards[1].textContent='特別事件';
+    cards[2].textContent='抽籤';
+  }else{
+    document.getElementById('main-title').textContent='ボードゲーム';
+    const cards=document.querySelectorAll('.card');
+    cards[0].textContent='ゲームストーリ';
+    cards[1].textContent='特別イベント';
+    cards[2].textContent='あみだくじ';
+  }
+}
+</script>
 </body>
 </html>

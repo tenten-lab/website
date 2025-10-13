@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>あみだくじ</title>
+<style>
+body{
+  font-family: "Noto Serif JP", serif;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:20px;
+  min-height: 100vh; /* 讓 body 高度至少是視窗高度 */
+  background: url('web.png') no-repeat center center;
+  background-size: cover; /* 讓圖片覆蓋整個背景 */
+}
+.container{
+  max-width:400px;
+  width:100%;
+  background:#FFD2D2;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 4px 15px rgba(0,0,0,0.1);
+}
+
+h1{text-align:center;color:#AE0000;}
+input, button{
+  padding:8px;
+  font-size:14px;
+  border-radius:6px;
+  border:1px solid #ccc;
+}
+
+.back-home-outside {
+  margin: 20px auto;
+  background: #cc3388;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  width: max-content;
+  display: block;
+  transition: transform 0.2s;
+}
+
+
+.back-home-lottery:hover {
+  transform: scale(1.05);
+}
+
+/* 手機版調整 */
+@media (max-width: 768px) {
+  .back-home-outside {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+}
+
+input{width:70%;}
+button{cursor:pointer;background:#9F35FF;color:#fff;border:none;}
+#player-list{margin:10px 0; padding:0; list-style:none;}
+#player-list li{background:#ffe6f0;margin:5px 0;padding:8px;border-radius:6px;}
+#result{margin-top:15px; background:#ffb3d9;padding:10px;border-radius:8px;}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>あみだくじ</h1>
+<input id="player-input" type="text" placeholder="輸入暱稱並按 Enter">
+<button id="draw-btn">GO！</button>
+<ul id="player-list"></ul>
+<div id="result" style="display:none"></div>
+<!-- 回首頁按鈕 -->
+<div class="back-home-lottery" onclick="location.href='index.html'">🏠 ホームに戻る</div>
+</div>
+
+
+<script>
+const input = document.getElementById('player-input');
+const list = document.getElementById('player-list');
+const drawBtn = document.getElementById('draw-btn');
+const result = document.getElementById('result');
+let players = [];
+
+input.addEventListener('keydown', e=>{
+  if(e.key==='Enter'){
+    const val = input.value.trim();
+    if(val && !players.includes(val)){
+      players.push(val);
+      const li = document.createElement('li');
+      li.textContent = val;
+      list.appendChild(li);
+      input.value='';
+    }
+  }
+});
+
+drawBtn.addEventListener('click', ()=>{
+  if(players.length===0){alert('請先加入至少一位玩家！'); return;}
+  const shuffled = [...players].sort(()=>Math.random()-0.5);
+  result.innerHTML = '<h3>抽籤順序</h3><ol>'+shuffled.map(p=>`<li>${p}</li>`).join('')+'</ol>';
+  result.style.display='block';
+});
+</script>
+</body>
+</html>

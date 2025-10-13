@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>特殊イベント</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Noto Serif JP", serif;
+      background: url('web.png') no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    h1 {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      text-align: center;
+      font-size: 48px;
+      color: #CE0000;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      background: rgba(255,255,255,0.8);
+      z-index: 10;
+      margin: 0;
+      padding: 20px 0;
+    }
+    .back-home {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #cc3388;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 100;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    .back-home:hover {
+      transform: scale(1.05);
+    }
+
+    /* 語言切換框 */
+    .lang-switch {
+      position: fixed;
+      top: 90px; /* 距離標題下方 */
+      right: 20px;
+      background: rgba(255,255,255,0.9);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 20;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .lang-switch a {
+      text-decoration: none;
+      color: #cc3388;
+      font-weight: bold;
+      margin: 0 5px;
+      transition: color 0.2s;
+    }
+
+    .lang-switch a:hover {
+      color: #ff66b2;
+    }
+
+
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 15px;
+      padding: 140px 20px 20px 20px;
+      justify-items: center;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 150px;
+      cursor: pointer;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: white;
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .modal-content img {
+      width: 50%;
+      object-fit: cover;
+    }
+
+    .modal-text {
+      padding: 20px;
+      width: 50%;
+      font-size: 16px;
+      overflow-y: auto;
+    }
+
+    .close-modal {
+     position: absolute;
+     top: 10px;
+     right: 10px;
+     width: 30px;
+     height: 30px;
+     background: #ff66b2;
+     color: white;
+     text-align: center;
+     line-height: 30px;
+     font-weight: bold;
+     border-radius: 6px;
+     cursor: pointer;
+     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+     }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 36px;
+      }
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .modal-content {
+        flex-direction: column;
+        width: 50%;
+      }
+      .modal-content img, .modal-text {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+<h1>特殊イベント</h1>
+<div class="back-home" onclick="location.href='index.html'">🏠 ホームに戻る</div>
+<div class="lang-switch">
+    <a href="index.html">日本語</a> |
+    <a href="index-ch.html">中文</a>
+  </div>
+</header>
+
+<div class="gallery">
+  <!-- 放 20 張 -->
+  <img src="event2.png" alt="Event 1" onclick="openModal('event2.png', '<strong>ターボばあちゃん<br></strong>高速道路を走っていると、ターボばあちゃんに出会って、目的地に近い角まで一緒に突進する。')">
+  <img src="event2.png" alt="Event 2" onclick="openModal('event2.png', '這是事件2的介紹文字')">
+  <img src="event2.png" alt="Event 3" onclick="openModal('event2.png', '這是事件3的介紹文字')">
+  <img src="event2.png" alt="Event 4" onclick="openModal('event2.png', '這是事件4的介紹文字')">
+  <img src="event2.png" alt="Event 5" onclick="openModal('event2.png', '這是事件5的介紹文字')">
+
+  <img src="event2.png" alt="Event 6" onclick="openModal('event2.png', '這是事件6的介紹文字')">
+  <img src="event2.png" alt="Event 7" onclick="openModal('event2.png', '這是事件7的介紹文字')">
+  <img src="event2.png" alt="Event 8" onclick="openModal('event2.png', '這是事件8的介紹文字')">
+  <img src="event2.png" alt="Event 9" onclick="openModal('event2.png', '這是事件9的介紹文字')">
+  <img src="event2.png" alt="Event 10" onclick="openModal('event2.png', '這是事件10的介紹文字')">
+
+  <img src="event2.png" alt="Event 11" onclick="openModal('event2.png', '這是事件11的介紹文字')">
+  <img src="event2.png" alt="Event 12" onclick="openModal('event2.png', '這是事件12的介紹文字')">
+  <img src="event2.png" alt="Event 13" onclick="openModal('event2.png', '這是事件13的介紹文字')">
+  <img src="event2.png" alt="Event 14" onclick="openModal('event2.png', '這是事件14的介紹文字')">
+  <img src="event2.png" alt="Event 15" onclick="openModal('event2.png', '這是事件15的介紹文字')">
+
+  <img src="event2.png" alt="Event 16" onclick="openModal('event2.png', '這是事件16的介紹文字')">
+  <img src="event2.png" alt="Event 17" onclick="openModal('event2.png', '這是事件17的介紹文字')">
+  <img src="event2.png" alt="Event 18" onclick="openModal('event2.png', '這是事件18的介紹文字')">
+  <img src="event2.png" alt="Event 19" onclick="openModal('event2.png', '這是事件19的介紹文字')">
+  <img src="event2.png" alt="Event 20" onclick="openModal('event2.png', '這是事件20的介紹文字')">
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+  <div class="modal-content">
+    <span class="close-modal" onclick="closeModal()">×</span>
+    <img id="modal-img" src="" alt="Event">
+    <div class="modal-text" id="modal-text"></div>
+  </div>
+</div>
+
+<script>
+  function openModal(imgSrc, text) {
+    document.getElementById('modal-img').src = imgSrc;
+    document.getElementById('modal-text').innerHTML = text;
+    document.getElementById('modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
