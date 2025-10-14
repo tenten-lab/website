@@ -31,30 +31,31 @@
       padding: 20px 0;
     }
 
-    /* 語言切換框 */
-    .lang-switch {
-      position: fixed;
-      top: 90px; /* 距離標題下方 */
-      right: 20px;
-      background: rgba(255,255,255,0.9);
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      z-index: 20;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: fixed;
+     top: 15px;
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
 
-    .lang-switch a {
-      text-decoration: none;
-      color: #cc3388;
-      font-weight: bold;
-      margin: 0 5px;
-      transition: color 0.2s;
-    }
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
 
-    .lang-switch a:hover {
-      color: #ff66b2;
-    }
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
 
     /* 主內容容器 */
     .container {
@@ -176,23 +177,27 @@
       animation: runAcross 1.5s linear forwards;
     }
 
-     .back-home {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: #cc3388;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 100;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-       }
-      .back-home:hover {
-      transform: scale(1.05);
-       }
+     /* 右下角的回首頁圖示 */
+   .home-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #FFB5B5;
+    color: #600030;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .home-btn:hover {
+    background: #FF9797;
+  }
 
     @keyframes runAcross {
       0% { left: -150px; opacity: 0; }
@@ -209,12 +214,14 @@
         padding-top: 130px; /* 避免被標題和語言框蓋住 */
         gap: 20px;
 
-       .back-home {
-        font-size: 14px;
-        padding: 6px 10px;
+       .home-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        right: 15px;
+        bottom: 15px;
       }
-      }
-
+  
       h1 {
         font-size: 36px;
       }
@@ -236,11 +243,9 @@
         max-width: 100%;
       }
 
-      .lang-switch {
-        top: 70px; /* 手機稍微往上 */
-        right: 10px;
-        font-size: 12px;
-        padding: 4px 8px;
+      .language-switch button {
+       font-size: 10px;
+       padding: 3px 6px;
       }
     }
   </style>
@@ -249,10 +254,9 @@
 <body>
   <h1>ゲームストーリ</h1>
 
-  <!-- 語言切換 -->
-  <div class="lang-switch">
-    <a href="index2.html">日本語</a> |
-    <a href="index2-ch.html">中文</a>
+  <div class="language-switch">
+    <button onclick="location.href='index2.html'">日本語</button>
+    <button onclick="location.href='index2-ch.html'">中文</button>
   </div>
 
   <div class="container">
@@ -363,7 +367,8 @@
     </div>
   </div>
 
-  <div class="back-home" onclick="location.href='index.html'">🏠 ホームに戻る</div>
+<!-- 右下角的回首頁圖示 -->
+<a href="index.html" class="home-btn">🏠</a>
 
   <script>
     function togglePrefectures(regionId) {
