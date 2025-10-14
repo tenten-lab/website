@@ -1,109 +1,180 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>あみだくじ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>抽籤システム</title>
 <style>
-body{
-  font-family: "Noto Serif JP", serif;
-  display:flex;
-  justify-content:center;
-  align-items:flex-start;
-  padding:20px;
-  min-height: 100vh; /* 讓 body 高度至少是視窗高度 */
-  background: url('web.png') no-repeat center center;
-  background-size: cover; /* 讓圖片覆蓋整個背景 */
-}
-.container{
-  max-width:400px;
-  width:100%;
-  background:#FFD2D2;
-  padding:20px;
-  border-radius:12px;
-  box-shadow:0 4px 15px rgba(0,0,0,0.1);
-}
-
-h1{text-align:center;color:#AE0000;}
-input, button{
-  padding:8px;
-  font-size:14px;
-  border-radius:6px;
-  border:1px solid #ccc;
-}
-
-.back-home-outside {
-  margin: 20px auto;
-  background: #cc3388;
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 18px;
-  text-align: center;
-  width: max-content;
-  display: block;
-  transition: transform 0.2s;
-}
-
-
-.back-home-lottery:hover {
-  transform: scale(1.05);
-}
-
-/* 手機版調整 */
-@media (max-width: 768px) {
-  .back-home-outside {
-    font-size: 14px;
-    padding: 6px 10px;
+  body {
+    margin: 0;
+    font-family: "Noto Serif JP", serif;
+    background: url('web.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #600030;
   }
-}
 
-input{width:70%;}
-button{cursor:pointer;background:#9F35FF;color:#fff;border:none;}
-#player-list{margin:10px 0; padding:0; list-style:none;}
-#player-list li{background:#ffe6f0;margin:5px 0;padding:8px;border-radius:6px;}
-#result{margin-top:15px; background:#ffb3d9;padding:10px;border-radius:8px;}
+  h1 {
+    margin-top: 40px;
+    font-size: 40px;
+    color: #600030;
+  }
+
+  .lottery-box {
+    background: rgba(255, 245, 245, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    padding: 30px;
+    margin-top: 20px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+  }
+
+  input, button {
+    padding: 8px 14px;
+    margin: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  input {
+    width: 80%;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+  }
+
+  button {
+    background-color: #FFB5B5;
+    color: #600030;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  }
+
+  button:hover {
+    background-color: #FF9797;
+  }
+
+  .result {
+    margin-top: 20px;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    text-align: left;
+  }
+
+  .home-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #FFB5B5;
+    color: #600030;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  }
+
+  .home-btn:hover {
+    background: #FF9797;
+  }
+
+  /* 📱 響應式設定 */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 28px;
+      margin-top: 25px;
+    }
+    .lottery-box {
+      padding: 20px;
+      width: 95%;
+    }
+    textarea {
+      width: 100%;
+      font-size: 14px;
+      height: 100px;
+    }
+    button {
+      font-size: 16px;
+      padding: 8px 16px;
+    }
+    .result {
+      font-size: 14px;
+      padding: 10px;
+    }
+    .home-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      right: 15px;
+      bottom: 15px;
+    }
+  }
+
 </style>
 </head>
 <body>
-<div class="container">
-<h1>あみだくじ</h1>
-<input id="player-input" type="text" placeholder="輸入暱稱並按 Enter">
-<button id="draw-btn">GO！</button>
-<ul id="player-list"></ul>
-<div id="result" style="display:none"></div>
-<!-- 回首頁按鈕 -->
-<div class="back-home-lottery" onclick="location.href='index.html'">🏠 ホームに戻る</div>
-</div>
+  <h1>あみだくじ</h1>
 
+  <div class="lottery-box">
+    <p>プレイヤーの名前を入力してください（改行で複数入力）</p>
+    <textarea id="playerNames" rows="5" placeholder="例：えみ&#10;れい&#10;たろう"></textarea><br>
+    <button onclick="drawLots()">GO！ 🎲</button>
 
-<script>
-const input = document.getElementById('player-input');
-const list = document.getElementById('player-list');
-const drawBtn = document.getElementById('draw-btn');
-const result = document.getElementById('result');
-let players = [];
+    <div id="result" class="result"></div>
+  </div>
 
-input.addEventListener('keydown', e=>{
-  if(e.key==='Enter'){
-    const val = input.value.trim();
-    if(val && !players.includes(val)){
-      players.push(val);
-      const li = document.createElement('li');
-      li.textContent = val;
-      list.appendChild(li);
-      input.value='';
+  <a href="index.html" class="home-btn">🏠</a>
+
+  <script>
+    const prefectures = [
+      "北海道","青森県","岩手県","宮城県","秋田県","山形県","福島県",
+      "茨城県","栃木県","群馬県","埼玉県","千葉県","東京都","神奈川県",
+      "新潟県","富山県","石川県","福井県","山梨県","長野県",
+      "岐阜県","静岡県","愛知県","三重県",
+      "滋賀県","京都府","大阪府","兵庫県","奈良県","和歌山県",
+      "鳥取県","島根県","岡山県","広島県","山口県",
+      "徳島県","香川県","愛媛県","高知県",
+      "福岡県","佐賀県","長崎県","熊本県","大分県","宮崎県","鹿児島県","沖縄県"
+    ];
+
+    function drawLots() {
+      const input = document.getElementById("playerNames").value.trim();
+      if (!input) return alert("名前を入力してください！");
+      
+      const players = input.split(/\n+/).filter(Boolean);
+      if (players.length > 5) return alert("5人までです！");
+
+      let available = [...prefectures];
+      let startPoints = [];
+
+      // 抽起點（每人不同）
+      players.forEach(() => {
+        const idx = Math.floor(Math.random() * available.length);
+        startPoints.push(available[idx]);
+        available.splice(idx, 1);
+      });
+
+      // 終點（共通）
+      const endPoint = prefectures[Math.floor(Math.random() * prefectures.length)];
+
+      // 顯示結果
+      let resultHTML = "<h3>🎲 結果 🎲</h3>";
+      players.forEach((p, i) => {
+        resultHTML += `<p><strong>${i + 1}. ${p}</strong> — スタート地点：<b>${startPoints[i]}</b> → 目的地：<b>${endPoint}</b></p>`;
+      });
+
+      document.getElementById("result").innerHTML = resultHTML;
     }
-  }
-});
-
-drawBtn.addEventListener('click', ()=>{
-  if(players.length===0){alert('請先加入至少一位玩家！'); return;}
-  const shuffled = [...players].sort(()=>Math.random()-0.5);
-  result.innerHTML = '<h3>抽籤順序</h3><ol>'+shuffled.map(p=>`<li>${p}</li>`).join('')+'</ol>';
-  result.style.display='block';
-});
-</script>
+  </script>
 </body>
 </html>
