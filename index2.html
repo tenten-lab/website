@@ -34,7 +34,7 @@
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
      position: fixed;
-     top: 80px;
+     top: 80px;  /* --- 位置 --- */ 
      right: 15px;
      display: flex;
      gap: 8px;
@@ -243,11 +243,16 @@
         max-width: 100%;
       }
 
-      .language-switch button {
-       font-size: 10px;
-       padding: 3px 6px;
+      .language-switch {
+       top: 80px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
       }
-    }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
+     }
+
   </style>
 </head>
 
