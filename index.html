@@ -30,22 +30,31 @@ header h1{
   color:#CE0000;
 }
 
-.lang-switch{
-  position:absolute;
-  right:20px;
-  top:50%;
-  transform:translateY(-50%);
-}
+/* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: fixed;
+     top: 80px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
 
-.lang-switch button{
-  margin-left:5px;
-  padding:5px 10px;
-  border:none;
-  border-radius:6px;
-  cursor:pointer;
-  background:#cc3388;
-  color:#fff;
-}
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
 
 .main{
   display:flex;
@@ -91,16 +100,24 @@ header h1{
   body {
     background-position: center top; /* 讓重要部分在手機上可見 */
   }
-}
+  .language-switch {
+       top: 80px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
+    }
 
 </style>
 </head>
 <body>
 <header>
   <h1 id="main-title">ボードゲーム</h1>
-  <div class="lang-switch">
-    <a href="index.html">日本語</a> |
-    <a href="index-ch.html">中文</a>
+  <div class="language-switch">
+    <button onclick="location.href='index.html'">日本語</button>
+    <button onclick="location.href='index-ch.html'">中文</button>
   </div>
 </header>
 

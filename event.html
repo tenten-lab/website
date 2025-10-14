@@ -28,50 +28,6 @@
       margin: 0;
       padding: 20px 0;
     }
-    .back-home {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      background: #cc3388;
-      color: white;
-      padding: 8px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 100;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: transform 0.2s;
-    }
-    .back-home:hover {
-      transform: scale(1.05);
-    }
-
-    /* 語言切換框 */
-    .lang-switch {
-      position: fixed;
-      top: 90px; /* 距離標題下方 */
-      right: 20px;
-      background: rgba(255,255,255,0.9);
-      padding: 5px 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      z-index: 20;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-
-    .lang-switch a {
-      text-decoration: none;
-      color: #cc3388;
-      font-weight: bold;
-      margin: 0 5px;
-      transition: color 0.2s;
-    }
-
-    .lang-switch a:hover {
-      color: #ff66b2;
-    }
-
-
 
     .gallery {
       display: grid;
@@ -87,11 +43,14 @@
       cursor: pointer;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      transition: transform 0.3s;
+      opacity: 0;
+      transform: translateY(50px) rotate(10deg);
+      animation: shuffleIn 1s forwards;
     }
 
-    .gallery img:hover {
-      transform: scale(1.05);
+    @keyframes shuffleIn {
+      0% { opacity: 0; transform: translateY(50px) rotate(10deg); }
+      100% { opacity: 1; transform: translateY(0) rotate(0); }
     }
 
     /* Modal */
@@ -106,6 +65,7 @@
       justify-content: center;
       align-items: center;
       z-index: 1000;
+      padding: 20px;
     }
 
     .modal-content {
@@ -116,6 +76,7 @@
       border-radius: 12px;
       overflow: hidden;
       position: relative;
+      flex-direction: row;
     }
 
     .modal-content img {
@@ -128,99 +89,117 @@
       width: 50%;
       font-size: 16px;
       overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .close-modal {
-     position: absolute;
-     top: 10px;
-     right: 10px;
-     width: 30px;
-     height: 30px;
-     background: #ff66b2;
-     color: white;
-     text-align: center;
-     line-height: 30px;
-     font-weight: bold;
-     border-radius: 6px;
-     cursor: pointer;
-     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-     }
+    .home-btn {
+      margin-top: 20px;
+      background: #cc3388;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      align-self: flex-end;
+      transition: transform 0.2s;
+    }
+
+    .home-btn:hover {
+      transform: scale(1.05);
+    }
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 36px;
+        font-size: 32px;
       }
+
       .gallery {
         grid-template-columns: repeat(3, 1fr);
       }
+
       .modal-content {
         flex-direction: column;
-        width: 70%;
+        width: 90%;
       }
+
       .modal-content img, .modal-text {
         width: 100%;
+      }
+
+      .modal-text {
+        font-size: 14px;
+      }
+
+      .home-btn {
+        align-self: center;
       }
     }
   </style>
 </head>
 <body>
 
-<header>
 <h1>特殊イベント</h1>
-<div class="back-home" onclick="location.href='index.html'">🏠 ホームに戻る</div>
-<div class="lang-switch">
-    <a href="index.html">日本語</a> |
-    <a href="index-ch.html">中文</a>
-  </div>
-</header>
 
-<div class="gallery">
-  <!-- 放 20 張 -->
-  <img src="event2.png" alt="Event 1" onclick="openModal('event2.png', '<strong>ターボばあちゃん<br></strong>高速道路を走っていると、<br>ターボばあちゃんに出会って、<br>目的地に近い角まで一緒に突進する。<br>')">
-  <img src="event2.png" alt="Event 2" onclick="openModal('event2.png', '這是事件2的介紹文字')">
-  <img src="event2.png" alt="Event 3" onclick="openModal('event2.png', '這是事件3的介紹文字')">
-  <img src="event2.png" alt="Event 4" onclick="openModal('event2.png', '這是事件4的介紹文字')">
-  <img src="event2.png" alt="Event 5" onclick="openModal('event2.png', '這是事件5的介紹文字')">
-
-  <img src="event2.png" alt="Event 6" onclick="openModal('event2.png', '這是事件6的介紹文字')">
-  <img src="event2.png" alt="Event 7" onclick="openModal('event2.png', '這是事件7的介紹文字')">
-  <img src="event2.png" alt="Event 8" onclick="openModal('event2.png', '這是事件8的介紹文字')">
-  <img src="event2.png" alt="Event 9" onclick="openModal('event2.png', '這是事件9的介紹文字')">
-  <img src="event2.png" alt="Event 10" onclick="openModal('event2.png', '這是事件10的介紹文字')">
-
-  <img src="event2.png" alt="Event 11" onclick="openModal('event2.png', '這是事件11的介紹文字')">
-  <img src="event2.png" alt="Event 12" onclick="openModal('event2.png', '這是事件12的介紹文字')">
-  <img src="event2.png" alt="Event 13" onclick="openModal('event2.png', '這是事件13的介紹文字')">
-  <img src="event2.png" alt="Event 14" onclick="openModal('event2.png', '這是事件14的介紹文字')">
-  <img src="event2.png" alt="Event 15" onclick="openModal('event2.png', '這是事件15的介紹文字')">
-
-  <img src="event2.png" alt="Event 16" onclick="openModal('event2.png', '這是事件16的介紹文字')">
-  <img src="event2.png" alt="Event 17" onclick="openModal('event2.png', '這是事件17的介紹文字')">
-  <img src="event2.png" alt="Event 18" onclick="openModal('event2.png', '這是事件18的介紹文字')">
-  <img src="event2.png" alt="Event 19" onclick="openModal('event2.png', '這是事件19的介紹文字')">
-  <img src="event2.png" alt="Event 20" onclick="openModal('event2.png', '這是事件20的介紹文字')">
+<div class="gallery" id="gallery">
+  <!-- 圖片容器 -->
 </div>
 
 <!-- Modal -->
 <div class="modal" id="modal">
   <div class="modal-content">
-    <span class="close-modal" onclick="closeModal()">×</span>
     <img id="modal-img" src="" alt="Event">
-    <div class="modal-text" id="modal-text"></div>
+    <div class="modal-text">
+      <div id="modal-text"></div>
+      <button class="home-btn" onclick="goHome()">🏠 ホームに戻る</button>
+    </div>
   </div>
 </div>
 
 <script>
+  const eventTexts = [
+    "<b><span style='color: #3b82f6;'>ターボばあちゃん</span></b><br>高速道路を走っていると、ターボばあちゃんに出会って、目的地に近い角まで一緒に突進する。",
+    "花子さん：急にお腹を壊してトイレに駆け込むと、そこには花子さんがいて閉じ込められてしまう。次の1ターン休み。",
+    "テケテケ：電車に乗ろうとした途中、線路付近でテケテケに襲われて、体力が3減少する。",
+    "八尺様：田舎道を歩いていると「ポポポポ…」という足音が響いて、見上げると八尺様がいる！恐怖で元の道に1マス戻る。",
+    "人面犬：車で高速道路を走っていると、前方に人面犬が現れる。彼に導かれて、目的地に一番近い角まで進む。",
+    "妃姫子：雨の日、急いで帰る途中に妃姫子に出会う。ふざけて彼女の持つ人形を奪おうとしたが、その正体に驚き、手持ちのアイテムカードを2枚失う。",
+    "雪女：森で吹雪に遭って、小屋に避難したところ、雪女が窓から舞い込んでくる。彼女の美しい姿に惹かれて、逆に魔法で氷漬けにされてしまう。次の2ターン休み。",
+    "隙間女：一人暮らしの部屋で、ふと「気のせいかな…」と思った瞬間、後ろを振り向くと隙間から目がこちらをじっと見ている。ランダムなプレイヤーを1人選び、一緒に霊圧を5点減らす。",
+    "くねくね：好奇心旺盛なあなたは望遠鏡で遠くを覗く。視界にくねくねが現れて、恐怖のあまり尻もちをついて声も出せない。手持ちのアイテムカードを2枚失う。",
+    "赤いマント：授業をサボろうとトイレに隠れていると、背後から低い声で「赤いマントが欲しいか？」と囁かれる。驚いて声も出せずに飛び出して、授業に戻る。元の道に1マス戻る。",
+    "鹿島零子：授業中に水を飲みすぎてトイレで鹿島零子に遭遇した。次々と質問をされる。幸い無事に答えて難を逃れて、アイテムカード2枚を得る。",
+    "ヨジババア：午後4時に放課後となったが、校内でヨジババアに遭遇した。問いかける前に襲われて、霊圧が-5される。",
+    "鮫島事件：目が覚めると、自分と友人が鮫島へ探検に来ていたが、思いがけず鮫島に閉じ込められてしまった。1回休み。",
+    "悟君：公衆電話ボックスで「悟君に電話すれば心の疑問が解ける」と書かれた小さな紙切れを見つけた。あなたは10円を投入して、公衆電話から電話をかけて、無事に心の謎を解くことができた。",
+    "首なしライダー：誰もいない夜の街道を歩いていると、一台のバイクが轟音を立てて通り過ぎた。振り向くと、なんと首なしライダーだった。自分が疲れて幻を見ているのかと思った。霊圧 -1。",
+    "赤いクレヨン：廊下を歩いていると、遠くの床に赤いクレヨンが落ちているのを見つけた。拾ってゴミ箱に捨てたのに、翌日には同じ場所にまた赤いクレヨンが現れた。霊圧-3。",
+    "マリーさんの電話：引っ越しの時、あなたは古い人形「マリー」を捨てました。その夜、携帯電話が突然鳴いて、電話の向こうから低い声が聞こえてきました。「私、マリー……今、あなたの後ろにいるよ。」霊圧-3。"
+  ];
+
+  const shuffledTexts = eventTexts.sort(() => Math.random() - 0.5);
+
+  const gallery = document.getElementById('gallery');
+  for (let i = 0; i < 17; i++) {
+    const img = document.createElement('img');
+    img.src = 'event2.png';
+    img.alt = `Event ${i + 1}`;
+    img.style.animationDelay = `${i * 0.1}s`;
+    img.onclick = () => openModal(img.src, shuffledTexts[i]);
+    gallery.appendChild(img);
+  }
+
   function openModal(imgSrc, text) {
     document.getElementById('modal-img').src = imgSrc;
     document.getElementById('modal-text').innerHTML = text;
     document.getElementById('modal').style.display = 'flex';
   }
 
-  function closeModal() {
-    document.getElementById('modal').style.display = 'none';
+  function goHome() {
+    window.location.href = "index.html";
   }
 </script>
-
-</body>
+</body> 
 </html>

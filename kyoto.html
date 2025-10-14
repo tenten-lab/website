@@ -29,30 +29,31 @@
       z-index: 1;
     }
 
-    /* 語言切換框固定 */
-   .lang-switch {
-  position: fixed;       /* 改成 fixed 就不會跟著滾動 */
-  top: 0;                /* 緊貼頁面最上方 */
-  right: 20px;           /* 右側間距 */
-  background: rgba(255,255,255,0.9);
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  z-index: 20;           /* 保證在標題上面或可調整 */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
 
-    .lang-switch a {
-      text-decoration: none;
-      color: #cc3388;
-      font-weight: bold;
-      margin: 0 5px;
-      transition: color 0.2s;
-    }
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
 
-    .lang-switch a:hover {
-      color: #ff66b2;
-    }
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
 
     .content {
       padding: 160px 20px 20px 20px; 
@@ -181,11 +182,13 @@
         margin-top: 20px;
       }
      
-     .lang-switch {
-        top: 40px;
-        right: 10px;
-        font-size: 12px;
-        padding: 4px 8px;
+     .language-switch {
+       top: 70px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
       }
 
      .content {
@@ -223,9 +226,9 @@
 
   <h1>京都 - 丑の刻参り</h1>
   <!-- 語言切換，固定 -->
-  <div class="lang-switch">
-    <a href="kyoto.html">日本語</a> | 
-    <a href="kyoto-ch.html">中文</a>
+ <div class="language-switch">
+    <button onclick="location.href='kyoto.html'">日本語</button>
+    <button onclick="location.href='kyoto-ch.html'">中文</button>
   </div>
 
   <img src="kyouto.jpg" alt="京都" class="story-image">
