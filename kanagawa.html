@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京都の物語</title>
+  <title>千葉の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -27,42 +27,6 @@
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.6) 80%);
       pointer-events: none;
       z-index: 1;
-    }
-
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* 標題 */
@@ -181,19 +145,6 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 70px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
 
       .story-image {
         width: 80%;
@@ -202,7 +153,7 @@
 
       .story-text {
          max-width: 90%;       /* 手機版收窄 */
-    text-align: left;   /* 可以保留置中 */
+    text-align: center;   /* 可以保留置中 */
     font-size: 16px;
     line-height: 1.6;
     padding: 0 10px;
@@ -224,31 +175,36 @@
 </head>
 <body>
 
-  <h1>京都 - 丑の刻参り</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='kyoto.html'">日本語</button>
-    <button onclick="location.href='kyoto-ch.html'">中文</button>
-  </div>
+  <h1>千葉県−八幡の藪知らず</h1>
 
-  <img src="kyouto.jpg" alt="京都" class="story-image">
+  <img src="kanagawa.png" alt="千葉" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br><br>
-    <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong>
+    「もう、ヤダ！」 
+
+　私は怒りにまかせて家を飛び出した。どれくらい走ったのかも分からない。ただ、気がつけばあまり来たことのない小さな神社に辿り着いていた。境内の端に腰を下ろし、息を整える。 
+
+　「ママはバカ……もう……」 
+
+　そう呟いていると、いつの間にか時間が経っていた。ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。 
+
+「くみちゃん……」 
+
+――ママ？ 
+
+　時計を見ると、すでに午前三時を回っていた。帰らなきゃ、と思い立ち、その光の方へと歩き出す。近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。 
+
+　「ママ？」呼びかけてみたが、返事はない。足元に何かが引っかかり、バランスを崩して転んでしまった。その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。「だ……れ？」 
+
+　その人頭が低く囁く。 
+
+　「私の体を見つけてくれ……そうすれば帰してやろう……」  <br><br>
+    <strong><font color="#EA0000">左隣のプレイヤーとサイコロを振り合い、目の大きさを比べる。</font></strong>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない(体力－1、霊圧－1)</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ(体力－2、右へ進む)</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる(体力－3、霊圧＋2)</button>
+    <button class="option-btn" onclick="showResult('大')">① 大（体力+1、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('小')">② 小 （体力+2、霊圧−1）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -260,11 +216,10 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
-      };
+     const text = {
+        "大": "平将門の屍体を見つけ出し、無事に帰宅できる。",
+        "小": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見される。 ",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

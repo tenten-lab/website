@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京都の物語</title>
+  <title>福島の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -27,42 +27,6 @@
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.6) 80%);
       pointer-events: none;
       z-index: 1;
-    }
-
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* 標題 */
@@ -181,19 +145,6 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 70px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
 
       .story-image {
         width: 80%;
@@ -202,7 +153,7 @@
 
       .story-text {
          max-width: 90%;       /* 手機版收窄 */
-    text-align: left;   /* 可以保留置中 */
+    text-align: center;   /* 可以保留置中 */
     font-size: 16px;
     line-height: 1.6;
     padding: 0 10px;
@@ -224,32 +175,25 @@
 </head>
 <body>
 
-  <h1>京都 - 丑の刻参り</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='kyoto.html'">日本語</button>
-    <button onclick="location.href='kyoto-ch.html'">中文</button>
-  </div>
+  <h1>福島県－横向温泉ロッジ</h1>
 
-  <img src="kyouto.jpg" alt="京都" class="story-image">
+  <img src="fukujima.png" alt="福島" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br><br>
-    <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong>
+  友人のミリさんと一緒に福島県の温泉会館へ向かっていた。 
+　しかし途中で道に迷い、気がつくと深い山の中へと入り込んでしまった。そこで「横向温泉」と書かれた建物を見つけた。 
+　好奇心に駆られて車を降り、近づいてみると窓の中から小さな女の子がこちらに手を振っているのが見えた。 
+不思議に思いながらロッジの中へ入ると、外は雪が降っているのに、建物の中は妙に暑い。さらに奥の大浴場に足を踏み入れると、大勢の人影が行き交っていた。 
+　「ねえ、なんだか匂わない？」とミリさんが言う。振り返ると、大浴場全体が炎に包まれていた。 
+　慌てて出口に向かうと――さっきの小さな女の子が、入口をふさぐように立っていた。  <br><br>
+    <strong><font color="#EA0000">右隣のプレイヤーとじゃんけんを行う。</font></strong>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない(体力－1、霊圧－1)</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ(体力－2、右へ進む)</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる(体力－3、霊圧＋2)</button>
+ <div class="options">
+    <button class="option-btn" onclick="showResult('勝った場合')">① 勝った場合（霊圧 ＋3、道具カードを一枚引く）</button>
+    <button class="option-btn" onclick="showResult('負けた場合')">② 負けた場合（ゲーム一回を中止する）</button>
   </div>
+
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -260,11 +204,10 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
-      };
+    const text = {
+        "勝った場合": "カバンの中から懐中電灯を取り出し、小さな女の子を照らして無事に脱出できる。",
+        "負けた場合": "女の子に押さえつけられ、炎に閉じ込められてしまう。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

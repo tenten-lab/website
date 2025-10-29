@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京都の物語</title>
+  <title>茨城の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -27,42 +27,6 @@
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.6) 80%);
       pointer-events: none;
       z-index: 1;
-    }
-
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* 標題 */
@@ -181,19 +145,6 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 70px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
 
       .story-image {
         width: 80%;
@@ -202,7 +153,7 @@
 
       .story-text {
          max-width: 90%;       /* 手機版收窄 */
-    text-align: left;   /* 可以保留置中 */
+    text-align: center;   /* 可以保留置中 */
     font-size: 16px;
     line-height: 1.6;
     padding: 0 10px;
@@ -224,31 +175,30 @@
 </head>
 <body>
 
-  <h1>京都 - 丑の刻参り</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='kyoto.html'">日本語</button>
-    <button onclick="location.href='kyoto-ch.html'">中文</button>
-  </div>
+  <h1>茨城県−高野のお化け石</h1>
 
-  <img src="kyouto.jpg" alt="京都" class="story-image">
+  <img src="ibaraki.png" alt="茨城" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br><br>
-    <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong>
+  　「あ…お腹すいた。でも、お金もない。」 
+
+　今日は放浪の七日目。商売に失敗して破産して以来、家もなくなり、路上や公園で寝るしかない。 
+
+　あてもなく歩いていると、前方に一人の人影があり、大きな石の前で何かをしているのが見えた。好奇心に駆られ、思わず近づいてみると、その人が言った。 
+
+「ここには観光客がお金を投げ入れることが多いんだ。手伝ってくれるなら、半分分けてやるよ。」 
+
+　お金……今の自分にとって確かに必要なもの。でも、こんなことをしていいのだろうか。 
+
+　顔を上げた瞬間、その人の前にある大石の表面に、激しく怒った老人の顔が映し出されていた……。 <br><br>
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。 </font></strong>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない(体力－1、霊圧－1)</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ(体力－2、右へ進む)</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる(体力－3、霊圧＋2)</button>
+    <button class="option-btn" onclick="showResult('そのまま一緒に石から金を取る')">① そのまま一緒に石から金を取る（体力+2、道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('断って立ち去る')">② 断って立ち去る（霊圧+1、左へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('老人に向かって祈る')">③ 老人に向かって祈る（体力+1、霊圧+1）</button>
+
   </div>
 
   <div id="resultModal" class="modal">
@@ -260,11 +210,11 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
-      };
+     const text = {
+        "そのまま一緒に石から金を取る": "確かに金を得たが、老人の怒りに触れ、夜な夜な夢に現れる。",
+        "断って立ち去る": "金は得られなかったが、不思議と心が軽くなり足取りも安定する。",
+        "老人に向かって祈る": "老人の顔が消え、足元に小銭がひとつ落ちている。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

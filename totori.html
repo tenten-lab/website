@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>京都の物語</title>
+  <title>鳥取の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -27,42 +27,6 @@
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1), rgba(0,0,0,0.6) 80%);
       pointer-events: none;
       z-index: 1;
-    }
-
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
 
     /* 標題 */
@@ -181,19 +145,6 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 70px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
 
       .story-image {
         width: 80%;
@@ -202,7 +153,7 @@
 
       .story-text {
          max-width: 90%;       /* 手機版收窄 */
-    text-align: left;   /* 可以保留置中 */
+    text-align: center;   /* 可以保留置中 */
     font-size: 16px;
     line-height: 1.6;
     padding: 0 10px;
@@ -224,31 +175,28 @@
 </head>
 <body>
 
-  <h1>京都 - 丑の刻参り</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='kyoto.html'">日本語</button>
-    <button onclick="location.href='kyoto-ch.html'">中文</button>
-  </div>
+  <h1>鳥取県−米子城の人柱</h1>
 
-  <img src="kyouto.jpg" alt="京都" class="story-image">
+  <img src="totori.png" alt="鳥取" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br><br>
-    <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong>
+  天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で雨に洗われ、工事の進捗は非常に芳しくなかった。 
+
+「主公、天守閣がまた流されました……このままでは……」どうすべきか途方に暮れていると、そのときある大臣が提案した。 
+
+「祟りを鎮めるには人柱を立てるしかありません。特に、村で最も容貌優れた娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」 
+
+　その直後、十六歳にも満たない一人の少女が押し込まれてきた。少女は声を上げて叫ぶ。 
+
+「なぜ城を造るために人を生け贄にするのですか！もし私がここで葬られるなら、「私は死しても、この城を決して許さない！」 <br><br>
+    <strong><font color="#EA0000">いま、あなたは吉川広家として、次の選択肢のいずれを選び、行動を決める。</font></strong>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない(体力－1、霊圧－1)</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ(体力－2、右へ進む)</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる(体力－3、霊圧＋2)</button>
+    <button class="option-btn" onclick="showResult('大臣の提案どおり、久美を人柱として差し出すことを認める。')">① 大臣の提案どおり、久美を人柱として差し出すことを認める。（体力+1、霊圧 -2） </button>
+    <button class="option-btn" onclick="showResult('人柱の執行を断固として差し止める。')">② 人柱の執行を断固として差し止める。（体力−2、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('代替の祭祀や神事を提案する。')">③ 代替の祭祀や神事を提案する。（体力−1、霊圧+1） </button>
+
   </div>
 
   <div id="resultModal" class="modal">
@@ -260,11 +208,11 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
-      };
+     const text = {
+        "大臣の提案どおり、久美を人柱として差し出すことを認める。": " 雨は止み工事ははかどる。しかし領内には深い悲しみと不満が広がり、後年それが禍根を残すだろう。あなたの名は功績と同時に冷酷さで語られる。",
+        "人柱の執行を断固として差し止める。": "領民からは称賛されるが、天候は依然として味方せず、工事は難航する。",
+        "代替の祭祀や神事を提案する。": "久美は救われ、城は無事に完成した。やがてその城は人柱の呪いに怯えることなく繁栄し、人々から祟りを退けた城として語り継がれるようになった。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
