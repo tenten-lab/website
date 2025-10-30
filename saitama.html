@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -175,22 +177,22 @@
 </head>
 <body>
 
-  <h1>琦玉縣−薬師堂のマキ</h1>
+  <h1>埼玉県−薬師堂のマキ</h1>
 
   <img src="saitama.png" alt="琦玉" class="story-image">
 
   <div class="story-text">
-    残業で遅くなり、夜の荒川沿いを車で走っていた。 
-
-ふと胸騒ぎがして、気づけばハンドルを切って「薬師堂のマキ」へと足を運んでいた。　　そこは、誰も住んでいないはずの廃村のような場所。耳元のラジオからは不気味なノイズが混じり、竹林の奥で人影が揺れるのが見えた。 
-
-　足を止めた瞬間、ラジオが大きな悲鳴をあげ、首を吊った霊が目の前に現れた。 <br><br>
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong>
+残業で遅くなり、夜の荒川沿いを車で走っていた。  <br>
+ふと胸騒ぎがして、気づけばハンドルを切って「薬師堂のマキ」へと足を運んでいた。<br>
+そこは、誰も住んでいないはずの廃村のような場所。耳元のラジオからは不気味なノイズが混じり、竹林の奥で人影が揺れるのが見えた。<br>
+足を止めた瞬間、ラジオが大きな悲鳴をあげ、首を吊った霊が目の前に現れた。 <br>
+<p style="text-align: center;">
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('巨木の前で祈る')">① 巨木の前で祈る（霊圧+1、右へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('必死に逃げる')">② 必死に逃げる（体力+3、道具カードを1枚失う） </button>
+    <button class="option-btn" onclick="showResult('巨木の前で祈る')">① 巨木の前で祈る。（霊圧+1、右へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('必死に逃げる')">② 必死に逃げる。（体力+3、道具カードを1枚失う） </button>
   </div>
 
   <div id="resultModal" class="modal">
