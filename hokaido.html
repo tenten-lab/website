@@ -192,9 +192,9 @@
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえて正気を取り戻す')">②背後から先生の声が聞こえて正気を取り戻す</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける。')">③人形の両手を必死で避ける。</button>
+    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえて正気を取り戻す')">②背後から先生の声が聞こえて正気を取り戻す。（体力+2）</button>
+    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける。')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -207,9 +207,9 @@
   <script>
     function showResult(choice) {
       const text = {
-        "恐怖に耐えきれず、気を失う": "体力－2、左へ進む",
-        "背後から先生の声が聞こえて正気を取り戻す": "霊圧＋１、体力－１",
-        "人形の両手を必死で避ける": "霊圧－１、体力＋2",
+        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
+        "背後から先生の声が聞こえて正気を取り戻す": " 一瞬、正気を取り戻した。",
+        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。 ",
       };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
