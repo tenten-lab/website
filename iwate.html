@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,59 +141,62 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
 
   </style>
 </head>
 <body>
 
-  <h1>岩手 - 慰霊の森</h1>
+  <h1>岩手県 - 慰霊の森</h1>
 
   <img src="iwate.png" alt="岩手" class="story-image">
 
   <div class="story-text">
-   「ねえ、知ってる？　昔この上空で大きな飛行機事故があって、162人が亡くなったらしいよ。」 
-スマホをいじりながら、後輩の小林がそうつぶやいた。 
-飲み会ではしゃぎすぎた勢いで、気がつけば肝試しのような流れになり、私たちは“慰霊の森”と呼ばれる恐怖の名所に足を踏み入れていた。 
-暗い道を歩き続けると、やがてある石碑が目の前に現れる。石碑の表には、飛行機事故の犠牲者たちの名前がびっしりと刻まれていた。 
-空気が一気に重くなり、その場に立った瞬間、背筋を冷たいものが走る――。  <br><br>
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong>
+「ねえ、知ってる？昔この上空で大きな飛行機事故があって、162人が亡くなったらしいよ。」<br> 
+スマホをいじりながら、後輩の小林がそうつぶやいた。<br>  
+飲み会ではしゃぎすぎた勢いで、気がつけば肝試しのような流れになり、<br> 
+私たちは“慰霊の森”と呼ばれる恐怖の名所に足を踏み入れていた。<br>  
+暗い道を歩き続けると、やがてある石碑が目の前に現れる。<br> 
+石碑の表には、飛行機事故の犠牲者たちの名前がびっしりと刻まれていた。<br>  
+空気が一気に重くなり、その場に立った瞬間、背筋を冷たいものが走る――。  <br>
+<p style="text-align: center;">
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('石碑に祈りを捧げる')">① 石碑に祈りを捧げる</button>
-    <button class="option-btn" onclick="showResult('石碑の写真を撮る')">② 石碑の写真を撮る</button>
-    <button class="option-btn" onclick="showResult('不気味さを感じて帰る')">③ 不気味さを感じて帰る</button>
+    <button class="option-btn" onclick="showResult('石碑に祈りを捧げる')">① 石碑に祈りを捧げる。（体力−3、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('石碑の写真を撮る')">② 石碑の写真を撮る。（霊圧+3、道具カードを1枚失う)</button>
+    <button class="option-btn" onclick="showResult('不気味さを感じて帰る')">③ 不気味さを感じて帰る。（体力+3、元のルートに沿って1マス戻る）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -204,9 +209,9 @@
   <script>
     function showResult(choice) {
       const text = {
-        "石碑に祈りを捧げる": "体力－1、霊圧－1",
-        "石碑の写真を撮る": "体力－2、右へ進む",
-        "不気味さを感じて帰る": "体力－3、霊圧＋2",
+        "石碑に祈りを捧げる": "石碑が光り、「ありがとう……」という声が聞こえた。",
+        "石碑の写真を撮る": "霊異写真を撮ってしまい、恐怖のあまりカメラを落としてしまった。",
+        "不気味さを感じて帰る": "無事にこの場から離れることができた。",
       };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

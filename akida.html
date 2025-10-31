@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>秋田の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -172,31 +172,32 @@
     padding: 20px;
   }
 }
+
   </style>
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>秋田県−黒又山</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="akida.png" alt="秋田県" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
-    <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+同じ大学の遺跡研究サークルに所属する智ちゃんと、ピラミッドと噂される黒又山を訪れた。<br> 
+「まさか、ここが宇宙人の基地なんて、信じられないよね……」 <br>
+私たちは今、黒又山の洞窟の中にいる。<br>
+奇妙な入口を見つけ、奥へ進むと、宇宙人が死体をミイラ化している場面を目撃してしまった。<br> 
+「もし捕まったら、どうなるの……？」<br> 
+智ちゃんは不安げな表情を浮かべる。<br>
+来た道には宇宙人が立っており、残された道は左右の二手に分かれていた。<br>
+私は左へ進みたいが、智ちゃんは右へ行きたいと言う。<br> 
+　――さあ、どうする？<br> 
+<p style="text-align: center;">
+    <strong><font color="#EA0000">次の順位のプレイヤーとじゃんけんをする。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('勝つ')">① 勝つ。（左へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('負ける')">② 負ける。（右へ1マス進む）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +210,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "勝つ": "別の出口を発見し、脱出成功。",
+        "負ける": "宇宙人に遭遇し、ミイラにされてしまう。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>青森の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -172,31 +172,29 @@
     padding: 20px;
   }
 }
+
   </style>
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>青森県−杉沢村</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="aomori.png" alt="青森県" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
-    <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+青森の山奥でりんご狩りをしていた私は、興奮のあまり、気がつくと道に迷ってしまった。<br> 
+道を探してさまよっているうちに、ある村を見つけた。<br> 
+村の入り口には「ここから先へ立ち入る者は命の保証はない。」と書かれた看板が立っていた。<br>  
+少し不気味ではあるが、「もしかしたら誰かに助けを求められるかもしれない。」と思い、私は村の中へ足を踏み入れた。<br>  
+すると、斧を持った殺人鬼が突然現れ、私に向かってこう問いかけた――。 <br> 
+「お前……いくつだ？」<br>  
+<p style="text-align: center;">
+    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の年齢を決定する。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('13歳以下')">① 13歳以下。（体力+2、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('14歳以上')">② 14歳以上。（体力−3、霊圧−2） </button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +207,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "13歳以下": "殺人鬼は、なぜか私を見逃してくれた。",
+        "14歳以上": "殺人鬼に追いかけられ、私はけがをしてしまった。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

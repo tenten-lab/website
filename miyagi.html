@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>宮城の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -172,31 +172,31 @@
     padding: 20px;
   }
 }
+
   </style>
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>宮城県−七北田刑場跡（仙台藩刑場跡）</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="miyagi.png" alt="宮城" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
-    <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
+私はきっと呪われているのだろう。<br> 
+なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
+「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
+耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっている。<br> 
+葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
+そして気がつくと、目の前に立っていたのは死刑囚。<br>   
+その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
+ <p style="text-align: center;">
+    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3。（体力−4、霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6。（一番近い特殊イベントマスに移動する） </button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +209,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "出目が1～3": "この地はさらに怨念が増した。",
+        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
