@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,39 +141,38 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
-
-  </style>
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
+</style>
 </head>
 <body>
 
@@ -180,24 +181,20 @@
   <img src="gunma.png" alt="群馬" class="story-image">
 
   <div class="story-text">
-  　夜、群馬県みどり市武尊神社で肝試しをしていた学生たち。 
-
-「大丈夫だよ、幽霊なんていないって」そう笑いながら鳥居をくぐった瞬間、風がざわめき、誰もいないのに太鼓の音が響き、奥から白い着物の女が現れる。 
-
-　女は無表情でこちらを見つめ、ゆっくりと口を開いた。 
-
-「…なぜ、祀りを絶やした？」 
-
-　この時、太鼓の音がだんだん大きくなり、学生たちは恐怖に駆られて逃げ出そうとするが、女の声が追いかけてくる。 
-
-　「忘れられることが、一番の呪い…」  <br><br>
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。 </font></strong>
+夜、群馬県みどり市武尊神社で肝試しをしていた学生たち。<br> 
+「大丈夫だよ、幽霊なんていないって」そう笑いながら鳥居をくぐった瞬間、風がざわめき、誰もいないのに太鼓の音が響き、奥から白い着物の女が現れる。<br> 
+女は無表情でこちらを見つめ、ゆっくりと口を開いた。<br> 
+「…なぜ、祀りを絶やした？」 <br>
+この時、太鼓の音がだんだん大きくなり、学生たちは恐怖に駆られて逃げ出そうとするが、女の声が追いかけてくる。<br> 
+「忘れられることが、一番の呪い…」<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。 </font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('女の問いに答える')">① 女の問いに答える（体力−2、霊圧+1）</button>
-    <button class="option-btn" onclick="showResult('無視して逃げる')">② 無視して逃げる（体力+1、霊圧−3）</button>
-    <button class="option-btn" onclick="showResult('挑発する')">③  挑発する（体力−2、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('女の問いに答える')">① 女の問いに答える。（体力−2、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('無視して逃げる')">② 無視して逃げる。（体力+1、霊圧−3）</button>
+    <button class="option-btn" onclick="showResult('挑発する')">③ 挑発する。（体力−2、霊圧+1）</button>
 
   </div>
 

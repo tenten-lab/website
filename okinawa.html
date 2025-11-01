@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>千葉の物語</title>
+  <title>沖縄の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -172,40 +172,30 @@
     padding: 20px;
   }
 }
-
   </style>
 </head>
 <body>
 
-  <h1>千葉県−八幡の藪知らず</h1>
+  <h1>沖縄県−SSS</h1>
 
-  <img src="chiba.png" alt="千葉" class="story-image">
-
+  <img src="okinawa.png" alt="沖縄" class="story-image">
   <div class="story-text">
-「もう、ヤダ！」<br> 
-私は怒りにまかせて家を飛び出した。<br>
-どれくらい走ったのかも分からない。<br>
-ただ、気がつけばあまり来たことのない小さな神社に辿り着いていた。<br>
-境内の端に腰を下ろし、息を整える。<br> 
-「ママはバカ……もう……」<br> 
-そう呟いていると、いつの間にか時間が経っていた。<br>
-ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br> 
-「くみちゃん……」<br> 
-――ママ？<br> 
-時計を見ると、すでに午前三時を回っていた。帰らなきゃ、と思い立ち、その光の方へと歩き出す。<br>
-近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br> 
-「ママ？」呼びかけてみたが、返事はない。足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
-その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。<br>
-「だ……れ？」<br> 
-その人頭が低く囁く。<br> 
-「私の体を見つけてくれ……そうすれば帰してやろう……」<br>
-   <p style="text-align: center;">
-   <strong><font color="#EA0000">左隣のプレイヤーとサイコロを振り合い、目の大きさを比べる。</font></strong></p>
+私はユタ――沖縄に伝わる霊媒師。 <br> 
+さらなる霊力を求め、修行地として知られる「SSS」へと足を踏み入れた。<br>  
+3つのS字カーブが続くこの道は、命を落とした修行者の霊が今も彷徨うと恐れられている。<br>  
+最初のカーブで耳鳴りが響き、2つ目のカーブでは白装束の女が木々の間に立っていた。<br> 
+無言でこちらを見つめるその姿に、背筋が凍る。<br>  
+3つ目のカーブに差しかかった瞬間、頭の奥で声が響く。<br>  
+「ここから先に進めば……お前も帰れなくなるぞ。」<br> 
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">どうやら、この地で最強の霊に出会ってしまったようだ。霊に打ち勝ち、自らが一人前のユタであることを証明せよ！<br> 
+霊圧が最も高いプレイヤーが対象となる。それぞれサイコロを1個振り、出目を比べる。出目が大きいほうが勝利となる。</font></strong></p>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('大')">① 大。（体力+1、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('小')">② 小。（体力+2、霊圧−1）</button>
+ <div class="options"> 
+
+<button class="option-btn" onclick="showResult('勝ったプレイヤー')">① 勝ったプレイヤー。（体力+2、霊圧+3）</button> 
+<button class="option-btn" onclick="showResult('負けたプレイヤー')">② 負けたプレイヤー。（体力−2、霊圧−3）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -217,10 +207,11 @@
 
   <script>
     function showResult(choice) {
-     const text = {
-        "大": "平将門の屍体を見つけ出し、無事に帰宅できる。",
-        "小": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見される。 ",
-      }; 
+    const text = { 
+
+"勝ったプレイヤー": "最強のユタとなった。", 
+"負けたプレイヤー": "力及ばず、霊に呪われてしまった。", 
+}; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

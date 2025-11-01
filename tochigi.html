@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,37 +141,37 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
 
   </style>
 </head>
@@ -180,16 +182,19 @@
   <img src="tochigi.png" alt="栃木" class="story-image">
 
   <div class="story-text">
-  「現在、栃木県那須町・那須湯本温泉の近くにある伝説の《殺生石》に来ています。皆さんご覧ください。この石は、生き物が近づくだけで命を落としてしまうと言われています。そこで今回、殻が非常に硬い亀を殺生石の前に置いてみて、本当に死んでしまうのか実験してみましょう。」 
-
-　番組スタッフが亀を石の前に置こうとしたその時――周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が現れた。  <br><br>
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong>
+「現在、栃木県那須町・那須湯本温泉の近くにある伝説の《殺生石》に来ています。<br>
+皆さんご覧ください。この石は、生き物が近づくだけで命を落としてしまうと言われています。<br>
+そこで今回、殻が非常に硬い亀を殺生石の前に置いてみて、本当に死んでしまうのか実験してみましょう。」<br> 
+番組スタッフが亀を石の前に置こうとしたその時――<br>
+周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が現れた。<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('そのまま亀を殺生石に置く')">① そのまま亀を殺生石に置く（体力−1、霊圧−1） </button>
-    <button class="option-btn" onclick="showResult('ライトで九尾狐に向ける')">② ライトで九尾狐に向ける</button>
-    <button class="option-btn" onclick="showResult('すぐに逃げ出す')">③ すぐに逃げ出す（体力+1、霊圧−1）（体力+1、霊圧−1） </button>
+    <button class="option-btn" onclick="showResult('そのまま亀を殺生石に置く')">① そのまま亀を殺生石に置く。（体力−1、霊圧−1） </button>
+    <button class="option-btn" onclick="showResult('ライトで九尾狐に向ける')">② ライトで九尾狐に向ける。（体力−1、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('すぐに逃げ出す')">③ すぐに逃げ出す。（体力+1、霊圧−1 ）</button>
 
   </div>
 

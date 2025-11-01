@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>福島の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,38 +141,37 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
-
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
   </style>
 </head>
 <body>
@@ -180,18 +181,23 @@
   <img src="fukujima.png" alt="福島" class="story-image">
 
   <div class="story-text">
-  友人のミリさんと一緒に福島県の温泉会館へ向かっていた。 
-　しかし途中で道に迷い、気がつくと深い山の中へと入り込んでしまった。そこで「横向温泉」と書かれた建物を見つけた。 
-　好奇心に駆られて車を降り、近づいてみると窓の中から小さな女の子がこちらに手を振っているのが見えた。 
-不思議に思いながらロッジの中へ入ると、外は雪が降っているのに、建物の中は妙に暑い。さらに奥の大浴場に足を踏み入れると、大勢の人影が行き交っていた。 
-　「ねえ、なんだか匂わない？」とミリさんが言う。振り返ると、大浴場全体が炎に包まれていた。 
-　慌てて出口に向かうと――さっきの小さな女の子が、入口をふさぐように立っていた。  <br><br>
-    <strong><font color="#EA0000">右隣のプレイヤーとじゃんけんを行う。</font></strong>
+友人のミリさんと一緒に福島県の温泉会館へ向かっていた。<br> 
+しかし途中で道に迷い、気がつくと深い山の中へと入り込んでしまった。
+そこで「横向温泉」と書かれた建物を見つけた。 
+好奇心に駆られて車を降り、近づいてみると窓の中から小さな女の子がこちらに手を振っているのが見えた。<br> 
+不思議に思いながらロッジの中へ入ると、外は雪が降っているのに、建物の中は妙に暑い。<br>
+さらに奥の大浴場に足を踏み入れると、大勢の人影が行き交っていた。<br> 
+「ねえ、なんだか匂わない？」とミリさんが言う。<br>
+振り返ると、大浴場全体が炎に包まれていた。<br> 
+慌てて出口に向かうと――<br>
+さっきの小さな女の子が、入口をふさぐように立っていた。<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">右隣のプレイヤーとじゃんけんを行う。</font></strong></p>
   </div>
 
  <div class="options">
-    <button class="option-btn" onclick="showResult('勝った場合')">① 勝った場合（霊圧 ＋3、道具カードを一枚引く）</button>
-    <button class="option-btn" onclick="showResult('負けた場合')">② 負けた場合（ゲーム一回を中止する）</button>
+    <button class="option-btn" onclick="showResult('勝った場合')">① 勝った場合。（霊圧 ＋3、道具カードを一枚引く）</button>
+    <button class="option-btn" onclick="showResult('負けた場合')">② 負けた場合。（ゲーム一回を中止する）</button>
   </div>
 
 

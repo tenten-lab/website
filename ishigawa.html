@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>千葉の物語</title>
+  <title>石川の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,37 +177,32 @@
 </head>
 <body>
 
-  <h1>千葉県−八幡の藪知らず</h1>
+  <h1>石川県−UFOの街</h1>
 
-  <img src="chiba.png" alt="千葉" class="story-image">
+  <img src="ishigawa.png" alt="石川" class="story-image">
 
   <div class="story-text">
-「もう、ヤダ！」<br> 
-私は怒りにまかせて家を飛び出した。<br>
-どれくらい走ったのかも分からない。<br>
-ただ、気がつけばあまり来たことのない小さな神社に辿り着いていた。<br>
-境内の端に腰を下ろし、息を整える。<br> 
-「ママはバカ……もう……」<br> 
-そう呟いていると、いつの間にか時間が経っていた。<br>
-ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br> 
-「くみちゃん……」<br> 
-――ママ？<br> 
-時計を見ると、すでに午前三時を回っていた。帰らなきゃ、と思い立ち、その光の方へと歩き出す。<br>
-近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br> 
-「ママ？」呼びかけてみたが、返事はない。足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
-その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。<br>
-「だ……れ？」<br> 
-その人頭が低く囁く。<br> 
-「私の体を見つけてくれ……そうすれば帰してやろう……」<br>
-   <p style="text-align: center;">
-   <strong><font color="#EA0000">左隣のプレイヤーとサイコロを振り合い、目の大きさを比べる。</font></strong></p>
+羽咋市は「UFOの街」として知られ、昔から奇妙な目撃談が絶えない。<br> 
+その噂を確かめるため、夜の田んぼへ足を運んだ。<br>
+ふと、不気味な光がふわりと浮かび上がる。慌ててカメラを構え、息を呑んだ。 <br>
+「……UFO？」 <br>
+光の中心には、仏具のシンバルのような円盤があった。<br>
+金属のように鈍く輝き、ゆっくりと回転している。<br>
+次の瞬間、「キーン……」という耳鳴りが走り、視界がぐにゃりと歪んだ。<br> 
+「……体が動かない！」<br> 
+円盤はゆっくり降りてきて、頭上を覆い尽くす。<br>
+影に包まれた途端、鳥の声も風の音も消えた。<br>
+息が詰まる静寂の中、私は呟いた。<br> 
+「……ここ、本当に地球なのか？」<br>
+ <p style="text-align: center;">
+    <strong><font color="#EA0000">UFOにさらわれ、宇宙人と出会った。どうする？</font></strong></p>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('大')">① 大。（体力+1、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('小')">② 小。（体力+2、霊圧−1）</button>
-  </div>
-
+<div class="options"> 
+<button class="option-btn" onclick="showResult('宇宙人と友達になる。')">① 宇宙人と友達になる。（道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('隠れて様子を見る。')">② 隠れて様子を見る。（体力+2、霊圧+1）</button> 
+<button class="option-btn" onclick="showResult(' UFO内部を探索する。')">③ UFO内部を探索する。（自由に2マス移動する）</button> 
+</div> 
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
@@ -217,10 +212,11 @@
 
   <script>
     function showResult(choice) {
-     const text = {
-        "大": "平将門の屍体を見つけ出し、無事に帰宅できる。",
-        "小": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見される。 ",
-      }; 
+   const text = { 
+"宇宙人と友達になる。": "宇宙人から不思議なプレゼントを受け取った。", 
+"隠れて様子を見る。": "恐怖が少しおさまり、体の力が戻った。", 
+" UFO内部を探索する。": "この場所に関する手掛かりを探し始めた。", 
+}; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
