@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>三重の物語</title>
+  <title>香川の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,29 +177,27 @@
 </head>
 <body>
 
-  <h1>三重県−橋北中学校水難事件</h1>
+  <h1>香川県−首切峠</h1>
 
-  <img src="mie.png" alt="三重" class="story-image">
+  <img src="kagawa.png" alt="香川" class="story-image">
 
   <div class="story-text">
-夏、海岸の付近で橋北中学校の水泳訓練が始まる。<br>
-「今年も参加したくないな…」と思いながら、波の音と同級生の笑い声が聞こえてくる。<br>
-だが、おかしいことに波が急に高くなり、海面に巨大な大波が巻き起こった。<br>
-周りからたくさんの悲鳴が聞こえ、巨大な波が自分に襲いかかろうとしている。<br>
-波の中には、防空頭巾をかぶった数十人の人が見えた…<br>
-周囲には戦闘機の音や爆弾の爆発音も響いている。<br>
-「なぜこんな光景が…」<br>
-怖くて岸に向かって泳ごうとしたが、足に何かが絡みついたようだ…<br>
-これもしかして防空頭巾だろうか？<br>
+おかしい…目の前は真っ暗だ…私は夢を見ているのだろうか…<br>
+「蓮は…？」たしか一緒に香川の実家へ帰って今寝るはずなのに…<br>
+ふと前を見ると、なぜここに地蔵が…どこかで見たことがある…<br>
+その瞬間、思い出した。<br>
+帰り道に通った「首切峠」の標識、そして道端の地蔵…<br>
+まさかこれが蓮の言っていた「首切地蔵」か？<br>
+すると突然、遠くから首のない武者のような者がこちらへ歩いてくる。<br>
+口の中で「憎き長宗我部元親…」と呟きながら…。<br>
+どうしよう…こっちに来る…どうすれば…<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">これからあなたはどうするのか？選んでください。</font></strong></p>
+    <strong><font color="#EA0000">武者の魂を解放するには、サイコロを上に投げ、3回連続でキャッチしよ！</font></strong></p>
   </div>
 
-  <div class="options"> 
-
-<button class="option-btn" onclick="showResult('足に絡みついた防空頭巾を振りほどく')">① 足に絡みついた防空頭巾を振りほどく。（体力−5、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('大声で助けを呼ぶ。')">② 大声で助けを呼ぶ。（体力−3由に2マス移動する）</button> 
-<button class="option-btn" onclick="showResult('波に巻き込まれないように必死で浮く')">③ 波に巻き込まれないように必死で浮く。（体力+3、霊圧−1）</button> 
+  <div class="options">
+    <button class="option-btn" onclick="showResult('成功したら')">① 成功したら。（霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('失敗したら')">② 失敗したら。（左へ2マス進む、霊圧−2） </button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,12 +209,10 @@
 
   <script>
     function showResult(choice) {
-   const text = { 
-"足に絡みついた防空頭巾を振りほどく": "最後の力を振り絞って、やっと振りほどいた。", 
-"大声で助けを呼ぶ。": "誰かがこっちに来た！私の声が聞こえたみたいだ！", 
-"波に巻き込まれないように必死で浮く": "普段の訓練のおかげで、十分な体力があって波に巻き込まれない。", 
-}; 
-
+     const text = {
+        "成功したら": "魂を無事に解放し、夢から覚めた。",
+        "失敗したら": "武者の魂に支配され、夢の中に囚われる。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

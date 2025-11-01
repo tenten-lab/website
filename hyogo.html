@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新潟の物語</title>
+  <title>兵庫の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,32 +177,28 @@
 </head>
 <body>
 
-  <h1>新潟県−ホワイトハウス</h1>
+  <h1>兵庫県−火垂るの墓の少女像</h1>
 
-  <img src="shiigata.png" alt="新潟" class="story-image">
+  <img src="hyogo.png" alt="兵庫" class="story-image">
 
   <div class="story-text">
-暗い……痛い……パパ……ママ……お兄ちゃん……<br>
-暗いよ……外に出たいよ……<br>
-薬は嫌い……痛いのも嫌い……<br>
-ここは「ホワイトハウス」っていう名前らしい。<br>
-真っ白で、本当にいや。<br>
-何か色が欲しいなぁ……でも、描くものがない。<br>
-――あ、そうだ！　みんなで遊ぼう！<br>
-パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
-パパが大事にしていたおもちゃをもらった！うれしい！<br>
-ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
-あはははは！すごい！これで絵が描ける！<br>
-よし、これでみんな、ずっと一緒になれたね……。<br>
+（夕暮れ時の満池谷墓地）<br>
+母に「そろそろ帰るから遠くへ行かないで」と言われたが、好奇心に駆られて一人であちこち歩き回っていた。<br>
+「…少女の像？横に左耳の欠けたウサギも…」。<br>
+両親とお墓参りに来ていた私は、偶然その像を見つけた。<br>
+不思議なことに、周囲に人影はないのに、子供の泣き声が聞こえてきた。<br>
+声をたどると、耳のないウサギと遊ぶ少女の姿が――<br>
+「…あれって、さっき見た像じゃ…」<br>
+恐怖で震える私に、少女はゆっくりと振り向き、こう言った。<br>
+「…いっしょに遊ぶ…？」<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
+    <strong><font color="#EA0000">こんな状況でやるしかない！<br>次のプレイヤーと「あっち向いてホイ」のゲームをしよう！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
+<button class="option-btn" onclick="showResult('勝ったら')">① 勝ったら。（霊圧+3）</button> 
+<button class="option-btn" onclick="showResult('負けたら')">② 負けたら。（右へ1マス進む、霊圧−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -215,9 +211,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
-"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
-"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+"勝ったら": "少女が突然消えてしまう 。", 
+"負けたら": "体が動かなくなり、少女がこちらに近づいてくる。",  
 }; 
 
       document.getElementById("resultText").innerText = text[choice];

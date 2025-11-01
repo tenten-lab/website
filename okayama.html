@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,37 +141,37 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
 
   </style>
 </head>
@@ -180,16 +182,19 @@
   <img src="okayama.png" alt="岡山" class="story-image">
 
   <div class="story-text">
-  今日は親友のミリと一緒に岡山県津山市の中山神社に参拝に来た。血吸川を通りかかったとき、川の上に一人の男子が立っているのを見つけた。 
-
-　「吾は温羅である。あなたたちは世界一の友達だろう。しかし、どんなに親しい友でも、裏切られる日が来るものだ。さあ、ゲームをしよう…君たちの友情が本当に固いか、見せてもらおう。」 <br><br>
-    <strong><font color="#EA0000">選ばれたプレイヤーは「二つは嘘、一つは本当」のゲームを行う。 
-選ばれたプレイヤーは自分に関する三つの事柄を提示し、その中でどれが本当かをあなたに当ててもらう。 </font></strong>
+今日は親友のミリと一緒に岡山県津山市の中山神社に参拝に来た。<br>
+血吸川を通りかかったとき、川の上に一人の男子が立っているのを見つけた。<br> 
+「吾は温羅である。あなたたちは世界一の友達だろう。<br>
+しかし、どんなに親しい友でも、裏切られる日が来るものだ。<br>
+さあ、ゲームをしよう…君たちの友情が本当に固いか、見せてもらおう。」<br>
+    <p style="text-align: center;">
+<strong><font color="#EA0000">選ばれたプレイヤーは「二つは嘘、一つは本当」のゲームを行う。<br> 
+選ばれたプレイヤーは自分に関する三つの事柄を提示し、その中でどれが本当かをあなたに当ててもらう。 </font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('正解')">① 正解 （霊圧+2、道具カードを一枚引く）</button>
-    <button class="option-btn" onclick="showResult('不正解')">② 不正解（体力−1、霊圧−1）</button>
+    <button class="option-btn" onclick="showResult('正解')">① 正解。（霊圧+2、道具カードを一枚引く）</button>
+    <button class="option-btn" onclick="showResult('不正解')">② 不正解。（体力−1、霊圧−1）</button>
 
   </div>
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新潟の物語</title>
+  <title>奈良の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,32 +177,28 @@
 </head>
 <body>
 
-  <h1>新潟県−ホワイトハウス</h1>
+  <h1>奈良県−屯鶴峯防空壕</h1>
 
-  <img src="shiigata.png" alt="新潟" class="story-image">
+  <img src="nara.png" alt="奈良" class="story-image">
 
   <div class="story-text">
-暗い……痛い……パパ……ママ……お兄ちゃん……<br>
-暗いよ……外に出たいよ……<br>
-薬は嫌い……痛いのも嫌い……<br>
-ここは「ホワイトハウス」っていう名前らしい。<br>
-真っ白で、本当にいや。<br>
-何か色が欲しいなぁ……でも、描くものがない。<br>
-――あ、そうだ！　みんなで遊ぼう！<br>
-パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
-パパが大事にしていたおもちゃをもらった！うれしい！<br>
-ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
-あはははは！すごい！これで絵が描ける！<br>
-よし、これでみんな、ずっと一緒になれたね……。<br>
+「おい、山田…本当に行くのか…？」<br> 
+歴史の授業で先生が言った第二次世界大戦で残したあの屯鶴峯防空壕。<br>
+探検チャンネルの企画だと言って、山田に無理やり連れてこられた。<br> 
+森を抜け、ようやく辿り着いた壕は、真っ暗な口を開けていて懐中電灯を持っていても、闇の圧に息が詰まりそうになる。<br>
+少し歩いたあと、山田が立ち止まり、震えながら言った。 <br>
+「か、壁に…」 <br>
+光を当てると、作業服を着た男の影が浮かび上がった――。<br>
+反応する間もなく…<br>
+次の瞬間、人の顔がいきなり目の前に迫ってきた…。<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
+    <strong><font color="#EA0000">やばい！驚いて懐中電灯を落として壊れた...あたりは真っ暗だ…。<br>一個のサイコロで出口を探せ！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
+<button class="option-btn" onclick="showResult('出目が5以上')">① 出目が5以上。（体力+2、右へ2マス進む）</button> 
+<button class="option-btn" onclick="showResult('出目が5未満')">② 出目が5未満。（体力−4、霊圧+3）</button>  
   </div>
 
   <div id="resultModal" class="modal">
@@ -215,9 +211,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
-"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
-"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+"出目が5以上": "カバンのマッチに気づき、火をつけて出口を見つける。", 
+"出目が5未満": "壁を手探りしながら出口を探す。",  
 }; 
 
       document.getElementById("resultText").innerText = text[choice];

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>三重の物語</title>
+  <title>徳島の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,29 +177,26 @@
 </head>
 <body>
 
-  <h1>三重県−橋北中学校水難事件</h1>
+  <h1>徳島県−西部公園</h1>
 
-  <img src="mie.png" alt="三重" class="story-image">
+  <img src="tokushima.png" alt="徳島" class="story-image">
 
   <div class="story-text">
-夏、海岸の付近で橋北中学校の水泳訓練が始まる。<br>
-「今年も参加したくないな…」と思いながら、波の音と同級生の笑い声が聞こえてくる。<br>
-だが、おかしいことに波が急に高くなり、海面に巨大な大波が巻き起こった。<br>
-周りからたくさんの悲鳴が聞こえ、巨大な波が自分に襲いかかろうとしている。<br>
-波の中には、防空頭巾をかぶった数十人の人が見えた…<br>
-周囲には戦闘機の音や爆弾の爆発音も響いている。<br>
-「なぜこんな光景が…」<br>
-怖くて岸に向かって泳ごうとしたが、足に何かが絡みついたようだ…<br>
-これもしかして防空頭巾だろうか？<br>
+（あたりはだんだん暗くなっていく）<br>
+「健太！そろそろ帰るぞ！バスに間に合わなくなる！」遠くから隼人の呼ぶ声が聞こえる。<br>
+朝の西部公園の桜は本当にきれいだったが、夜になると雰囲気が全く違う…早く帰ろう。<br>
+だが、おかしいことに隼人の声がどんどん遠ざかっていく…。<br>
+どうしてこんなことに…「隼人…隼人…」<br>
+その時、突然、周囲から兵士が行軍するような足音が聞こえ始めた――<br>
+その音はどんどん近づき、私を包囲しようとしていた…。<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">これからあなたはどうするのか？選んでください。</font></strong></p>
+    <strong><font color="#EA0000">これからあなたはどうするのか？<br>選んでください。</font></strong></p>
   </div>
 
-  <div class="options"> 
-
-<button class="option-btn" onclick="showResult('足に絡みついた防空頭巾を振りほどく')">① 足に絡みついた防空頭巾を振りほどく。（体力−5、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('大声で助けを呼ぶ。')">② 大声で助けを呼ぶ。（体力−3由に2マス移動する）</button> 
-<button class="option-btn" onclick="showResult('波に巻き込まれないように必死で浮く')">③ 波に巻き込まれないように必死で浮く。（体力+3、霊圧−1）</button> 
+  <div class="options">
+    <button class="option-btn" onclick="showResult('周囲へ全力で逃げる')">① 周囲へ全力で逃げる。（霊圧+2、次のターンを休む）</button>
+    <button class="option-btn" onclick="showResult('地面の桜の花びらを拾い、兵士に撒く')">② 地面の桜の花びらを拾い、兵士に撒く。（体力−3、右へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('目を閉じる')">③ 目を閉じる。（体力+2、霊圧−2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,12 +208,11 @@
 
   <script>
     function showResult(choice) {
-   const text = { 
-"足に絡みついた防空頭巾を振りほどく": "最後の力を振り絞って、やっと振りほどいた。", 
-"大声で助けを呼ぶ。": "誰かがこっちに来た！私の声が聞こえたみたいだ！", 
-"波に巻き込まれないように必死で浮く": "普段の訓練のおかげで、十分な体力があって波に巻き込まれない。", 
-}; 
-
+     const text = {
+        "周囲へ全力で逃げる": "幽霊の兵士を通り過ぎて、どれくらい走った後、やっと隼人を見つけた。",
+        "地面の桜の花びらを拾い、兵士に撒く": "桜の花びらに触れた兵士が、苦しそうに叫んでいる。",
+ "目を閉じる": "まるで別の空間に入ったみたいで、ほかの声はもう聞こえない。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

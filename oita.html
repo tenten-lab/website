@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>三重の物語</title>
+  <title>山形の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -172,34 +172,31 @@
     padding: 20px;
   }
 }
-
   </style>
 </head>
 <body>
 
-  <h1>三重県−橋北中学校水難事件</h1>
+  <h1>山形県－滝不動</h1>
 
-  <img src="mie.png" alt="三重" class="story-image">
+  <img src="yamagata.png" alt="山形" class="story-image">
 
   <div class="story-text">
-夏、海岸の付近で橋北中学校の水泳訓練が始まる。<br>
-「今年も参加したくないな…」と思いながら、波の音と同級生の笑い声が聞こえてくる。<br>
-だが、おかしいことに波が急に高くなり、海面に巨大な大波が巻き起こった。<br>
-周りからたくさんの悲鳴が聞こえ、巨大な波が自分に襲いかかろうとしている。<br>
-波の中には、防空頭巾をかぶった数十人の人が見えた…<br>
-周囲には戦闘機の音や爆弾の爆発音も響いている。<br>
-「なぜこんな光景が…」<br>
-怖くて岸に向かって泳ごうとしたが、足に何かが絡みついたようだ…<br>
-これもしかして防空頭巾だろうか？<br>
-<p style="text-align: center;">
-    <strong><font color="#EA0000">これからあなたはどうするのか？選んでください。</font></strong></p>
+残業のせいで、いつもより遅く家に帰ることになった。<br> 
+大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
+思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
+だが、突然母親の首が落ち、娘は泣き続けている。<br> 
+慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
+返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
+振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
+不動明王はこう言った――<br> 
+「その母娘を助けたいか？」<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
   </div>
 
-  <div class="options"> 
-
-<button class="option-btn" onclick="showResult('足に絡みついた防空頭巾を振りほどく')">① 足に絡みついた防空頭巾を振りほどく。（体力−5、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('大声で助けを呼ぶ。')">② 大声で助けを呼ぶ。（体力−3由に2マス移動する）</button> 
-<button class="option-btn" onclick="showResult('波に巻き込まれないように必死で浮く')">③ 波に巻き込まれないように必死で浮く。（体力+3、霊圧−1）</button> 
+  <div class="options">
+    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
+    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,12 +208,10 @@
 
   <script>
     function showResult(choice) {
-   const text = { 
-"足に絡みついた防空頭巾を振りほどく": "最後の力を振り絞って、やっと振りほどいた。", 
-"大声で助けを呼ぶ。": "誰かがこっちに来た！私の声が聞こえたみたいだ！", 
-"波に巻き込まれないように必死で浮く": "普段の訓練のおかげで、十分な体力があって波に巻き込まれない。", 
-}; 
-
+     const text = {
+        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
+        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鳥取の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -54,6 +54,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -110,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -139,38 +141,37 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
+  .story-text {
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
+
+  .option-btn {
+    width: 80%;
     font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    padding: 10px;
+  }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
-
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
-
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
   </style>
 </head>
 <body>
@@ -180,16 +181,15 @@
   <img src="totori.png" alt="鳥取" class="story-image">
 
   <div class="story-text">
-  天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で雨に洗われ、工事の進捗は非常に芳しくなかった。 
-
-「主公、天守閣がまた流されました……このままでは……」どうすべきか途方に暮れていると、そのときある大臣が提案した。 
-
-「祟りを鎮めるには人柱を立てるしかありません。特に、村で最も容貌優れた娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」 
-
-　その直後、十六歳にも満たない一人の少女が押し込まれてきた。少女は声を上げて叫ぶ。 
-
-「なぜ城を造るために人を生け贄にするのですか！もし私がここで葬られるなら、「私は死しても、この城を決して許さない！」 <br><br>
-    <strong><font color="#EA0000">いま、あなたは吉川広家として、次の選択肢のいずれを選び、行動を決める。</font></strong>
+天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で雨に洗われ、工事の進捗は非常に芳しくなかった。<br> 
+「主公、天守閣がまた流されました……このままでは……」<br>
+どうすべきか途方に暮れていると、そのときある大臣が提案した。<br> 
+「祟りを鎮めるには人柱を立てるしかありません。特に、村で最も容貌優れた娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」<br> 
+その直後、十六歳にも満たない一人の少女が押し込まれてきた。少女は声を上げて叫ぶ。<br> 
+「なぜ城を造るために人を生け贄にするのですか！もし私がここで葬られるなら、私は死しても、この城を決して許さない！」<br>
+    <p style="text-align: center;">
+<strong><font color="#EA0000">いま、あなたは吉川広家として、
+<br>次の選択肢のいずれを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">

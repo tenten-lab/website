@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新潟の物語</title>
+  <title>滋賀の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,32 +177,28 @@
 </head>
 <body>
 
-  <h1>新潟県−ホワイトハウス</h1>
+  <h1>滋賀県−琵琶湖</h1>
 
-  <img src="shiigata.png" alt="新潟" class="story-image">
+  <img src="shiga.png" alt="滋賀" class="story-image">
 
   <div class="story-text">
-暗い……痛い……パパ……ママ……お兄ちゃん……<br>
-暗いよ……外に出たいよ……<br>
-薬は嫌い……痛いのも嫌い……<br>
-ここは「ホワイトハウス」っていう名前らしい。<br>
-真っ白で、本当にいや。<br>
-何か色が欲しいなぁ……でも、描くものがない。<br>
-――あ、そうだ！　みんなで遊ぼう！<br>
-パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
-パパが大事にしていたおもちゃをもらった！うれしい！<br>
-ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
-あはははは！すごい！これで絵が描ける！<br>
-よし、これでみんな、ずっと一緒になれたね……。<br>
+「組長…あっち、もう片付いたっす… 」<br>
+口封じのため、わざわざ死体を投げ入れても浮かばない琵琶湖を選んだんだ…<br>
+この計画はうまくいくはずだ…<br>
+「そろそろ帰ろう…夜が明ける前に…」<br>
+帰ろうととしたその時、足を滑らせた私は湖に落ちてしまった。<br>
+「 組長！組長！」子分の呼ぶ声がどんどん遠ざかっていく…<br>
+目を開けると、湖底に数十人の人影が見えた…<br>
+鎧を身に着けているようだ。<br>
+そんな…ありえない…まさか幽霊…？<br> 
 <p style="text-align: center;">
-    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
+    <strong><font color="#EA0000">早く岸へ…息がもう続かない…<br>二個のサイコロで脱出してみよう！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
+<button class="option-btn" onclick="showResult('振りたサイコロのうち、「6」が出れば')">① 振りたサイコロのうち、「6」が出れば。（体力−2、道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('「6」以外の数字なら')">② 「6」以外の数字なら。（霊圧−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -215,9 +211,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
-"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
-"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+"振りたサイコロのうち、「6」が出れば": "一気に水面へ泳ぎ上がる！", 
+"「6」以外の数字なら": "どんどん沈んでいく…", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];

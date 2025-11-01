@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新潟の物語</title>
+  <title>大阪の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,32 +177,27 @@
 </head>
 <body>
 
-  <h1>新潟県−ホワイトハウス</h1>
+  <h1>大阪府−千日百貨火災</h1>
 
-  <img src="shiigata.png" alt="新潟" class="story-image">
+  <img src="osaka.png" alt="大阪" class="story-image">
 
   <div class="story-text">
-暗い……痛い……パパ……ママ……お兄ちゃん……<br>
-暗いよ……外に出たいよ……<br>
-薬は嫌い……痛いのも嫌い……<br>
-ここは「ホワイトハウス」っていう名前らしい。<br>
-真っ白で、本当にいや。<br>
-何か色が欲しいなぁ……でも、描くものがない。<br>
-――あ、そうだ！　みんなで遊ぼう！<br>
-パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
-パパが大事にしていたおもちゃをもらった！うれしい！<br>
-ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
-あはははは！すごい！これで絵が描ける！<br>
-よし、これでみんな、ずっと一緒になれたね……。<br>
+「千日百貨ご来店いただき誠にありがとうございました。」<br>
+以前火災を経験したばかりだが、生活のため、怖くても働き続けなきゃいけない…<br>
+閉店の時、夏美と退勤しろうとエレベーターに乗ると、三階で突然停止。<br>
+「…え？」扉が開くと同時に、火災警報の音が鳴り響く。<br>
+おかしい…火事なんて起きていないのに…。<br>
+頭が急に痛み出し、火災警報があの日と同じ時間に鳴っていたことに気づいた...<br>
+すると.....前に見て....<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
+    <strong><font color="#EA0000">あなたは何を見ましたか？</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
+<button class="option-btn" onclick="showResult('火事もないのに炎が見える')">① 火事もないのに炎が見える。（霊圧−2、自由に三歩移動する）</button> 
+<button class="option-btn" onclick="showResult('刑場のような幻影を見った')">② 刑場のような幻影を見った。（体力−3、霊圧+2）</button> 
+<button class="option-btn" onclick="showResult('照明が点滅していてる')">③ 照明が点滅していてる。（体力+2、霊圧−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -215,9 +210,9 @@
   <script>
     function showResult(choice) {
    const text = { 
-"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
-"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
-"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+"火事もないのに炎が見える": "あれ？何か火がこっちに来た！とにかく早く逃げろ！", 
+"刑場のような幻影を見った": " 突然江戸時代の伝説を思い出した 。", 
+"照明が点滅していてる": "あそこに誰か…..。", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];

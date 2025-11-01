@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新潟の物語</title>
+  <title>和歌山の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -177,32 +177,26 @@
 </head>
 <body>
 
-  <h1>新潟県−ホワイトハウス</h1>
+  <h1>和歌山県−三段壁</h1>
 
-  <img src="shiigata.png" alt="新潟" class="story-image">
+  <img src="wakayama.png" alt="和歌山" class="story-image">
 
   <div class="story-text">
-暗い……痛い……パパ……ママ……お兄ちゃん……<br>
-暗いよ……外に出たいよ……<br>
-薬は嫌い……痛いのも嫌い……<br>
-ここは「ホワイトハウス」っていう名前らしい。<br>
-真っ白で、本当にいや。<br>
-何か色が欲しいなぁ……でも、描くものがない。<br>
-――あ、そうだ！　みんなで遊ぼう！<br>
-パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
-パパが大事にしていたおもちゃをもらった！うれしい！<br>
-ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
-あはははは！すごい！これで絵が描ける！<br>
-よし、これでみんな、ずっと一緒になれたね……。<br>
+小説のネタ探しに、近くの海岸をなんとなく歩いてたんだ。<br>
+「ん？ なんか蹴ったぞ…口紅？」<br>
+拾い上げて顔を上げると、岩壁に赤い文字が刻まれてるのに気づいた。<br>
+「え、なにこれ…」って思った瞬間、その文字がピカッと光ったんだ。<br>
+すると、崖の縁に二人の人影が現れ、互いを見つめ合っている。<br>
+少女は涙を流しながら「定一…来世こそ必ず夫婦になろう…」そう言って二人は崖から身を投げた。<br>
+慌てて崖まで走ったけど、何も見えなく突然足を滑らせて落ちそうになった瞬間、左手で岩にしがみついて....<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
+    <strong><font color="#EA0000">岩がもうすぐ崩れそうだ…<br>次のプレイヤーとじゃんけんしてあなたの運命を決めろ！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
+<button class="option-btn" onclick="showResult('勝ったら')">① 勝ったら。（体力−3、霊圧+1）</button> 
+<button class="option-btn" onclick="showResult('負けたら')">② 負けたら。（霊圧−1）</button>  
   </div>
 
   <div id="resultModal" class="modal">
@@ -215,9 +209,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
-"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
-"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+"勝ったら": "右手を伸ばして近くの岩をつかめ。", 
+"負けたら": "岩が崩れて海に落ち、そのまま深い海へ沈んでいく。", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
