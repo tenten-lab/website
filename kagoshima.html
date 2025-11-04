@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>鹿児島の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -176,27 +176,26 @@
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>鹿児島−巨頭才</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="kagoshima.png" alt="鹿児島" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
+「おかしいな…確かにこの道のはずだ」<br>
+数年前に来た深い山の村で、いい旅館に泊まって今日はまた行きたかった。<br>
+どれだけ走ったか分からないが、突然「巨頭才」と書かれた看板が見えた。<br>
+「変な感じがするけど、とりあえず見に行こう」<br>
+着くと荒れた村だけがあった。<br>
+不気味で急いで帰ろうとした。<br>
+その時、巨大な顔で下半身が小さい化け物が近づいてきた。<br>
+驚いて車に乗り、逃げ出した…巨大な顔がどんどん迫ってくる…<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+    <strong><font color="#EA0000">2個のサイコロを同時に振り、<br>困難を突破してみよう！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('同じ目が出れば')">① 同じ目が出れば（霊圧+2、道具をもらう）</button>
+    <button class="option-btn" onclick="showResult('違い目が出れば')">②違い目が出れば（体力−3、霊圧−1）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +208,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "同じ目が出れば": "正しい道を見つけ、無事に脱出する。",
+        "違い目が出れば": "森の中で道に迷ってしまう。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>長崎の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -176,27 +176,25 @@
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>長崎県−幽靈軍艦島（端島）</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="nagasaki.png" alt="長崎" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
+ツアーに参加して、まるで戦艦のような端島へやって来た。<br>
+観光で入れるとはいえ、周囲の古びた建物を見ていると、どこか重苦しい雰囲気を感じる…。<br>
+夕暮れ時、そろそろ行程が終わる頃――<br>
+「…炭鉱の匂いがする？」気になって少し歩き回った瞬間、気づけばツアーの人たちが消えた。<br>
+慌てて廃墟の間を探し回るけど、誰もいない。<br>
+突然、三十号棟の窓に、一人の少女が現れ、こっちに手を振っていた――。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+    <strong><font color="#EA0000">これからどうなるのか？<br>選んでください。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('不思議な力を感じる')">① 不思議な力を感じる。（体力−4、元々のルートに沿って1マス戻る）</button>
+    <button class="option-btn" onclick="showResult('恐怖で足がすくむ')">② 恐怖で足がすくむ。（体力+3、次のターンを休む）</button>
+<button class="option-btn" onclick="showResult('恐怖を押してあそこに進んでいく')">③ 恐怖を押してあそこに進んでいく。（体力−5、霊圧+2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +207,9 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "不思議な力を感じる": "足が勝手にその方向へ向かい、そこには一人の女が立っている。",
+        "恐怖で足がすくむ": "突然奇妙な声がして、どんどんこっちに近づいてきて逃げらない。",
+ "恐怖を押してあそこに進んでいく": "仲間の声が聞こえて、みんな無事そうだ。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

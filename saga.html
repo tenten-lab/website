@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>佐賀の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -176,27 +176,26 @@
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>佐賀県−虹の松原</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="saga.png" alt="佐賀" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
+「ねぇ…本当にこの道を通らないとダメなの…？」<br>
+優人は「唐津市からならこっちが早い」と静かに答える。<br>
+なんだか、この場所が自殺の名所だからか、夜の「虹の松原」はどこか不気味で、疲れた私はうとうとしてしまった――。<br>
+目を覚ますと、周囲は濃い霧に包まれていた。<br>
+私は慌てて優人の方を振り向いた。<br>
+優人の目は虚ろで、前方には女の人の影が立ている。<br>
+それなのに、車は止まる気配がない。<br>
+「優人！前、前見て！！」<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+    <strong><font color="#EA0000">サイコロを使って力を蓄え、<br>ハンドルを握りしめて回避せよ！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('出目の合計が10以上なら')">① 出目の合計が10以上なら。（体力−1、自由に3マス移動する）</button>
+    <button class="option-btn" onclick="showResult('出目の合計が10以下なら')">② 出目の合計が10以下なら。（元のルートに沿って2マス戻る）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +208,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "出目の合計が10以上なら": "回避成功",
+        "出目の合計が10以下なら": "回避できず、車がスリップした。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

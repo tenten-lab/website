@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>山形の物語</title>
+  <title>大分の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -176,27 +176,24 @@
 </head>
 <body>
 
-  <h1>山形県－滝不動</h1>
+  <h1>大分県−少年兵の像</h1>
 
-  <img src="yamagata.png" alt="山形" class="story-image">
+  <img src="oita.png" alt="大分" class="story-image">
 
   <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市県道104号線を走っているとき、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わず車を停めて前方を確認すると、母娘のような二人が歩いてくるのが見えた。<br>  
-だが、突然母親の首が落ち、娘は泣き続けている。<br> 
-慌てて窓を開け、「何があったの？大丈夫ですか？」と叫ぶと、<br> 
-返ってきたのは耳をつんざく悲鳴と泣き声。<br>  
-振り返った瞬間、本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br> 
-不動明王はこう言った――<br> 
-「その母娘を助けたいか？」<br>
+夜の散歩中、色あせた少年兵の銅像の前で足を止めた。<br>
+祖父によると、これは日露戦争で亡くなった兵士を慰霊するための像らしい。<br>
+「まだこんなに若かったのに……」と私は呟いた。<br>
+そのとき、銅像の右手がゆっくりと上がり始めた。<br>
+気がつけば、周囲の風景は戦場のように歪んでいく……。<br>
+どうして、こんなことに……。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出た目の数をかけ合わせて君の選択を決める。</font></strong></p>
+    <strong><font color="#EA0000">今は自分を守らなければならない！<br>3秒以内に軍事装備、用品を三つ答える。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が7以上')">① 出目の合計が7以上。（体力 ＋1、霊圧 ＋2）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が6以下')">② 出目の合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('できたら')">① できたら。（霊圧+1、左へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('できなかったら')">② できなかったら。（体力+1、霊圧−2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +206,8 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が7以上": "不動明王の加護を受け、無事に帰宅。ニュースで「滝不動で母娘救出」と報道される。",
-        "出目の合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受ける。",
+        "できたら": "自分を守って、兵士の魂を解放する。",
+        "できなかったら": "戦場に巻き込まれて死ぬ。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
