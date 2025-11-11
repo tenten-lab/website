@@ -235,10 +235,10 @@
 
   <div class="story-text">
 修学旅行で訪れた雪の網走監獄。<br> 
-　凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
+凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
 次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」 
-頭痛とともに視界がぐらつき、生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
+「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
+頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
 「自由にさせてください……苦しいんです……」 <br>
 何か....息が詰まり、体が動かなくなる――。  <br>
    
@@ -249,7 +249,7 @@
   <div class="options">
     <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
     <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける。')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -264,7 +264,7 @@
       const text = {
         "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
         "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。 ",
+        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
       };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

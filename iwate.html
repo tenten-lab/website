@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,24 +210,27 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>岩手県 - 慰霊の森</h1>
-
+  <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='iwate.html'">日本語</button>
+    <button onclick="location.href='iwate-ch.html'">中文</button>
+  </div>
   <img src="iwate.png" alt="岩手" class="story-image">
 
   <div class="story-text">
@@ -186,7 +238,7 @@
 スマホをいじりながら、後輩の小林がそうつぶやいた。<br>  
 飲み会ではしゃぎすぎた勢いで、気がつけば肝試しのような流れになり、<br> 
 私たちは“慰霊の森”と呼ばれる恐怖の名所に足を踏み入れていた。<br>  
-暗い道を歩き続けると、やがてある石碑が目の前に現れる。<br> 
+暗い道を歩き続けると、やがてある石碑が目の前に現れた。<br> 
 石碑の表には、飛行機事故の犠牲者たちの名前がびっしりと刻まれていた。<br>  
 空気が一気に重くなり、その場に立った瞬間、背筋を冷たいものが走る――。  <br>
 <p style="text-align: center;">

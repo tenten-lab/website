@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宮城の物語</title>
+  <title>青森の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -221,49 +221,49 @@
         padding: 20px;
       }
     }
+
+
   </style>
 </head>
 <body>
 
-  <h1>宮城県−七北田刑場跡（仙台藩刑場跡）</h1>
-  <!-- 語言切換，固定 -->
+  <h1>青森県−杉沢村</h1>
  <div class="language-switch">
-    <button onclick="location.href='miyagi.html'">日本語</button>
-    <button onclick="location.href='miyagi-ch.html'">中文</button>
+    <button onclick="location.href='aomori.html'">日本語</button>
+    <button onclick="location.href='aomori-ch.html'">中文</button>
   </div>
-  <img src="miyagi.png" alt="宮城" class="story-image">
+  <img src="aomori.png" alt="青森県" class="story-image">
 
   <div class="story-text">
-この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
-私はきっと呪われているのだろう。<br> 
-なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
-「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
-耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっていた。<br> 
-葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
-そして気がつくと、目の前に立っていたのは死刑囚。<br>   
-その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
- <p style="text-align: center;">
-    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
-  </div>
+我在青森深山裡採蘋果時，因為太興奮，不知不覺迷了路。<br>
+在尋找道路的過程中，我發現了一個村落。<br>
+村口立著一塊牌子，上面寫著：「再往前進者，將性命不保。」<br>
+雖然有點詭異，但我想：「或許能有人幫忙。」於是踏入了村子。<br>
+突然，一名手持斧頭的殺人魔出現，向我提出問題——<br>
+「你……幾歲？」<br>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3……死刑囚を処刑する。（体力−4、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6……処刑を拒む。（一番近い特殊イベントマスに移動する） </button>
-  </div>
+<p style="text-align: center;">
+<strong><font color="#EA0000">擲兩顆骰子，將點數相乘決定你的年齡。</font></strong></p>
+</div>
 
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
+<div class="options">
+  <button class="option-btn" onclick="showResult('13歲以下')">① 13歲以下。（體力+2，靈壓+2）</button>
+  <button class="option-btn" onclick="showResult('14歲以上')">② 14歲以上。（體力−4，靈壓−2）</button>
+</div>
 
-  <script>
-    function showResult(choice) {
-     const text = {
-        "出目が1～3": "この地はさらに怨念が増した。",
-        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
-      }; 
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 返回首頁</button>
+  </div>
+</div>
+
+<script>
+function showResult(choice) {
+  const text = {
+    "13歲以下": "殺人魔不知為何放過了你。",
+    "14歲以上": "你被殺人魔追趕，受了傷。",
+  };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

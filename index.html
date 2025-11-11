@@ -3,146 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ホームページ</title>
+<title>都市伝説巡り</title>
 <style>
-body{
+body {
   margin: 0;
   font-family: "Noto Serif JP", serif;
-  min-height: 100vh; /* 讓 body 高度至少是視窗高度 */
-  background: url('web.png') no-repeat center center;
-  background-size: cover; /* 讓圖片覆蓋整個背景 */
+  min-height: 100vh;
+  background: url('都市伝説巡り.png') no-repeat center center;
+  background-size: cover;
+  overflow: hidden;
 }
 
-header{
+/* ====== ローディング画面 ====== */
+#loading-screen {
   position: fixed;
-  top:0;
-  width:100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+#loading-title {
+  display: flex;
+  gap: 6px;
+  font-size: 60px;
+  font-weight: 900;
+  color: #B22222;
+  letter-spacing: 3px;
+}
+
+#loading-title span {
+  opacity: 0;
+  transform: translateY(-50px);
+  animation: dropLetter 0.5s forwards;
+}
+
+@keyframes dropLetter {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== 本ページ ====== */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background: rgba(255,255,255,0.9);
-  text-align:center;
-  padding:20px 0;
-  z-index:100;
+  text-align: center;
+  padding: 20px 0;
+  z-index: 100;
   box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-header h1{
-  margin:0;
-  font-size:48px;
-  color:#CE0000;
+header h1 {
+  margin: 0;
+  font-size: 48px;
+  color: #CE0000;
 }
 
 /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: fixed;
-     top: 80px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-.main{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:30px;
-  padding:160px 20px 20px 20px;
-  flex-wrap:wrap;
+.language-switch {
+  position: fixed;
+  top: 80px;
+  right: 15px;
+  display: flex;
+  gap: 8px;
+  z-index: 999;
 }
 
-.card{
-  width:200px;
-  height:150px;
-  background:#FFB5B5;
-  border-radius:12px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:20px;
-  color:#600030;
-  font-weight: 900; /* 加粗文字 */
-  cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  opacity:0;
+.language-switch button {
+  background: rgba(255,255,255,0.85);
+  border: 2px solid #cc3388;
+  color: #cc3388;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.language-switch button:hover {
+  background: #cc3388;
+  color: white;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 160px 20px 20px 20px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+/* --- 卡片浮現動畫 --- */
+.card {
+  width: 200px;
+  height: 150px;
+  background: #FFB5B5;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #600030;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
   transform: translateY(50px);
-  animation: floatIn 0.8s forwards;
 }
 
-.card:nth-child(1){animation-delay:0.2s;}
-.card:nth-child(2){animation-delay:0.4s;}
-.card:nth-child(3){animation-delay:0.6s;}
-
-@keyframes floatIn{
-  to{
-    opacity:1;
-    transform:translateY(0);
+@keyframes floatIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media(max-width:768px){
-  header h1{font-size:36px;}
-  .main{flex-direction:column; gap:20px; padding-top:120px;}
-  body {
-    background-position: center top; /* 讓重要部分在手機上可見 */
-  }
-  .language-switch {
-       top: 60px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-    }
-
+@media (max-width:768px) {
+  header h1 { font-size: 36px; }
+  .main { flex-direction: column; gap: 20px; padding-top: 120px; }
+  body { background-position: center top; }
+  .language-switch { top: 60px; right: 10px; }
+  .language-switch button { font-size: 12px; padding: 4px 8px; }
+}
 </style>
 </head>
 <body>
+
+<!-- ローディング画面 -->
+<div id="loading-screen">
+  <div id="loading-title"></div>
+</div>
+
 <header>
-  <h1 id="main-title">ボードゲーム</h1>
+  <h1 id="main-title">都市伝説巡り</h1>
   <div class="language-switch">
     <button onclick="location.href='index.html'">日本語</button>
     <button onclick="location.href='index-ch.html'">中文</button>
   </div>
 </header>
 
-<div class="main">
+<div class="main" id="main-content">
   <div class="card" onclick="location.href='index2.html'">ゲームストーリ</div>
   <div class="card" onclick="location.href='event.html'">特殊イベント</div>
   <div class="card" onclick="location.href='play.html'">くじ</div>
 </div>
 
 <script>
-function switchLang(lang){
-  if(lang==='zh'){
-    document.getElementById('main-title').textContent='桌上遊戲';
-    const cards=document.querySelectorAll('.card');
-    cards[0].textContent='遊戲故事';
-    cards[1].textContent='特別事件';
-    cards[2].textContent='抽籤';
-  }else{
-    document.getElementById('main-title').textContent='ボードゲーム';
-    const cards=document.querySelectorAll('.card');
-    cards[0].textContent='ゲームストーリ';
-    cards[1].textContent='特別イベント';
-    cards[2].textContent='くじ';
-  }
-}
+/* ====== タイトルアニメーション ====== */
+const titleText = "都市伝説巡り";
+const loadingTitle = document.getElementById("loading-title");
+
+titleText.split("").forEach((char, i) => {
+  const span = document.createElement("span");
+  span.textContent = char;
+  span.style.animationDelay = `${i * 0.2}s`;
+  loadingTitle.appendChild(span);
+});
+
+/* ====== フェードアウト + 本文出現 ====== */
+const totalDelay = titleText.length * 200 + 800;
+
+setTimeout(() => {
+  const loadingScreen = document.getElementById("loading-screen");
+  loadingScreen.style.transition = "opacity 1s ease";
+  loadingScreen.style.opacity = "0";
+
+  setTimeout(() => {
+    loadingScreen.remove();
+
+    // 內頁慢慢出現
+    const main = document.getElementById("main-content");
+    main.style.opacity = "1";
+
+    // 卡片依序浮現
+    const cards = document.querySelectorAll(".card");
+    cards.forEach((card, i) => {
+      setTimeout(() => {
+        card.style.animation = "floatIn 0.8s forwards";
+      }, i * 400);
+    });
+  }, 1000);
+}, totalDelay);
 </script>
 </body>
 </html>

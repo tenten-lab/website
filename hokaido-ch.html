@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宮城の物語</title>
+  <title>北海道的故事</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -225,45 +225,47 @@
 </head>
 <body>
 
-  <h1>宮城県−七北田刑場跡（仙台藩刑場跡）</h1>
+  <h1>北海道 - 網走監獄</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='miyagi.html'">日本語</button>
-    <button onclick="location.href='miyagi-ch.html'">中文</button>
+    <button onclick="location.href='hokaido.html'">日本語</button>
+    <button onclick="location.href='hokaido-ch.html'">中文</button>
   </div>
-  <img src="miyagi.png" alt="宮城" class="story-image">
+  <img src="hokaido.png" alt="北海道" class="story-image">
 
-  <div class="story-text">
-この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
-私はきっと呪われているのだろう。<br> 
-なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
-「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
-耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっていた。<br> 
-葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
-そして気がつくと、目の前に立っていたのは死刑囚。<br>   
-その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
- <p style="text-align: center;">
-    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
+<div class="story-text">
+畢業旅行時我們去參觀了北海道的網走監獄。<br> 
+在凍徹骨髓的寒氣中，走進展示室時，我的目光被一具人偶吸引住。<br>
+下一瞬間，耳邊響起了夾雜著機械聲與怒吼的聲音。<br>
+「快點繼續作業！不准休息！你可是囚犯啊！」<br>
+頭痛伴隨著視線搖晃，人偶彷彿活了過來般，慢慢地伸出手。<br>
+「請讓我自由吧……好痛苦啊……」<br>
+某種窒息般的壓迫感襲來，身體動也動不了——。<br>
+
+<p style="text-align: center;">
+<strong><font color="#EA0000">接下來，你會怎麼做？請選擇。</font></strong></p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('無法忍受恐懼而昏倒')">①無法忍受恐懼而昏倒。（體力−2，向左移動1格）</button>
+  <button class="option-btn" onclick="showResult('聽到老師的聲音從背後傳來')">②聽到老師的聲音從背後傳來。（體力+2）</button>
+  <button class="option-btn" onclick="showResult('拼命閃避人偶的雙手')">③拼命閃避人偶的雙手。（體力−4、靈壓+2）</button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 回到首頁</button>
   </div>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3……死刑囚を処刑する。（体力−4、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6……処刑を拒む。（一番近い特殊イベントマスに移動する） </button>
-  </div>
-
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
-
-  <script>
-    function showResult(choice) {
-     const text = {
-        "出目が1～3": "この地はさらに怨念が増した。",
-        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
-      }; 
+<script>
+  function showResult(choice) {
+    const text = {
+      "無法忍受恐懼而昏倒": "不知道過了多久，身體依然動彈不得。",
+      "聽到老師的聲音從背後傳來": "那一瞬間，你恢復了一點神智。",
+      "拼命閃避人偶的雙手": "身體動了起來！雖然成功閃開了，但已經沒有力氣了。",
+    };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

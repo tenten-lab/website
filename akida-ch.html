@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宮城の物語</title>
+  <title>秋田的故事</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -225,45 +225,47 @@
 </head>
 <body>
 
-  <h1>宮城県−七北田刑場跡（仙台藩刑場跡）</h1>
+  <h1>秋田県−黒又山</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='miyagi.html'">日本語</button>
-    <button onclick="location.href='miyagi-ch.html'">中文</button>
+    <button onclick="location.href='hokaido.html'">日本語</button>
+    <button onclick="location.href='hokaido-ch.html'">中文</button>
   </div>
-  <img src="miyagi.png" alt="宮城" class="story-image">
+  <img src="akida.png" alt="秋田県" class="story-image">
 
-  <div class="story-text">
-この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
-私はきっと呪われているのだろう。<br> 
-なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
-「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
-耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっていた。<br> 
-葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
-そして気がつくと、目の前に立っていたのは死刑囚。<br>   
-その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
- <p style="text-align: center;">
-    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
+ <div class="story-text">
+和同校遺跡研究社團的小智，一起來到了被傳為「金字塔」的黑又山。<br>
+「怎麼可能……這裡真的是外星人的基地嗎？」<br>
+我們此刻正身處黑又山的洞窟深處。<br>
+發現了一個奇怪的入口，往裡走後，竟親眼看見外星人正在將屍體製成木乃伊。<br>
+「要是被抓到……我們會怎麼樣？」<br>
+小智露出了不安的表情。<br>
+回頭的路上站著外星人，只剩左右兩條岔路可以逃。<br>
+我想往左走，但智醬堅持要往右。<br>
+――現在該怎麼辦？<br>
+
+<p style="text-align: center;">
+<strong><font color="#EA0000">請和下一順位的玩家猜拳決定方向。</font></strong></p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('勝利')">① 勝利。（往左移動1格）</button>
+  <button class="option-btn" onclick="showResult('敗北')">② 敗北。（往右移動1格）</button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 返回首頁</button>
   </div>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3……死刑囚を処刑する。（体力−4、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6……処刑を拒む。（一番近い特殊イベントマスに移動する） </button>
-  </div>
-
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
-
-  <script>
-    function showResult(choice) {
-     const text = {
-        "出目が1～3": "この地はさらに怨念が増した。",
-        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
-      }; 
+<script>
+function showResult(choice) {
+  const text = {
+    "勝利": "你發現了另一個出口，成功逃脫！",
+    "敗北": "你被外星人發現，最終被製成了木乃伊……",
+  };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

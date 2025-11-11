@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宮城の物語</title>
+  <title>宮城的故事</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -233,37 +233,38 @@
   </div>
   <img src="miyagi.png" alt="宮城" class="story-image">
 
-  <div class="story-text">
-この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
-私はきっと呪われているのだろう。<br> 
-なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
-「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
-耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっていた。<br> 
-葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
-そして気がつくと、目の前に立っていたのは死刑囚。<br>   
-その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
- <p style="text-align: center;">
-    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
-  </div>
+<div class="story-text">
+這個地方，曾經有高達7,000名罪人被處決，被稱作「地獄」。<br>
+我想，我大概已經被詛咒了。<br>
+因為當我醒來的那一刻，我正重現那恐怖的景象。<br>
+「不是我……」「救救我……」「啊啊啊啊！」「媽媽！」<br>
+刺耳的慘叫聲不絕於耳，斷首與四肢散落一地，地面堆滿無數屍體。<br>
+沒有葬禮，也沒有墓碑，只有濃厚的怨念在翻騰，「呼呼……嗚嗚……」聲響四起。<br>
+然後我發現，眼前站著的，是一個個的死刑犯。「嘎吱嘎吱……」腳步聲響起，令人毛骨悚然。<br>
+同時，我竟被賦予了「處刑官」的角色，將要審判他們的結局――。<br>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3……死刑囚を処刑する。（体力−4、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6……処刑を拒む。（一番近い特殊イベントマスに移動する） </button>
-  </div>
+<p style="text-align: center;">
+<strong><font color="#EA0000">擲1顆骰子，依據點數決定結局。</font></strong></p>
+</div>
 
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
+<div class="options">
+  <button class="option-btn" onclick="showResult('點數1～3')">① 點數1～3……執行死刑。（體力−4，靈壓+3）</button>
+  <button class="option-btn" onclick="showResult('點數4～6')">② 點數4～6……拒絕處刑。（移動到最近的特殊事件格）</button>
+</div>
 
-  <script>
-    function showResult(choice) {
-     const text = {
-        "出目が1～3": "この地はさらに怨念が増した。",
-        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
-      }; 
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 返回首頁</button>
+  </div>
+</div>
+
+<script>
+function showResult(choice) {
+  const text = {
+    "點數1～3": "這片地區的怨念變得更加濃厚。",
+    "點數4～6": "瞬間，感到一陣撕裂般的痛。當你再次睜開眼時，已回到現實世界。",
+  };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }

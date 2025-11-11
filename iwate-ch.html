@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>宮城の物語</title>
+  <title>岩手的故事</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -225,45 +225,47 @@
 </head>
 <body>
 
-  <h1>宮城県−七北田刑場跡（仙台藩刑場跡）</h1>
+  <h1>岩手県 - 慰靈之森</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='miyagi.html'">日本語</button>
-    <button onclick="location.href='miyagi-ch.html'">中文</button>
+    <button onclick="location.href='iwate.html'">日本語</button>
+    <button onclick="location.href='iwate-ch.html'">中文</button>
   </div>
-  <img src="miyagi.png" alt="宮城" class="story-image">
+  <img src="iwate.png" alt="岩手" class="story-image">
 
-  <div class="story-text">
-この場所は、かつて7,000人もの罪人が処刑された“地獄”である。<br>  
-私はきっと呪われているのだろう。<br> 
-なぜなら、目を覚ました瞬間、私はその恐ろしい光景を追体験していたのだから。<br>  
-「私じゃない……」「助けてくれ……」「うわああああ！」「お母さん！」<br>   
-耳を裂くような悲鳴が絶え間なく響き、生首と四肢が散乱し、地面には無数の死体が転がっていた。<br> 
-葬儀も墓碑も許されず、怨念だけが濃く渦巻いていた。<br>   
-そして気がつくと、目の前に立っていたのは死刑囚。<br>   
-その一方で、私は“処刑官”として彼らを裁く役割を与えられていた――。<br> 
- <p style="text-align: center;">
-    <strong><font color="#EA0000">1個のサイコロを振り、出目によって結末が変化する。</font></strong></p>
+<div class="story-text">
+「欸，你知道嗎？以前這上空發生過一次大型飛機事故，聽說有162人因此死亡。」<br>
+後輩小林一邊玩手機，一邊低聲說道。<br>
+因為聚會玩得太開心，不知不覺變成像是膽量測試的活動，<br>
+我們踏入了被稱作「慰靈之森」的恐怖地點。<br>
+沿著黑暗的道路前行，漸漸地，一座石碑出現在眼前。<br>
+石碑正面刻滿了飛機事故受害者的名字。<br>
+空氣頓時變得沉重，當我站在石碑前，背脊一陣寒意——<br>
+
+<p style="text-align: center;">
+<strong><font color="#EA0000">請從以下選項中選擇，決定你的行動。</font></strong></p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('向石碑祈禱')">① 向石碑祈禱。（體力−3，靈壓+2）</button>
+  <button class="option-btn" onclick="showResult('拍攝石碑')">② 拍攝石碑。（靈壓+3，失去1張道具卡）</button>
+  <button class="option-btn" onclick="showResult('感到不祥的預兆而離開')">③ 感到不祥的預兆而離開。（體力+3，沿原路返回1格）</button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 返回首頁</button>
   </div>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('出目が1～3')">① 出目が1～3……死刑囚を処刑する。（体力−4、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('出目が4～6')">② 出目が4～6……処刑を拒む。（一番近い特殊イベントマスに移動する） </button>
-  </div>
-
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
-
-  <script>
-    function showResult(choice) {
-     const text = {
-        "出目が1～3": "この地はさらに怨念が増した。",
-        "出目が4～6": "その瞬間、引き裂かれるような痛みに襲われた。次に目を開けると、そこは現実の世界だった。",
-      }; 
+<script>
+function showResult(choice) {
+  const text = {
+    "向石碑祈禱": "石碑發出了光芒，耳邊傳來「謝謝……」的聲音。",
+    "拍攝石碑": "拍到了靈異照片，因恐懼而掉落了相機。",
+    "感到不祥的預兆而離開": "你順利離開了這個地方。",
+  };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
