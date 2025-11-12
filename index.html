@@ -52,6 +52,30 @@ body {
   }
 }
 
+/* ====== 手機直立時：文字改為直排掉落 ====== */
+@media (orientation: portrait) and (max-width: 768px) {
+  #loading-screen {
+    flex-direction: column;
+  }
+  #loading-title {
+    flex-direction: column;
+    font-size: 42px;
+    gap: 10px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+  }
+  #loading-title span {
+    transform: translateY(-60px);
+    animation: dropLetterVertical 0.5s forwards;
+  }
+  @keyframes dropLetterVertical {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 /* ====== 本ページ ====== */
 header {
   position: fixed;
@@ -68,63 +92,64 @@ header h1 {
   margin: 0;
   font-size: 48px;
   color: #CE0000;
+  font-weight: 900;
 }
 
-/* --- 語言切換按鈕（右上角固定） --- */
-.language-switch {
-  position: fixed;
-  top: 80px;
-  right: 15px;
-  display: flex;
-  gap: 8px;
-  z-index: 999;
+header p.subtitle {
+  margin: 6px 0 0;
+  font-size: 20px;
+  color: #333;
+  letter-spacing: 1px;
 }
 
-.language-switch button {
-  background: rgba(255,255,255,0.85);
-  border: 2px solid #cc3388;
-  color: #cc3388;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.language-switch button:hover {
-  background: #cc3388;
-  color: white;
-}
-
+/* --- 主內容區 --- */
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 40px;
   padding: 160px 20px 20px 20px;
   flex-wrap: wrap;
   opacity: 0;
   transition: opacity 1.2s ease;
 }
 
-/* --- 卡片浮現動畫 --- */
+/* --- 卡片樣式 --- */
 .card {
   width: 200px;
   height: 150px;
   background: #FFB5B5;
   border-radius: 12px;
   display: flex;
+  flex-direction: column; /* ✅ 強制上下排列 */
   justify-content: center;
   align-items: center;
-  font-size: 20px;
-  color: #600030;
+  text-align: center;
   font-weight: 900;
+  color: #600030;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
   opacity: 0;
   transform: translateY(50px);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+}
+
+/* 🔹上下文字大小調整 */
+.card div:first-child {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+}
+.card div:last-child {
+  font-size: 0.9em;
+  color: #333;
+}
+
+/* --- 卡片浮現動畫 --- */
 @keyframes floatIn {
   to {
     opacity: 1;
@@ -132,12 +157,12 @@ header h1 {
   }
 }
 
+/* --- 手機畫面調整 --- */
 @media (max-width:768px) {
   header h1 { font-size: 36px; }
+  header p.subtitle { font-size: 16px; }
   .main { flex-direction: column; gap: 20px; padding-top: 120px; }
   body { background-position: center top; }
-  .language-switch { top: 60px; right: 10px; }
-  .language-switch button { font-size: 12px; padding: 4px 8px; }
 }
 </style>
 </head>
@@ -150,16 +175,22 @@ header h1 {
 
 <header>
   <h1 id="main-title">都市伝説巡り</h1>
-  <div class="language-switch">
-    <button onclick="location.href='index.html'">日本語</button>
-    <button onclick="location.href='index-ch.html'">中文</button>
-  </div>
+  <p class="subtitle">都市傳說巡禮</p>
 </header>
 
 <div class="main" id="main-content">
-  <div class="card" onclick="location.href='index2.html'">ゲームストーリ</div>
-  <div class="card" onclick="location.href='event.html'">特殊イベント</div>
-  <div class="card" onclick="location.href='play.html'">くじ</div>
+  <div class="card" onclick="location.href='index2.html'">
+    <div>ゲームストーリー</div>
+    <div>遊戲故事</div>
+  </div>
+  <div class="card" onclick="location.href='event.html'">
+    <div>特殊イベント</div>
+    <div>特殊事件</div>
+  </div>
+  <div class="card" onclick="location.href='play.html'">
+    <div>くじ</div>
+    <div>抽籤</div>
+  </div>
 </div>
 
 <script>
