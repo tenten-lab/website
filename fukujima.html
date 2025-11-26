@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>福島の物語</title>
- <style>
+  <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,34 +210,39 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>福島県－横向温泉ロッジ</h1>
+  <h1>福島県−横向温泉ロッジ</h1>
+  <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='fukujima.html'">日本語</button>
+    <button onclick="location.href='fukujima-ch.html'">中文</button>
+  </div>
 
   <img src="fukujima.png" alt="福島" class="story-image">
 
   <div class="story-text">
-友人のミリさんと一緒に福島県の温泉会館へ向かっていた。<br> 
-しかし途中で道に迷い、気がつくと深い山の中へと入り込んでしまった。
-そこで「横向温泉」と書かれた建物を見つけた。 
-好奇心に駆られて車を降り、近づいてみると窓の中から小さな女の子がこちらに手を振っているのが見えた。<br> 
-不思議に思いながらロッジの中へ入ると、外は雪が降っているのに、建物の中は妙に暑い。<br>
-さらに奥の大浴場に足を踏み入れると、大勢の人影が行き交っていた。<br> 
-「ねえ、なんだか匂わない？」とミリさんが言う。<br>
-振り返ると、大浴場全体が炎に包まれていた。<br> 
+友人のミリと一緒に福島県の温泉会館へ向かっていた。<br>
+しかし途中で道に迷い、気がつくと深い山の中へと入り込んでしまっていた。<br>
+そこで「横向温泉」と書かれた建物を見つけた。<br>
+好奇心に駆られて車を降り、近づいてみると窓の中から小さな女の子がこちらに手を振っていた。<br>
+不思議に思いながらロッジの中へ入ったところ、外は雪が降っていたのに、建物の中は妙に暑かった。<br>
+さらに奥の大浴場に足を踏み入れると、大勢の人影が行き交っていた。<br>
+「ねえ、なんだか匂わない？」とミリが言った。<br>
+振り返ると、大浴場全体が炎に包まれていた。<br>
 慌てて出口に向かうと――<br>
 さっきの小さな女の子が、入口をふさぐように立っていた。<br>
     <p style="text-align: center;">
@@ -196,8 +250,8 @@
   </div>
 
  <div class="options">
-    <button class="option-btn" onclick="showResult('勝った場合')">① 勝った場合。（霊圧 ＋3、道具カードを一枚引く）</button>
-    <button class="option-btn" onclick="showResult('負けた場合')">② 負けた場合。（ゲーム一回を中止する）</button>
+    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（霊圧+3、道具カードを1枚引く）</button>
+    <button class="option-btn" onclick="showResult('敗北')">② 敗北。（1ターン休み）</button>
   </div>
 
 
@@ -211,8 +265,8 @@
   <script>
     function showResult(choice) {
     const text = {
-        "勝った場合": "カバンの中から懐中電灯を取り出し、小さな女の子を照らして無事に脱出できる。",
-        "負けた場合": "女の子に押さえつけられ、炎に閉じ込められてしまう。",
+        "勝利": "カバンの中から懐中電灯を取り出し、小さな女の子を照らして無事に脱出できた。",
+        "敗北": "女の子に押さえつけられ、炎に閉じ込められてしまった。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

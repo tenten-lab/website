@@ -228,50 +228,53 @@
   <h1>山形県－滝不動</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
+    <button onclick="location.href='yamakata.html'">日本語</button>
+    <button onclick="location.href='yamakata-ch.html'">中文</button>
   </div>
   <img src="yamagata.png" alt="山形" class="story-image">
 
-  <div class="story-text">
-残業のせいで、いつもより遅く家に帰ることになった。<br> 
-大きなあくびをしながら上山市の県道104号線を走っていると、不意に崖下から強い光が差し込み、目を刺した。<br> 
-思わずブレーキを踏み、前方を見やると、母娘らしき2人がこちらへ歩いてくるのが見えた。<br>  
-次の瞬間、母親の首が音もなく落ち、娘だけがその場で泣き続けていた。<br> 
-「どうしたんですか？　大丈夫ですか？」と声をかけると、<br> 
-返ってきたのは耳をつんざくような悲鳴と泣き声だった。<br>
-思わず顔を背け、再び前を向いたその瞬間――<br>   
-本来なら滝不動にあるはずの不動明王像が、目の前に立っていた。<br>
-不動明王は、低く響く声で言った。<br>
-「その母娘を……助けたいか？」<br> 
+<div class="story-text">
+<div class="story-text">
+因為加班，我比平常更晚踏上回家的路。<br> 
+一邊打著大大的呵欠，一邊沿著上山市的縣道104號線開車前進時，<br> 
+突然——<br> 
+懸崖下方竄出一道刺眼的強光，像要把視線劈開般直直照了上來。<br> 
+我慌忙踩下煞車，抬頭往前方看去，只見一對看似母女的身影正朝我走來。<br>  
+下一瞬間，母親的頭顱無聲地落下，而孩子則站在原地嚎啕大哭。<br> 
+「怎麼了？你沒事吧？」我忍不住喊著靠近。<br> 
+回應我的——是刺裂耳膜般的尖叫與哭聲。<br>
+我下意識偏開視線，再度看向前方的那一刻——<br>   
+原本應該在滝不動供奉的那尊不動明王像，卻直立在我眼前。<br>
+不動明王用低沉到能震動空氣的聲音開口：<br>
+「你想救……那對母女嗎？」<br> 
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを振り、出目の数を合わせて君の選択を決める。</font></strong></p>
+    <strong><font color="#EA0000">擲下兩顆骰子，將點數相加——命運會替你做出選擇。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('合計が7以上')">① 合計が7以上。（体力+1、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('合計が6以下')">② 合計が6以下。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('合計が7以上')">① 合計7以上。（體力 +1、靈壓 +2）</button>
+    <button class="option-btn" onclick="showResult('合計が6以下')">② 合計6以下。（失去 1 張道具卡）</button>
   </div>
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <button class="home-btn" onclick="goHome()">🏠 回到首頁</button>
     </div>
   </div>
 
   <script>
     function showResult(choice) {
      const text = {
-        "合計が7以上": "不動明王の加護を受け、無事に帰宅した。その後ニュースで「滝不動で母娘救出」の報道が出た。 ",
-        "合計が6以下": "思わず不動明王の剣に触れてしまい、呪いを受けた。",
+        "合計が7以上": "你受到不動明王的庇佑，平安返家。隔天新聞報導：「滝不動——母女奇蹟獲救」。 ",
+        "合計が6以下": "你不慎碰觸了不動明王的寶劍，詛咒順著指尖侵入了你的身體。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,40 +210,46 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-</style>
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <h1>群馬県−武尊神社</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='gunma.html'">日本語</button>
+    <button onclick="location.href='gunma-ch.html'">中文</button>
+  </div>
   <img src="gunma.png" alt="群馬" class="story-image">
 
   <div class="story-text">
-夜、群馬県みどり市武尊神社で肝試しをしていた学生たち。<br> 
-「大丈夫だよ、幽霊なんていないって」そう笑いながら鳥居をくぐった瞬間、風がざわめき、誰もいないのに太鼓の音が響き、奥から白い着物の女が現れる。<br> 
-女は無表情でこちらを見つめ、ゆっくりと口を開いた。<br> 
-「…なぜ、祀りを絶やした？」 <br>
-この時、太鼓の音がだんだん大きくなり、学生たちは恐怖に駆られて逃げ出そうとするが、女の声が追いかけてくる。<br> 
+夜、群馬県みどり市の武尊神社で肝試しをしていた学生たち。<br>
+「大丈夫だよ、幽霊なんていないって」<br>
+そう笑いながら鳥居をくぐった瞬間、風がざわめき、誰もいないのに太鼓の音が響き、奥から白い着物の女が現れた。<br>
+女は無表情のままこちらを見つめ、ゆっくりと口を開いた。<br>
+「…なぜ、祀りを絶やした？」<br>
+太鼓の音は次第に大きくなり、学生たちは恐怖に駆られて逃げ出そうとする。<br>
+しかし、女の声が背後から追いかけてくる。<br>
 「忘れられることが、一番の呪い…」<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。 </font></strong></p>
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('女の問いに答える')">① 女の問いに答える。（体力−2、霊圧+1）</button>
-    <button class="option-btn" onclick="showResult('無視して逃げる')">② 無視して逃げる。（体力+1、霊圧−3）</button>
-    <button class="option-btn" onclick="showResult('挑発する')">③ 挑発する。（体力−2、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('止まってちゃんとその女の話を聞く')">① 止まってちゃんとその女の話を聞く。（体力+2、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('無視してそのまま逃げ続ける')">② 無視してそのまま逃げ続ける。（体力−3、自由に2マス移動する）</button>
+    <button class="option-btn" onclick="showResult('挑発をする')">③ 挑発する。（霊圧+5、次のターンを休む）</button>
 
   </div>
 
@@ -208,9 +263,9 @@
   <script>
     function showResult(choice) {
      const text = {
-        "女の問いに答える": "先祖の祀りを思い出し、無事に帰る。",
-        "無視して逃げる": "墓石につまずき、怪我をする。",
-        "挑発する": "女に取り憑かれ、夜ごと夢に現れる。 ",
+        "止まってちゃんとその女の話を聞く": "女の話を聞き、簡単な供え物をして祭祀を行ったことで、その場を無事に離れた。",
+        "無視してそのまま逃げ続ける": "墓石につまずき、怪我をした。",
+        "挑発をする": "女に取り憑かれ、夜ごと夢に現れて恐怖に苛まれる。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";

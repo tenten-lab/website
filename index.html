@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>都市伝説巡り</title>
+<title>次、どこ？</title>
 <style>
+/* ====== 全體背景 ====== */
 body {
   margin: 0;
   font-family: "Noto Serif JP", serif;
@@ -14,34 +15,42 @@ body {
   overflow: hidden;
 }
 
-/* ====== ローディング画面 ====== */
+/* ====== 🔻 Loading 畫面 ====== */
 #loading-screen {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255,255,255,0.95);
+  inset: 0;
+  background: rgba(0,0,0,0.9);
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: row;
   z-index: 9999;
-  overflow: hidden;
 }
 
+#loading-inner {
+  text-align: center;
+}
+
+/* 掉落標題本體 */
 #loading-title {
   display: flex;
-  gap: 6px;
-  font-size: 60px;
+  justify-content: center;
+  gap: 4px;
+  font-size: 54px;
   font-weight: 900;
-  color: #B22222;
-  letter-spacing: 3px;
+  letter-spacing: 0.08em;
 }
 
 #loading-title span {
+  display: inline-block;
   opacity: 0;
-  transform: translateY(-50px);
+  transform: translateY(-70px);
+  background: linear-gradient(120deg, #ff6666, #ffe5e5, #ff0000);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 8px rgba(255,80,80,0.95),
+    0 0 22px rgba(255,0,0,0.95),
+    0 0 34px rgba(0,0,0,1);
   animation: dropLetter 0.5s forwards;
 }
 
@@ -52,183 +61,329 @@ body {
   }
 }
 
-/* ====== 手機直立時：文字改為直排掉落 ====== */
-@media (orientation: portrait) and (max-width: 768px) {
-  #loading-screen {
-    flex-direction: column;
-  }
+/* Loading 副標題（日文＋中文） */
+#loading-sub-jp {
+  margin-top: 16px;
+  font-size: 20px;
+  color: #ffcccc;
+  letter-spacing: 0.25em;
+  text-shadow:
+    0 0 8px rgba(255,120,120,0.9),
+    0 0 18px rgba(150,0,0,1);
+}
+
+#loading-sub-zh {
+  margin-top: 4px;
+  font-size: 16px;
+  color: #ffe6e6;
+  letter-spacing: 0.1em;
+  text-shadow:
+    0 0 6px rgba(0,0,0,0.8),
+    0 0 12px rgba(120,0,0,0.9);
+}
+
+/* 手機版 Loading 尺寸調整 */
+@media (max-width: 768px) {
   #loading-title {
-    flex-direction: column;
-    font-size: 42px;
-    gap: 10px;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
+    font-size: 36px;
+    gap: 2px;
   }
-  #loading-title span {
-    transform: translateY(-60px);
-    animation: dropLetterVertical 0.5s forwards;
+  #loading-sub-jp {
+    font-size: 14px;
+    letter-spacing: 0.18em;
   }
-  @keyframes dropLetterVertical {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  #loading-sub-zh {
+    font-size: 12px;
+    letter-spacing: 0.06em;
   }
 }
 
-/* ====== 本ページ ====== */
-header {
+/* ====== 🔺 Loading 結束 ====== */
+
+
+/* ====== 頂部遊戲 Logo 區（固定在上方） ====== */
+.site-header {
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255,0.9);
-  text-align: center;
-  padding: 20px 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+  pointer-events: none;   /* 下面仍可滑，但標題區自己再開啟 */
+  opacity: 0;             /* 進場時再淡入 */
+  transition: opacity 1s ease;
 }
 
-header h1 {
+/* 暗色發光膠囊，讓字在背景上清楚 */
+.title-wrap {
+  pointer-events: auto;
+  background: radial-gradient(circle at 50% 0,
+              rgba(255,0,0,0.2),
+              rgba(0,0,0,0.9) 60%,
+              rgba(0,0,0,0.98) 100%);
+  padding: 10px 80px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,100,120,0.7);
+  box-shadow:
+      0 0 18px rgba(255,0,0,0.7),
+      0 0 40px rgba(0,0,0,0.95);
+  backdrop-filter: blur(3px);
+  text-align: center;
+}
+
+/* 主標：次、どこ？ */
+.main-title {
   margin: 0;
-  font-size: 48px;
-  color: #CE0000;
+  font-size: 44px;
   font-weight: 900;
+  letter-spacing: 0.12em;
+  background: linear-gradient(120deg, #ff6666, #ffdddd, #ff0000);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 0 6px rgba(255, 80, 80, 0.9),
+    0 0 16px rgba(255, 0, 0, 0.9),
+    0 0 26px rgba(0, 0, 0, 1);
 }
 
-header p.subtitle {
-  margin: 6px 0 0;
-  font-size: 20px;
-  color: #333;
-  letter-spacing: 1px;
+/* 日文副標題：ー 伝われた47の謎 ー */
+.subtitle-jp {
+  margin: 4px 0 0;
+  font-size: 18px;
+  color: #ffcccc;
+  letter-spacing: 0.35em;
+  text-shadow:
+    0 0 6px rgba(255,120,120,0.9),
+    0 0 12px rgba(150,0,0,1);
 }
 
-/* --- 主內容區 --- */
+/* 中文副標題 */
+.subtitle-zh {
+  margin: 2px 0 0;
+  font-size: 14px;
+  color: #ffe6e6;
+  letter-spacing: 0.12em;
+  text-shadow:
+    0 0 4px rgba(0,0,0,0.8),
+    0 0 10px rgba(120,0,0,0.9);
+}
+
+/* 手機版標題調整 */
+@media (max-width: 768px) {
+  .site-header {
+    padding-top: 10px;
+  }
+  .title-wrap {
+    padding: 8px 16px 10px;
+    border-radius: 16px;
+    max-width: 90%;
+  }
+  .main-title {
+    font-size: 30px;
+    letter-spacing: 0.08em;
+  }
+  .subtitle-jp {
+    font-size: 13px;
+    letter-spacing: 0.22em;
+  }
+  .subtitle-zh {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* ====== 主內容：選單石板區 ====== */
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 40px;
-  padding: 160px 20px 20px 20px;
+  padding: 200px 20px 20px 20px;  /* 上面留空給標題 */
   flex-wrap: wrap;
-  opacity: 0;
+  opacity: 0;                      /* 等 loading 後再淡入 */
   transition: opacity 1.2s ease;
 }
 
-/* --- 卡片樣式 --- */
+/* 選單石板卡片 */
 .card {
-  width: 200px;
+  position: relative;
+  width: 220px;
   height: 150px;
-  background: #FFB5B5;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
-  flex-direction: column; /* ✅ 強制上下排列 */
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  font-weight: 900;
-  color: #600030;
   cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  color: #ffeef5;
+  font-weight: 900;
   opacity: 0;
   transform: translateY(50px);
-  transition: transform 0.3s, box-shadow 0.3s;
+  /* 暗色石板 + 微光 */
+  background:
+    radial-gradient(circle at 20% 0, rgba(255,180,220,0.18), transparent 60%),
+    radial-gradient(circle at 80% 100%, rgba(255,150,200,0.15), transparent 60%),
+    linear-gradient(135deg, #1a0f14, #050308);
+  box-shadow:
+    0 0 10px rgba(255,150,200,0.3),
+    0 8px 18px rgba(0,0,0,0.8);
+  border: 1px solid rgba(255,170,210,0.6);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+/* 石板上的柔光層 */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border-radius: 10px;
+  background: radial-gradient(circle at 50% 0,
+             rgba(255,255,255,0.08),
+             transparent 65%);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
-/* 🔹上下文字大小調整 */
-.card div:first-child {
+/* 文字本體（讓 text 在最上層） */
+.card-inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* 上行：日文 */
+.card-main {
   font-size: 1.2em;
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 }
-.card div:last-child {
+
+/* 下行：中文 */
+.card-sub {
   font-size: 0.9em;
-  color: #333;
+  color: #ffdde9;
 }
 
-/* --- 卡片浮現動畫 --- */
-@keyframes floatIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Hover：亮度 + 浮起來 */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 0 18px rgba(255,160,220,0.75),
+    0 12px 26px rgba(0,0,0,0.95);
+  border-color: rgba(255,210,230,0.95);
+}
+
+/* 手機版：垂直排列，間距縮小一點 */
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 160px;
   }
-}
-
-/* --- 手機畫面調整 --- */
-@media (max-width:768px) {
-  header h1 { font-size: 36px; }
-  header p.subtitle { font-size: 16px; }
-  .main { flex-direction: column; gap: 20px; padding-top: 120px; }
-  body { background-position: center top; }
+  .card {
+    width: 80%;
+    max-width: 260px;
+    height: 130px;
+  }
+  .card-main {
+    font-size: 1.1em;
+  }
+  .card-sub {
+    font-size: 0.85em;
+  }
 }
 </style>
 </head>
 <body>
 
-<!-- ローディング画面 -->
+<!-- 🔻 Loading 畫面 -->
 <div id="loading-screen">
-  <div id="loading-title"></div>
+  <div id="loading-inner">
+    <div id="loading-title"></div>
+    <p id="loading-sub-jp">ー 伝われた47の謎 ー</p>
+    <p id="loading-sub-zh">下一站，往哪？—流傳的47個詭異之謎— </p>
+  </div>
 </div>
+<!-- 🔺 Loading 結束 -->
 
-<header>
-  <h1 id="main-title">都市伝説巡り</h1>
-  <p class="subtitle">都市傳說巡禮</p>
+<!-- 🔻 頂部遊戲 Logo -->
+<header class="site-header">
+  <div class="title-wrap">
+    <h1 class="main-title">次、どこ？</h1>
+    <p class="subtitle-jp">ー 伝われた47の謎 ー</p>
+    <p class="subtitle-zh">下一站，往哪？ —流傳的47個詭異之謎— </p>
+  </div>
 </header>
+<!-- 🔺 頂部遊戲 Logo -->
 
+<!-- 🔻 三個遊戲選單石板 -->
 <div class="main" id="main-content">
   <div class="card" onclick="location.href='index2.html'">
-    <div>ゲームストーリー</div>
-    <div>遊戲故事</div>
+    <div class="card-inner">
+      <div class="card-main">ゲームストーリー</div>
+      <div class="card-sub">遊戲故事</div>
+    </div>
   </div>
+
   <div class="card" onclick="location.href='event.html'">
-    <div>特殊イベント</div>
-    <div>特殊事件</div>
+    <div class="card-inner">
+      <div class="card-main">特殊イベント</div>
+      <div class="card-sub">特殊事件</div>
+    </div>
   </div>
+
   <div class="card" onclick="location.href='play.html'">
-    <div>くじ</div>
-    <div>抽籤</div>
+    <div class="card-inner">
+      <div class="card-main">くじ</div>
+      <div class="card-sub">抽籤</div>
+    </div>
   </div>
 </div>
+<!-- 🔺 三個遊戲選單石板 -->
 
 <script>
-/* ====== タイトルアニメーション ====== */
-const titleText = "都市伝説巡り";
+// ====== Loading 標題：一個字一個字掉下來 ======
+const titleText = "次、どこ？";
 const loadingTitle = document.getElementById("loading-title");
 
 titleText.split("").forEach((char, i) => {
   const span = document.createElement("span");
   span.textContent = char;
-  span.style.animationDelay = `${i * 0.2}s`;
+  span.style.animationDelay = `${i * 0.18}s`;  // 掉落時間間隔
   loadingTitle.appendChild(span);
 });
 
-/* ====== フェードアウト + 本文出現 ====== */
-const totalDelay = titleText.length * 200 + 800;
+// 全部掉完後 + 一點停留，再淡出 loading
+const totalDelay = titleText.length * 180 + 900;
 
 setTimeout(() => {
   const loadingScreen = document.getElementById("loading-screen");
-  loadingScreen.style.transition = "opacity 1s ease";
+  loadingScreen.style.transition = "opacity 0.9s ease";
   loadingScreen.style.opacity = "0";
 
   setTimeout(() => {
     loadingScreen.remove();
 
-    // 內頁慢慢出現
+    // 顯示 header + 主內容
+    const header = document.querySelector(".site-header");
     const main = document.getElementById("main-content");
+    header.style.opacity = "1";
     main.style.opacity = "1";
 
     // 卡片依序浮現
     const cards = document.querySelectorAll(".card");
     cards.forEach((card, i) => {
       setTimeout(() => {
-        card.style.animation = "floatIn 0.8s forwards";
-      }, i * 400);
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, i * 250);
     });
-  }, 1000);
+  }, 900);
 }, totalDelay);
 </script>
+
 </body>
 </html>

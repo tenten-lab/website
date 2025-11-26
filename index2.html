@@ -2,150 +2,248 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>ゲームストーリ</title>
+  <title>ゲームストーリー</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
   <style>
-     body {
+    /* ===== 背景：暗色＋圖＋霧 ===== */
+    body {
       margin: 0;
       padding: 0;
       font-family: "Noto Serif JP", serif;
-      min-height: 100vh; /* 讓 body 高度至少是視窗高度 */
-      background: url('都市伝説巡り.png') no-repeat center center;
-      background-size: cover; /* 讓圖片覆蓋整個背景 */
+      min-height: 100vh;
+      background: url('都市伝説巡り.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #2b0000;
+      position: relative;
     }
 
-    /* 標題固定 */
-/* 標題中日上下排列 */
-h1 {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  text-align: center;
-  font-size: 48px;
-  color: #CE0000;
-  text-shadow: 0 4px 10px rgba(0,0,0,0.4);
-  background: rgba(255,255,255,0.8);
-  z-index: 10;
-  margin: 0;
-  padding: 20px 0;
-  line-height: 1.3;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(0,0,0,0.65),
+                  rgba(0,0,0,0.9));
+      z-index: -1;
+    }
 
-.subtitle-ja {
-  display: block;
-  font-size: 22px;
-  color: #4D0000;
-  font-weight: 600;
-  margin-top: 5px;
-}
+    /* ===== 標題區（發光膠囊風） ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 18px 10px 14px;
+      z-index: 20;
+      pointer-events: none; /* 只讓裡面 title-wrap 可點到 */
+    }
 
+    .title-wrap {
+      pointer-events: auto;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(255,0,0,0.18),
+                  rgba(0,0,0,0.92) 60%,
+                  rgba(0,0,0,0.98) 100%);
+      padding: 12px 70px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,115,130,0.7);
+      box-shadow:
+        0 0 20px rgba(255,0,0,0.7),
+        0 0 50px rgba(0,0,0,0.95);
+      text-align: center;
+      min-width: 320px;
+    }
 
-    /* 主內容容器 */
+    #main-title {
+      margin: 0;
+      font-family: "Zen Dots", system-ui, sans-serif;
+      font-size: 34px;
+      letter-spacing: .15em;
+      color: #fff5f5;
+      text-shadow:
+        0 0 12px rgba(255,120,140,0.9),
+        0 0 24px rgba(255,0,0,0.8);
+    }
+
+    .subtitle-ja {
+      display: block;
+      margin-top: 6px;
+      font-size: 18px;
+      color: #ffe6e6;
+      letter-spacing: .2em;
+    }
+
+    .subtitle-zh {
+      display: block;
+      margin-top: 3px;
+      font-size: 14px;
+      color: #ffcccc;
+      opacity: 0.9;
+    }
+
+    /* ===== 主內容容器 ===== */
     .container {
       display: flex;
       flex-direction: row;
       gap: 30px;
       justify-content: center;
       align-items: flex-start;
-      padding: 140px 20px 20px 20px; /* 上方留出標題空間 */
+      padding: 150px 20px 30px; /* 上面留空給標題 */
       flex-wrap: wrap;
     }
 
+    /* 地圖卡片（玻璃感） */
+    .map-wrapper {
+      background: radial-gradient(circle at 50% 0,
+                   rgba(255,255,255,0.12),
+                   rgba(0,0,0,0.75));
+      border-radius: 16px;
+      padding: 14px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+    }
+
     .map {
-      max-width: 400px;
+      max-width: 380px;
       width: 100%;
       height: auto;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      transition: transform 0.3s;
-      background-color: white; /* 加上這行 */
-      padding: 10px; /* 可選：讓圖片不要貼到邊框 */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+      transition: transform 0.3s, box-shadow 0.3s;
+      background-color: #fff;
     }
 
     .map:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.8);
     }
 
+    /* 側邊地區列表卡片 */
     .sidebar {
-      flex: 1 1 300px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      flex: 1 1 320px;
+      background: radial-gradient(circle at 0 0,
+                   rgba(255,200,200,0.08),
+                   rgba(10,0,20,0.92) 60%);
+      border-radius: 16px;
+      padding: 18px 20px 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      max-height: 80vh;
       overflow-y: auto;
-      max-height: 90vh;
+      color: #ffe6e6;
     }
 
     .sidebar h2 {
       font-size: 20px;
-      margin-bottom: 15px;
-      color: #AE0000;
-      font-weight: 900; /* 加粗文字 */
+      margin: 0 0 15px;
+      color: #ffb6c1;
+      font-weight: 900;
       text-align: center;
+      letter-spacing: .2em;
     }
 
-    .region {  /*格子裡的字*/
+    /* 區域按鈕 */
+    .region {
       margin: 8px 0;
-      padding: 10px;
-      background: #FFB5B5;
-      border-radius: 6px;
+      padding: 10px 12px;
+      background: linear-gradient(90deg, #602040, #3b1025);
+      border-radius: 999px;
       cursor: pointer;
       transition: 0.2s;
       text-align: center;
-      color: #4D0000; /* 文字顏色 */
-      font-size: 16px;  /* 字體大小 */
+      color: #ffeef0;
+      font-size: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5);
     }
 
     .region:hover {
-      background: #FFD2D2;
+      background: linear-gradient(90deg, #c0244f, #702040);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.8);
     }
 
     .prefecture-list {
       display: none;
-      margin-top: 10px;
-      padding: 5px;
+      margin: 6px 0 10px;
+      padding: 6px 6px 2px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 10px;
     }
 
     .prefecture-table {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 10px;
       justify-content: center;
     }
 
-    .prefecture-item {  /*格子按出來後的字*/
-      width: 80px;
+    .prefecture-item {
+      width: 78px;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
-      font-size: 14px; /* 文字大小 */
-      color: #4D0000;  /* 文字顏色 */
+      color: #ffe6e6;
+      transition: transform 0.2s, color 0.2s;
     }
 
     .prefecture-item img {
       width: 100%;
       height: auto;
-      max-width: 80px;
+      max-width: 78px;
       border-radius: 6px;
-      margin-top: 5px;
+      margin-top: 4px;
       object-fit: cover;
-      transition: transform 0.3s;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.7);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
-    .prefecture-item img:hover {
+    .prefecture-item:hover {
+      color: #ffb6c1;
+      transform: translateY(-2px);
+    }
+
+    .prefecture-item:hover img {
       transform: scale(1.05);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.9);
     }
 
-    /* 跑步人物動畫 */
+    /* ===== 右下角回首頁按鈕 ===== */
+    .home-btn {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: radial-gradient(circle at 30% 30%, #ffe6e9, #ff7b9c);
+      color: #600030;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.6);
+      z-index: 30;
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+
+    .home-btn:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.75);
+    }
+
+    /* 跑步人物動畫遮罩 */
     .transition-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0,0,0,0.6);
       display: flex;
       align-items: flex-end;
       justify-content: flex-start;
@@ -157,32 +255,10 @@ h1 {
       width: 120px;
       height: auto;
       position: absolute;
-      bottom: 10%;
+      bottom: 12%;
       left: -150px;
       animation: runAcross 1.5s linear forwards;
     }
-
-     /* 右下角的回首頁圖示 */
-   .home-btn {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: #FFB5B5;
-    color: #600030;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 28px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  }
-
-  .home-btn:hover {
-    background: #FF9797;
-  }
 
     @keyframes runAcross {
       0% { left: -150px; opacity: 0; }
@@ -191,77 +267,85 @@ h1 {
       100% { left: 110%; opacity: 0; }
     }
 
-    /* 手機版調整 */
+    /* ===== 手機版 ===== */
     @media (max-width: 768px) {
+      .title-wrap {
+        padding: 10px 32px 14px;
+        min-width: 260px;
+      }
+      #main-title {
+        font-size: 26px;
+        letter-spacing: .12em;
+      }
+      .subtitle-ja {
+        font-size: 15px;
+      }
+      .subtitle-zh {
+        font-size: 12px;
+      }
+
       .container {
         flex-direction: column;
         align-items: center;
-        padding-top: 130px; /* 避免被標題和語言框蓋住 */
-        gap: 20px;
-
-       .home-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 22px;
-        right: 15px;
-        bottom: 15px;
-      }
-  
-      h1 {
-        font-size: 36px;
+        padding: 130px 12px 20px;
+        gap: 18px;
       }
 
-      .map {
-        max-width: 90%;
+      .map-wrapper {
+        width: 100%;
+        max-width: 420px;
       }
 
       .sidebar {
-        width: 90%;
+        width: 100%;
+        max-height: 60vh;
       }
 
       .prefecture-item {
         width: 22%;
-        font-size: 12px;
+        font-size: 11px;
       }
 
-      .prefecture-item img {
-        max-width: 100%;
+      .home-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 22px;
+        right: 14px;
+        bottom: 14px;
       }
-
-      .language-switch {
-       top: 70px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
-     }
-
+    }
   </style>
 </head>
 
 <body>
-<header>
-  <h1 id="main-title">
-    ゲームストーリー<br>
-    <span class="subtitle-ja">遊戲故事</span>
-  </h1>
-</header>
-  <div class="container">
-    <img src="日本地圖.png" alt="日本地圖" class="map">
-    <div class="sidebar">
+  <header>
+    <div class="title-wrap">
+      <h1 id="main-title">
+        ゲームストーリー
+        <span class="subtitle-ja">各地に潜む ４７ の怪異</span>
+        <span class="subtitle-zh">遊戲故事 — 一步步踏入都市傳說</span>
+      </h1>
+    </div>
+  </header>
 
+  <div class="container">
+    <div class="map-wrapper">
+      <img src="日本地圖.png" alt="日本地圖" class="map">
+    </div>
+
+    <div class="sidebar">
       <h2>各地域</h2>
 
       <!-- 北海道 -->
       <div class="region" onclick="togglePrefectures('hokkaido')">北海道地方</div>
       <div id="hokkaido" class="prefecture-list">
         <div class="prefecture-table">
-           <div class="prefecture-item" onclick="goToPage('hokaido.html')">北海道
-           <img src="hokaido.png" alt="北海道"></div>
+          <div class="prefecture-item" onclick="goToPage('hokaido.html')">
+            北海道
+            <img src="hokaido.png" alt="北海道">
           </div>
         </div>
+      </div>
 
       <!-- 東北 -->
       <div class="region" onclick="togglePrefectures('tohoku')">東北地方</div>
@@ -277,16 +361,16 @@ h1 {
       </div>
 
       <!-- 關東 -->
-      <div class="region" onclick="togglePrefectures('kanto')">關東地方</div>
+      <div class="region" onclick="togglePrefectures('kanto')">関東地方</div>
       <div id="kanto" class="prefecture-list">
         <div class="prefecture-table">
-       <div class="prefecture-item" onclick="goToPage('ibaraki.html')">茨城県<img src="ibaraki.png" alt="茨城県"></div>
-       <div class="prefecture-item" onclick="goToPage('tochigi.html')">栃木県<img src="tochigi.png" alt="栃木県"></div>
-       <div class="prefecture-item" onclick="goToPage('gunma.html')">群馬県<img src="gunma.png" alt="群馬県"></div>
-       <div class="prefecture-item" onclick="goToPage('saitama.html')">埼玉県<img src="saitama.png" alt="埼玉県"></div>
-       <div class="prefecture-item" onclick="goToPage('chiba.html')">千葉県<img src="chiba.png" alt="千葉県"></div>
-       <div class="prefecture-item" onclick="goToPage('tokyo.html')">東京都<img src="tokyo.png" alt="東京都"></div>
-       <div class="prefecture-item" onclick="goToPage('kanagawa.html')">神奈川県<img src="kanagawa.png" alt="神奈川県"></div>
+          <div class="prefecture-item" onclick="goToPage('ibaraki.html')">茨城県<img src="ibaraki.png" alt="茨城県"></div>
+          <div class="prefecture-item" onclick="goToPage('tochigi.html')">栃木県<img src="tochigi.png" alt="栃木県"></div>
+          <div class="prefecture-item" onclick="goToPage('gunma.html')">群馬県<img src="gunma.png" alt="群馬県"></div>
+          <div class="prefecture-item" onclick="goToPage('saitama.html')">埼玉県<img src="saitama.png" alt="埼玉県"></div>
+          <div class="prefecture-item" onclick="goToPage('chiba.html')">千葉県<img src="chiba.png" alt="千葉県"></div>
+          <div class="prefecture-item" onclick="goToPage('tokyo.html')">東京都<img src="tokyo.png" alt="東京都"></div>
+          <div class="prefecture-item" onclick="goToPage('kanagawa.html')">神奈川県<img src="kanagawa.png" alt="神奈川県"></div>
         </div>
       </div>
 
@@ -294,15 +378,15 @@ h1 {
       <div class="region" onclick="togglePrefectures('chubu')">中部地方</div>
       <div id="chubu" class="prefecture-list">
         <div class="prefecture-table">
- <div class="prefecture-item" onclick="goToPage('shiigata.html')">新潟県<img src="shiigata.png" alt="新潟県"></div>
- <div class="prefecture-item" onclick="goToPage('toyama.html')">富山県<img src="toyama.png" alt="富山県"></div>
- <div class="prefecture-item" onclick="goToPage('ishigawa.html')">石川県<img src="ishigawa.png" alt="石川県"></div>
- <div class="prefecture-item" onclick="goToPage('fukui.html')">福井県<img src="fukui.png" alt="福井県"></div>
- <div class="prefecture-item" onclick="goToPage('yamanashi.html')">山梨県<img src="yamanashi.png" alt="山梨県"></div>
- <div class="prefecture-item" onclick="goToPage('nagano.html')">長野県<img src="nagano.png" alt="長野県"></div>
- <div class="prefecture-item" onclick="goToPage('gifu.html')">岐阜県<img src="gifu.png" alt="岐阜県"></div>
-<div class="prefecture-item" onclick="goToPage('shizuoka.html')">静岡県<img src="shizuoka.png" alt="静岡県"></div>
- <div class="prefecture-item" onclick="goToPage('aichi.html')">愛知県<img src="aichi.png" alt="愛知県"></div>
+          <div class="prefecture-item" onclick="goToPage('shiigata.html')">新潟県<img src="shiigata.png" alt="新潟県"></div>
+          <div class="prefecture-item" onclick="goToPage('toyama.html')">富山県<img src="toyama.png" alt="富山県"></div>
+          <div class="prefecture-item" onclick="goToPage('ishigawa.html')">石川県<img src="ishigawa.png" alt="石川県"></div>
+          <div class="prefecture-item" onclick="goToPage('fukui.html')">福井県<img src="fukui.png" alt="福井県"></div>
+          <div class="prefecture-item" onclick="goToPage('yamanashi.html')">山梨県<img src="yamanashi.png" alt="山梨県"></div>
+          <div class="prefecture-item" onclick="goToPage('nagano.html')">長野県<img src="nagano.png" alt="長野県"></div>
+          <div class="prefecture-item" onclick="goToPage('gifu.html')">岐阜県<img src="gifu.png" alt="岐阜県"></div>
+          <div class="prefecture-item" onclick="goToPage('shizuoka.html')">静岡県<img src="shizuoka.png" alt="静岡県"></div>
+          <div class="prefecture-item" onclick="goToPage('aichi.html')">愛知県<img src="aichi.png" alt="愛知県"></div>
         </div>
       </div>
 
@@ -310,13 +394,13 @@ h1 {
       <div class="region" onclick="togglePrefectures('kinki')">近畿地方</div>
       <div id="kinki" class="prefecture-list">
         <div class="prefecture-table">
- <div class="prefecture-item" onclick="goToPage('mie.html')">三重県<img src="mie.png" alt="三重県"></div>
- <div class="prefecture-item" onclick="goToPage('shiga.html')">滋賀県<img src="shiga.png" alt="滋賀県"></div>
- <div class="prefecture-item" onclick="goToPage('kyoto.html')">京都県<img src="kyoto.png" alt="京都県"></div>
- <div class="prefecture-item" onclick="goToPage('osaka.html')">大阪府<img src="osaka.png" alt="大阪府"></div>
- <div class="prefecture-item" onclick="goToPage('hyogo.html')">兵庫県<img src="hyogo.png" alt="兵庫県"></div>
- <div class="prefecture-item" onclick="goToPage('nara.html')">奈良県<img src="nara.png" alt="奈良県"></div>
- <div class="prefecture-item" onclick="goToPage('wakayama.html')">和歌山県<img src="wakayama.png" alt="和歌山県"></div>
+          <div class="prefecture-item" onclick="goToPage('mie.html')">三重県<img src="mie.png" alt="三重県"></div>
+          <div class="prefecture-item" onclick="goToPage('shiga.html')">滋賀県<img src="shiga.png" alt="滋賀県"></div>
+          <div class="prefecture-item" onclick="goToPage('kyoto.html')">京都府<img src="kyoto.png" alt="京都府"></div>
+          <div class="prefecture-item" onclick="goToPage('osaka.html')">大阪府<img src="osaka.png" alt="大阪府"></div>
+          <div class="prefecture-item" onclick="goToPage('hyogo.html')">兵庫県<img src="hyogo.png" alt="兵庫県"></div>
+          <div class="prefecture-item" onclick="goToPage('nara.html')">奈良県<img src="nara.png" alt="奈良県"></div>
+          <div class="prefecture-item" onclick="goToPage('wakayama.html')">和歌山県<img src="wakayama.png" alt="和歌山県"></div>
         </div>
       </div>
 
@@ -324,23 +408,22 @@ h1 {
       <div class="region" onclick="togglePrefectures('cyuugoku')">中国地方</div>
       <div id="cyuugoku" class="prefecture-list">
         <div class="prefecture-table">
-<div class="prefecture-item" onclick="goToPage('totori.html')">鳥取県<img src="totori.png" alt="鳥取県"></div>
- <div class="prefecture-item" onclick="goToPage('shimane.html')">島根県<img src="shimane.png" alt="島根県"></div>
- <div class="prefecture-item" onclick="goToPage('okayama.html')">岡山県<img src="okayama.png" alt="岡山県"></div>
- <div class="prefecture-item" onclick="goToPage('hiroshima.html')">広島県<img src="hiroshima.png" alt="広島県"></div>
- <div class="prefecture-item" onclick="goToPage('yamaguchi.html')">山口県<img src="yamaguchi.png" alt="山口県"></div>
+          <div class="prefecture-item" onclick="goToPage('totori.html')">鳥取県<img src="totori.png" alt="鳥取県"></div>
+          <div class="prefecture-item" onclick="goToPage('shimane.html')">島根県<img src="shimane.png" alt="島根県"></div>
+          <div class="prefecture-item" onclick="goToPage('okayama.html')">岡山県<img src="okayama.png" alt="岡山県"></div>
+          <div class="prefecture-item" onclick="goToPage('hiroshima.html')">広島県<img src="hiroshima.png" alt="広島県"></div>
+          <div class="prefecture-item" onclick="goToPage('yamaguchi.html')">山口県<img src="yamaguchi.png" alt="山口県"></div>
         </div>
       </div>
-
 
       <!-- 四國 -->
       <div class="region" onclick="togglePrefectures('shikoku')">四国地方</div>
       <div id="shikoku" class="prefecture-list">
         <div class="prefecture-table">
- <div class="prefecture-item" onclick="goToPage('tokushima.html')">徳島県<img src="tokushima.png" alt="徳島県"></div>
-<div class="prefecture-item" onclick="goToPage('kagawa.html')">香川県<img src="kagawa.png" alt="香川県"></div>
- <div class="prefecture-item" onclick="goToPage('ehime.html')">愛媛県<img src="ehime.png" alt="愛媛県"></div>
- <div class="prefecture-item" onclick="goToPage('kochi.html')">高知県<img src="kochi.png" alt="高知県"></div>
+          <div class="prefecture-item" onclick="goToPage('tokushima.html')">徳島県<img src="tokushima.png" alt="徳島県"></div>
+          <div class="prefecture-item" onclick="goToPage('kagawa.html')">香川県<img src="kagawa.png" alt="香川県"></div>
+          <div class="prefecture-item" onclick="goToPage('ehime.html')">愛媛県<img src="ehime.png" alt="愛媛県"></div>
+          <div class="prefecture-item" onclick="goToPage('kochi.html')">高知県<img src="kochi.png" alt="高知県"></div>
         </div>
       </div>
 
@@ -348,13 +431,13 @@ h1 {
       <div class="region" onclick="togglePrefectures('kyushu')">九州地方</div>
       <div id="kyushu" class="prefecture-list">
         <div class="prefecture-table">
- <div class="prefecture-item" onclick="goToPage('fukuoka.html')">福岡県<img src="fukuoka.png" alt="福岡県"></div>
- <div class="prefecture-item" onclick="goToPage('saga.html')">佐賀県<img src="saga.png" alt="佐賀県"></div>
- <div class="prefecture-item" onclick="goToPage('nagasaki.html')">長崎県<img src="nagasaki.png" alt="長崎県"></div>
- <div class="prefecture-item" onclick="goToPage('kumamoto.html')">熊本県<img src="kumamoto.png" alt="熊本県"></div>
- <div class="prefecture-item" onclick="goToPage('oita.html')">大分県<img src="oita.png" alt="大分県"></div>
- <div class="prefecture-item" onclick="goToPage('miyazaki.html')">宮崎県<img src="miyazaki.png" alt="宮崎県"></div>
- <div class="prefecture-item" onclick="goToPage('kagoshima.html')">鹿児島県<img src="kagoshima.png" alt="鹿児島県"></div>
+          <div class="prefecture-item" onclick="goToPage('fukuoka.html')">福岡県<img src="fukuoka.png" alt="福岡県"></div>
+          <div class="prefecture-item" onclick="goToPage('saga.html')">佐賀県<img src="saga.png" alt="佐賀県"></div>
+          <div class="prefecture-item" onclick="goToPage('nagasaki.html')">長崎県<img src="nagasaki.png" alt="長崎県"></div>
+          <div class="prefecture-item" onclick="goToPage('kumamoto.html')">熊本県<img src="kumamoto.png" alt="熊本県"></div>
+          <div class="prefecture-item" onclick="goToPage('oita.html')">大分県<img src="oita.png" alt="大分県"></div>
+          <div class="prefecture-item" onclick="goToPage('miyazaki.html')">宮崎県<img src="miyazaki.png" alt="宮崎県"></div>
+          <div class="prefecture-item" onclick="goToPage('kagoshima.html')">鹿児島県<img src="kagoshima.png" alt="鹿児島県"></div>
         </div>
       </div>
 
@@ -362,14 +445,14 @@ h1 {
       <div class="region" onclick="togglePrefectures('okinawa')">沖縄地方</div>
       <div id="okinawa" class="prefecture-list">
         <div class="prefecture-table">
-<div class="prefecture-item" onclick="goToPage('okinawa.html')">沖縄県<img src="okinawa.png" alt="沖縄県"></div>        </div>
+          <div class="prefecture-item" onclick="goToPage('okinawa.html')">沖縄県<img src="okinawa.png" alt="沖縄県"></div>
+        </div>
       </div>
-
     </div>
   </div>
 
-<!-- 右下角的回首頁圖示 -->
-<a href="index.html" class="home-btn">🏠</a>
+  <!-- 回首頁 -->
+  <a href="index.html" class="home-btn">🏠</a>
 
   <script>
     function togglePrefectures(regionId) {
@@ -384,7 +467,7 @@ h1 {
       overlay.classList.add("transition-overlay");
 
       const gif = document.createElement("img");
-      gif.src = "扭扭.gif"; // 替換你的跑步 GIF
+      gif.src = "扭扭.gif";
       gif.classList.add("transition-gif");
 
       overlay.appendChild(gif);

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
+  <title>福島的故事</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "GenRyuMin TW", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -225,53 +225,54 @@
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
+  <h1>福島県−横向温泉ロッジ</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
+    <button onclick="location.href='fukujima.html'">日本語</button>
+    <button onclick="location.href='fukujima-ch.html'">中文</button>
   </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <img src="fukujima.png" alt="福島" class="story-image">
 
   <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
+今天和朋友米莉一起，開車前往福島縣的溫泉會館。<br>
+但在半路上卻迷了路，回過神來時，車已經開進了深山之中。<br>
+這時，發現了一棟掛著「橫向溫泉」招牌的建築。<br>
+在好奇心的驅使下，你們下了車卻看到建築物上的窗裡有個小女孩朝這邊揮手。<br>
+你們走進小木屋裡——外頭明明還在下雪，室內卻熱得異常。<br>
+再往裡面的大片浴池走去時，只見許多人影在蒸氣中來回穿梭。<br>
+「喂，你不覺得……有一股怪味嗎？」米莉皺著眉說道。<br>
+回頭一看，整個大浴場竟已被烈焰吞沒。<br>
+慌忙朝出口衝去時——<br>
+先前那個小女孩，正站在入口前，把去路整個堵住。<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">和自己右邊的玩家猜拳一次，決定你的命運。</font></strong></p>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
+ <div class="options">
+    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（靈壓 +3，抽 1 張道具卡）</button>
+    <button class="option-btn" onclick="showResult('失敗')">② 失敗。（跳過 1 回合）</button>
   </div>
+
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <button class="home-btn" onclick="goHome()">🏠 回到首頁</button>
     </div>
   </div>
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
+    const text = {
+        "勝利": "你從包包裡掏出手電筒，猛然照向小女孩的臉，趁她退縮的瞬間成功逃了出去。",
+        "失敗": "你被小女孩死死按住，身後的火焰合攏，把你困在燃燒的浴場之中。",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index2.html";
+      window.location.href = "index.html";
     }
 
     window.onclick = function(event) {

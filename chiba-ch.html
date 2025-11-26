@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
+  <title>千葉の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -29,44 +29,8 @@
       z-index: 1;
     }
 
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +38,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -148,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -177,32 +141,19 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
-
-      .story-text {
+  .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -210,46 +161,51 @@
     padding: 0 10px !important;
   }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
+  .option-btn {
+    width: 80%;
+    font-size: 16px;
+    padding: 10px;
+  }
 
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
-  </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <h1>千葉県−八幡の藪知らず</h1>
+
+  <img src="chiba.png" alt="千葉" class="story-image">
 
   <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
+「もう、ヤダ！」<br> 
+私は怒りにまかせて家を飛び出した。<br>
+どれくらい走ったのかも分からない。<br>
+ただ、気がつけばあまり来たことのない小さな神社に辿り着いていた。<br>
+境内の端に腰を下ろし、息を整える。<br> 
+「ママはバカ……もう……」<br> 
+そう呟いていると、いつの間にか時間が経っていた。<br>
+ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br> 
+「くみちゃん……」<br> 
+――ママ？<br> 
+時計を見ると、すでに午前三時を回っていた。帰らなきゃ、と思い立ち、その光の方へと歩き出す。<br>
+近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br> 
+「ママ？」呼びかけてみたが、返事はない。足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
+その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。<br>
+「だ……れ？」<br> 
+その人頭が低く囁く。<br> 
+「私の体を見つけてくれ……そうすれば帰してやろう……」<br>
+   <p style="text-align: center;">
+   <strong><font color="#EA0000">左隣のプレイヤーとサイコロを振り合い、目の大きさを比べる。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('大')">① 大。（体力+1、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('小')">② 小。（体力+2、霊圧−1）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -261,17 +217,16 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
+     const text = {
+        "大": "平将門の屍体を見つけ出し、無事に帰宅できる。",
+        "小": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見される。 ",
+      }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index2.html";
+      window.location.href = "index.html";
     }
 
     window.onclick = function(event) {

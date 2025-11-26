@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
-  <style>
+  <title>茨城的故事</title>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -225,51 +225,64 @@
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
+  <h1>茨城県−高野のお化け石</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
+    <button onclick="location.href='ibaraki.html'">日本語</button>
+    <button onclick="location.href='ibaraki-ch.html'">中文</button>
   </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <img src="ibaraki.png" alt="茨城" class="story-image">
 
   <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
-  </div>
+「啊……好餓。但是，我已經沒有錢了。」<br>
+今天已經是流浪的第七天。<br>
+自從做生意失敗、破產後，我失去了家，只能睡在路邊或公園裡。<br>
+我正漫無目的地走著時，看到前方一個人影，正蹲在一塊大石前做著什麼。<br>
+出於好奇靠近後，他抬頭對我說：<br>
+「觀光客常會把錢丟進這塊石頭旁。如果你幫我，我可以跟你平分。」<br>
+錢……對現在的我來說確實必要。可是，這樣做真的可以嗎？<br>
+就在我抬起頭時，那塊大石的表面上——<br>
+竟然浮現出一張怒氣騰騰的老翁臉孔……。<br>
+<p style="text-align: center;">
+<strong><font color="#EA0000">
+請選擇以下其中一個行動。<br>
+</font></strong></p>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
-  </div>
+<div class="options">
+  <button class="option-btn" onclick="showResult('取錢')">
+    ① 從石頭取錢（體力+2、失去1張道具卡）<br>
+  </button>
 
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
+  <button class="option-btn" onclick="showResult('離開')">
+    ② 拒絕並離開（靈壓+1、向左移動1格）<br>
+  </button>
 
-  <script>
+  <button class="option-btn" onclick="showResult('祈禱')">
+    ③ 向石頭中的老人祈禱（體力+1、靈壓+1）<br>
+  </button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+  </div>
+</div>
+
+ <script>
     function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
-      document.getElementById("resultText").innerText = text[choice];
-      document.getElementById("resultModal").style.display = "flex";
-    }
-
+     const text = {
+     "取錢":
+      "你確實得到了錢，但似乎觸怒了老人。那張臉從此每晚都會出現在你的夢裡……。",
+     "離開":
+      "雖然沒有得到錢，但心情卻異常輕鬆，腳步也變得穩定。",
+     "祈禱":
+      "你默默祈禱後，老人臉孔緩緩消失，腳邊掉落了一枚小銅幣。"
+  };
+  document.getElementById("resultText").innerHTML = text[choice];
+  document.getElementById("resultModal").style.display = "flex";
+}
     function goHome() {
       window.location.href = "index2.html";
     }

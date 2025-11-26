@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>茨城の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,44 +210,47 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>茨城県−高野のお化け石</h1>
-
+  <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='ibaraki.html'">日本語</button>
+    <button onclick="location.href='ibaraki-ch.html'">中文</button>
+  </div>
   <img src="ibaraki.png" alt="茨城" class="story-image">
 
   <div class="story-text">
-「あ…お腹すいた。でも、お金もない。」<br> 
+「あ…お腹すいた。でも、お金もない。」<br>
 今日は放浪の七日目。<br>
-商売に失敗して破産して以来、家もなくなり、路上や公園で寝るしかない。<br> 
-あてもなく歩いていると、前方に一人の人影があり、大きな石の前で何かをしているのが見えた。<br>
-好奇心に駆られ、思わず近づいてみると、その人が言った。<br> 
-「ここには観光客がお金を投げ入れることが多いんだ。手伝ってくれるなら、半分分けてやるよ。」<br> 
-お金……今の自分にとって確かに必要なもの。でも、こんなことをしていいのだろうか。<br> 
-顔を上げた瞬間、その人の前にある大石の表面に、<br>
-激しく怒った老人の顔が映し出されていた……。 <br>
+商売に失敗して破産して以来、家もなく、路上や公園で寝るしかなかった。<br>
+あてもなく歩いていると、前方に1人の人影が見えた。<br>
+大きな石の前で、地面に散らばった小銭を拾い集めているようだ。<br>
+好奇心に駆られ、思わず近づいてみると、その人が言った。<br>
+「この石の前には観光客がお金を投げ入れることが多いんだ。手伝ってくれるなら、半分分けてやるよ。」<br>
+お金……今の自分にとって確かに必要なもの。でも、こんなことをしていいのだろうか。<br>
+顔を上げた瞬間、その人の前にある大石の表面に、激しく怒った老人の顔が映し出されていた……。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。 </font></strong></p>
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('そのまま一緒に石から金を取る')">① そのまま一緒に石から金を取る。（体力+2、道具カードを1枚失う）</button>
-    <button class="option-btn" onclick="showResult('断って立ち去る')">② 断って立ち去る。（霊圧+1、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('老人に向かって祈る')">③ 老人に向かって祈る。（体力+1、霊圧+1）</button>
+    <button class="option-btn" onclick="showResult('そのまま一緒に石の周囲から金を取る')">① そのまま一緒に石の周囲から金を取る。（霊圧+1、道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('断って立ち去る')">② 断って立ち去る。（一番近い特殊イベントマスに移動する）</button>
+    <button class="option-btn" onclick="showResult('老人に向かって祈る')">③ 老人に向かって祈る。（体力+2）</button>
 
   </div>
 
@@ -212,16 +264,16 @@
   <script>
     function showResult(choice) {
      const text = {
-        "そのまま一緒に石から金を取る": "確かに金を得たが、老人の怒りに触れ、夜な夜な夢に現れる。",
-        "断って立ち去る": "金は得られなかったが、不思議と心が軽くなり足取りも安定する。",
-        "老人に向かって祈る": "老人の顔が消え、足元に小銭がひとつ落ちている。",
+        "そのまま一緒に石の周囲から金を取る": "確かに金を得たが、老人の怒りに触れ、夜ごと夢に現れるようになった。",
+        "断って立ち去る": "金は得られなかったが、不思議と心が軽くなり、足取りも安定した。",
+        "老人に向かって祈る": "祈り終えると、老人の顔が消え、足元に小銭がひとつ転がっていた。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

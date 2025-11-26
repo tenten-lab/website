@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
+  <title>石川の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -29,44 +29,8 @@
       z-index: 1;
     }
 
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +38,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -148,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -177,32 +141,19 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
-
-      .story-text {
+  .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -210,48 +161,48 @@
     padding: 0 10px !important;
   }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
+  .option-btn {
+    width: 80%;
+    font-size: 16px;
+    padding: 10px;
+  }
 
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
-  </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <h1>石川県−UFOの街</h1>
+
+  <img src="ishigawa.png" alt="石川" class="story-image">
 
   <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
+羽咋市は「UFOの街」として知られ、昔から奇妙な目撃談が絶えない。<br> 
+その噂を確かめるため、夜の田んぼへ足を運んだ。<br>
+ふと、不気味な光がふわりと浮かび上がる。慌ててカメラを構え、息を呑んだ。 <br>
+「……UFO？」 <br>
+光の中心には、仏具のシンバルのような円盤があった。<br>
+金属のように鈍く輝き、ゆっくりと回転している。<br>
+次の瞬間、「キーン……」という耳鳴りが走り、視界がぐにゃりと歪んだ。<br> 
+「……体が動かない！」<br> 
+円盤はゆっくり降りてきて、頭上を覆い尽くす。<br>
+影に包まれた途端、鳥の声も風の音も消えた。<br>
+息が詰まる静寂の中、私は呟いた。<br> 
+「……ここ、本当に地球なのか？」<br>
+ <p style="text-align: center;">
+    <strong><font color="#EA0000">UFOにさらわれ、宇宙人と出会った。どうする？</font></strong></p>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
-  </div>
-
+<div class="options"> 
+<button class="option-btn" onclick="showResult('宇宙人と友達になる。')">① 宇宙人と友達になる。（道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('隠れて様子を見る。')">② 隠れて様子を見る。（体力+2、霊圧+1）</button> 
+<button class="option-btn" onclick="showResult(' UFO内部を探索する。')">③ UFO内部を探索する。（自由に2マス移動する）</button> 
+</div> 
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
@@ -261,17 +212,17 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
+   const text = { 
+"宇宙人と友達になる。": "宇宙人から不思議なプレゼントを受け取った。", 
+"隠れて様子を見る。": "恐怖が少しおさまり、体の力が戻った。", 
+" UFO内部を探索する。": "この場所に関する手掛かりを探し始めた。", 
+}; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index2.html";
+      window.location.href = "index.html";
     }
 
     window.onclick = function(event) {

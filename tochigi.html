@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,40 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>栃木縣−殺生石</h1>
-
+  <h1>栃木県−殺生石</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='tochigi.html'">日本語</button>
+    <button onclick="location.href='tochigi-ch.html'">中文</button>
+  </div>
   <img src="tochigi.png" alt="栃木" class="story-image">
 
   <div class="story-text">
-「現在、栃木県那須町・那須湯本温泉の近くにある伝説の《殺生石》に来ています。<br>
-皆さんご覧ください。この石は、生き物が近づくだけで命を落としてしまうと言われています。<br>
-そこで今回、殻が非常に硬い亀を殺生石の前に置いてみて、本当に死んでしまうのか実験してみましょう。」<br> 
+今テレビで放送しているのは、都市伝説検証企画の番組だ。<br>
+「現在、私たちは栃木県那須町・那須湯本温泉の近くにある伝説の《殺生石》の前に来ています。<br>
+皆さん、ご覧ください。この石は、生き物が近づくだけで命を落とすと言われています。<br>
+そこで今回、殻が非常に硬い亀を殺生石の前に置き、本当に死ぬのか実験してみましょう。」<br>
 番組スタッフが亀を石の前に置こうとしたその時――<br>
-周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が現れた。<br>
+周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が忽然と現れた。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
+    <strong><font color="#EA0000">次の選択肢のいずれかを選び、番組スタッフたちの行動を決める。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('そのまま亀を殺生石に置く')">① そのまま亀を殺生石に置く。（体力−1、霊圧−1） </button>
-    <button class="option-btn" onclick="showResult('ライトで九尾狐に向ける')">② ライトで九尾狐に向ける。（体力−1、霊圧+1）</button>
-    <button class="option-btn" onclick="showResult('すぐに逃げ出す')">③ すぐに逃げ出す。（体力+1、霊圧−1 ）</button>
+    <button class="option-btn" onclick="showResult('そのまま亀を殺生石に置く')">① そのまま亀を殺生石に置く。（体力−1、霊圧−2） </button>
+    <button class="option-btn" onclick="showResult('撮影カメラで九尾狐に向ける')">② 撮影カメラで九尾狐に向ける。（道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('すぐに逃げ出す')">③ すぐに逃げ出す。（体力−5）</button>
 
   </div>
 
@@ -209,7 +262,7 @@
     function showResult(choice) {
      const text = {
         "そのまま亀を殺生石に置く": "九尾狐が亀を救い出し、番組スタッフは呪われる。",
-        "ライトで九尾狐に向ける": "無事に逃げ延び、さらに亀も放してやることができる。",
+        "撮影カメラで九尾狐に向ける": "無事に逃げ延び、さらに亀も放してやることができた。",
         "すぐに逃げ出す": "九尾狐に追いつかれ、翌日目覚めたときには全員が記憶を失っており、殺生石の姿は亀の形に変わっていた。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
@@ -217,7 +270,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
+  <title>群馬の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -225,53 +225,67 @@
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
-  <!-- 語言切換，固定 -->
+  <h1>群馬縣−武尊神社</h1>
+ <!-- 語言切換，固定 -->
  <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
+    <button onclick="location.href='gunma.html'">日本語</button>
+    <button onclick="location.href='gunma-ch.html'">中文</button>
   </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <img src="gunma.png" alt="群馬" class="story-image">
 
-  <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
+<div class="story-text"> 
+夜裡，幾名大學生正在群馬縣綠市的武尊神社試膽。<br> 
+「沒事啦，不會真的有鬼啦。」<br> 
+他們笑著踏進鳥居的瞬間，風突然騷動起來。明明四周空無一人，卻響起沉沉的太鼓聲。<br> 
+接著，一名身穿白色和服的女子無聲地從神社深處浮現。<br> 
+她毫無表情，只是直直盯著學生們，然後緩緩開口：<br> 
+「……為何，讓祭祀斷絕了？」<br> 
+太鼓聲越來越響，像是要把心臟震碎。學生們被恐懼逼得想逃跑。<br> 
+然而，她冰冷的聲音卻如影隨形般從背後追來：<br> 
+「被遺忘……才是最深的詛咒……」<br>
+    <p style="text-align: center;">
+    <strong><font color="#EA0000">請從以下選項中選擇你的行動。</font></strong></p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('停下來，認真聽那名女子說話')">
+    ① 停下來，認真聽那名女子說話。（体力+2、霊圧+1）
+  </button>
+
+  <button class="option-btn" onclick="showResult('無視她，繼續逃跑')">
+    ② 無視她，繼續逃跑。（体力+1、霊圧−3）
+  </button>
+
+  <button class="option-btn" onclick="showResult('對她挑釁')">
+    ③ 對她挑釁。（体力−2、霊圧+1）
+  </button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
   </div>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
-  </div>
+<script>
+function showResult(choice) {
+  const text = {
+    "停下來，認真聽那名女子說話": 
+      "你停下腳步，傾聽女子的訴說，並替她簡單祭祀。太鼓聲逐漸安靜，她的身影也慢慢散去，你們平安離開了神社。",
 
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
+    "無視她，繼續逃跑": 
+      "你們拼命逃跑時被墓石絆倒，狠狠摔了一跤，痛得站不起來。",
 
-  <script>
-    function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
-      document.getElementById("resultText").innerText = text[choice];
-      document.getElementById("resultModal").style.display = "flex";
-    }
+    "對她挑釁": 
+      "你激怒了她。從那天起，女子夜夜出現在你的夢裡……冷冷地盯著你。"
+  };
 
+  document.getElementById("resultText").innerText = text[choice];
+  document.getElementById("resultModal").style.display = "flex";
+}
     function goHome() {
-      window.location.href = "index2.html";
+      window.location.href = "index.html";
     }
 
     window.onclick = function(event) {

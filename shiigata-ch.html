@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>北海道の物語</title>
+  <title>新潟の物語</title>
   <style>
     /* 背景設定 + 霧氣效果 */
     body {
@@ -29,44 +29,8 @@
       z-index: 1;
     }
 
-    /* --- 語言切換按鈕（右上角固定） --- */
-    .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
-
-    .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
-
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
-
-    .content {
-      padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
-      max-width: 900px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +38,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -148,9 +111,10 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: center;
+      text-align: left;
       animation: fadeIn 0.4s ease;
-    }
+      line-height: 1.6; /* 字距舒適一點 */
+     }
 
     /* Modal 文字 */
     .modal-content p {
@@ -177,32 +141,19 @@
       background-color: #754b34;
     }
 
-    /* 手機響應式 */
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2em;
-        margin-top: 20px;
-      }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
-      }
+   /* 手機響應式 */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 20px;
+  }
 
-     .content {
-        padding: 140px 15px 15px 15px;
-      }
+  .story-image {
+    width: 80%;
+    height: auto;
+  }
 
-      .story-image {
-        width: 80%;
-        height: auto;
-      }
-
-      .story-text {
+  .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -210,46 +161,48 @@
     padding: 0 10px !important;
   }
 
-      .option-btn {
-        width: 80%;
-        font-size: 16px;
-        padding: 10px;
-      }
+  .option-btn {
+    width: 80%;
+    font-size: 16px;
+    padding: 10px;
+  }
 
-      .modal-content {
-        width: 80%;
-        padding: 20px;
-      }
-    }
+  .modal-content {
+    width: 80%;
+    padding: 20px;
+  }
+}
+
   </style>
 </head>
 <body>
 
-  <h1>北海道 - 網走監獄</h1>
-  <!-- 語言切換，固定 -->
- <div class="language-switch">
-    <button onclick="location.href='hokaido.html'">日本語</button>
-    <button onclick="location.href='hokaido-ch.html'">中文</button>
-  </div>
-  <img src="hokaido.png" alt="北海道" class="story-image">
+  <h1>新潟県−ホワイトハウス</h1>
+
+  <img src="shiigata.png" alt="新潟" class="story-image">
 
   <div class="story-text">
-修学旅行で訪れた雪の網走監獄。<br> 
-凍えるような寒さの中、展示室に入ると、一体の人形の目に引き込まれた。<br>
-次の瞬間、耳元に機械音と怒号が混じった声が響く。 <br>
-「早く作業を続けろ！休むな！お前は囚人だろうが！」<br>
-頭痛とともに視界がぐらつき、人形がまるで生きているかのように、ゆっくりと手を伸ばしてくる。 <br>
-「自由にさせてください……苦しいんです……」 <br>
-何か....息が詰まり、体が動かなくなる――。  <br>
-   
-  <p style="text-align: center;">
-  <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
+暗い……痛い……パパ……ママ……お兄ちゃん……<br>
+暗いよ……外に出たいよ……<br>
+薬は嫌い……痛いのも嫌い……<br>
+ここは「ホワイトハウス」っていう名前らしい。<br>
+真っ白で、本当にいや。<br>
+何か色が欲しいなぁ……でも、描くものがない。<br>
+――あ、そうだ！　みんなで遊ぼう！<br>
+パパもママもお兄ちゃんも、みんな一緒に、この真っ白なキャンバスを色でいっぱいにしようよ！<br>
+パパが大事にしていたおもちゃをもらった！うれしい！<br>
+ボタンみたいなのを引いたら、パパの胸からとってもきれいな赤い水が出た！<br>
+あはははは！すごい！これで絵が描ける！<br>
+よし、これでみんな、ずっと一緒になれたね……。<br>
+<p style="text-align: center;">
+    <strong><font color="#EA0000">誰と遊びたいですか。次の選択肢から行動を決めてください。</font></strong></p>
   </div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖に耐えきれず、気を失う')">①恐怖に耐えきれず、気を失う。（体力−2、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('背後から先生の声が聞こえる')">②背後から先生の声が聞こえる。（体力+2）</button>
-    <button class="option-btn" onclick="showResult('人形の両手を必死で避ける')">③人形の両手を必死で避ける。（体力−4、霊圧+2）</button>
+  <div class="options"> 
+
+<button class="option-btn" onclick="showResult('パパ')">① パパ。（体力−4、霊圧+3）</button> 
+<button class="option-btn" onclick="showResult('ママ')">② ママ。（体力−3、道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('お兄ちゃん')">③ お兄ちゃん。（体力−2、自由に1マス移動する）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -261,17 +214,18 @@
 
   <script>
     function showResult(choice) {
-      const text = {
-        "恐怖に耐えきれず、気を失う": "どれくらい時間が経ったのか分からず、体がずっと動かない状態だ。",
-        "背後から先生の声が聞こえる": " 一瞬、正気を取り戻した。",
-        "人形の両手を必死で避ける": "体が動いた！人形の手を避けたけど、もう力が残っていない。",
-      };
+   const text = { 
+"パパ": "パパの冷たい胸を抱きしめ、心臓を握りしめ、愛を感じる。", 
+"ママ": "ママの垂れる髪を結び、魂を縛りつける。", 
+"お兄ちゃん": "お兄ちゃんの断たれた手を握ると、ぬくもりの幻覚で元気を得る。", 
+}; 
+
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index2.html";
+      window.location.href = "index.html";
     }
 
     window.onclick = function(event) {
