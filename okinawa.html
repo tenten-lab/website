@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>沖縄の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,32 +210,36 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>沖縄県−SSS</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='okinawa.html'">日本語</button>
+    <button onclick="location.href='okinawa-ch.html'">中文</button>
+  </div>
   <img src="okinawa.png" alt="沖縄" class="story-image">
   <div class="story-text">
-私はユタ――沖縄に伝わる霊媒師。 <br> 
-さらなる霊力を求め、修行地として知られる「SSS」へと足を踏み入れた。<br>  
-3つのS字カーブが続くこの道は、命を落とした修行者の霊が今も彷徨うと恐れられている。<br>  
-最初のカーブで耳鳴りが響き、2つ目のカーブでは白装束の女が木々の間に立っていた。<br> 
-無言でこちらを見つめるその姿に、背筋が凍る。<br>  
-3つ目のカーブに差しかかった瞬間、頭の奥で声が響く。<br>  
-「ここから先に進めば……お前も帰れなくなるぞ。」<br> 
+私はユタ――沖縄に伝わる霊媒師。<br> 
+さらなる霊力を求め、修行地として知られる「SSS」へと足を踏み入れた。<br> 
+3つのS字カーブが続くこの道は、命を落とした修行者の霊が今も彷徨うと恐れられている。<br> 
+最初のカーブで耳鳴りが響き、2つ目のカーブでは白装束の女が木々の間に立っていた。
+無言でこちらを見つめるその姿に、背筋が凍る。<br> 
+3つ目のカーブに差しかかった瞬間、頭の奥で声が響く。<br> 
+ここから先に進めば……お前も帰れなくなるぞ。」<br> 
     <p style="text-align: center;">
     <strong><font color="#EA0000">どうやら、この地で最強の霊に出会ってしまったようだ。霊に打ち勝ち、自らが一人前のユタであることを証明せよ！<br> 
 霊圧が最も高いプレイヤーが対象となる。それぞれサイコロを1個振り、出目を比べる。出目が大きいほうが勝利となる。</font></strong></p>
@@ -217,7 +270,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

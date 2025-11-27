@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>熊本の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,31 +210,35 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>熊本県−阿蘇大橋<br>（赤橋）</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='kumamoto.html'">日本語</button>
+    <button onclick="location.href='kumamoto-ch.html'">中文</button>
+  </div>
   <img src="kumamoto.png" alt="熊本" class="story-image">
 
   <div class="story-text">
-同僚からのいじめと仕事の重圧に、私は限界だった……<br>
+同僚からのいじめと仕事のストレスに、私は限界だった……<br>
 涙を流しながら、車をゆっくりと阿蘇大橋へと走らせた。<br>
-ここは谷が深くて、この橋から飛び降りれば、きっとこの世界と別れるはずだ。<br>
-橋の端に車を停め、谷を見下ろしたその瞬間、なぜか恐怖がこみ上げてきた。<br>
-そのとき、谷底から声が響く。<br>
+「ここは谷が深くて、この橋から飛び降りれば、きっとこの世界と別れるはずだ。」<br>
+橋の端に車を停め、谷を見下ろしたその瞬間、なぜか恐怖を感じた。<br>
+そのとき、谷底から声が響いた。<br>
 「……こっちへおいで……私たちはここにいるよ」<br>
 「誰…？誰なの…？」と呟いて私は欄干に足をかけた…<br>
     <p style="text-align: center;">
@@ -194,7 +247,7 @@
 
   <div class="options">
     <button class="option-btn" onclick="showResult('ポケットの中の携帯が鳴る')">① ポケットの中の携帯が鳴る。（体力−5、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('驚いて欄干から落ちてしまった')">② 驚いて欄干から落ちてしまった。（体力+3、霊圧−1）</button>
+    <button class="option-btn" onclick="showResult('驚いて欄干から落ちてしまう')">② 驚いて欄干から落ちてしまう。（体力+3、霊圧−1）</button>
  <button class="option-btn" onclick="showResult('絶望のあまり、声に従い飛び降りる')">③ 絶望のあまり、声に従い飛び降りる。（体力−4、右へ1マス進む）</button>
 
   </div>
@@ -209,9 +262,9 @@
   <script>
     function showResult(choice) {
      const text = {
-        "ポケットの中の携帯が鳴る": "母からの着信を見て、意識を取り戻す。",
-        "驚いて欄干から落ちてしまった": "立ち上がってもう一度見下ろすと、誰かがこっちを見ている。",
-        "絶望のあまり、声に従い飛び降りる": " 底のない暗闇に落ちていった。",
+        "ポケットの中の携帯が鳴る": "母からの着信を見て、意識を取り戻した。",
+        "驚いて欄干から落ちてしまう": "立ち上がってもう一度見下ろすと、誰かがこっちを見ていた。",
+        "絶望のあまり、声に従い飛び降りる": "底のない暗闇に落ちていった。",
 
       }; 
       document.getElementById("resultText").innerText = text[choice];
@@ -219,7 +272,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

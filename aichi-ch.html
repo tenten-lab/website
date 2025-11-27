@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,42 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>愛知県−旧伊勢神トンネル</h1>
-
+  <h1>愛知縣−舊伊勢神隧道</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='aichi.html'">日本語</button>
+    <button onclick="location.href='aichi-ch.html'">中文</button>
+  </div>
   <img src="aichi.png" alt="愛知" class="story-image">
 
   <div class="story-text">
-薄暗い石造りのトンネルに足を踏み入れる。<br>
-冷たい空気が肌を刺し、滴る水の音が反響する。<br>
-友人の真紀が私の腕を強く握り、震えていた。<br> 
-すすり泣くような声が聞こえ、やがて女の泣き声に変わる。<br> 
-「……聞こえる？　やめたほうがいいかも。」真紀が怯えた声で言った。<br> 
-「いや、進むしかない……誰かが助けを求めているんだ。」 <br>
-懐中電灯を握り直すと、壁に黒い影が浮かび上がり、光を当てても影だけが残った。<br>
-息を整え、進むか立ち止まるか、決断の時だ。<br> 
+踏入昏暗的石造隧道，一股刺骨寒氣襲來，水滴聲在隧道中迴盪。<br>
+朋友真紀緊抓著我的手臂，顫抖不已。<br>
+深處傳來女人的啜泣聲，慢慢變得淒厲。<br>
+「我覺得……還是不要再往前走比較好。」真紀不安地說著。<br>
+「不行，也許有人正在求救。」<br>
+我緊握手電筒，光束掃過牆壁，一抹黑影悄然浮現，紋絲不動地注視著我們。<br>
+是繼續前進，還是停下腳步——是時候做出決定了。<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">1人のプレイヤーを選んで、じゃんけんを行う。</font></strong></p>
+    <strong><font color="#EA0000">請與1位玩家進行猜拳來決定接下來的行動。</font></strong></p>
   </div>
 
 <div class="options"> 
-<button class="option-btn" onclick="showResult('勝った場合')">① 勝った場合。（霊圧−3、自由に2マス進む）</button> 
-<button class="option-btn" onclick="showResult('負けた場合')">② 負けた場合。（体力−5、一番近い特殊イベントマスに移動する）</button> 
+<button class="option-btn" onclick="showResult('勝利')">① 勝利……繼續前進。（靈壓+3、暫停1回合）</button> 
+<button class="option-btn" onclick="showResult('敗北')">② 敗北……停下腳步往回走。（體力+2，失去1張道具卡）</button> 
 </div> 
 
   <div id="resultModal" class="modal">
@@ -209,8 +260,8 @@
   <script>
     function showResult(choice) {
     const text = { 
-"勝った場合": "助けを求める声に導かれ、出口への道が閉ざされた。", 
-"負けた場合": "真紀の声に従い、その場から離れることに成功した。", 
+"勝利": "順著求救聲前進，但回去的出口被堵住了。", 
+"敗北": "聽取真紀的建議，成功離開隧道時，手電筒剛好沒電了。", 
 };
        
 document.getElementById("resultText").innerText = text[choice];
@@ -218,7 +269,7 @@ document.getElementById("resultText").innerText = text[choice];
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

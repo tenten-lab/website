@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>愛媛の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,24 +210,27 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>愛媛県−松工裏電話ボックス</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='ehime.html'">日本語</button>
+    <button onclick="location.href='ehime-ch.html'">中文</button>
+  </div>
   <img src="ehime.png" alt="愛媛" class="story-image">
 
   <div class="story-text">
@@ -186,19 +238,16 @@
 校門を出ると、ポケットに携帯がないことに気づいた。<br>
 そのとき、校門脇の松工裏電話ボックスの明滅する灯りが目に入った。<br>
 一瞬、灯りに合わせて女の人の影が見えた気がした…。<br>
-「…きっと見間違いだ」<br>
-遅刻しそうな私は、店長に連絡しようと急いで電話ボックスに駆け込んだ。<br>
-しかし、受話器を取った瞬間――<br>
-「どうして…私を殺したの…」という声が中から響いた。<br>
-足が急に麻痺したように動かなくなり、<br>
-電話ボックスの灯りは、どんどん激しく点滅していった…。<br>
+「…きっと見間違いだ」遅刻しそうな私は、店長に連絡しようと急いで電話ボックスに駆け込んだ。<br>
+しかし、受話器を取った瞬間――「どうして…私を殺したの…」という声が中から響いた。<br>
+足が急に麻痺したように動かなくなり、電話ボックスの灯りは、どんどん激しく点滅していった…。<br>
 <p style="text-align: center;">
     <strong><font color="#EA0000">もう時間がない！<br>逃げるために次のプレイヤーとじゃんけんしよう！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('勝ったら')">① 勝ったら。（霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('負けたら')">② 負けたら。（体力−2、霊圧−1） </button>
+    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('敗北')">② 敗北。（体力−2、霊圧−1） </button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,15 +260,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "勝ったら": "光の点滅が止まると、麻痺効果が解除される。",
-        "負けたら": "闇に徐々に呑まれていく。",
+        "勝利": "光の点滅が止まると、麻痺効果が解除された。",
+        "敗北": "闇に呑まれた。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

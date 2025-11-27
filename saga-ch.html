@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,41 +210,45 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>佐賀県−虹の松原</h1>
-
+  <h1>佐賀縣−虹松原</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='saga.html'">日本語</button>
+    <button onclick="location.href='saga-ch.html'">中文</button>
+  </div>
   <img src="saga.png" alt="佐賀" class="story-image">
 
   <div class="story-text">
-「ねぇ…本当にこの道を通らないとダメなの…？」<br>
-優人は「唐津市からならこっちが早い」と静かに答える。<br>
-なんだか、この場所が自殺の名所だからか、夜の「虹の松原」はどこか不気味で、疲れた私はうとうとしてしまった――。<br>
-目を覚ますと、周囲は濃い霧に包まれていた。<br>
-私は慌てて優人の方を振り向いた。<br>
-優人の目は虚ろで、前方には女の人の影が立ている。<br>
-それなのに、車は止まる気配がない。<br>
-「優人！前、前見て！！」<br>
+(在車上)<br>
+「喂…一定要走這條路嗎…」<br>
+優人平靜地回答：「從唐津市回去的話，這條路比較快。」<br>
+不知道是不是因為這裡是很多人自殺的場所，夜晚的「虹之松原」看起來有些詭異，我也因為疲累，不知不覺睡著了──<br>
+醒來時，周圍已被濃霧籠罩。<br>
+我慌忙轉頭看向優人，他的眼神空洞，前方的路中央站著一名女子的身影。<br>
+然而，車卻絲毫沒有要停下的跡象。<br>
+「優人！前面、前面看啊！！」
     <p style="text-align: center;">
-    <strong><font color="#EA0000">サイコロを使って力を蓄え、<br>ハンドルを握りしめて回避せよ！</font></strong></p>
+    <strong><font color="#EA0000">使用骰子來蓄積力量<br>緊握方向盤以避開障礙！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が10以上なら')">① 出目の合計が10以上なら。（体力−1、自由に3マス移動する）</button>
-    <button class="option-btn" onclick="showResult('出目の合計が10以下なら')">② 出目の合計が10以下なら。（元のルートに沿って2マス戻る）</button>
+    <button class="option-btn" onclick="showResult('擲骰總和為10以上')">① 擲骰總和為10以上（體力−1，可自由移動3格）</button>
+    <button class="option-btn" onclick="showResult('擲骰總和為10以下')">② 擲骰總和為10以下（沿原路線返回2格）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -208,15 +261,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が10以上なら": "回避成功",
-        "出目の合計が10以下なら": "回避できず、車がスリップした。",
+        "擲骰總和為10以上": "回避成功",
+        "擲骰總和為10以下": "未能閃避，車輛打滑了。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

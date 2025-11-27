@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,42 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>和歌山県−三段壁</h1>
-
+  <h1>和歌山縣−三段壁</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='wakayama.html'">日本語</button>
+    <button onclick="location.href='wakayama-ch.html'">中文</button>
+  </div>
   <img src="wakayama.png" alt="和歌山" class="story-image">
 
   <div class="story-text">
-小説のネタ探しに、近くの海岸をなんとなく歩いてたんだ。<br>
-「ん？ なんか蹴ったぞ…口紅？」<br>
-拾い上げて顔を上げると、岩壁に赤い文字が刻まれてるのに気づいた。<br>
-「え、なにこれ…」って思った瞬間、その文字がピカッと光ったんだ。<br>
-すると、崖の縁に二人の人影が現れ、互いを見つめ合っている。<br>
-少女は涙を流しながら「定一…来世こそ必ず夫婦になろう…」そう言って二人は崖から身を投げた。<br>
-慌てて崖まで走ったけど、何も見えなく突然足を滑らせて落ちそうになった瞬間、左手で岩にしがみついて....<br>
+為了找小說的靈感，我隨便在附近的海岸走著。<br>
+「嗯？好像踢到什麼…口紅？」我順手撿起來，抬頭一看，發現岩壁上刻著紅色的文字。<br>
+「咦，這是什麼啊…」正覺得奇怪的時候，那些字忽然閃了一下光。<br>
+接著，在懸崖邊出現了兩道人影，他們對視著，女孩一邊流淚一邊說：<br>
+「來世我們一定要成為夫妻…」說完就和男孩一起跳下了崖。<br>
+我慌忙跑到懸崖邊，卻什麼也沒看見…一個不小心腳滑，差點摔下去順間好不容易用左手抓緊了岩石…<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">岩がもうすぐ崩れそうだ…<br>次のプレイヤーとじゃんけんしてあなたの運命を決めろ！</font></strong></p>
+    <strong><font color="#EA0000">眼看岩石快要崩塌了……<br>下一位玩家和你猜拳決定你的命運！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('勝ったら')">① 勝ったら。（体力−3、霊圧+1）</button> 
-<button class="option-btn" onclick="showResult('負けたら')">② 負けたら。（霊圧−1）</button>  
+<button class="option-btn" onclick="showResult('勝利')">① 勝利。（體力−3、靈壓+1）</button> 
+<button class="option-btn" onclick="showResult('敗北')">② 敗北。（靈壓−1）</button>  
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,8 +260,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"勝ったら": "右手を伸ばして近くの岩をつかめ。", 
-"負けたら": "岩が崩れて海に落ち、そのまま深い海へ沈んでいく。", 
+"勝利": "伸出右手抓住附近的岩石。", 
+"敗北": "岩石崩塌，你掉入海中，沉入深海。", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -218,7 +269,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

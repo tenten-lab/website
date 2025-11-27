@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>岐阜の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,38 +210,41 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>岐阜県−口裂け女</h1>
-
+  <h1>岐阜縣−裂嘴女</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='gifu.html'">日本語</button>
+    <button onclick="location.href='gifu-ch.html'">中文</button>
+  </div>
   <img src="gifu.png" alt="岐阜" class="story-image">
 
   <div class="story-text">
-夜道を歩いていると、背後から足音が聞こえた。<br> 
-「ねえ、私、きれい？」<br>  
-振り向くと、マスクをした女が立っていた。<br> 
+夜晚走在路上時，背後傳來詭異的腳步聲。<br>
+「嘿，你覺得我……漂亮嗎？」<br>
+一轉頭，便看見一名戴著口罩的女子站在身後。 <br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">サイコロを1個振り、出目が奇数か偶数かで結果を決める。</font></strong></p>
+    <strong><font color="#EA0000">擲一顆骰子，根據點數是奇數還是偶數決定結果。</font></strong></p>
   </div>
 
 <div class="options"> 
 
-<button class="option-btn" onclick="showResult('奇数')">① 奇数……「きれいです。」と答える。（霊圧−2）</button> 
-<button class="option-btn" onclick="showResult('偶数')">② 偶数……「私のほうがきれい。」と答える。（霊圧+2）</button> </div>
+<button class="option-btn" onclick="showResult('奇数')">① 奇数……回答「漂亮」。（靈壓–2）</button> 
+<button class="option-btn" onclick="showResult('偶数')">② 偶数……回答「我比較漂亮」。（靈壓+2）</button> </div>
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -204,15 +256,15 @@
   <script>
     function showResult(choice) {
  const text = { 
-"奇数": "女はマスクを外した。口は耳まで裂け、血で濡れていた。「これでも……？」女の目が赤く光り、口の端がゆっくり吊り上がった。", 
-"偶数": "風が吹き抜け、女の姿が消えた。しかし背後から、再び足音が近づいてくる――。", 
+"奇数": "女子摘下口罩後露出的，是從嘴角裂到耳邊，滿臉鮮血的恐怖面容。呢喃著「這樣……呢？」，她的雙眼泛著紅光，嘴角扭曲成詭異的笑容。", 
+"偶数": "女子隨著一陣呼嘯的風聲消失無蹤。然而背後，又傳來令人毛骨悚然的腳步聲——", 
 }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

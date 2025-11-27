@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,43 +210,46 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>長野県−七曲りにある一本松</h1>
 
+  <h1>長野縣−七曲りにある一本松</h1>
+  <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='nagano.html'">日本語</button>
+    <button onclick="location.href='nagano-ch.html'">中文</button>
+  </div>
   <img src="nagano.png" alt="長野" class="story-image">
 
   <div class="story-text">
-夜の山道を進むと、八つ目のカーブの先に一本の松が立っていた。<br> 
-ライトで幹を照らすと、無数の傷が顔のように浮かび上がり、こちらを嘲笑っているように見える。<br> 
-「やばい……これ、見て！」助手席の真奈美が震える声で叫んだ。<br> 
-その瞬間、車が突然エンストし、周囲は闇に沈んだ。<br>
-林の中から無数の人影がこちらを見ているのが見える。<br>
-心臓が凍りつき、息を止めた。<br> 
-「……動けない……」俺は呟いた。<br> 
+夜裡，沿著被稱為「七曲り」的八個連續彎道前行時，在第八個彎道的前方，不自然地矗立著一棵松樹。<br>
+車燈一照到樹幹，便浮現出無數道傷痕，彷彿如人的臉一般笑著。<br>
+「糟了……你快看那邊！」<br>
+副駕駛座的真奈美顫抖著聲音叫了出來。<br>
+就在那一瞬間，車子突然熄火，周圍的樹林裡冒出無數道人影，一邊盯著我們，一邊朝著我們狂笑。<br>
+「得快點逃走才行……可是，車子動不了……怎麼辦……」<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">3秒以内に安全のための行動を2つ言う。</font></strong></p>
+    <strong><font color="#EA0000">擲1顆骰子，根據出現的奇偶數來決定接下來行動。</font></strong></p>
   </div>
 
 <div class="options"> 
 
-<button class="option-btn" onclick="showResult('成功')">① 成功。（霊圧+3）</button> 
+<button class="option-btn" onclick="showResult('奇數……')">① 奇數……再次嘗試發動引擎。（靈壓+3）</button> 
 
-<button class="option-btn" onclick="showResult('失敗')">② 失敗。（体力−3）</button> 
+<button class="option-btn" onclick="showResult('偶數……')">② 偶數……嘗試打開車門逃跑。（體力−3）</button> 
 </div> 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -209,15 +261,15 @@
   <script>
     function showResult(choice) {
     const text = { 
-"成功": "エンジンが突然かかり、闇から逃げ出すことができた。", 
-"失敗": "人影に囲まれ、車は崖下へと滑り落ちた。", 
+"奇數……": "成功發動引擎後逃出此處。", 
+"偶數……": "不知為何無法打開車門，而詭異的笑聲一直纏繞在耳邊。", 
 }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

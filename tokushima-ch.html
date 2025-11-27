@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>徳島の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,42 +210,45 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>徳島県−西部公園</h1>
-
+  <h1>徳島縣−西部公園</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='tokushima.html'">日本語</button>
+    <button onclick="location.href='tokushima-ch.html'">中文</button>
+  </div>
   <img src="tokushima.png" alt="徳島" class="story-image">
 
   <div class="story-text">
-（あたりはだんだん暗くなっていく）<br>
-「健太！そろそろ帰るぞ！バスに間に合わなくなる！」遠くから隼人の呼ぶ声が聞こえる。<br>
-朝の西部公園の桜は本当にきれいだったが、夜になると雰囲気が全く違う…早く帰ろう。<br>
-だが、おかしいことに隼人の声がどんどん遠ざかっていく…。<br>
-どうしてこんなことに…「隼人…隼人…」<br>
-その時、突然、周囲から兵士が行軍するような足音が聞こえ始めた――<br>
-その音はどんどん近づき、私を包囲しようとしていた…。<br>
+(天色漸暗)<br>
+「健太!我們差不多要回家了喔!會趕不上公車喔」從遠方傳來隼人的催促聲<br>
+早上西部公園的櫻花確實很美，但夜晚感覺氣氛整個都不一樣了..還是快點回家吧<br>
+奇怪的是我感覺隼人的聲音越來越遠…..<br>
+周圍越變越暗，眼前明明應該是公園卻成了墓地<br>
+為什麼會這樣…隼人…隼人<br>
+突然間周圍突然傳來像是士兵行軍的腳步聲…越來越近快要將我包圍…<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">これからあなたはどうするのか？<br>選んでください。</font></strong></p>
+    <strong><font color="#EA0000">接下來你會怎麼做？<br>請選擇。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('周囲へ全力で逃げる')">① 周囲へ全力で逃げる。（霊圧+2、次のターンを休む）</button>
-    <button class="option-btn" onclick="showResult('地面の桜の花びらを拾い、兵士に撒く')">② 地面の桜の花びらを拾い、兵士に撒く。（体力−3、右へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('目を閉じる')">③ 目を閉じる。（体力+2、霊圧−2）</button>
+    <button class="option-btn" onclick="showResult('全力向周圍逃跑')">① 全力向周圍逃跑。（靈壓+2，休息一回合）</button>
+    <button class="option-btn" onclick="showResult('撿起地上的櫻花花瓣，撒向士兵')">② 撿起地上的櫻花花瓣，撒向士兵。（體力−4、右移1格）</button>
+    <button class="option-btn" onclick="showResult('閉上眼睛')">③ 閉上眼睛。（體力+2、靈壓−2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,16 +261,16 @@
   <script>
     function showResult(choice) {
      const text = {
-        "周囲へ全力で逃げる": "幽霊の兵士を通り過ぎて、どれくらい走った後、やっと隼人を見つけた。",
-        "地面の桜の花びらを拾い、兵士に撒く": "桜の花びらに触れた兵士が、苦しそうに叫んでいる。",
- "目を閉じる": "まるで別の空間に入ったみたいで、ほかの声はもう聞こえない。",
+        "全力向周圍逃跑": "越過幽靈士兵，跑了很久後，終於找到了隼人。",
+        "撿起地上的櫻花花瓣，撒向士兵": "觸碰到櫻花花瓣的士兵痛苦地哀嚎著。",
+        "閉上眼睛": "彷彿進入了另一個空間，其他聲音完全聽不見。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

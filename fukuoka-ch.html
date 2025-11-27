@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>福岡の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,41 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>福岡県−犬鳴村</h1>
-
+  <h1>福岡縣−犬鳴村</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='fukuoka.html'">日本語</button>
+    <button onclick="location.href='fukuoka-ch.html'">中文</button>
+  </div>
   <img src="fukuoka.png" alt="福岡" class="story-image">
 
   <div class="story-text">
-光と一緒に、不思議な村へ通じる犬鳴トンネルを探検していた。<br>
-トンネルの中は、不気味な静けさに包まれている。<br> 
-足音が反響する中、隣にいた光が突然立ち止まり、口元を震わせながら呟いた。<br> 
-「どうして……私を殺したの……？」<br> 
-驚いた私が後ずさった瞬間、足元の石につまずき、そのまま意識を失ってしまった。<br>
-再び目を覚ますと、笑う人影と、焼けただれ苦しんでいる人の姿が見えた。<br> 
-その時、突然、誰かがあなたの首を締めてくる……<br>
-その顔は見えない。<br>
+我和光一起前往探險的犬鳴隧道，據說通往某個神祕的村落。<br>
+隧道裡籠罩著詭異的靜寂，只有腳步聲在回蕩。<br>
+這時，走在一旁的光突然停下腳步，嘴唇顫抖著低聲說：<br>
+「為什麼……要殺了我……？」<br>
+我驚訝地向後退，卻在一顆石頭上絆倒，隨即失去了意識──<br>
+再次睜開眼時，看見幾道詭異的人影正在笑著，還有一個焦黑扭曲、痛苦掙扎的人形。<br>
+突然間，有什麼東西掐住了我的脖子……但我看不清那張臉。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">サイコロを振った出目の合計で、<br>相手の手から必死にもがく！</font></strong></p>
+    <strong><font color="#EA0000">透過擲骰子，依照點數拼命掙脫對方的手吧！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('奇数なら')">① 奇数なら。（体力−1、元のルートに沿って2マス戻る。）</button>
-    <button class="option-btn" onclick="showResult('偶数なら')">② 偶数なら。（霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('奇数')">① 奇数。（體力−1，沿著原路退回2格。）</button>
+    <button class="option-btn" onclick="showResult('偶数')">② 偶数。（靈壓+3）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -208,15 +260,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "奇数なら": "意識を失って、もがくこともできない。",
-        "偶数なら": "光の呼ぶ声が聞こえ、必死にもがいて現実へ戻る。",
+        "奇数": "失去了意識，無法掙脫。",
+        "偶数": "聽見光的呼喚，拼命掙扎著回到現實。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

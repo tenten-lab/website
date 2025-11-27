@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>香川の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,43 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>香川県−首切峠</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='kagawa.html'">日本語</button>
+    <button onclick="location.href='kagawa-ch.html'">中文</button>
+  </div>
   <img src="kagawa.png" alt="香川" class="story-image">
 
   <div class="story-text">
 おかしい…目の前は真っ暗だ…私は夢を見ているのだろうか…<br>
 「蓮は…？」たしか一緒に香川の実家へ帰って今寝るはずなのに…<br>
 ふと前を見ると、なぜここに地蔵が…どこかで見たことがある…<br>
-その瞬間、思い出した。<br>
-帰り道に通った「首切峠」の標識、そして道端の地蔵…<br>
-まさかこれが蓮の言っていた「首切地蔵」か？<br>
+その瞬間、思い出した。帰り道に通った「首切峠」の標識、そして道端の地蔵…まさかこれが蓮の言っていた「首切地蔵」か？<br>
 すると突然、遠くから首のない武者のような者がこちらへ歩いてくる。<br>
 口の中で「憎き長宗我部元親…」と呟きながら…。<br>
 どうしよう…こっちに来る…どうすれば…<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">武者の魂を解放するには、サイコロを上に投げ、3回連続でキャッチしよ！</font></strong></p>
+    <strong><font color="#EA0000">武者の魂を解放するには、サイコロを上に投げ、3回連続でキャッチしよう！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('成功したら')">① 成功したら。（霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('失敗したら')">② 失敗したら。（左へ2マス進む、霊圧−2） </button>
+    <button class="option-btn" onclick="showResult('成功')">① 成功。（霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('失敗')">② 失敗。（左へ2マス進む、霊圧−2） </button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -210,15 +260,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "成功したら": "魂を無事に解放し、夢から覚めた。",
-        "失敗したら": "武者の魂に支配され、夢の中に囚われる。",
+        "成功": "魂を無事に解放し、夢から覚めた。",
+        "失敗": "武者の魂に支配され、夢の中に囚われた。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

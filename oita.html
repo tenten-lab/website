@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,39 +210,43 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>大分県−少年兵の像</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='oita.html'">日本語</button>
+    <button onclick="location.href='oita-ch.html'">中文</button>
+  </div>
   <img src="oita.png" alt="大分" class="story-image">
 
   <div class="story-text">
-夜の散歩中、色あせた少年兵の銅像の前で足を止めた。<br>
+夜の散歩中、色あせた少年兵の像の前で足を止めた。<br>
 祖父によると、これは日露戦争で亡くなった兵士を慰霊するための像らしい。<br>
 「まだこんなに若かったのに……」と私は呟いた。<br>
 そのとき、銅像の右手がゆっくりと上がり始めた。<br>
-気がつけば、周囲の風景は戦場のように歪んでいく……。<br>
+気がつけば、周囲の風景は戦場のように歪んでいた……。<br>
 どうして、こんなことに……。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">今は自分を守らなければならない！<br>3秒以内に軍事装備、用品を三つ答える。</font></strong></p>
+    <strong><font color="#EA0000">今は自分を守らなければならない！<br>3秒以内に軍事装備、用品を3つ答える。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('できたら')">① できたら。（霊圧+1、左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('できなかったら')">② できなかったら。（体力+1、霊圧−2）</button>
+    <button class="option-btn" onclick="showResult('成功')">① 成功。（霊圧+1、左へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('失敗')">② 失敗。（体力+1、霊圧−2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -206,15 +259,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "できたら": "自分を守って、兵士の魂を解放する。",
-        "できなかったら": "戦場に巻き込まれて死ぬ。",
+        "成功": "自分を守って、兵士の魂を解放した。",
+        "失敗": "戦場に巻き込まれて死んだ。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

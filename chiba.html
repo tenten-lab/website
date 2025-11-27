@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>千葉の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,51 +210,57 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>千葉県−八幡の藪知らず</h1>
-
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='chiba.html'">日本語</button>
+    <button onclick="location.href='chiba-ch.html'">中文</button>
+  </div>
   <img src="chiba.png" alt="千葉" class="story-image">
 
   <div class="story-text">
-「もう、ヤダ！」<br> 
+「もう、ヤダ！」<br>
 私は怒りにまかせて家を飛び出した。<br>
 どれくらい走ったのかも分からない。<br>
-ただ、気がつけばあまり来たことのない小さな神社に辿り着いていた。<br>
-境内の端に腰を下ろし、息を整える。<br> 
-「ママはバカ……もう……」<br> 
-そう呟いていると、いつの間にか時間が経っていた。<br>
-ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br> 
-「くみちゃん……」<br> 
-――ママ？<br> 
-時計を見ると、すでに午前三時を回っていた。帰らなきゃ、と思い立ち、その光の方へと歩き出す。<br>
-近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br> 
-「ママ？」呼びかけてみたが、返事はない。足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
+気がつけば、あまり来たことのない小さな神社に辿り着いていた。<br>
+古びた木の札には「不知森神社」と書かれている。<br>
+境内の端に腰を下ろし、息を整える。<br>
+「ママのバカ……もう……」<br>
+そう呟いているうちに、いつの間にか時間が経っていた。<br>
+ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br>
+「くみちゃん……」<br>
+――ママ？<br>
+腕時計を見ると、すでに午前三時を回っていた。<br>
+帰らなきゃ……そう思い、光の方へ歩き出す。<br>
+近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br>
+「ママ？」呼びかけてみたが、返事はない。<br>
+足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
 その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。<br>
-「だ……れ？」<br> 
-その人頭が低く囁く。<br> 
+「だ……れ？」<br>
+その頭が低く囁く。<br>
 「私の体を見つけてくれ……そうすれば帰してやろう……」<br>
    <p style="text-align: center;">
-   <strong><font color="#EA0000">左隣のプレイヤーとサイコロを振り合い、目の大きさを比べる。</font></strong></p>
+   <strong><font color="#EA0000">左隣のプレイヤーと1個のサイコロを振り合い、出目の大きさを比べる。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('大')">① 大。（体力+1、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('小')">② 小。（体力+2、霊圧−1）</button>
+    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（体力+1、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('敗北')">② 敗北。（体力−2、霊圧−1）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -218,15 +273,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "大": "平将門の屍体を見つけ出し、無事に帰宅できる。",
-        "小": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見される。 ",
+        "勝利": "その首は、実際に歴史上有名な将軍・平将門のものであった。彼の体部分を見つけ出し、無事に帰宅できた。",
+        "敗北": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見された。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

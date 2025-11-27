@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,24 +210,27 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>静岡県−きさらぎ駅</h1>
-
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='shizuoka.html'">日本語</button>
+    <button onclick="location.href='shizuoka-ch.html'">中文</button>
+  </div>
   <img src="shizuoka.png" alt="静岡" class="story-image">
 
   <div class="story-text">
@@ -187,7 +239,7 @@
 地図にも時刻表にも載っていない駅だった。<br>
 街灯だけがぼんやりと光り、ホームには人影がない。<br>
 隣の涼太も無言で立ち尽くしている。<br> 
-「……ここ、どこだ？」私は小さく呟いた。<br> 
+「……ここは、どこ？」私は小さく呟いた。<br> 
 「分からない……でも、戻れない気がする」<br>
 涼太の声も震えていた。<br>
 <p style="text-align: center;">
@@ -195,8 +247,8 @@
   </div>
 
   <div class="options"> 
-<button class="option-btn" onclick="showResult('ネットで調べる。')">① ネットで調べる。（体力−3、霊圧+2）</button> 
-<button class="option-btn" onclick="showResult('涼太と手をつないで歩き回る。')">② 涼太と手をつないで歩き回る。（一番近い特殊イベントマスに移動する）</button> 
+<button class="option-btn" onclick="showResult('ネットで調べる')">① ネットで調べる。（体力−3、霊圧+2）</button> 
+<button class="option-btn" onclick="showResult('涼太と手をつないで歩き回る')">② 涼太と手をつないで歩き回る。（一番近い特殊イベントマスに移動する）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -209,15 +261,15 @@
   <script>
     function showResult(choice) {
     const text = { 
-"ネットで調べる。": "昔ここに来た人の書き込みを見つけた。しかし最後の文字は「助けて」だけだった。", 
-"涼太と手をつないで歩き回る。": "少し安心するが、気を抜くと背後に何かが迫ってくる気がした。", 
+"ネットで調べる": "昔ここに来た人の書き込みを見つけた。しかし最後の文字は「助けて」だけだった。", 
+"涼太と手をつないで歩き回る": "少し安心するが、気を抜くと背後に何かが迫ってくる気がした。", 
 };  
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

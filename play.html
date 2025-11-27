@@ -3,54 +3,122 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>抽籤システム</title>
+<title>くじ｜抽籤システム</title>
 <style>
+  /* ===== 全局背景設定：和首頁一致 ===== */
   body {
     margin: 0;
     font-family: "Noto Serif JP", serif;
+    min-height: 100vh;
     background: url('都市伝説巡り.png') no-repeat center center fixed;
     background-size: cover;
-    color: #600030;
-    display: block; /* 改成 block 避免 flex 導致固定元素偏移 */
+    color: #f5e6e6;
   }
 
-  /* 標題區 */
-  .title-box {
+  /* 手機版用另一張背景圖的話，可以換這個檔名 */
+  @media (max-width: 768px) {
+    body {
+      background-image: url('都市伝説巡り.png'); /* 若沒有就先用同一張也可以 */
+      background-position: center top;
+    }
+  }
+
+  /* ===== 頂部標題（跟首頁風格一樣的發光膠囊） ===== */
+  .hero-header {
     position: fixed;
-    top: 0;
+    top: 24px;
     left: 0;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    pointer-events: none; /* 讓點擊不被吃掉 */
+  }
+
+  .title-wrap {
+    pointer-events: auto;
+    background: radial-gradient(circle at 50% 0,
+                rgba(255,0,0,0.2),
+                rgba(0,0,0,0.9) 60%,
+                rgba(0,0,0,0.98) 100%);
+    padding: 10px 32px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,100,120,0.7);
+    box-shadow:
+        0 0 18px rgba(255,0,0,0.7),
+        0 0 40px rgba(0,0,0,0.95);
+    backdrop-filter: blur(3px);
     text-align: center;
-    background: rgba(255,255,255,0.8);
-    z-index: 10;
-    padding: 20px 0;
-    line-height: 1.3;
   }
 
-  .title-ja {
-    font-size: 48px;
-    color: #CE0000;
-    font-weight: bold;
-    margin: 0;
+  .title-main {
+    font-size: 28px;
+    color: #ffe6e6;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-shadow:
+      0 0 8px rgba(255,80,80,0.9),
+      0 0 18px rgba(0,0,0,1);
   }
 
-  .title-zh {
-    font-size: 22px;
-    color: #4D0000;
-    font-weight: 600;
-    margin-top: 5px;
+  .title-sub {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+    color: #ffcccc;
+    letter-spacing: 2px;
   }
 
-  /* 抽籤區 */
+  @media (max-width: 768px) {
+    .title-wrap {
+      padding: 8px 22px 10px;
+    }
+    .title-main {
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+    .title-sub {
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+  }
+
+  /* ===== 內容區：中間放一塊發光石板 ===== */
+  .page-inner {
+    padding: 160px 16px 40px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
   .lottery-box {
-    background: rgba(255, 245, 245, 0.9);
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    padding: 30px;
-    margin: 160px auto 20px; /* 上方留空給固定標題 */
-    width: 90%;
-    max-width: 500px;
+    background: radial-gradient(circle at 20% 0,
+                rgba(255,255,255,0.16),
+                rgba(40,0,0,0.95) 65%,
+                rgba(0,0,0,0.98) 100%);
+    border-radius: 18px;
+    box-shadow:
+      0 12px 30px rgba(0,0,0,0.7),
+      0 0 18px rgba(255,120,150,0.35);
+    padding: 26px 20px 24px;
+    width: 100%;
+    box-sizing: border-box;
     text-align: center;
+    border: 1px solid rgba(255,170,190,0.6);
+    backdrop-filter: blur(4px);
+  }
+
+  .lottery-box h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #ffe6e6;
+    letter-spacing: 1px;
+  }
+
+  .lottery-box p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #ffecec;
   }
 
   textarea, button {
@@ -59,36 +127,52 @@
     border: none;
     border-radius: 8px;
     font-size: 16px;
+    font-family: inherit;
   }
 
   textarea {
-    width: 80%;
-    box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+    width: 90%;
+    max-width: 440px;
+    box-shadow: inset 0 1px 4px rgba(0,0,0,0.4);
+    background: rgba(20,0,0,0.85);
+    color: #ffeaea;
+    border: 1px solid rgba(255,200,210,0.6);
+    resize: vertical;
   }
 
   button {
-    background-color: #FFB5B5;
-    color: #600030;
-    font-weight: bold;
+    background: linear-gradient(135deg, #ffb5b5, #ff8a9a);
+    color: #4b0010;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
   }
 
   button:hover {
-    background-color: #FF9797;
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+  }
+
+  .mode-buttons button {
+    min-width: 180px;
   }
 
   .result {
-    margin-top: 20px;
-    background: white;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    margin-top: 18px;
+    background: rgba(10,0,0,0.92);
+    border-radius: 12px;
+    padding: 14px 14px 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.8);
     text-align: left;
     opacity: 0;
-    transform: scale(0.9);
-    transition: all 0.4s ease;
+    transform: scale(0.95);
+    transition: all 0.35s ease;
+    border: 1px solid rgba(255,170,190,0.7);
+    color: #ffecec;
+    max-height: 260px;
+    overflow-y: auto;
   }
 
   .result.show {
@@ -96,11 +180,59 @@
     transform: scale(1);
   }
 
+  .result h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #ffd4da;
+  }
+
+  .result p {
+    margin: 4px 0;
+    font-size: 14px;
+  }
+
+  /* 終點抽選的「金框特效」 */
+  .gold-frame {
+    border: 2px solid gold;
+    background: radial-gradient(circle at 50% 0,
+                #3a0000,
+                #120000 60%);
+    animation: sparkle 1.6s infinite alternate;
+  }
+
+  @keyframes sparkle {
+    from { box-shadow: 0 0 10px gold; }
+    to   { box-shadow: 0 0 26px gold; }
+  }
+
+  /* 抽籤按鈕旋轉小特效 */
+  .draw-button {
+    transition: transform 0.5s ease;
+  }
+  .spinning {
+    transform: rotate(720deg);
+  }
+
+  /* 模式結束後回到一開始的按鈕 */
+  .back-btn {
+    display: none;
+    margin-top: 15px;
+    background: linear-gradient(135deg, #ffd6d6, #ff9fb0);
+    color: #4b0010;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.7);
+  }
+
+  /* 右下角回首頁按鈕（跟其他頁一致） */
   .home-btn {
     position: fixed;
     right: 20px;
     bottom: 20px;
-    background: #FFB5B5;
+    background: #ffb5b5;
     color: #600030;
     border-radius: 50%;
     width: 60px;
@@ -110,93 +242,91 @@
     align-items: center;
     font-size: 28px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.7);
+    z-index: 30;
   }
 
   .home-btn:hover {
-    background: #FF9797;
+    background: #ff9797;
   }
 
-  .draw-button {
-    transition: transform 0.5s ease;
-  }
-
-  .spinning {
-    transform: rotate(720deg);
-  }
-
-  .gold-frame {
-    border: 3px solid gold;
-    background: linear-gradient(135deg, #fff8dc, #fff);
-    animation: sparkle 1.5s infinite alternate;
-  }
-
-  @keyframes sparkle {
-    from { box-shadow: 0 0 10px gold; }
-    to { box-shadow: 0 0 25px gold; }
-  }
-
-  .back-btn {
-    display: none;
-    margin-top: 15px;
-    background-color: #FFB5B5;
-    color: #600030;
-    padding: 10px 20px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  }
-
-  .back-btn:hover {
-    background-color: #FF9797;
-  }
-
+  /* 手機調整 */
   @media (max-width: 768px) {
-    .title-ja { font-size: 28px; }
-    .title-zh { font-size: 16px; }
-    .lottery-box { padding: 20px; width: 95%; margin-top: 120px; }
-    textarea { width: 100%; font-size: 14px; height: 100px; }
-    button { font-size: 16px; padding: 8px 16px; }
-    .result { font-size: 14px; padding: 10px; }
-    .home-btn { width: 50px; height: 50px; font-size: 22px; right: 15px; bottom: 15px; }
+    .page-inner {
+      padding: 130px 12px 32px;
+    }
+    .lottery-box {
+      padding: 20px 14px 20px;
+    }
+    textarea {
+      width: 100%;
+      font-size: 14px;
+    }
+    button {
+      font-size: 14px;
+      padding: 8px 14px;
+    }
+    .result {
+      font-size: 13px;
+      max-height: 220px;
+    }
+    .home-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 22px;
+      right: 14px;
+      bottom: 14px;
+    }
   }
 </style>
 </head>
 <body>
 
-<div class="title-box">
-  <div class="title-ja">くじ</div>
-  <div class="title-zh">抽籤</div>
-</div>
+<!-- ===== 頂部發光標題（跟首頁一樣風格） ===== -->
+<header class="hero-header">
+  <div class="title-wrap">
+    <span class="title-main">くじ</span>
+    <span class="title-sub">抽籤 − 運命の分かれ道 −</span>
+  </div>
+</header>
 
-<div class="lottery-box" id="modeSelect">
-  <p>抽選モードを選んでください：</p>
-  <p>請選擇抽籤模式：</p>
-  <button onclick="chooseMode('first')">第一回合抽選 🎲</button>
-  <button onclick="chooseMode('end')">終點抽選 🏁</button>
-</div>
-
-<!-- 抽籤主框 -->
-<div class="lottery-box" id="lotteryBox" style="display:none;">
-  <!-- 第一回合 -->
-  <div id="firstRound">
-    <p>プレイヤーの名前を入力してください（改行で複数入力）</p>
-    <p>請輸入玩家名字（每個名字一行）</p>
-    <textarea id="playerNames" rows="5" placeholder="例：えみ&#10;れい&#10;たろう"></textarea><br>
-    <button class="draw-button" onclick="drawLots()">GO！ 🎲</button>
+<div class="page-inner">
+  <!-- 模式選擇區 -->
+  <div class="lottery-box" id="modeSelect">
+    <h2>抽選モードを選んでください</h2>
+    <p>請選擇抽籤模式：</p>
+    <div class="mode-buttons">
+      <button onclick="chooseMode('first')">第一回合抽選 🎲</button>
+      <button onclick="chooseMode('end')">終點抽選 🏁</button>
+    </div>
   </div>
 
-  <div id="endRound" style="display:none;">
-    <p>ランダムに目的地を抽選します</p>
-    <p>隨機抽選目的地</p>
-    <button class="draw-button" onclick="drawEnd()">抽選開始 🏁</button>
-  </div>
+  <!-- 抽籤主框 -->
+  <div class="lottery-box" id="lotteryBox" style="display:none;">
+    <!-- 第一回合 -->
+    <div id="firstRound">
+      <h2>第一回合抽選</h2>
+      <p>プレイヤーの名前を入力してください（改行で複数入力）</p>
+      <p>請輸入玩家名字（每個名字一行）</p>
+      <textarea id="playerNames" rows="5" placeholder="例：えみ&#10;れい&#10;たろう"></textarea><br>
+      <button class="draw-button" onclick="drawLots(event)">GO！ 🎲</button>
+    </div>
 
- <!-- 結果 -->
-  <div id="result" class="result"></div>
-  <button id="backBtn" class="back-btn" onclick="goBack()">もどる ⬅️ 返回</button>
+    <!-- 終點抽選 -->
+    <div id="endRound" style="display:none;">
+      <h2>終点抽選</h2>
+      <p>ランダムに目的地を抽選します。</p>
+      <p>將從 47 都道府縣中隨機抽出一個終點。</p>
+      <button class="draw-button" onclick="drawEnd(event)">抽選開始 🏁</button>
+    </div>
+
+    <!-- 結果 -->
+    <div id="result" class="result"></div>
+    <button id="backBtn" class="back-btn" onclick="goBack()">もどる ⬅️ 返回模式選擇</button>
+  </div>
 </div>
+
+<!-- 右下角回首頁 -->
 <a href="index.html" class="home-btn">🏠</a>
 
 <script>
@@ -215,7 +345,9 @@ function chooseMode(mode) {
   document.getElementById('modeSelect').style.display = 'none';
   document.getElementById('lotteryBox').style.display = 'block';
   document.getElementById('result').innerHTML = '';
+  document.getElementById('result').className = 'result';
   document.getElementById('backBtn').style.display = 'none';
+
   if (mode === 'first') {
     document.getElementById('firstRound').style.display = 'block';
     document.getElementById('endRound').style.display = 'none';
@@ -225,27 +357,42 @@ function chooseMode(mode) {
   }
 }
 
-function drawLots() {
-  const btn = event.target;
+function drawLots(e) {
+  const btn = e.target;
   btn.classList.add('spinning');
+
   setTimeout(() => {
     btn.classList.remove('spinning');
+
     const input = document.getElementById("playerNames").value.trim();
-    if (!input) return alert("名前を入力してください！");
+    if (!input) {
+      alert("名前を入力してください！");
+      return;
+    }
+
     let players = input.split(/\n+/).filter(Boolean);
-    if (players.length > 5) return alert("5人までです！");
+    if (players.length > 5) {
+      alert("5人までです！");
+      return;
+    }
+
+    // 打亂順序
     players = players.sort(() => Math.random() - 0.5);
 
     let available = [...prefectures];
     let startPoints = [];
+
+    // 每人不同起點
     players.forEach(() => {
       const idx = Math.floor(Math.random() * available.length);
       startPoints.push(available[idx]);
       available.splice(idx, 1);
     });
 
+    // 共通終點
     const endPoint = prefectures[Math.floor(Math.random() * prefectures.length)];
-    let resultHTML = "<h3>🎲 結果 🎲</h3>";
+
+    let resultHTML = "<h3>🎲 第一回合結果 🎲</h3>";
     players.forEach((p, i) => {
       resultHTML += `<p><strong>${i + 1}. ${p}</strong> — スタート地点：<b>${startPoints[i]}</b> → 目的地：<b>${endPoint}</b></p>`;
     });
@@ -254,26 +401,30 @@ function drawLots() {
     resultDiv.innerHTML = resultHTML;
     resultDiv.classList.add('show');
     document.getElementById('backBtn').style.display = 'inline-block';
-  }, 1000);
+  }, 900);
 }
 
-function drawEnd() {
-  const btn = event.target;
+function drawEnd(e) {
+  const btn = e.target;
   btn.classList.add('spinning');
+
   setTimeout(() => {
     btn.classList.remove('spinning');
+
     const endPoint = prefectures[Math.floor(Math.random() * prefectures.length)];
     const resultDiv = document.getElementById("result");
-    resultDiv.innerHTML = `<h3>🏁 終点結果 🏁</h3><p><strong>${endPoint}</strong> が選ばれました！</p>`;
-    resultDiv.classList.add('gold-frame', 'show');
+    resultDiv.innerHTML =
+      `<h3>🏁 終點結果 🏁</h3><p><strong>${endPoint}</strong> が選ばれました！</p>`;
+    resultDiv.className = 'result gold-frame show';
     document.getElementById('backBtn').style.display = 'inline-block';
-  }, 1000);
+  }, 900);
 }
 
 function goBack() {
   document.getElementById('modeSelect').style.display = 'block';
   document.getElementById('lotteryBox').style.display = 'none';
   document.getElementById('result').innerHTML = '';
+  document.getElementById('result').className = 'result';
 }
 </script>
 

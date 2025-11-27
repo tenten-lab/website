@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,44 +210,47 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>滋賀県−琵琶湖</h1>
-
+  <h1>滋賀縣−琵琶湖</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='shiga.html'">日本語</button>
+    <button onclick="location.href='shiga-ch.html'">中文</button>
+  </div>
   <img src="shiga.png" alt="滋賀" class="story-image">
 
   <div class="story-text">
-「組長…あっち、もう片付いたっす… 」<br>
-口封じのため、わざわざ死体を投げ入れても浮かばない琵琶湖を選んだんだ…<br>
-この計画はうまくいくはずだ…<br>
-「そろそろ帰ろう…夜が明ける前に…」<br>
-帰ろうととしたその時、足を滑らせた私は湖に落ちてしまった。<br>
-「 組長！組長！」子分の呼ぶ声がどんどん遠ざかっていく…<br>
-目を開けると、湖底に数十人の人影が見えた…<br>
-鎧を身に着けているようだ。<br>
-そんな…ありえない…まさか幽霊…？<br> 
+「老大…那邊已經處理好了…」<br>
+為了將人徹底滅口，特別選在傳說中屍體投進去也不會浮出的琵琶湖…<br>
+看來這個計畫應該會成功…<br>
+「差不多要撤退了…趁還沒有天亮前…」<br>
+正要離開時，突然間腳步不穩的我跌入了湖中<br>
+「老大!老大! 」小弟的呼喊聲漸漸地越來越遠…<br>
+當我睜開眼，發現湖底出現數十名的人影…身上似乎還穿著盔甲<br>
+不可能…怎麼可能…難道是幽靈…<br>
+眼看那些人影就要朝著我游過來..<br> 
 <p style="text-align: center;">
-    <strong><font color="#EA0000">早く岸へ…息がもう続かない…<br>二個のサイコロで脱出してみよう！</font></strong></p>
+    <strong><font color="#EA0000">必須快游向岸邊……呼吸已快撐不住……<br>試著用兩個骰子逃脫吧！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('振りたサイコロのうち、「6」が出れば')">① 振りたサイコロのうち、「6」が出れば。（体力−2、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('「6」以外の数字なら')">② 「6」以外の数字なら。（霊圧−1）</button> 
+<button class="option-btn" onclick="showResult('若擲出的骰子中有「6」')">① 若擲出的骰子中有「6」。（體力−2，抽一張道具卡）</button> 
+<button class="option-btn" onclick="showResult('若骰子點數都不是「6」')">② 若骰子點數都不是「6」。（靈壓−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,8 +263,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"振りたサイコロのうち、「6」が出れば": "一気に水面へ泳ぎ上がる！", 
-"「6」以外の数字なら": "どんどん沈んでいく…", 
+"若擲出的骰子中有「6」": "一口氣游上水面！", 
+"若骰子點數都不是「6」": "越來越沉下去…", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -220,7 +272,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

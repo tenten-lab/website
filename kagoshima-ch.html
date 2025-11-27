@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鹿児島の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,41 +210,43 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>鹿児島−巨頭才</h1>
+  <h1>鹿兒島−巨頭才</h1>
 
-  <img src="kagoshima.png" alt="鹿児島" class="story-image">
-
+  <img src="kagoshima.png" alt="鹿兒島" class="story-image">
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='kagoshima.html'">日本語</button>
+    <button onclick="location.href='kagoshima-ch.html'">中文</button>
+  </div>
   <div class="story-text">
-「おかしいな…確かにこの道のはずだ」<br>
-数年前に来た深い山の村で、いい旅館に泊まって今日はまた行きたかった。<br>
-どれだけ走ったか分からないが、突然「巨頭才」と書かれた看板が見えた。<br>
-「変な感じがするけど、とりあえず見に行こう」<br>
-着くと荒れた村だけがあった。<br>
-不気味で急いで帰ろうとした。<br>
-その時、巨大な顔で下半身が小さい化け物が近づいてきた。<br>
-驚いて車に乗り、逃げ出した…巨大な顔がどんどん迫ってくる…<br>
+「奇怪…我明明記得是這條路阿」幾年前來這座深山的村莊，住了一間很不錯的旅館，希望今天可以再度拜訪。<br>
+不知道開了多久…眼前突然出現寫著「巨頭才」的看板..<br>
+「好奇怪的感覺…還是去看看好了」<br>
+當到達目的地只看一座荒涼的村莊，強烈的怪異感催促著我趕快離開<br>
+當要離開時突然間一個巨大的臉，下半身非常小的怪物朝著裡過來<br> 
+受到驚嚇的我連忙坐上車要逃出村莊…眼看那個巨大的臉越來越近..<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">2個のサイコロを同時に振り、<br>困難を突破してみよう！</font></strong></p>
+    <strong><font color="#EA0000">同時擲出兩顆骰子<br>試著突破困境吧！</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('同じ目が出れば')">① 同じ目が出れば（霊圧+2、道具をもらう）</button>
-    <button class="option-btn" onclick="showResult('違い目が出れば')">②違い目が出れば（体力−3、霊圧−1）</button>
+    <button class="option-btn" onclick="showResult('擲出相同點數')">① 擲出相同點數。（靈壓+2，獲得一件道具）</button>
+    <button class="option-btn" onclick="showResult('擲出不同點數')">② 擲出不同點數。（體力−3、靈壓−1）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -208,15 +259,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "同じ目が出れば": "正しい道を見つけ、無事に脱出する。",
-        "違い目が出れば": "森の中で道に迷ってしまう。",
+        "擲出相同點數": "找到了正確的道路，成功脫困。",
+        "擲出不同點數": "在森林中迷失了方向。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

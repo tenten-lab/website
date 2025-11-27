@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>京都の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -221,7 +221,6 @@
         padding: 20px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -232,26 +231,25 @@
     <button onclick="location.href='kyoto.html'">日本語</button>
     <button onclick="location.href='kyoto-ch.html'">中文</button>
   </div>
-
   <img src="kyoto.png" alt="京都" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br>
+頭が痛い……何も思い出せない……。<br>
+どうして私がここにいるのだろう？<br>
+手の中には何かがある……これは「水かけみくじ」！？<br>
+そうだ、私は貴船神社に参拝に来たんだ。<br>
+でも……この雰囲気は一体……？<br>
+あそこに……誰かが……藁人形を打ちつけている……女？<br>
+その女性は私に気づき 、こちらに向かって叫んだ。<br>
+「あんたね……私の家庭を壊したのは！呪ってやる！！」<br>
     <p style="text-align: center;">
 <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない(体力－1、霊圧－1)</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ(体力－2、右へ進む)</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる(体力－3、霊圧＋2)</button>
+    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない。（体力+3、霊圧−1）</button>
+    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ。(体力−4、右へ2マス進む)</button>
+    <button class="option-btn" onclick="showResult('すぐに逃げる')">③ すぐに逃げる。(体力—4、霊圧+2)</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -264,16 +262,16 @@
   <script>
     function showResult(choice) {
       const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
+        "恐怖で動けない": "逃げたいけど、体が言うことを聞かない。",
+        "とっさに隠れて助けを待つ": "よかった！あの女に見つからなさそうだ。",
+        "すぐに逃げる": "追いつかれそうになったから、大声で叫んでいた。",
       };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

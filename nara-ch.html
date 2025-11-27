@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,44 +210,47 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>奈良県−屯鶴峯防空壕</h1>
-
+  <h1>奈良縣−屯鶴峯防空壕</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='nara.html'">日本語</button>
+    <button onclick="location.href='nara-ch.html'">中文</button>
+  </div>
   <img src="nara.png" alt="奈良" class="story-image">
 
   <div class="story-text">
-「おい、山田…本当に行くのか…？」<br> 
-歴史の授業で先生が言った第二次世界大戦で残したあの屯鶴峯防空壕。<br>
-探検チャンネルの企画だと言って、山田に無理やり連れてこられた。<br> 
-森を抜け、ようやく辿り着いた壕は、真っ暗な口を開けていて懐中電灯を持っていても、闇の圧に息が詰まりそうになる。<br>
-少し歩いたあと、山田が立ち止まり、震えながら言った。 <br>
-「か、壁に…」 <br>
-光を当てると、作業服を着た男の影が浮かび上がった――。<br>
-反応する間もなく…<br>
-次の瞬間、人の顔がいきなり目の前に迫ってきた…。<br>
+「喂，山田…你真的要去嗎…？」<br>
+歷史課上老師曾提到的……第二次世界大戰時留下的那個屯鶴峯防空洞。<br>
+說是為了探險頻道的企劃，被山田硬拉著來了。<br>
+穿過森林，終於抵達了防空壕，黑暗的大口正張開著。<br>
+即使手上拿著手電筒，也感覺快被黑暗壓迫窒息。<br>
+這時，山田停下腳步，顫抖著說：<br>
+「牆、上面有……」<br>
+當光照過去時，一個穿著工作服的男人的影子浮現――。<br>
+還沒等反應，下一秒，一張人臉突然逼近了眼前……<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">やばい！驚いて懐中電灯を落として壊れた...あたりは真っ暗だ…。<br>一個のサイコロで出口を探せ！</font></strong></p>
+    <strong><font color="#EA0000">糟了！驚嚇之下手電筒掉落壞了……周圍一片漆黑。<br>用一顆骰子來尋找出口吧！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('出目が5以上')">① 出目が5以上。（体力+2、右へ2マス進む）</button> 
-<button class="option-btn" onclick="showResult('出目が5未満')">② 出目が5未満。（体力−4、霊圧+3）</button>  
+<button class="option-btn" onclick="showResult('點數為5以上')">① 點數為5以上。（體力+2、右移2格）</button> 
+<button class="option-btn" onclick="showResult('點數為5未滿')">② 點數為5未滿。（體力−4、靈壓+3）</button>  
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,8 +263,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"出目が5以上": "カバンのマッチに気づき、火をつけて出口を見つける。", 
-"出目が5未満": "壁を手探りしながら出口を探す。",  
+"點數為5以上": "注意到包包裡的火柴，點燃後找到了出口。", 
+"點數為5未滿": "一邊摸索牆壁一邊尋找出口。",  
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -220,7 +272,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

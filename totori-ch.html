@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,41 +210,45 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>鳥取県−米子城の人柱</h1>
-
+  <h1>鳥取縣−米子城的活人獻祭</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='totori.html'">日本語</button>
+    <button onclick="location.href='totori-ch.html'">中文</button>
+  </div>
   <img src="totori.png" alt="鳥取" class="story-image">
 
   <div class="story-text">
-天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で雨に洗われ、工事の進捗は非常に芳しくなかった。<br> 
-「主公、天守閣がまた流されました……このままでは……」<br>
-どうすべきか途方に暮れていると、そのときある大臣が提案した。<br> 
-「祟りを鎮めるには人柱を立てるしかありません。特に、村で最も容貌優れた娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」<br> 
-その直後、十六歳にも満たない一人の少女が押し込まれてきた。少女は声を上げて叫ぶ。<br> 
-「なぜ城を造るために人を生け贄にするのですか！もし私がここで葬られるなら、私は死しても、この城を決して許さない！」<br>
+天正19年，我們打算在湊山興建城池，但天守閣總是在施工途中遭遇大雨沖毀，工程進度一直無法推進。<br>
+「主公，天守閣又倒塌了……照這樣下去……」<br>
+正當大家不知如何是好時，一名大臣提出建議：<br>
+「要平息這個詛咒，唯有活人獻祭可行。特別是獻上村中美麗的少女。我們已找到一名名叫久美的少女，只待主公批准！」<br>
+隨後，一名未滿十六歲的少女被推了進來。<br>
+她大聲喊叫：「為什麼要為了建城而獻上人命！如果我被葬在這裡，即便死去，我也絕不會原諒這座城！」<br>
     <p style="text-align: center;">
-<strong><font color="#EA0000">いま、あなたは吉川広家として、
-<br>次の選択肢のいずれを選び、行動を決める。</font></strong></p>
+<strong><font color="#EA0000">現在，你作為吉川廣家
+<br>從下列選項中選擇行動。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('大臣の提案どおり、久美を人柱として差し出すことを認める。')">① 大臣の提案どおり、久美を人柱として差し出すことを認める。（体力+1、霊圧 -2） </button>
-    <button class="option-btn" onclick="showResult('人柱の執行を断固として差し止める。')">② 人柱の執行を断固として差し止める。（体力−2、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('代替の祭祀や神事を提案する。')">③ 代替の祭祀や神事を提案する。（体力−1、霊圧+1） </button>
+    <button class="option-btn" onclick="showResult('按照大臣的建議，批准以久美作為祭品獻出')">① 按照大臣的建議，批准以久美作為祭品獻出。（體力+1、靈壓 -2） </button>
+    <button class="option-btn" onclick="showResult('阻止活人獻祭儀式')">② 阻止活人獻祭儀式。（體力−2、靈壓+2）</button>
+    <button class="option-btn" onclick="showResult('以祭祀或神事代替活人獻祭')">③ 以祭祀或神事代替活人獻祭。（體力−1、靈壓＋1） </button>
 
   </div>
 
@@ -209,16 +262,16 @@
   <script>
     function showResult(choice) {
      const text = {
-        "大臣の提案どおり、久美を人柱として差し出すことを認める。": " 雨は止み工事ははかどる。しかし領内には深い悲しみと不満が広がり、後年それが禍根を残すだろう。あなたの名は功績と同時に冷酷さで語られる。",
-        "人柱の執行を断固として差し止める。": "領民からは称賛されるが、天候は依然として味方せず、工事は難航する。",
-        "代替の祭祀や神事を提案する。": "久美は救われ、城は無事に完成した。やがてその城は人柱の呪いに怯えることなく繁栄し、人々から祟りを退けた城として語り継がれるようになった。",
+        "按照大臣的建議，批准以久美作為祭品獻出": "然而雨停了，工程順利進行。領內卻充滿深沉的悲傷與不滿，這將在往後留下禍根。你的名聲以「功績與冷酷」被世人流傳。",
+        "阻止活人獻祭儀式": "領民對你讚譽有加，但天氣依然不佳，工程依然艱難。",
+        "以祭祀或神事代替活人獻祭": "久美得以獲救，城池順利完成。最終這座城不再被活人獻祭的詛咒威脅，繁榮昌盛，被譽為「成功驅除詛咒的城」。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

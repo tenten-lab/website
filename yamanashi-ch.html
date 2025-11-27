@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>山梨の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,45 +210,49 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>山梨県−青木ヶ原樹海</h1>
-
+  <h1>山梨縣−青木原樹海</h1>
+  <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='yamanashi.html'">日本語</button>
+    <button onclick="location.href='yamanashi-ch.html'">中文</button>
+  </div>
   <img src="yamanashi.png" alt="山梨" class="story-image">
 
   <div class="story-text">
-「コンパス……壊れてないよな？」<br> 
-友人の涼子が青ざめた顔でつぶやく。<br> 
-針は同じ場所で揺れ続け、森の奥行きを示さない。<br>
-鬱蒼とした木々に囲まれ、昼なのに薄暗い。<br> 
-足元には古びた靴やロープが散乱している。<br>
-突然、「戻れないよ」という声が響き、涼子の姿が消えた。<br> 
-胸の奥に嫌な予感が広がる。<br> 
+「指南針……應該沒壞吧？」<br>
+朋友涼子臉色蒼白地說著。<br>
+指針一直在同一個位置不停擺動，使我們無法繼續深入森林內部。<br>
+被茂密的樹木包圍，明明是白天卻顯得格外陰森。<br>
+腳邊散落著破舊的鞋子和繩索。<br>
+耳邊突然響起一聲「回不去了」之後，涼子的身影便消失了。<br>
+「涼子......？」<br>
+胸口傳來莫名不祥的預感。<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
+    <strong><font color="#EA0000">請選擇以下選項之一，決定行動。</font></strong></p>
   </div>
 
 <div class="options"> 
 
-<button class="option-btn" onclick="showResult('コンパスを信じて進む。')">① コンパスを信じて進む。（体力−1、霊圧+2）</button> 
+<button class="option-btn" onclick="showResult('相信著指南針繼續前進')">① 相信著指南針繼續前進。（體力–4，靈壓+2）</button> 
 
-<button class="option-btn" onclick="showResult('立ち止まって周囲を観察する。')">② 立ち止まって周囲を観察する。（道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('停下來觀察周圍')">② 停下來觀察周圍。（體力–3，抽1張道具卡）</button> 
 
-<button class="option-btn" onclick="showResult('声のする方向へ進む。')">③ 声のする方向へ進む。（一番近い特殊イベントマスに移動する）</button>  </div>
+<button class="option-btn" onclick="showResult('朝聲音的方向前進')">③ 朝聲音的方向前進。（體力–2，移動到距離最近的特殊事件格）</button>  </div>
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -211,18 +264,18 @@
   <script>
     function showResult(choice) {
 const text = { 
-"コンパスを信じて進む。": "どこを歩いても同じ景色。気づけば迷っていた。", 
+"相信著指南針繼續前進": "管怎麼走都只有同樣的景色，當注意到時已經迷路了。", 
 
-"立ち止まって周囲を観察する。": "涼子のカバンを見つけた。中には食糧と道具が入っている。", 
+"停下來觀察周圍": "發現了涼子的包包，裡面裝著一些食物及道具。", 
 
-" 声のする方向へ進む。": "その声に導かれ、不思議な空間に迷い込んだ。", 
+"朝聲音的方向前進": "被聲音引導到了一個不可思議的空間內。", 
  }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

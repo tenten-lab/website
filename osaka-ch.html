@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,43 +210,49 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>大阪府−千日百貨火災</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='osaka.html'">日本語</button>
+    <button onclick="location.href='osaka-ch.html'">中文</button>
+  </div>
   <img src="osaka.png" alt="大阪" class="story-image">
 
   <div class="story-text">
-「千日百貨ご来店いただき誠にありがとうございました。」<br>
-以前火災を経験したばかりだが、生活のため、怖くても働き続けなきゃいけない…<br>
-閉店の時、夏美と退勤しろうとエレベーターに乗ると、三階で突然停止。<br>
-「…え？」扉が開くと同時に、火災警報の音が鳴り響く。<br>
-おかしい…火事なんて起きていないのに…。<br>
-頭が急に痛み出し、火災警報があの日と同じ時間に鳴っていたことに気づいた...<br>
-すると.....前に見て....<br>
+「感謝您光臨千日百貨」<br>
+雖然之前才經歷過火災，但為了生活，就算害怕也必須繼續工作…<br>
+快到閉店時，我和夏美一起搭上電梯準備下班，卻在三樓突然停了下來。<br>
+正覺得奇怪時，發現原本站在旁邊的夏美不見了…<br>
+「…咦？」<br>
+電梯門打開的同時，火災警報聲響起。<br>
+奇怪…明明沒有發生火災啊…<br>
+頭忽然劇烈地疼痛起來，我才驚覺這警報響起的時間，正好與那天火災時一模一樣。<br>
+回過神時，我感覺自己已被火焰包圍――<br>
+…好熱…。<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">あなたは何を見ましたか？</font></strong></p>
+    <strong><font color="#EA0000">你看到了什麼？</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('火事もないのに炎が見える')">① 火事もないのに炎が見える。（霊圧−2、自由に三歩移動する）</button> 
-<button class="option-btn" onclick="showResult('刑場のような幻影を見った')">② 刑場のような幻影を見った。（体力−3、霊圧+2）</button> 
-<button class="option-btn" onclick="showResult('照明が点滅していてる')">③ 照明が点滅していてる。（体力+2、霊圧−1）</button> 
+<button class="option-btn" onclick="showResult('雖然沒有火災卻看見了火焰')">① 雖然沒有火災卻看見了火焰。（靈壓−2，可自由移動三步）</button> 
+<button class="option-btn" onclick="showResult('看到了像刑場般的幻影')">② 看到了像刑場般的幻影。（體力−5，靈壓+2）</button> 
+<button class="option-btn" onclick="showResult('燈光閃爍不定')">③ 燈光閃爍不定。（體力+2，靈壓−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -210,9 +265,9 @@
   <script>
     function showResult(choice) {
    const text = { 
-"火事もないのに炎が見える": "あれ？何か火がこっちに来た！とにかく早く逃げろ！", 
-"刑場のような幻影を見った": " 突然江戸時代の伝説を思い出した 。", 
-"照明が点滅していてる": "あそこに誰か…..。", 
+"雖然沒有火災卻看見了火焰": "啊？火焰好像朝這邊來了！快逃！", 
+"看到了像刑場般的幻影": " 突然想起了江戶時代的傳說。", 
+"燈光閃爍不定": "那裡好像有人…。", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -220,7 +275,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

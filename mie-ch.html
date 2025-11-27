@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,45 +210,49 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>三重県−橋北中学校水難事件</h1>
-
+  <h1>三重縣−橋北中學水難事件</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='mie.html'">日本語</button>
+    <button onclick="location.href='mie-ch.html'">中文</button>
+  </div>
   <img src="mie.png" alt="三重" class="story-image">
 
   <div class="story-text">
-夏、海岸の付近で橋北中学校の水泳訓練が始まる。<br>
-「今年も参加したくないな…」と思いながら、波の音と同級生の笑い声が聞こえてくる。<br>
-だが、おかしいことに波が急に高くなり、海面に巨大な大波が巻き起こった。<br>
-周りからたくさんの悲鳴が聞こえ、巨大な波が自分に襲いかかろうとしている。<br>
-波の中には、防空頭巾をかぶった数十人の人が見えた…<br>
-周囲には戦闘機の音や爆弾の爆発音も響いている。<br>
-「なぜこんな光景が…」<br>
-怖くて岸に向かって泳ごうとしたが、足に何かが絡みついたようだ…<br>
-これもしかして防空頭巾だろうか？<br>
+夏天，在海岸附近開始了橋北中學的游泳訓練。<br>
+「今年也真不想參加啊……」一邊這麼想著，波浪聲和同學們的笑聲在耳邊響起。<br>
+但是，總覺得……波浪越來越高了。<br>
+就在那一瞬間，海面捲起了巨大的浪潮。<br>
+周圍傳來許多人的尖叫聲，巨浪正朝我襲來。<br>
+浪中出現了戴著防空頭巾的數十個人……<br>
+周圍響起戰鬥機和炸彈爆炸的聲音。<br>
+為什麼會出現這樣的景象……<br>
+我害怕地想朝岸邊游去，卻感覺腳被什麼東西纏住了……<br>
+這難道也是防空頭巾嗎？<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">これからあなたはどうするのか？選んでください。</font></strong></p>
+    <strong><font color="#EA0000">接下來你會怎麼做？請選擇。</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('足に絡みついた防空頭巾を振りほどく')">① 足に絡みついた防空頭巾を振りほどく。（体力−5、霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('大声で助けを呼ぶ。')">② 大声で助けを呼ぶ。（体力−3由に2マス移動する）</button> 
-<button class="option-btn" onclick="showResult('波に巻き込まれないように必死で浮く')">③ 波に巻き込まれないように必死で浮く。（体力+3、霊圧−1）</button> 
+<button class="option-btn" onclick="showResult('甩掉纏在腳上的防空頭巾')">① 甩掉纏在腳上的防空頭巾。（體力−5、靈壓+1）</button> 
+<button class="option-btn" onclick="showResult('大聲呼救')">② 大聲呼救。（體力−3、自由移動2格）</button> 
+<button class="option-btn" onclick="showResult('拼命漂浮以免被波浪捲走')">③ 拼命漂浮以免被波浪捲走。（體力+3）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -212,9 +265,9 @@
   <script>
     function showResult(choice) {
    const text = { 
-"足に絡みついた防空頭巾を振りほどく": "最後の力を振り絞って、やっと振りほどいた。", 
-"大声で助けを呼ぶ。": "誰かがこっちに来た！私の声が聞こえたみたいだ！", 
-"波に巻き込まれないように必死で浮く": "普段の訓練のおかげで、十分な体力があって波に巻き込まれない。", 
+"甩掉纏在腳上的防空頭巾": "最後的力氣用盡，終於甩掉了纏在腳上的防空頭巾。", 
+"大聲呼救": "有人朝這邊過來了！好像聽到了我的聲音！", 
+"拼命漂浮以免被波浪捲走": "多虧了平時的訓練，有足夠的體力沒有被波浪捲走。", 
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -222,7 +275,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,39 +210,42 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>宮崎県−青島グリーンパーク</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='miyazaki.html'">日本語</button>
+    <button onclick="location.href='miyazaki-ch.html'">中文</button>
+  </div>
   <img src="miyazaki.png" alt="宮崎" class="story-image">
 
   <div class="story-text">
-「皆さん、肝試し大会へようこそ！これからグループに分かれて、この青島グリーンパークを探索していただきます！今日は思いっきり楽しんでくださいね！」<br>
+「皆さん、肝試し大会へようこそ！これからグループに分かれて、この青島グリーンパークを探索していきましょう！今日は思いっきり楽しんでくださいね！」<br>
 周囲に廃墟となった売店や飲食店を見て、静けさと不気味さに満ちていた。<br>
 「こんなカッコいい廃墟初めて！撮らなきゃ！」と陽太はカメラで撮影を始めた。<br>
-少し歩くと、どこからか子供の笑い声が……<br>
-他の参加者の声じゃない？<br>
-振り向くと、陽太が真っ青な顔でカメラを見つめ、「写ってる…人影が…」と言って倒れた....<br>
+少し歩くと、どこからか子供の笑い声が……他の参加者の声じゃない？<br>
+振り向くと、陽太が真っ青な顔でカメラを見つめ、「写ってる…人影が…」と言って倒れた……<br>
     <p style="text-align: center;">
     <strong><font color="#EA0000">周囲に商店の廃墟を見つめて...<br>3秒以内に飲食店を3つ答える。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('できたら')">① できたら。（体力−2、霊圧+3）</button>
-    <button class="option-btn" onclick="showResult('できなかったら')">② できなかったら。（霊圧−2）</button>
+    <button class="option-btn" onclick="showResult('成功')">① 成功。（体力−2、霊圧+3）</button>
+    <button class="option-btn" onclick="showResult('失敗')">② 失敗（霊圧−2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -206,15 +258,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "できたら": "陽太が目を覚まし、同時に仲間もあなたたちを見つけた。",
-        "出目の合計が6以下": "異空間から脱出できない。",
+        "成功": "陽太が目を覚まし、同時に仲間もあなたたちを見つけた。",
+        "失敗": "異空間から脱出できない。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

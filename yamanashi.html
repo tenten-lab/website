@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,24 +210,27 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>山梨県−青木ヶ原樹海</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='yamanashi.html'">日本語</button>
+    <button onclick="location.href='yamanashi-ch.html'">中文</button>
+  </div>
   <img src="yamanashi.png" alt="山梨" class="story-image">
 
   <div class="story-text">
@@ -186,20 +238,20 @@
 友人の涼子が青ざめた顔でつぶやく。<br> 
 針は同じ場所で揺れ続け、森の奥行きを示さない。<br>
 鬱蒼とした木々に囲まれ、昼なのに薄暗い。<br> 
-足元には古びた靴やロープが散乱している。<br>
+足元には古びた靴やロープが散らばっている。<br>
 突然、「戻れないよ」という声が響き、涼子の姿が消えた。<br> 
-胸の奥に嫌な予感が広がる。<br> 
+胸の奥に嫌な予感が広がっていった。<br> 
 <p style="text-align: center;">
     <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
   </div>
 
 <div class="options"> 
 
-<button class="option-btn" onclick="showResult('コンパスを信じて進む。')">① コンパスを信じて進む。（体力−1、霊圧+2）</button> 
+<button class="option-btn" onclick="showResult('コンパスを信じて進む')">① コンパスを信じて進む。（体力−4、霊圧+2）</button> 
 
-<button class="option-btn" onclick="showResult('立ち止まって周囲を観察する。')">② 立ち止まって周囲を観察する。（道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('立ち止まって周囲を観察する')">② 立ち止まって周囲を観察する。（体力−3、道具カードを1枚引く）</button> 
 
-<button class="option-btn" onclick="showResult('声のする方向へ進む。')">③ 声のする方向へ進む。（一番近い特殊イベントマスに移動する）</button>  </div>
+<button class="option-btn" onclick="showResult('声のする方向へ進む')">③ 声のする方向へ進む。（体力−2、一番近い特殊イベントマスに移動する）</button>  </div>
 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -211,18 +263,18 @@
   <script>
     function showResult(choice) {
 const text = { 
-"コンパスを信じて進む。": "どこを歩いても同じ景色。気づけば迷っていた。", 
+"コンパスを信じて進む": "どこを歩いても同じ景色。気づけば迷っていた。", 
 
-"立ち止まって周囲を観察する。": "涼子のカバンを見つけた。中には食糧と道具が入っている。", 
+"立ち止まって周囲を観察する": "涼子のカバンを見つけた。中には食糧と道具が入っている。", 
 
-" 声のする方向へ進む。": "その声に導かれ、不思議な空間に迷い込んだ。", 
+"声のする方向へ進む": "その声に導かれ、不思議な空間に迷い込んだ。", 
  }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

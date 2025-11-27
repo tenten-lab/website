@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,43 +210,45 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>高知県−スカイレストニュー室戸</h1>
-
+  <h1>高知縣−Sky Rest New室戸</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='kochi.html'">日本語</button>
+    <button onclick="location.href='kochi-ch.html'">中文</button>
+  </div>
   <img src="kochi.png" alt="高知" class="story-image">
 
   <div class="story-text">
-家族で海を見に行くが、室戸スカイラインを走り続けても景色はずっと森のまま。<br>
-「ねぇパパ、まだ着かないの？」<br>
-突然、父が細い道の前で車を止めた。<br>
-そこには朽ち果てたレストランのような廃墟...<br>
-「スカイレストニュー室戸…？すごく綺麗なレストランだな、入ってみよう<br>
-「え…？どう見ても廃墟なのに…気づいていないの？何で…待って、行かないで…！」<br>
-両親はまるで何かに導かれるように「ようこそ」と書かれた入口へ――<br>
-背後から、不気味な笑い声が響いた…<br>
+在全家前往海邊的途中，車子一直行駛在室戶天空之路上，沿途的景色始終是一片森林。<br>
+「爸爸，我們還沒到嗎？」我問道。<br>
+突然，爸爸在一條小路前停下了車。那裡有一棟殘破不堪、像是廢墟的餐廳建築。<br>
+「Sky Rest New室戸……？這麼漂亮的餐廳居然在這種地方，我們進去看看吧。」<br>
+「不對，那明明就是廢墟啊……為什麼會這樣……不要進去啊！」<br>
+爸媽彷彿被什麼東西吸引了一樣，朝著寫著「歡迎光臨」的入口走去――<br>
+就在這時，從我背後傳來一陣詭異的笑聲……<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">これからどうなるのか？<br>選んでください。</font></strong></p>
+    <strong><font color="#EA0000">接下來會發生什麼？<br>請選擇。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('両親を追いかける。')">① 両親を追いかける。（体力−4、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('背後からの声に怯えた。')">② 背後からの声に怯えた。（体力−1）</button>
-    <button class="option-btn" onclick="showResult('石を拾い、振り返り後ろへ攻撃')">③ 石を拾い、振り返り後ろへ攻撃！（霊圧−3、道具を1つもらう）</button>
+    <button class="option-btn" onclick="showResult('我立馬上前追趕父母')">① 我立馬上前追趕父母。（體力−4、靈壓+2）</button>
+    <button class="option-btn" onclick="showResult('被背後傳來的聲音嚇到')">② 被背後傳來的聲音嚇到。（體力−1）</button>
+    <button class="option-btn" onclick="showResult('撿起石頭，回頭攻擊')">③ 撿起石頭，回頭攻擊！（靈壓−3、獲得一件道具）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -210,16 +261,16 @@
   <script>
     function showResult(choice) {
      const text = {
-        "両親を追いかける。": "追いかけた後、両親の手を掴んで、前に行かせない。",
-        "背後からの声に怯えた": " 体がすくんで動けない。 ",
-        "石を拾い、振り返り後ろへ攻撃": "見えないけれど、石が確かに何かに当たった。",
+        "我立馬上前追趕父母": "追趕後，我抓住父母的手，不讓他們再往前走。。",
+        "被背後傳來的聲音嚇到": "身體僵住，動彈不得。",
+        "撿起石頭，回頭攻擊": "雖然看不見，但石頭確實擊中了什麼。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

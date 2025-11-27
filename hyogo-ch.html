@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>兵庫の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,44 +210,48 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>兵庫県−火垂るの墓の少女像</h1>
-
+  <h1>兵庫縣−螢火蟲之墓的少女像</h1>
+ <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='hyogo.html'">日本語</button>
+    <button onclick="location.href='hyogo-ch.html'">中文</button>
+  </div>
   <img src="hyogo.png" alt="兵庫" class="story-image">
 
   <div class="story-text">
-（夕暮れ時の満池谷墓地）<br>
-母に「そろそろ帰るから遠くへ行かないで」と言われたが、好奇心に駆られて一人であちこち歩き回っていた。<br>
-「…少女の像？横に左耳の欠けたウサギも…」。<br>
-両親とお墓参りに来ていた私は、偶然その像を見つけた。<br>
-不思議なことに、周囲に人影はないのに、子供の泣き声が聞こえてきた。<br>
-声をたどると、耳のないウサギと遊ぶ少女の姿が――<br>
-「…あれって、さっき見た像じゃ…」<br>
-恐怖で震える私に、少女はゆっくりと振り向き、こう言った。<br>
-「…いっしょに遊ぶ…？」<br>
+(傍晚時分在滿池谷墓地)<br>
+雖然媽媽對我說：「差不多要回家了，不要跑太遠喔。」<br>
+但我因為好奇心作祟，一個人到處亂晃。<br>
+「……少女的雕像？旁邊還有一隻缺了一隻耳朵的兔子……」<br>
+和父母一起來掃墓的我，偶然發現了這尊雕像。<br>
+奇怪的是，周圍明明沒有半個人，卻傳來小孩子的哭聲。<br>
+我循著聲音走去，看見一個女孩正和缺耳的兔子玩耍——<br>
+「……那不是剛才看到的雕像嗎……」<br>
+我因恐懼而顫抖，女孩卻緩緩轉過身，對我說：<br>
+「……要一起玩嗎……？」<br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">こんな状況でやるしかない！<br>次のプレイヤーと「あっち向いてホイ」のゲームをしよう！</font></strong></p>
+    <strong><font color="#EA0000">在這種情況下只能跟她玩了！<br>和下一位玩家玩「黑白切」的遊戲吧！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('勝ったら')">① 勝ったら。（霊圧+3）</button> 
-<button class="option-btn" onclick="showResult('負けたら')">② 負けたら。（右へ1マス進む、霊圧−1）</button> 
+<button class="option-btn" onclick="showResult('勝利')">① 勝利。（霊圧+3）</button> 
+<button class="option-btn" onclick="showResult('敗北')">② 敗北。（向右前進1格、靈壓−1）</button> 
   </div>
 
   <div id="resultModal" class="modal">
@@ -211,8 +264,8 @@
   <script>
     function showResult(choice) {
    const text = { 
-"勝ったら": "少女が突然消えてしまう 。", 
-"負けたら": "体が動かなくなり、少女がこちらに近づいてくる。",  
+"勝利": "少女突然消失。", 
+"敗北": "身體無法動彈，少女慢慢向你靠近。",  
 }; 
 
       document.getElementById("resultText").innerText = text[choice];
@@ -220,7 +273,7 @@
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

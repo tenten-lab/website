@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,47 +210,47 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>石川県−UFOの街</h1>
-
+<div class="language-switch">
+    <button onclick="location.href='ishigawa.html'">日本語</button>
+    <button onclick="location.href='ishigawa-ch.html'">中文</button>
+  </div>
   <img src="ishigawa.png" alt="石川" class="story-image">
 
   <div class="story-text">
-羽咋市は「UFOの街」として知られ、昔から奇妙な目撃談が絶えない。<br> 
-その噂を確かめるため、夜の田んぼへ足を運んだ。<br>
-ふと、不気味な光がふわりと浮かび上がる。慌ててカメラを構え、息を呑んだ。 <br>
-「……UFO？」 <br>
+羽咋市は「UFOの街」として知られ、昔から奇妙な目撃談が絶えない。<br>
+その噂を確かめるため、夜の田んぼへ足を運んだ。ふと、不気味な光がふわりと浮かび上がる。<br>
+慌ててカメラを構え、息を呑んだ。<br>
+「……UFO？」<br>
 光の中心には、仏具のシンバルのような円盤があった。<br>
-金属のように鈍く輝き、ゆっくりと回転している。<br>
-次の瞬間、「キーン……」という耳鳴りが走り、視界がぐにゃりと歪んだ。<br> 
-「……体が動かない！」<br> 
+金属のように鈍く輝き、ゆっくりと回転している。次の瞬間、「キーン……」という耳鳴りが起こり、視界が歪んだ。<br>
+「……体が動かない！」<br>
 円盤はゆっくり降りてきて、頭上を覆い尽くす。<br>
-影に包まれた途端、鳥の声も風の音も消えた。<br>
-息が詰まる静寂の中、私は呟いた。<br> 
+影に包まれた途端、鳥の声も風の音も消えた。息が詰まる静寂の中、私は呟いた。<br>
 「……ここ、本当に地球なのか？」<br>
  <p style="text-align: center;">
     <strong><font color="#EA0000">UFOにさらわれ、宇宙人と出会った。どうする？</font></strong></p>
   </div>
 
 <div class="options"> 
-<button class="option-btn" onclick="showResult('宇宙人と友達になる。')">① 宇宙人と友達になる。（道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('隠れて様子を見る。')">② 隠れて様子を見る。（体力+2、霊圧+1）</button> 
-<button class="option-btn" onclick="showResult(' UFO内部を探索する。')">③ UFO内部を探索する。（自由に2マス移動する）</button> 
+<button class="option-btn" onclick="showResult('宇宙人と友達になる')">① 宇宙人と友達になる。（道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('隠れて様子を見る')">② 隠れて様子を見る。（体力+2、霊圧+1）</button> 
+<button class="option-btn" onclick="showResult('UFO内部を探索する')">③ UFO内部を探索する。（自由に2マス移動する）</button> 
 </div> 
   <div id="resultModal" class="modal">
     <div class="modal-content">
@@ -213,16 +262,16 @@
   <script>
     function showResult(choice) {
    const text = { 
-"宇宙人と友達になる。": "宇宙人から不思議なプレゼントを受け取った。", 
-"隠れて様子を見る。": "恐怖が少しおさまり、体の力が戻った。", 
-" UFO内部を探索する。": "この場所に関する手掛かりを探し始めた。", 
+"宇宙人と友達になる": "宇宙人から不思議なプレゼントを受け取った。", 
+"隠れて様子を見る": "恐怖が少しおさまり、体の力が戻った。", 
+"UFO内部を探索する": "この場所に関する手掛かりを探し始めた。", 
 }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

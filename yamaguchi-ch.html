@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,39 +210,42 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>山口県−メリーさんの家</h1>
-
+  <h1>山口縣−瑪莉的家</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='yamaguchi.html'">日本語</button>
+    <button onclick="location.href='yamaguchi-ch.html'">中文</button>
+  </div>
   <img src="yamaguchi.png" alt="山口" class="story-image">
 
   <div class="story-text">
-「ママ…ママ…」<br>
-耳元で娘の声が聞こえ、目を開けると目の前は血に染まった床。<br>
-娘と夫が倒れている。手にはいつの間にか包丁を握っていた。<br>
-私は混乱し、崩れ落ちるように床に座った。<br> 
-どうすればいいのだろう…。<br>
+「媽媽……媽媽……」<br>
+耳邊傳來女兒的聲音，我睜開眼睛，眼前卻是一地染血的地板。<br>
+女兒和丈夫倒在血泊中，而我手中，不知何時已握著一把菜刀。<br>
+我陷入混亂，精神幾乎崩潰，坐在地板上。<br>
+我該怎麼辦……？<br>
     <p style="text-align: center;">
-<strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
+<strong><font color="#EA0000">請從以下選項中選擇一個，決定接下來的行動。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('キッチンに向かう')">① キッチンに向かう。（体力−1、道具カードを一枚引く） </button>
-    <button class="option-btn" onclick="showResult('ピアノの前に立つ')">② ピアノの前に立つ。（体力−1、左へ2マス進む）</button>
+    <button class="option-btn" onclick="showResult('走向廚房')">① 走向廚房。（體力−3、抽1張道具卡） </button>
+    <button class="option-btn" onclick="showResult('站在鋼琴前')">② 站在鋼琴前。（體力−2、向左移動2格）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -206,15 +258,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "キッチンに向かう": "もう一振りの包丁を手に取った瞬間、魂はこの家に縛り付けられてしまった。",
-        "ピアノの前に立つ": "家族と過ごした幸せな思い出を思い出し、冷静になって警察に連絡することを決める。" ,
+        "走向廚房": "當你再抓起一把菜刀時，靈魂被困在這個家中，無法逃離。",
+        "站在鋼琴前": "回想起與家人共度的幸福時光，你冷靜下來，決定聯絡警方。" ,
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>京都的物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -29,30 +29,31 @@
       z-index: 1;
     }
 
-    /* 語言切換框固定 */
-   .lang-switch {
-  position: fixed;       /* 改成 fixed 就不會跟著滾動 */
-  top: 0;                /* 緊貼頁面最上方 */
-  right: 20px;           /* 右側間距 */
-  background: rgba(255,255,255,0.9);
-  padding: 5px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  z-index: 20;           /* 保證在標題上面或可調整 */
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-}
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
 
-    .lang-switch a {
-      text-decoration: none;
-      color: #cc3388;
-      font-weight: bold;
-      margin: 0 5px;
-      transition: color 0.2s;
-    }
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
 
-    .lang-switch a:hover {
-      color: #ff66b2;
-    }
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
 
     .content {
       padding: 160px 20px 20px 20px; 
@@ -65,7 +66,7 @@
     }
 
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -73,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -89,6 +91,7 @@
     /* 故事文字 */
   .story-text {
   max-width: 700px;
+  text-align: left;
   margin: 20px auto;
   font-size: 20px;
   line-height: 1.8;
@@ -181,11 +184,13 @@
         margin-top: 20px;
       }
      
-     .lang-switch {
-        top: 40px;
-        right: 10px;
-        font-size: 12px;
-        padding: 4px 8px;
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
       }
 
      .content {
@@ -198,12 +203,12 @@
       }
 
       .story-text {
-         max-width: 90%;       /* 手機版收窄 */
-    text-align: center;   /* 可以保留置中 */
-    font-size: 16px;
-    line-height: 1.6;
-    padding: 0 10px;
-      }
+    max-width: 90% !important;
+    text-align: left !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    padding: 0 10px !important;
+  }
 
       .option-btn {
         width: 80%;
@@ -216,36 +221,35 @@
         padding: 20px;
       }
     }
-
   </style>
 </head>
 <body>
 
   <h1>京都 - 丑時參拜</h1>
-  <!-- 語言切換，固定 -->
-  <div class="lang-switch">
-    <a href="kyoto.html">日本語</a> | 
-    <a href="kyoto-ch.html">中文</a>
+   <!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='kyoto.html'">日本語</button>
+    <button onclick="location.href='kyoto-ch.html'">中文</button>
   </div>
-
-  <img src="kyouto.jpg" alt="京都" class="story-image">
+  <img src="kyoto.png" alt="京都" class="story-image">
 
   <div class="story-text">
-    頭が痛い……何も思い出せない……。<br>
-    どうして自分はここにいるのだろう？ <br>
-    手の中には何かある……これは「水かけみくじ」！？<br>
-    そうだ、私は貴船神社に参拝に来たんだ。<br>
-    でも……この雰囲気は一体……？ <br>
-    あそこに……誰かが……藁人形を打ちつけている……女？ <br>
-    その女性は私に気づき、叫んだ： <br>
-    「あんたね……私の家庭を壊したのは！呪ってやる！！」 <br><br>
-    <strong><font color="#EA0000">これからあなたはどうなるのか？選んでください。</font></strong>
+頭好痛……什麼都想不起來……<br>
+我為什麼會在這裡？<br>
+手中握著某樣東西……這是「水掛籤」！？<br>
+對了，我是來貴船神社參拜的。<br>
+但是……這種氣氛究竟是……？<br>
+那裡……有人……正在打藁人偶……是一名女子？<br>
+那名女子注意到我，朝我大喊：<br>
+「就是你……破壞我家庭的人！我要詛咒你！！」<br>
+<p style="text-align: center;">
+    <strong><font color="#EA0000">接下來你會怎麼做？請選擇。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('恐怖で動けない')">① 恐怖で動けない</button>
-    <button class="option-btn" onclick="showResult('とっさに隠れて助けを待つ')">② とっさに隠れて助けを待つ</button>
-    <button class="option-btn" onclick="showResult('女性がこちらに向かって突進してくるからすぐに逃げる')">③ 女性がこちらに向かって突進してくるからすぐに逃げる</button>
+    <button class="option-btn" onclick="showResult('因恐懼動彈不得')">① 因恐懼動彈不得。（體力+3、靈壓−1）</button>
+    <button class="option-btn" onclick="showResult('立刻躲起來等待救援')">② 立刻躲起來等待救援。（體力−4、右移2格）</button>
+    <button class="option-btn" onclick="showResult('女性向我衝來所以立刻逃跑')">③ 女性向我衝來所以立刻逃跑。（體力−4、靈壓+2）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -258,16 +262,16 @@
   <script>
     function showResult(choice) {
       const text = {
-        "恐怖で動けない": "体力－1、霊圧－1",
-        "とっさに隠れて助けを待つ": "体力－2、右へ進む",
-        "女性がこちらに向かって突進してくるからすぐに逃げる": "体力－3、霊圧＋2",
+        "因恐懼動彈不得": "想逃跑，但身體不聽使喚。",
+        "立刻躲起來等待救援": "太好了！看起來不會被那名女子發現。",
+        "女性向我衝來所以立刻逃跑": "因為快被追上，只好大聲喊叫。",
       };
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

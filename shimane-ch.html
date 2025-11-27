@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,41 +210,44 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>島根県−閉鎖された村</h1>
-
-  <img src="shimane.png" alt="島根" class="story-image">
+  <h1>島根縣−被封鎖的村莊</h1>
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='shimane.html'">日本語</button>
+    <button onclick="location.href='shimane-ch.html'">中文</button>
+  </div>
+ <img src="shimane.png" alt="島根" class="story-image">
 
   <div class="story-text">
-高校一年の冬、合宿免許を取るため島根県の辺鄙な教習所に来ていた。<br>
-そこでは、かつての同級生が「A村」という閉ざされた村に引っ越したが、その後音信不通になったという話をユウジ君から聞いた。<br> 
-7年後、好奇心に駆られ、私はその村を訪れる。<br>
-古びた村に足を踏み入れると、親切そうな老人に声をかけられ、家に招かれた。<br>
-村には現代の通信手段はなく、人々は村の掟に従い一生を村で終えることを義務づけられていた。<br> 
-歩いていると、背後から視線を感じる──<br>
-振り返ると、誰もいないはずの道の先に、微かに動く人影が見えた。<br>
+高中一年級的冬天，為了參加合宿駕照課程，我來到了島根縣一處偏僻的駕校。<br>
+當時，悠司告訴我一個故事：他的同學曾搬到名為 「A村」 的封閉村落，之後就毫無音訊了。<br>
+七年後，因為出於好奇，我決定親自拜訪這個村落。<br>
+踏入古老的村子時，一名看似和藹的老人向我打招呼，並邀我進屋。<br>
+這個村子沒有現代的通訊方式，人們必須遵守村規，終其一生都在村中生活。<br>
+在村中行走時，我突然感覺到背後有人在注視著我——<br>
+回頭望去，只見在空無一人的小路盡頭，隱約看見有人影在晃動。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">あなたは村を探索中である。<br>進むか退くかの判断をサイコロで決める。</font></strong>
+    <strong><font color="#EA0000">你正在探索村莊。<br>進還是退的決定由骰子決定。</font></strong>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('サイコロの出目 4～6')">① サイコロの出目 4～6。（霊圧+2、右へ2マス進む） </button>
-    <button class="option-btn" onclick="showResult('サイコロの出目 1～3')">② サイコロの出目 1～3。（霊圧+2、道具カードを1枚失う）</button>
+    <button class="option-btn" onclick="showResult('骰子點數 4～6')">① 骰子點數 4～6。（靈壓+2、右移2格）</button>
+    <button class="option-btn" onclick="showResult('骰子點數 1～3')">② 骰子點數 1～3。（靈壓+2、失去1張道具卡）</button>
   </div>
 
   <div id="resultModal" class="modal">
@@ -208,15 +260,15 @@
   <script>
     function showResult(choice) {
      const text = {
-        "サイコロの出目 4～6": " 村人に気づかれずに村の中心まで進める。",
-        "サイコロの出目 1～3": "不意に村人に見つかり、追いかけられる。",     
+        "骰子點數 4～6": " 沒有被村民發現，成功前進村莊的中心。",
+        "骰子點數 1～3": "被村民發現，遭到追趕。",     
     }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

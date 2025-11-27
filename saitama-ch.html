@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,59 +210,68 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>埼玉県−薬師堂のマキ</h1>
+ <h1>埼玉県−藥師堂的巨樹</h1>
+<!-- 語言切換，固定 -->
+<div class="language-switch">
+  <button onclick="location.href='saitama.html'">日本語</button>
+  <button onclick="location.href='saitama-ch.html'">中文</button>
+</div>
 
-  <img src="saitama.png" alt="琦玉" class="story-image">
+<img src="saitama.png" alt="琦玉" class="story-image">
 
-  <div class="story-text">
-残業で遅くなり、夜の荒川沿いを車で走っていた。  <br>
-ふと胸騒ぎがして、気づけばハンドルを切って「薬師堂のマキ」へと足を運んでいた。<br>
-そこは、誰も住んでいないはずの廃村のような場所。耳元のラジオからは不気味なノイズが混じり、竹林の奥で人影が揺れるのが見えた。<br>
-足を止めた瞬間、ラジオが大きな悲鳴をあげ、首を吊った霊が目の前に現れた。 <br>
-<p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、行動を決める。</font></strong></p>
+<div class="story-text">
+因為加班太晚，你在夜裡沿著荒川開車回家。<br>
+胸口突然一陣不安，回過神時，發現自己已經轉動方向盤，朝著名為「藥師堂的巨樹」的地方駛去。<br>
+那裡像是一座早已荒廢的村落，理應沒有人居住。耳邊的收音機不斷傳來詭異的雜音，竹林深處卻隱約看見人影晃動。<br>
+就在你停下腳步的瞬間，收音機突然發出刺耳的尖叫聲，一個上吊的幽靈，悄無聲息地出現在你面前。<br>
+  <p style="text-align: center;">
+    <strong><font color="#EA0000">請從以下選項中擇一，決定你的行動。</font></strong>
+  </p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('在巨樹前祈禱')">
+    ① 在巨樹前祈禱。（體力−2、靈壓+1）
+  </button>
+  <button class="option-btn" onclick="showResult('拼命逃跑')">
+    ② 拼命逃跑。（體力−5、獲得1張道具卡）
+  </button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
   </div>
+</div>
 
-  <div class="options">
-    <button class="option-btn" onclick="showResult('巨木の前で祈る')">① 巨木の前で祈る。（霊圧+1、右へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('必死に逃げる')">② 必死に逃げる。（体力+3、道具カードを1枚失う） </button>
-  </div>
-
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
-
-  <script>
-    function showResult(choice) {
-     const text = {
-        "巨木の前で祈る": "木の守りで一時的に救われる。",
-        "必死に逃げる": "逃げ延びるが転んで怪我。 ",
-      }; 
-      document.getElementById("resultText").innerText = text[choice];
-      document.getElementById("resultModal").style.display = "flex";
-    }
+<script>
+  function showResult(choice) {
+    const text = {
+      "在巨樹前祈禱": "你在巨樹前合掌祈禱，彷彿有什麼在默默守護著你——那道上吊的影子逐漸變淡，今晚你暫時得救了。",
+      "拼命逃跑": "你轉身拼命狂奔，總算甩開了那道陰影，但在慌亂中重重摔倒，膝蓋擦傷，痛得直不起身。"
+    };
+    document.getElementById("resultText").innerText = text[choice];
+    document.getElementById("resultModal").style.display = "flex";
+  }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

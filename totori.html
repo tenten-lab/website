@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,31 +210,34 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
   <h1>鳥取県−米子城の人柱</h1>
-
+<!-- 語言切換，固定 -->
+ <div class="language-switch">
+    <button onclick="location.href='totori.html'">日本語</button>
+    <button onclick="location.href='totori-ch.html'">中文</button>
+  </div>
   <img src="totori.png" alt="鳥取" class="story-image">
 
   <div class="story-text">
-天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で雨に洗われ、工事の進捗は非常に芳しくなかった。<br> 
-「主公、天守閣がまた流されました……このままでは……」<br>
-どうすべきか途方に暮れていると、そのときある大臣が提案した。<br> 
-「祟りを鎮めるには人柱を立てるしかありません。特に、村で最も容貌優れた娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」<br> 
-その直後、十六歳にも満たない一人の少女が押し込まれてきた。少女は声を上げて叫ぶ。<br> 
+天正19年、我らは湊山に城を築こうとしていたが、天守閣はいつも途中で大雨に流されてしまい、工事の進捗は全然進まなかった。<br>
+「主公、天守閣がまた崩れてしまいました……このままでは……」どうすべきか途方に暮れていると、そのときある大臣が提案した。<br>
+「祟りを鎮めるには人柱を立てるしかありません。特に、村で美しい娘を差し出すべきです。属下は久美という少女を見つけました。あとは主君のお許しを頂くだけです！」<br>
+その直後、十六歳にも満たない1人の少女が押し込まれてきた。少女は声を上げて叫ぶ。<br>
 「なぜ城を造るために人を生け贄にするのですか！もし私がここで葬られるなら、私は死しても、この城を決して許さない！」<br>
     <p style="text-align: center;">
 <strong><font color="#EA0000">いま、あなたは吉川広家として、
@@ -193,9 +245,9 @@
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('大臣の提案どおり、久美を人柱として差し出すことを認める。')">① 大臣の提案どおり、久美を人柱として差し出すことを認める。（体力+1、霊圧 -2） </button>
-    <button class="option-btn" onclick="showResult('人柱の執行を断固として差し止める。')">② 人柱の執行を断固として差し止める。（体力−2、霊圧+2）</button>
-    <button class="option-btn" onclick="showResult('代替の祭祀や神事を提案する。')">③ 代替の祭祀や神事を提案する。（体力−1、霊圧+1） </button>
+    <button class="option-btn" onclick="showResult('大臣の提案どおり、久美を人柱として差し出すことを認める')">① 大臣の提案どおり、久美を人柱として差し出すことを認める。（体力+1、霊圧 -2） </button>
+    <button class="option-btn" onclick="showResult('人柱の儀式を止めた')">② 人柱の儀式を止めた（体力−3、霊圧+2）</button>
+    <button class="option-btn" onclick="showResult('人柱の代わりに、祭祀や神事を提案する')">③ 人柱の代わりに、祭祀や神事を提案する（体力−1、霊圧+1） </button>
 
   </div>
 
@@ -209,16 +261,16 @@
   <script>
     function showResult(choice) {
      const text = {
-        "大臣の提案どおり、久美を人柱として差し出すことを認める。": " 雨は止み工事ははかどる。しかし領内には深い悲しみと不満が広がり、後年それが禍根を残すだろう。あなたの名は功績と同時に冷酷さで語られる。",
-        "人柱の執行を断固として差し止める。": "領民からは称賛されるが、天候は依然として味方せず、工事は難航する。",
-        "代替の祭祀や神事を提案する。": "久美は救われ、城は無事に完成した。やがてその城は人柱の呪いに怯えることなく繁栄し、人々から祟りを退けた城として語り継がれるようになった。",
+        "大臣の提案どおり、久美を人柱として差し出すことを認める": "雨は止み、工事は順調に進む。しかし領内には深い悲しみと不満が広がり、後年それが禍根を残すだろう。あなたの名は「功績と冷酷さ」で語られた。",
+        "人柱の儀式を止めた": "領民からは称賛されるが、天候は依然として味方せず、工事は難航する。",
+        "人柱の代わりに、祭祀や神事を提案する": "久美は救われ、城は無事に完成した。やがてその城は人柱の呪いに怯えることなく繁栄し、「祟りを退けた城」として語り継がれるようになった。",
       }; 
       document.getElementById("resultText").innerText = text[choice];
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {

@@ -29,8 +29,44 @@
       z-index: 1;
     }
 
+    /* --- 語言切換按鈕（右上角固定） --- */
+    .language-switch {
+     position: absolute;
+     top: 70px;  /* --- 位置 --- */ 
+     right: 15px;
+     display: flex;
+     gap: 8px;
+     z-index: 999;
+     }
+
+    .language-switch button {
+     background: rgba(255,255,255,0.85);
+     border: 2px solid #cc3388;
+     color: #cc3388;
+     padding: 4px 8px;
+     border-radius: 6px;
+     font-size: 12px;
+     cursor: pointer;
+     transition: all 0.2s;
+     }
+
+   .language-switch button:hover {
+    background: #cc3388;
+    color: white;
+     }
+
+    .content {
+      padding: 160px 20px 20px 20px; 
+     /* 上方留出標題和語言框空間 */
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
     /* 標題 */
-    h1 {
+   h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -38,6 +74,7 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
+
 
     /* 故事圖片 */
     .story-image {
@@ -111,10 +148,9 @@
       padding: 30px;
       border-radius: 15px;
       width: 300px;
-      text-align: left;
+      text-align: center;
       animation: fadeIn 0.4s ease;
-      line-height: 1.6; /* 字距舒適一點 */
-     }
+    }
 
     /* Modal 文字 */
     .modal-content p {
@@ -141,19 +177,32 @@
       background-color: #754b34;
     }
 
-   /* 手機響應式 */
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2em;
-    margin-top: 20px;
-  }
+    /* 手機響應式 */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+        margin-top: 20px;
+      }
+     
+     .language-switch {
+       top: 50px;   /* 可以調整上下位置 */
+       right: 10px; /* 距離右邊 */
+      }
+      .language-switch button {
+       font-size: 12px;  /* 手機字體稍大 */
+       padding: 4px 8px;
+      }
 
-  .story-image {
-    width: 80%;
-    height: auto;
-  }
+     .content {
+        padding: 140px 15px 15px 15px;
+      }
 
-  .story-text {
+      .story-image {
+        width: 80%;
+        height: auto;
+      }
+
+      .story-text {
     max-width: 90% !important;
     text-align: left !important;
     font-size: 16px !important;
@@ -161,66 +210,78 @@
     padding: 0 10px !important;
   }
 
-  .option-btn {
-    width: 80%;
-    font-size: 16px;
-    padding: 10px;
-  }
+      .option-btn {
+        width: 80%;
+        font-size: 16px;
+        padding: 10px;
+      }
 
-  .modal-content {
-    width: 80%;
-    padding: 20px;
-  }
-}
-
+      .modal-content {
+        width: 80%;
+        padding: 20px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>東京都－千駄ヶ谷トンネル</h1>
+<h1>東京都－千駄谷隧道</h1>
+<img src="tokyo.png" alt="東京" class="story-image">
 
-  <img src="tokyo.png" alt="東京" class="story-image">
+<!-- 語言切換，固定 -->
+<div class="language-switch">
+  <button onclick="location.href='tokyo.html'">日本語</button>
+  <button onclick="location.href='tokyo-ch.html'">中文</button>
+</div>
 
-  <div class="story-text">
-深夜、タクシーの中で重要な取引先と注文内容を確認していた。<br>
-「はい、現在はそのようになっております。他に追加の品目はございますか？……もしもし？」<br>
-なぜか突然、電話が自動的に切れてしまった。<br> 
-その時、運転手が突如として悲鳴を上げた。<br>
-驚いて前方を見やると――真夜中のはずなのに、目の前の光景だけが異様に鮮明だった。<br>
-そこには、全身血まみれの男が逆さにトンネルの天井からぶら下がっていたのだ。<br> 
-その直後、私の携帯電話が鳴った。<br>
-表示されたのは見たことのない番号だった――<br>
-    <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢から行動を決める。</font></strong></p>
+<div class="story-text">
+深夜，我正坐在計程車後座，一邊確認與重要客戶的訂單內容。<br>
+「是的，目前的進度就是這樣。若還有其他追加項目——喂？……喂？」<br>
+電話突然，毫無徵兆地自動掛斷。<br>
+就在同一瞬間，駕駛發出撕心裂肺的尖叫。<br>
+我嚇得抬頭望向前方——<br>
+外頭是伸手不見五指的午夜，但眼前的景象卻異常鮮明得不自然。<br>
+只見一名渾身是血的男人，倒吊在隧道天花板上，正直直地盯著我們。<br>
+下一秒，我的手機響起。<br>
+螢幕上跳出一串從未看過的陌生號碼——<br>
+  <p style="text-align: center;">
+    <strong><font color="#EA0000">請從以下選項中選擇你的行動。</font></strong>
+  </p>
+</div>
+
+<div class="options">
+  <button class="option-btn" onclick="showResult('接起電話')">
+    ① 接起電話。（體力+1）
+  </button>
+
+  <button class="option-btn" onclick="showResult('掛掉來電並撥打110')">
+    ② 掛掉來電並撥打110。（體力−3、靈壓+1）
+  </button>
+
+  <button class="option-btn" onclick="showResult('要求司機直接開過去')">
+    ③ 要求司機直接開過去。（體力−5、靈壓+2）
+  </button>
+</div>
+
+<div id="resultModal" class="modal">
+  <div class="modal-content">
+    <p id="resultText"></p>
+    <button class="home-btn" onclick="goHome()">🏠 回首頁</button>
   </div>
+</div>
 
- <div class="options">
-    <button class="option-btn" onclick="showResult('電話に出る')">① 電話に出る。（体力 +1、霊圧 -2）</button>
-    <button class="option-btn" onclick="showResult('電話を切って110番する')">② 電話を切って110番する。（体力 +1、霊圧＋1 ）</button>
-    <button class="option-btn" onclick="showResult('そのまま運転手に前進させる')"> ③そのまま運転手に前進させる。（体力 -2、霊圧 ＋2）</button>
-  </div>
-
-
-  <div id="resultModal" class="modal">
-    <div class="modal-content">
-      <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
-    </div>
-  </div>
-
-  <script>
-    function showResult(choice) {
-const text = {
-        "電話に出る": "電話口から流れてきたのはニュースの音声。内容は「本日深夜、このトンネルで一台のタクシーが自損事故を起こし、乗客と運転手は共に死亡した」というものだった。",
-        "電話を切って110番する": "警察が駆けつけ、無事に自宅まで送り届けてもらえた。",
-        "そのまま運転手に前進させる": "なんとか家にたどり着いたが、その後もたびたび血まみれの男に遭遇するようになった。",
-      }; 
-      document.getElementById("resultText").innerText = text[choice];
-      document.getElementById("resultModal").style.display = "flex";
-    }
-
+<script>
+function showResult(choice) {
+  const text = {
+    "接起電話": "電話那頭傳來的……竟然是新聞播報聲。內容是：「今日深夜，在千駄谷隧道內，一輛計程車發生自撞事故，乘客與司機皆當場死亡。」",
+    "掛掉來電並撥打110": "警方迅速抵達現場，你被平安送回家。然而回到家後，你的通話記錄裡……依然留著那通陌生的未接來電。",
+    "要求司機直接開過去": "你們衝過那名倒吊的男子，好不容易逃回家。然而從那天起，你開始頻繁在鏡子、窗戶、甚至夢境裡，看見那張血淋淋的臉。"
+  };
+  document.getElementById("resultText").innerText = text[choice];
+  document.getElementById("resultModal").style.display = "flex";
+}
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
     window.onclick = function(event) {
