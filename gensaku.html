@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>原典紹介</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ========= 全體背景 ========= */
+    body {
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      min-height: 100vh;
+      background: url('都市伝説巡り.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #3a1b0b;
+    }
+
+    /* 手機可以換成手機版背景 */
+    @media (max-width: 768px) {
+      body {
+        background-image: url('都市伝説巡り_sp.png');
+        background-position: center top;
+      }
+    }
+
+    /* ========= 頁面上方標題 ========= */
+    .top-header {
+      margin-top: 20px;
+      text-align: center;
+      padding: 10px 18px;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(255,255,255,0.35),
+                  rgba(0,0,0,0.85) 70%);
+      border-radius: 999px;
+      border: 1px solid rgba(255,190,190,0.8);
+      box-shadow: 0 0 18px rgba(0,0,0,0.7);
+      color: #ffecec;
+    }
+
+    .top-header h1 {
+      margin: 0;
+      font-size: 26px;
+      letter-spacing: 0.2em;
+    }
+
+    .top-header .sub {
+      font-size: 13px;
+      margin-top: 3px;
+      opacity: 0.9;
+      letter-spacing: 0.15em;
+    }
+
+    @media (max-width: 768px) {
+      .top-header {
+        margin-top: 16px;
+        padding: 8px 14px;
+      }
+      .top-header h1 {
+        font-size: 20px;
+      }
+      .top-header .sub {
+        font-size: 11px;
+      }
+    }
+
+    /* ========= 地區標籤 ========= */
+    .tabs {
+      margin-top: 18px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tabs button {
+      border-radius: 8px 8px 0 0;
+      border: 1px solid #b08a5b;
+      background: #f7e3c4;
+      padding: 6px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #5b3518;
+      box-shadow: 0 -1px 0 #fdf5e8 inset;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .tabs button.active {
+      background: #f2d3a0;
+      transform: translateY(-2px);
+      box-shadow:
+        0 -1px 0 #fff inset,
+        0 2px 6px rgba(0,0,0,0.45);
+      font-weight: bold;
+    }
+
+    .tabs button:hover {
+      background: #fbe1b6;
+    }
+
+    @media (max-width: 768px) {
+      .tabs button {
+        font-size: 13px;
+        padding: 6px 10px;
+      }
+    }
+
+    /* ========= 書本容器 ========= */
+    .book-wrapper {
+      margin-top: 10px;
+      padding: 18px 10px 30px;
+      max-width: 1100px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* 左右箭頭 */
+    .nav-arrow {
+      border: none;
+      background: rgba(0,0,0,0.55);
+      color: #ffecec;
+      width: 40px;
+      height: 60px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 22px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      transition: transform 0.15s, background 0.15s;
+    }
+
+    .nav-arrow:hover {
+      background: rgba(0,0,0,0.8);
+      transform: translateY(-2px);
+    }
+
+    .nav-arrow:disabled {
+      opacity: 0.35;
+      cursor: default;
+      transform: none;
+    }
+
+    @media (max-width: 768px) {
+      .book-wrapper {
+        padding: 12px;
+      }
+      .nav-arrow {
+        width: 34px;
+        height: 46px;
+        font-size: 18px;
+      }
+    }
+
+    /* ========= 書本本體 ========= */
+    .book {
+      margin: 0 14px;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(255,255,255,0.35),
+                  rgba(50,25,5,0.95) 65%);
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,220,200,0.8);
+      box-shadow:
+        0 14px 30px rgba(0,0,0,0.9),
+        0 0 18px rgba(0,0,0,0.7);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      perspective: 2000px; /* 3D 效果 */
+      box-sizing: border-box;
+    }
+
+    @media (max-width: 768px) {
+      .book {
+        grid-template-columns: 1fr;
+        max-width: 700px;
+      }
+    }
+
+    /* ========= 每一頁 ========= */
+    .page {
+      background: #fdf6e6;
+      border-radius: 10px;
+      box-shadow:
+        0 0 0 1px rgba(200,170,120,0.7) inset,
+        0 6px 20px rgba(0,0,0,0.35);
+      padding: 14px 16px;
+      box-sizing: border-box;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: transform 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .page-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 左頁 / 右頁翻動的支點 */
+    .page.left {
+      transform-origin: right center;
+    }
+    .page.right {
+      transform-origin: left center;
+    }
+
+    /* 翻頁動畫：往前（右頁翻過去） */
+    .page.right.flip-forward {
+      transform: rotateY(-180deg);
+      box-shadow:
+        -10px 0 30px rgba(0,0,0,0.7);
+    }
+
+    /* 翻頁動畫：往回（左頁翻回來） */
+    .page.left.flip-back {
+      transform: rotateY(180deg);
+      box-shadow:
+        10px 0 30px rgba(0,0,0,0.7);
+    }
+
+    /* 手機版只顯示左頁（單頁模式） */
+    @media (max-width: 768px) {
+      .page.right {
+        display: none;
+      }
+    }
+
+    /* ========= 頁內布局 ========= */
+    .page-header {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .page-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: cover;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    .page-title {
+      font-size: 15px;
+      font-weight: 900;
+      color: #5b3518;
+    }
+
+    .page-region {
+      font-size: 12px;
+      color: #9b6b33;
+      margin-top: 2px;
+    }
+
+    .page-body {
+      margin-top: 6px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #3f260f;
+    }
+
+    .page-body .jp {
+      margin-bottom: 6px;
+      white-space: pre-line;
+    }
+
+    .page-body .zh {
+      font-size: 13px;
+      color: #7b5030;
+      white-space: pre-line;
+    }
+
+    /* 日文＋中文標籤 */
+    .lang-label {
+      font-size: 11px;
+      color: #b37a3a;
+      margin-bottom: 2px;
+      letter-spacing: 0.09em;
+    }
+
+    /* ========= 頁碼 / 狀態列 ========= */
+    .status-bar {
+      margin-top: 10px;
+      margin-bottom: 14px;
+      text-align: center;
+      font-size: 13px;
+      color: #fbe9d6;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* 右下角回首頁 */
+    .home-fab {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      background: #ffb5b5;
+      color: #600030;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 26px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.85);
+      text-decoration: none;
+      z-index: 30;
+    }
+
+    .home-fab:hover {
+      background: #ff9797;
+    }
+
+    @media (max-width: 768px) {
+      .home-fab {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
+        right: 12px;
+        bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頁面標題：原典紹介（原典解說） -->
+  <div class="top-header">
+    <h1>原典紹介</h1>
+    <div class="sub">（原典解說）</div>
+  </div>
+
+  <!-- 地區標籤 -->
+  <div class="tabs">
+    <button class="tab-btn active" data-region="hokkaido" onclick="selectRegion('hokkaido')">北海道地方</button>
+    <button class="tab-btn" data-region="tohoku" onclick="selectRegion('tohoku')">東北地方</button>
+    <button class="tab-btn active" data-region="kanto" onclick="selectRegion('kanto')">関東地方</button>
+    <button class="tab-btn" data-region="chubu" onclick="selectRegion('chubu')">中部地方</button>
+    <button class="tab-btn active" data-region="kinki" onclick="selectRegion('kinki')">近畿地方</button>
+    <button class="tab-btn" data-region="chugoku" onclick="selectRegion('chugoku')">中国地方</button>
+     <button class="tab-btn active" data-region="shikoku" onclick="selectRegion('shikoku')">四国地方</button>
+    <button class="tab-btn" data-region="kyushu" onclick="selectRegion('kyushu')">九州地方</button>
+     <button class="tab-btn active" data-region="okinawa" onclick="selectRegion('okinawa')">沖縄地方</button>
+    <!-- 之後可以再加：東北 / 中部 / 関西 / 中国 / 四国 / 九州・沖縄 -->
+  </div>
+
+  <!-- 頁碼顯示 -->
+  <div class="status-bar" id="statusBar">
+    北海道：1–2ページ
+  </div>
+
+  <!-- 書本 + 箭頭 -->
+  <div class="book-wrapper">
+    <button class="nav-arrow" id="prevBtn" onclick="prevPage()">◀</button>
+
+    <div class="book">
+      <!-- 左頁 -->
+      <div class="page left">
+        <div class="page-inner">
+          <div class="page-header">
+            <img class="page-img" id="leftImg" src="" alt="">
+            <div>
+              <div class="page-title" id="leftTitle"></div>
+              <div class="page-region" id="leftRegion"></div>
+            </div>
+          </div>
+          <div class="page-body">
+            <div class="lang-label">日本語</div>
+            <div class="jp" id="leftJp"></div>
+            <div class="lang-label">（中文）</div>
+            <div class="zh" id="leftZh"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右頁 -->
+      <div class="page right">
+        <div class="page-inner">
+          <div class="page-header">
+            <img class="page-img" id="rightImg" src="" alt="">
+            <div>
+              <div class="page-title" id="rightTitle"></div>
+              <div class="page-region" id="rightRegion"></div>
+            </div>
+          </div>
+          <div class="page-body">
+            <div class="lang-label">日本語</div>
+            <div class="jp" id="rightJp"></div>
+            <div class="lang-label">（中文）</div>
+            <div class="zh" id="rightZh"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="nav-arrow" id="nextBtn" onclick="nextPage()">▶</button>
+  </div>
+
+  <!-- 回首頁 -->
+  <a href="index2.html" class="home-fab">🏠</a>
+
+<script>
+  /* ========= 故事資料（示範） =========
+     之後你只要在這裡增加每一頁的內容就好
+     一個物件 = 書的一頁
+  */
+  const storyData = {
+    hokkaido: [
+      {
+        title: "北海道 − 網走監獄",
+        regionLabel: "北海道地方・網走市",
+        img: "hokaido.png",
+        jp: "修学旅行で訪れた雪の網走監獄。\n凍えるような寒さの中、展示室に入ると、\n一体の囚人人形の眼差しに心を掴まれる。\n次の瞬間、耳元に怒号混じりの機械音が響いた。\n「早く作業を続けろ！　休むな！　お前は囚人だろうが！」\n\n頭痛とともに視界が揺れ、人形がゆっくりと手を伸ばしてくる——。",
+        zh: "在雪地中的網走監獄修學旅行。\n你踏進刺骨寒意裡的展示室時，突然被一尊囚犯人形的眼神牢牢吸住。\n下一秒，耳邊傳來吼叫與機械聲混雜的咆哮：「快給我繼續作業！不准休息！你可是囚犯啊！」\n\n頭一陣抽痛，視野開始晃動，那尊人形竟像活了一樣，慢慢朝你伸出手——。"
+      },
+      {
+        title: "北海道 − トンネルに残る声",
+        regionLabel: "北海道某所",
+        img: "hokaido.png",
+        jp: "網走からの帰り道、バスは古いトンネルを通り抜けようとしていた。\n霧のような雪がフロントガラスを叩き、車内は静まり返っている。\nふと、助手席のスピーカーから小さな囁き声が聞こえた。\n「……まだ、出られないんだ」\n\n振り向いても、そこには誰もいない。\nただ、さっき見た囚人人形の顔だけが頭から離れなかった。",
+        zh: "從網走返回的路上，巴士正要駛入一條老舊隧道。\n霧一般的雪花打在擋風玻璃上，車內安靜得只剩暖氣聲。\n這時，副駕座旁的喇叭裡傳來細微的低語：\n「……我還、出不去啊。」\n\n你猛然回頭，身後空無一人。\n腦海中卻再次浮現，那尊囚犯人形扭曲的臉。"
+      }
+    ],
+
+    kanto: [
+      {
+        title: "東京都 − 千駄ヶ谷トンネルの影",
+        regionLabel: "関東地方・東京都",
+        img: "tokyo.png",
+        jp: "深夜、タクシーの後部座席で仕事の電話をしていた。\n「はい、ではその内容で確定いたします。……もしもし？」\n突然、回線が途切れ、車内の空気が重くなる。\n\n運転手が短く悲鳴をあげた。\n前方を見ると、トンネルの天井から逆さにぶら下がる男の姿――\n血まみれの顔が、ちょうどあなたの目線の高さにあった。",
+        zh: "深夜，你坐在計程車後座講著工作電話。\n「好的，那就照這個內容確認……喂？喂？」\n通話突然中斷，車內的空氣像被壓低了幾度。\n\n司機短促地尖叫出聲。\n你抬頭望去，只見隧道天花板上，有個男人倒吊著身體，\n滿臉是血，視線剛好與你平行對上。"
+      },
+      {
+        title: "東京都 − 電話の向こう側",
+        regionLabel: "関東地方・東京都",
+        img: "tokyo.png",
+        jp: "その瞬間、あなたのスマートフォンが鳴る。\n画面には見覚えのない番号が表示されていた。\n\n恐る恐る出ると、聞こえてきたのはニュース番組の音声だった。\n『本日深夜、千駄ヶ谷トンネルにて自損事故が発生し、\n　タクシーの乗客と運転手が死亡しました――』\n\n通話は、そこでぷつりと途切れた。",
+        zh: "就在那一刻，你的手機忽然震動響起。\n螢幕上顯示著一串完全沒看過的號碼。\n\n你鼓起勇氣接起電話，耳邊卻傳來新聞播報的聲音：\n「今日深夜，千駄谷隧道發生一起自撞事故，\n　計程車內的乘客與司機皆當場身亡——」\n\n話音落下，通話也隨即中斷。"
+      }
+    ]
+  };
+
+  let currentRegion = "hokkaido";
+  let currentIndex = 0; // 指向「左頁」的頁碼（陣列 index）
+
+  const leftPageEl   = document.querySelector(".page.left");
+  const rightPageEl  = document.querySelector(".page.right");
+
+  const leftImg   = document.getElementById("leftImg");
+  const leftTitle = document.getElementById("leftTitle");
+  const leftRegion= document.getElementById("leftRegion");
+  const leftJp    = document.getElementById("leftJp");
+  const leftZh    = document.getElementById("leftZh");
+
+  const rightImg   = document.getElementById("rightImg");
+  const rightTitle = document.getElementById("rightTitle");
+  const rightRegion= document.getElementById("rightRegion");
+  const rightJp    = document.getElementById("rightJp");
+  const rightZh    = document.getElementById("rightZh");
+
+  const statusBar = document.getElementById("statusBar");
+  const prevBtn   = document.getElementById("prevBtn");
+  const nextBtn   = document.getElementById("nextBtn");
+
+  function isMobile() {
+    return window.innerWidth <= 768;
+  }
+
+  function updateStatusBar() {
+    const pages = storyData[currentRegion] || [];
+    const total = pages.length;
+    let leftNo  = currentIndex + 1;
+    let rightNo = isMobile() ? null : (currentIndex + 2 <= total ? currentIndex + 2 : null);
+    let text = currentRegionLabel(currentRegion) + "：";
+
+    if (isMobile()) {
+      text += leftNo + " / " + total + "ページ";
+    } else {
+      if (rightNo) {
+        text += leftNo + "–" + rightNo + "ページ（全" + total + "ページ）";
+      } else {
+        text += leftNo + "ページ（全" + total + "ページ）";
+      }
+    }
+    statusBar.textContent = text;
+  }
+
+  function currentRegionLabel(region) {
+    switch (region) {
+      case "hokkaido": return "北海道";
+      case "kanto":    return "関東";
+      default:         return region;
+    }
+  }
+
+  function renderPages() {
+    const pages = storyData[currentRegion] || [];
+
+    // 左頁資料
+    const leftData = pages[currentIndex];
+    if (leftData) {
+      leftImg.src = leftData.img || "";
+      leftImg.alt = leftData.title || "";
+      leftTitle.textContent  = leftData.title || "";
+      leftRegion.textContent = leftData.regionLabel || "";
+      leftJp.textContent     = leftData.jp || "";
+      leftZh.textContent     = leftData.zh || "";
+    } else {
+      leftImg.src = "";
+      leftTitle.textContent  = "";
+      leftRegion.textContent = "";
+      leftJp.textContent     = "";
+      leftZh.textContent     = "";
+    }
+
+    // 右頁資料（桌機版用）
+    const rightData = pages[currentIndex + 1];
+    if (rightData) {
+      rightImg.src = rightData.img || "";
+      rightImg.alt = rightData.title || "";
+      rightTitle.textContent  = rightData.title || "";
+      rightRegion.textContent = rightData.regionLabel || "";
+      rightJp.textContent     = rightData.jp || "";
+      rightZh.textContent     = rightData.zh || "";
+    } else {
+      rightImg.src = "";
+      rightTitle.textContent  = "";
+      rightRegion.textContent = "";
+      rightJp.textContent     = "";
+      rightZh.textContent     = "";
+    }
+
+    updateStatusBar();
+    updateButtons();
+  }
+
+  function updateButtons() {
+    const pages = storyData[currentRegion] || [];
+    const total = pages.length;
+    // 桌機一次看兩頁；手機一次看一頁
+    const step = isMobile() ? 1 : 2;
+
+    prevBtn.disabled = currentIndex <= 0;
+    // 是否還有下一頁？
+    nextBtn.disabled = currentIndex + step >= total;
+  }
+
+  function selectRegion(region) {
+    currentRegion = region;
+    currentIndex  = 0;
+    // tab 樣式
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.region === region);
+    });
+    renderPages();
+  }
+
+  function nextPage() {
+    const pages = storyData[currentRegion] || [];
+    const total = pages.length;
+    const step = isMobile() ? 1 : 2;
+
+    if (currentIndex + step >= total) return;
+
+    // 動畫：右頁往前翻
+    if (!isMobile()) {
+      rightPageEl.classList.add("flip-forward");
+      setTimeout(() => {
+        rightPageEl.classList.remove("flip-forward");
+        currentIndex += step;
+        renderPages();
+      }, 600);
+    } else {
+      // 手機只用淡淡翻動感：右頁動畫看不到，就讓左頁稍微翻一下也可以
+      rightPageEl.classList.add("flip-forward");
+      setTimeout(() => {
+        rightPageEl.classList.remove("flip-forward");
+        currentIndex += step;
+        renderPages();
+      }, 600);
+    }
+  }
+
+  function prevPage() {
+    if (currentIndex <= 0) return;
+    const step = isMobile() ? 1 : 2;
+
+    // 動畫：左頁往回翻
+    leftPageEl.classList.add("flip-back");
+    setTimeout(() => {
+      leftPageEl.classList.remove("flip-back");
+      currentIndex = Math.max(0, currentIndex - step);
+      renderPages();
+    }, 600);
+  }
+
+  // 螢幕尺寸變化時，更新按鈕狀態
+  window.addEventListener("resize", () => {
+    updateStatusBar();
+    updateButtons();
+  });
+
+  // 初始載入
+  renderPages();
+</script>
+</body>
+</html>
