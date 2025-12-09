@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +8,7 @@
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
-      font-family: "GenRyuMin TW", serif;
+      font-family: "Noto Serif JP", serif;
       color: #fff;
       text-align: center;
       overflow-x: hidden;
@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>秋田県−黒又山</h1>
+  <h1>秋田縣−黒又山</h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='hokaido.html'">日本語</button>
@@ -234,46 +278,65 @@
   <img src="akida.png" alt="秋田県" class="story-image">
 
  <div class="story-text">
-和同校遺跡研究社團的小智，一起來到了被傳為「金字塔」的黑又山。<br>
-「怎麼可能……這裡真的是外星人的基地嗎？」<br>
-我們此刻正身處黑又山的洞窟深處。<br>
-發現了一個奇怪的入口，往裡走後，竟親眼看見外星人正在將屍體製成木乃伊。<br>
-「要是被抓到……我們會怎麼樣？」<br>
-小智露出了不安的表情。<br>
-回頭的路上站著外星人，只剩左右兩條岔路可以逃。<br>
-我想往左走，但智醬堅持要往右。<br>
-――現在該怎麼辦？<br>
+
+同屬遺跡研究社的我和小智，來到了這座有著「金字塔」傳聞的黑又山。<br> 
+「沒想到……這裡竟然是外星人的基地……」 <br> 
+此刻的我們正身處在黑又山的某個洞窟深處。 <br> 
+我們在這座山上發現並進入了一個奇怪的入口後，竟然親眼看見外星人正在將屍體製成木乃伊。 <br> 
+「要是被抓到的話……不知道會發生什麼事……」 <br> 
+小智露出了不安的表情。 <br> 
+回去的路上站著一隻外星人，只剩前方的左右兩條岔路可以走。 <br> 
+我想往左走，但小智堅持要往右走。 <br> 
+――現在該怎麼辦呢？<br> 
 
 <p style="text-align: center;">
-<strong><font color="#EA0000">請和下一順位的玩家猜拳決定方向。</font></strong></p>
+<strong><font color="#EA0000">請與下個順位的玩家猜拳決定移動方向。</font></strong></p>
 </div>
 
 <div class="options">
-  <button class="option-btn" onclick="showResult('勝利')">① 勝利。（往左移動1格）</button>
-  <button class="option-btn" onclick="showResult('敗北')">② 敗北。（往右移動1格）</button>
+  <button class="option-btn" onclick="showResult('獲勝')">① 獲勝。（向左移動1格）</button>
+  <button class="option-btn" onclick="showResult('敗北')">② 敗北。（向右移動1格）</button>
 </div>
 
-<div id="resultModal" class="modal">
-  <div class="modal-content">
-    <p id="resultText"></p>
-    <button class="home-btn" onclick="goHome()">🏠 返回首頁</button>
+ <!-- 結果モーダル -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <p id="resultText"></p>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原故事介紹</button>
+        <button class="home-btn" onclick="goHome()">遊戲故事<br>一覽</button>
+      </div>
+    </div>
   </div>
-</div>
 
 <script>
 function showResult(choice) {
   const text = {
-    "勝利": "你發現了另一個出口，成功逃脫！",
-    "敗北": "你被外星人發現，最終被製成了木乃伊……",
+    "獲勝": "發現其他出口後逃脫成功。",
+    "敗北": "遇到外星人後被做成木乃伊了。 ",
   };
-      document.getElementById("resultText").innerText = text[choice];
+
+  const status = {
+        "獲勝": "向左移動1格。",
+        "敗北": "向右移動1格。",
+      };
+
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
     function goHome() {
-      window.location.href = "index.html";
+      window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {
@@ -284,3 +347,4 @@ function showResult(choice) {
 
 </body>
 </html>
+
