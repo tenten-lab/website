@@ -292,7 +292,7 @@
 <div class="options">
   <button class="option-btn" onclick="showResult('無法承受恐懼而昏了過去')">① 無法承受恐懼而昏了過去。（體力−2，向左移動1格）</button>
   <button class="option-btn" onclick="showResult('從背後聽見老師的聲音')">②從背後聽見老師的聲音。（體力+1）</button>
-  <button class="option-btn" onclick="showResult('拼命閃躲人偶伸來的雙手')">③拼命閃躲人偶伸來的雙手。（體力−4、靈壓+1）</button>
+  <button class="option-btn" onclick="showResult('拚命閃躲人偶伸來的雙手')">③拚命閃躲人偶伸來的雙手。（體力−4、靈壓+1）</button>
 </div>
 
 <!-- 結果モーダル -->
@@ -312,13 +312,13 @@
     const text = {
       "無法承受恐懼而昏了過去": "不知道過了多久，身體還是完全無法動彈。 ",
       "從背後聽見老師的聲音": "一瞬間恢復了神智。",
-      "拼命閃躲人偶伸來的雙手": "身體可以動了！雖然躲開了人偶的手，但已經沒有力氣了。",
+      "拚命閃躲人偶伸來的雙手": "身體可以動了！雖然躲開了人偶的手，但已經沒有力氣了。",
     };
 
     const status = {
         "無法承受恐懼而昏了過去": "體力 −2 ／ 向左移動1格",
         "從背後聽見老師的聲音": "體力 ＋1",
-        "拼命閃躲人偶伸來的雙手": "體力 −4 ／ 靈壓 ＋1"
+        "拚命閃躲人偶伸來的雙手": "體力 −4 ／ 靈壓 ＋1"
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";
