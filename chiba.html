@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>千葉県−八幡の藪知らず</h1>
+  <h1>千葉県 − 八幡の藪知らず</h1>
  <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='chiba.html'">日本語</button>
@@ -234,26 +278,23 @@
   <img src="chiba.png" alt="千葉" class="story-image">
 
   <div class="story-text">
-「もう、ヤダ！」<br>
-私は怒りにまかせて家を飛び出した。<br>
-どれくらい走ったのかも分からない。<br>
-気がつけば、あまり来たことのない小さな神社に辿り着いていた。<br>
-古びた木の札には「不知森神社」と書かれている。<br>
-境内の端に腰を下ろし、息を整える。<br>
-「ママのバカ……もう……」<br>
-そう呟いているうちに、いつの間にか時間が経っていた。<br>
-ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。<br>
-「くみちゃん……」<br>
-――ママ？<br>
-腕時計を見ると、すでに午前三時を回っていた。<br>
-帰らなきゃ……そう思い、光の方へ歩き出す。<br>
-近づくほどに熱気が増し、人の声のようなざわめきが耳に届いた。<br>
-「ママ？」呼びかけてみたが、返事はない。<br>
-足元に何かが引っかかり、バランスを崩して転んでしまった。<br>
-その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。<br>
-「だ……れ？」<br>
-その頭が低く囁く。<br>
-「私の体を見つけてくれ……そうすれば帰してやろう……」<br>
+
+「もう、ヤダ！」 <br>
+私は怒りにまかせて家を飛び出した。 <br>
+どれくらい走ったのかも分からない。 <br>
+気がつけば、あまり来たことのない小さな神社に辿り着いていた。 <br>
+古びた木の札には「不知森神社」と書かれている。 <br>
+境内の端に腰を下ろし、息を整える。 <br>
+「ママのバカ……もう……」 <br>
+そう呟いているうちに、いつの間にか時間が経っていた。 <br>
+ふと、強い光が差し込み、私の名前を呼ぶ声が聞こえた。 <br>
+「くみちゃん……」 <br>
+――ママ？ <br>
+その瞬間――光の中に、人の頭がふわりと浮かんでいるのが見えた。 <br>
+「だ……れ？」 <br>
+その頭が低く囁く。 <br>
+「私の体を見つけてくれ……そうすれば帰してやろう……」 <br>
+
    <p style="text-align: center;">
    <strong><font color="#EA0000">左隣のプレイヤーと1個のサイコロを振り合い、出目の大きさを比べる。</font></strong></p>
   </div>
@@ -263,10 +304,15 @@
     <button class="option-btn" onclick="showResult('敗北')">② 敗北。（体力−2、霊圧−1）</button>
   </div>
 
+  <!-- 結果モーダル -->
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原典紹介</button>
+        <button class="home-btn" onclick="goHome()">ゲームストーリー<br>一覧へ</button>
+      </div>
     </div>
   </div>
 
@@ -274,9 +320,16 @@
     function showResult(choice) {
      const text = {
         "勝利": "その首は、実際に歴史上有名な将軍・平将門のものであった。彼の体部分を見つけ出し、無事に帰宅できた。",
-        "敗北": "「不知森神社」の竹林で道に迷い、77日後、地元の小学生によって神社の門前で発見された。",
+        "敗北": "「不知森神社」の竹林で道に迷い、地元の小学生に神社の門前で発見された。 ",
       }; 
-      document.getElementById("resultText").innerText = text[choice];
+
+       const status = {
+        "勝利": "体力 +1 ／ 霊圧 +2",
+        "敗北": "体力 −2 ／ 霊圧 −1",
+      };
+
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
@@ -284,6 +337,12 @@
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {

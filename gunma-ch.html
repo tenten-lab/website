@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>群馬縣−武尊神社</h1>
+  <h1>群馬縣 - 武尊神社</h1>
  <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='gunma.html'">日本語</button>
@@ -234,60 +278,78 @@
   <img src="gunma.png" alt="群馬" class="story-image">
 
 <div class="story-text"> 
-夜裡，幾名大學生正在群馬縣綠市的武尊神社試膽。<br> 
-「沒事啦，不會真的有鬼啦。」<br> 
-他們笑著踏進鳥居的瞬間，風突然騷動起來。明明四周空無一人，卻響起沉沉的太鼓聲。<br> 
-接著，一名身穿白色和服的女子無聲地從神社深處浮現。<br> 
-她毫無表情，只是直直盯著學生們，然後緩緩開口：<br> 
-「……為何，讓祭祀斷絕了？」<br> 
-太鼓聲越來越響，像是要把心臟震碎。學生們被恐懼逼得想逃跑。<br> 
-然而，她冰冷的聲音卻如影隨形般從背後追來：<br> 
-「被遺忘……才是最深的詛咒……」<br>
+夜裡，和朋友們在群馬縣綠市的武尊神社試膽。 <br>
+「沒事啦，哪裡會有鬼啊。」小武帶著輕鬆的語氣說道。 <br>
+嘻笑著踏進鳥居的瞬間，風聲沙沙作響，明明四周空無一人，卻回盪起太鼓聲，隨後身穿白色和服的女子便出現在神社深處。 <br>
+女子毫無表情地凝視著我們，緩緩開口—— <br>
+「……為何不再祭祀了？」 <br>
+鼓聲越來越大，我們害怕到想立刻逃走。 <br>
+但她的聲音卻緊貼著背後追來： <br>
+「被遺忘……才是最深的詛咒。」 <br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">請從以下選項中選擇你的行動。</font></strong></p>
+    <strong><font color="#EA0000">請從下列選項中決定接下來的行動。</font></strong></p>
 </div>
 
 <div class="options">
-  <button class="option-btn" onclick="showResult('停下來，認真聽那名女子說話')">
-    ① 停下來，認真聽那名女子說話。（体力+2、霊圧+1）
+  <button class="option-btn" onclick="showResult('停下來好好聽她說話')">
+    ① 停下來好好聽她說話。（體力−2，靈壓+1）
   </button>
 
-  <button class="option-btn" onclick="showResult('無視她，繼續逃跑')">
-    ② 無視她，繼續逃跑。（体力+1、霊圧−3）
+  <button class="option-btn" onclick="showResult('無視並繼續逃走')">
+    ② 無視並繼續逃走。（體力−3，自由移動2格）
   </button>
 
-  <button class="option-btn" onclick="showResult('對她挑釁')">
-    ③ 對她挑釁。（体力−2、霊圧+1）
+  <button class="option-btn" onclick="showResult('挑釁女子')">
+    ③ 挑釁女子。（靈壓+5，休息1回合）
   </button>
 </div>
 
-<div id="resultModal" class="modal">
-  <div class="modal-content">
-    <p id="resultText"></p>
-    <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+<!-- 結果モーダル -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <p id="resultText"></p>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原故事介紹</button>
+        <button class="home-btn" onclick="goHome()">遊戲故事<br>一覽</button>
+      </div>
+    </div>
   </div>
-</div>
 
 <script>
 function showResult(choice) {
   const text = {
-    "停下來，認真聽那名女子說話": 
-      "你停下腳步，傾聽女子的訴說，並替她簡單祭祀。太鼓聲逐漸安靜，她的身影也慢慢散去，你們平安離開了神社。",
+    "停下來好好聽她說話": 
+      "聽完女子訴說後，獻上簡單的供品舉行祭祀，最後得以平安離開此地。 ",
 
-    "無視她，繼續逃跑": 
-      "你們拼命逃跑時被墓石絆倒，狠狠摔了一跤，痛得站不起來。",
+    "無視並繼續逃走": 
+      "途中被墓碑絆倒，受了傷。",
 
-    "對她挑釁": 
-      "你激怒了她。從那天起，女子夜夜出現在你的夢裡……冷冷地盯著你。"
+    "挑釁女子": 
+      "被女子附身，自此每個夜晚都會夢到女子，不斷被恐懼感折磨。"
   };
 
-  document.getElementById("resultText").innerText = text[choice];
-  document.getElementById("resultModal").style.display = "flex";
-}
-    function goHome() {
-      window.location.href = "index.html";
+  const status = {
+        "停下來好好聽她說話": "體力 −2 ／ 靈壓 +1",
+        "無視並繼續逃走": "體力 −3 ／ 自由移動2格",
+        "挑釁女子": "靈壓 +5 ／ 休息1回合",
+      };
+
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
+      document.getElementById("resultModal").style.display = "flex";
     }
 
+    function goHome() {
+      window.location.href = "index2.html";
+    }
+
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {

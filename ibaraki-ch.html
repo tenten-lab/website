@@ -270,7 +270,7 @@
 <body>
 <body>
 
-  <h1>茨城県 − 高野のお化け石</h1>
+  <h1>茨城縣 − 高野怪石 </h1>
   <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='ibaraki.html'">日本語</button>
@@ -279,29 +279,31 @@
   <img src="ibaraki.png" alt="茨城" class="story-image">
 
   <div class="story-text">
-「啊……好餓。但是，我已經沒有錢了。」<br>
-今天已經是流浪的第七天。<br>
-自從做生意失敗、破產後，我失去了家，只能睡在路邊或公園裡。<br>
-我正漫無目的地走著時，看到前方一個人影，正蹲在一塊大石前做著什麼。<br>
-出於好奇靠近後，他抬頭對我說：<br>
-「觀光客常會把錢丟進這塊石頭旁。如果你幫我，我可以跟你平分。」<br>
-錢……對現在的我來說確實必要。可是，這樣做真的可以嗎？<br>
-就在我抬起頭時，那塊大石的表面上——<br>
-竟然浮現出一張怒氣騰騰的老翁臉孔……。<br>
-<p style="text-align: center;"><strong><font color="#EA0000">請選擇以下其中一個行動。<br></font></strong></p>
+「啊……肚子好餓。但是，我已經沒有錢了。」 <br>
+今天是流浪的第七天。 <br>
+自從做生意失敗破產後，我失去了住處，只能在街上、公園裡過夜。 <br>
+漫無目的地走著，前方突然出現了一個人影。 <br>
+他似乎正在一塊巨大石頭前，撿拾散落一地的零錢。 <br>
+出於好奇靠近之後，對方開口說： <br>
+「經常有觀光客會投錢在這塊石頭前面。如果你幫我一起撿這些錢，我就分你一半。」 <br>
+金錢……確實是現在的我最需要的東西。 <br>
+但做這種事，真的可以嗎？ <br>
+抬起頭的瞬間—— <br>
+那塊大石的表面，竟然出現一張看起來十分憤怒的老人臉孔……！ <br>
+<p style="text-align: center;"><strong><font color="#EA0000">請從下列選項中決定接下來的行動。 <br></font></strong></p>
 </div>
 
 <div class="options">
-  <button class="option-btn" onclick="showResult('取錢')">
-    ① 從石頭取錢（體力+2、失去1張道具卡）<br>
+  <button class="option-btn" onclick="showResult('跟著一起撿石頭周圍的錢')">
+    ① 跟著一起撿石頭周圍的錢。（靈壓+1，失去1張道具卡）<br>
   </button>
 
-  <button class="option-btn" onclick="showResult('離開')">
-    ② 拒絕並離開（靈壓+1、向左移動1格）<br>
+  <button class="option-btn" onclick="showResult('拒絕並離開')">
+    ② 拒絕並離開。（移動至最近的特殊事件格）<br>
   </button>
 
-  <button class="option-btn" onclick="showResult('祈禱')">
-    ③ 向石頭中的老人祈禱（體力+1、靈壓+1）<br>
+  <button class="option-btn" onclick="showResult('向老人祈禱')">
+    ③ 向老人祈禱。（體力+2）<br>
   </button>
 </div>
 
@@ -320,18 +322,18 @@
  <script>
     function showResult(choice) {
      const text = {
-     "取錢":
-      "你確實得到了錢，但似乎觸怒了老人。那張臉從此每晚都會出現在你的夢裡……。",
-     "離開":
-      "雖然沒有得到錢，但心情卻異常輕鬆，腳步也變得穩定。",
-     "祈禱":
-      "你默默祈禱後，老人臉孔緩緩消失，腳邊掉落了一枚小銅幣。"
+     "跟著一起撿石頭周圍的錢":
+      "雖然得到了錢，但卻觸怒了老人。自此之後，老人的臉孔便夜夜出現在夢中。",
+     "拒絕並離開":
+      "沒有得到金錢，卻莫名感覺心情舒坦。",
+     "向老人祈禱":
+      "祈禱結束後，老人的臉孔便消失，而一枚硬幣則滾到了腳邊。",
   };
 
   const status = {
-        "無法承受恐懼而昏了過去": "體力 −2 ／ 向左移動1格",
-        "從背後聽見老師的聲音": "體力 ＋1",
-        "拼命閃躲人偶伸來的雙手": "體力 −4 ／ 靈壓 ＋1"
+        "跟著一起撿石頭周圍的錢": "靈壓 +1 ／ 失去1張道具卡",
+        "拒絕並離開": "移動至最近的特殊事件格。",
+        "向老人祈禱": "體力+2"
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";

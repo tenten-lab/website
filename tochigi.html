@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>栃木の物語</title>
-  <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>栃木県−殺生石</h1>
+  <h1>栃木県 − 殺生石</h1>
  <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='tochigi.html'">日本語</button>
@@ -234,38 +278,48 @@
   <img src="tochigi.png" alt="栃木" class="story-image">
 
   <div class="story-text">
-今テレビで放送しているのは、都市伝説検証企画の番組だ。<br>
-「現在、私たちは栃木県那須町・那須湯本温泉の近くにある伝説の《殺生石》の前に来ています。<br>
+今テレビで放送しているのは、都市伝説を検証する企画番組だ。<br>
+「現在、私たちは栃木県那須町・那須湯本温泉の近くにある伝説の「殺生石」の前に来ています。<br>
 皆さん、ご覧ください。この石は、生き物が近づくだけで命を落とすと言われています。<br>
-そこで今回、殻が非常に硬い亀を殺生石の前に置き、本当に死ぬのか実験してみましょう。」<br>
+そこで今回、殻が非常に硬い亀を殺生石の前に置き、本当に死んでしまうのかを実験してみましょう。」 <br>
 番組スタッフが亀を石の前に置こうとしたその時――<br>
-周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が忽然と現れた。<br>
+周囲に白い霧が立ち込め、目の前に九つの尾を持つ狐の姿が突然現れた。<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">次の選択肢のいずれかを選び、番組スタッフたちの行動を決める。</font></strong></p>
+    <strong><font color="#EA0000">1人のプレイヤーを選び、それぞれサイコロを1個ずつ振り、<br>
+      出目の合計によって番組スタッフたちの結末が変わる。 </font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('そのまま亀を殺生石に置く')">① そのまま亀を殺生石に置く。（体力−1、霊圧−2） </button>
-    <button class="option-btn" onclick="showResult('撮影カメラで九尾狐に向ける')">② 撮影カメラで九尾狐に向ける。（道具カードを1枚失う）</button>
-    <button class="option-btn" onclick="showResult('すぐに逃げ出す')">③ すぐに逃げ出す。（体力−5）</button>
-
+    <button class="option-btn" onclick="showResult('合計が「9」の場合')">① 合計が「9」の場合。（2人とも霊圧+3） </button>
+    <button class="option-btn" onclick="showResult('合計が「9」以外の場合')">② 合計が「9」以外の場合。（2人とも体力−3、霊圧−1）</button>
   </div>
 
+  <!-- 結果モーダル -->
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原典紹介</button>
+        <button class="home-btn" onclick="goHome()">ゲームストーリー<br>一覧へ</button>
+      </div>
     </div>
   </div>
 
   <script>
     function showResult(choice) {
      const text = {
-        "そのまま亀を殺生石に置く": "九尾狐が亀を救い出し、番組スタッフは呪われる。",
-        "撮影カメラで九尾狐に向ける": "無事に逃げ延び、さらに亀も放してやることができた。",
-        "すぐに逃げ出す": "九尾狐に追いつかれ、翌日目覚めたときには全員が記憶を失っており、殺生石の姿は亀の形に変わっていた。",
+        "合計が「9」の場合": "九尾狐は亀を救い出し、まるで霧のように空へと消えていった。",
+        "合計が「9」以外の場合": "九尾狐に追いつかれ、翌日目覚めたときには全員が記憶を失っており、殺生石の姿は亀の形に変わっていた。",
       }; 
-      document.getElementById("resultText").innerText = text[choice];
+
+      const status = {
+        "合計が「9」の場合": "2人とも霊圧 +3",
+        "合計が「9」以外の場合": "2人とも体力 −3 ／ 霊圧 −1",
+      };
+
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
@@ -273,6 +327,12 @@
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {
@@ -283,3 +343,4 @@
 
 </body>
 </html>
+

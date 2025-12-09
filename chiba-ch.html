@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>千葉の物語</title>
-   <style>
+ <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-<h1>千葉縣−八幡禁入之森</h1>
+<h1>千葉縣 - 八幡禁入之森</h1>
 <!-- 語言切換，固定 -->
 <div class="language-switch">
   <button onclick="location.href='chiba.html'">日本語</button>
@@ -235,52 +279,64 @@
 <img src="chiba.png" alt="千葉" class="story-image">
 
 <div class="story-text">
-「夠了，我受不了！」<br>
-我氣得衝出家門，不知道跑了多久。<br>
-等回過神時，自己已經站在一座不太熟悉的小神社前。<br>
-我坐在神社旁的角落休息。<br>
-「媽媽是笨蛋…」<br>
-一邊嘟囔著，不知不覺時間就這樣過去了。<br>
-忽然，一道強烈的光照來，伴隨著有人叫我的聲音。<br>
-「小久美……」<br>
-——媽媽？<br>
-看了看手機，已經凌晨三點。得回家了。<br>
-我朝著光的方向走去，越靠近，空氣越炙熱，耳邊傳來像是人聲般的嘈雜。<br>
-「媽媽？」我小聲呼喚，卻沒有回應。<br>
-走著走著，腳被什麼絆住，整個人摔倒在地。<br>
-就在那一瞬間——<br>
-我看見那團光裡，漂浮著一顆人頭。<br>
-「你……是誰……？」<br>
-那顆人頭低聲呢喃：<br>
-「找到我的身體……我就讓你回家……」<br>
+
+「我受夠了！」 <br>
+我氣得衝出家門。<br>
+不知跑了多久，也不清楚自己來到了哪裡。 <br>
+回過神來，我已經到了一座平時幾乎不曾來過的小神社。 <br>
+陳舊的木牌上寫著 「不知森神社」。 <br>
+我在神社的某個角落坐下，調整呼吸。 <br>
+「媽媽這個笨蛋……」 <br>
+我這樣低聲自語，不知不覺時間已經過去。 <br>
+忽然，一道強光照射過來，耳邊傳來呼喚我的聲音。 <br>
+「久美……」 <br>
+——是媽媽嗎？ <br>
+就在那一瞬間——光線中浮著一顆人頭。<br>
+「是誰……？」 <br>
+那顆頭低聲呢喃著： <br>
+「找出我的身體……我就讓你回去……」 <br>
+
 <p style="text-align: center;">
-  <strong><font color="#EA0000">和左邊的玩家各擲一次骰子，比誰點數大。</font></strong>
+  <strong><font color="#EA0000">與左側玩家各擲1顆骰子，比較點數大小。</font></strong>
 </p>
 </div>
 
 <div class="options">
   <button class="option-btn" onclick="showResult('勝利')">
-    ① 勝利。（體力+1、靈壓+2）
+    ① 勝利。（體力+1，靈壓+2）
   </button>
   <button class="option-btn" onclick="showResult('失敗')">
-    ② 失敗。（體力−2、靈壓−1）
+    ② 失敗。（體力−2，靈壓−1）
   </button>
 </div>
 
-<div id="resultModal" class="modal">
-  <div class="modal-content">
-    <p id="resultText"></p>
-    <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+<!-- 結果モーダル -->
+  <div id="resultModal" class="modal">
+    <div class="modal-content">
+      <p id="resultText"></p>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原故事介紹</button>
+        <button class="home-btn" onclick="goHome()">遊戲故事<br>一覽</button>
+      </div>
+    </div>
   </div>
-</div>
+
 
 <script>
   function showResult(choice) {
     const text = {
-      "勝利": "你找到了平將門的屍體殘骸，那顆人頭安靜地消散，你安全回到家。",
-      "失敗": "你在「不知森神社」一帶的竹林迷了路。77天後，當地小學生在神社門前發現了虛弱的你。"
+      "勝利": "那顆頭實際上是歷史上著名將軍平將門的頭。找到了他的身體部分後，順利回到家中。",
+      "失敗": "在「不知森神社」的竹林中迷路，77天後，才被當地小學生在神社門前發現。 "
     };
-      document.getElementById("resultText").innerText = text[choice];
+
+    const status = {
+        "勝利": "體力 +1 ／ 靈壓 +2",
+        "失敗": "體力 −2 ／ 靈壓 −1",
+      };
+
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
@@ -288,6 +344,12 @@
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {
