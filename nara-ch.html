@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>奈良の物語</title>
-  <style>
+   <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>奈良縣−屯鶴峯防空壕</h1>
+  <h1>奈良縣 - 屯鶴峯防空洞</h1>
  <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='nara.html'">日本語</button>
@@ -234,40 +278,52 @@
   <img src="nara.png" alt="奈良" class="story-image">
 
   <div class="story-text">
-「喂，山田…你真的要去嗎…？」<br>
-歷史課上老師曾提到的……第二次世界大戰時留下的那個屯鶴峯防空洞。<br>
-說是為了探險頻道的企劃，被山田硬拉著來了。<br>
-穿過森林，終於抵達了防空壕，黑暗的大口正張開著。<br>
-即使手上拿著手電筒，也感覺快被黑暗壓迫窒息。<br>
-這時，山田停下腳步，顫抖著說：<br>
-「牆、上面有……」<br>
-當光照過去時，一個穿著工作服的男人的影子浮現――。<br>
-還沒等反應，下一秒，一張人臉突然逼近了眼前……<br>
+「喂，山田！ 你真的要去嗎……？」 <br>
+歷史課上老師曾提到的……第二次世界大戰時留下的屯鶴峯防空洞。 <br>
+說是為了探險頻道的企劃，被山田硬是拉來了。 <br>
+穿過森林，我們終於抵達防空洞。從入口往內望去，只有一片深不見底的黑暗。 <br>
+即使緊握手電筒，那種壓迫般的黑暗仍使我幾乎喘不過氣來。 <br>
+這時，山田停下腳步，顫抖著說： <br>
+「牆、上面有……」 <br>
+當光照過去時，一個穿著工作服的男人的影子浮現――。 <br>
+還沒反應過來，下一秒，一張人臉突然逼近了眼前…… <br>
 <p style="text-align: center;">
-    <strong><font color="#EA0000">糟了！驚嚇之下手電筒掉落壞了……周圍一片漆黑。<br>用一顆骰子來尋找出口吧！</font></strong></p>
+    <strong><font color="#EA0000">糟糕！被嚇到導致手電筒掉在地上壞了……<br>用1顆骰子來尋找出口吧！</font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('點數為5以上')">① 點數為5以上。（體力+2、右移2格）</button> 
-<button class="option-btn" onclick="showResult('點數為5未滿')">② 點數為5未滿。（體力−4、靈壓+3）</button>  
+<button class="option-btn" onclick="showResult('點數為4以上')">① 點數為4以上。（體力+2，向右移動2格）</button> 
+<button class="option-btn" onclick="showResult('點數為3以下')">② 點數為3以下。（體力−4，靈壓+3）</button>  
   </div>
 
+<!-- 結果モーダル -->
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原故事介紹</button>
+        <button class="home-btn" onclick="goHome()">遊戲故事<br>一覽</button>
+      </div>
     </div>
   </div>
+
 
   <script>
     function showResult(choice) {
    const text = { 
-"點數為5以上": "注意到包包裡的火柴，點燃後找到了出口。", 
-"點數為5未滿": "一邊摸索牆壁一邊尋找出口。",  
+"點數為4以上": "注意到背包裡的火柴，點燃後找到了出口。", 
+"點數為3以下": "一邊摸索著牆壁，一邊尋找出口。 ",  
 }; 
 
-      document.getElementById("resultText").innerText = text[choice];
+      const status = {
+        "點數為4以上": "體力 +2 ／ 向右移動2格",
+        "點數為3以下": "體力 −4 ／ 靈壓 +3",
+      };
+      
+    document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
@@ -275,6 +331,12 @@
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {

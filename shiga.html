@@ -269,6 +269,7 @@
 </head>
 <body>
 
+
   <h1>滋賀県 − 琵琶湖</h1>
 <!-- 語言切換，固定 -->
  <div class="language-switch">
@@ -278,45 +279,63 @@
   <img src="shiga.png" alt="滋賀" class="story-image">
 
   <div class="story-text">
-「組長…あっち、もう片付いたっす… 」<br>
-口封じのため、わざわざ死体を投げ入れても浮かばない琵琶湖を選んだんだ…<br>
-この計画はうまくいくはずだ…「そろそろ帰ろう…夜が明ける前に…」<br>
-帰ろうととしたその時、足を滑らせた私は湖に落ちてしまった。<br>
-「組長！組長！」子分の呼ぶ声がどんどん遠ざかっていく…<br>
-目を開けると、湖底に数十人の人影が見えた…鎧を身に着けているようだ。<br>
-そんな…ありえない…まさか幽霊…？<br> 
+「組長……あっち、もう片付いたっす！」<br>
+口封じのため、わざわざ死体を投げ入れても浮かばない琵琶湖を選んだんだ……<br>
+この計画はうまくいくはずだ。
+「そろそろ帰ろう……夜が明ける前に……」<br>
+帰ろうとしたその時、足を滑らせた私は湖に落ちてしまった。<br>
+「組長！組長！」子分の呼ぶ声がどんどん遠ざかっていく……<br>
+目を開けると、湖底に数十人の人影が見えた……鎧を身に着けているようだ。<br>
+そんな……ありえない……まさか幽霊……？<br> 
 <p style="text-align: center;">
-    <strong><font color="#EA0000">早く岸へ…息がもう続かない…<br>二個のサイコロで脱出してみよう！</font></strong></p>
+    <strong><font color="#EA0000">2個のサイコロを振り、脱出してみよう！ </font></strong></p>
   </div>
 
   <div class="options"> 
 
-<button class="option-btn" onclick="showResult('振りたサイコロのうち、「6」が出れば')">① 振りたサイコロのうち、「6」が出れば。（体力−2、道具カードを1枚引く）</button> 
-<button class="option-btn" onclick="showResult('「6」以外の数字なら')">② 「6」以外の数字なら。（霊圧−1）</button> 
+<button class="option-btn" onclick="showResult('2個のサイコロのうち、いずれかが「6」')">① 2個のサイコロのうち、いずれかが「6」。（体力−2、道具カードを1枚引く）</button> 
+<button class="option-btn" onclick="showResult('2個のサイコロの出目が、どちらも「6」以外')">② 2個のサイコロの出目が、どちらも「6」以外。（体力−2、霊圧−1）</button> 
   </div>
 
+   <!-- 結果モーダル -->
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原典紹介</button>
+        <button class="home-btn" onclick="goHome()">ゲームストーリー<br>一覧へ</button>
+      </div>
     </div>
   </div>
 
   <script>
     function showResult(choice) {
    const text = { 
-"振りたサイコロのうち、「6」が出れば": "一気に水面へ泳ぎあがった！", 
-"「6」以外の数字なら": "どんどん沈んで行った…", 
+"2個のサイコロのうち、いずれかが「6」": "一気に水面へ泳ぎ上がった！", 
+"2個のサイコロの出目が、どちらも「6」以外": "どんどん沈んで行った……", 
 }; 
 
-      document.getElementById("resultText").innerText = text[choice];
+      const status = {
+        "2個のサイコロのうち、いずれかが「6」": "体力 −2 ／ 道具カードを1枚引く",
+        "2個のサイコロの出目が、どちらも「6」以外": "体力 −2 ／ 霊圧 −1",
+      };
+      document.getElementById("resultText").innerText = text[choice]|| "";
+      document.getElementById("statusText").innerText = status[choice]|| "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
+ 
     function goHome() {
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {
