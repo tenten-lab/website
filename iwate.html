@@ -292,7 +292,7 @@
   <div class="options">
     <button class="option-btn" onclick="showResult('石碑に祈りを捧げる')">① 石碑に祈りを捧げる。（体力−5、霊圧+2）</button>
     <button class="option-btn" onclick="showResult('石碑の写真を撮る')">② 石碑の写真を撮る。（霊圧+2、道具カードを1枚失う)</button>
-    <button class="option-btn" onclick="showResult('不気味さを感じて帰る')">③ 不気味さを感じて帰る。（体力+3、元のルートに沿って1マス戻る）</button>
+    <button class="option-btn" onclick="showResult('不気味さを感じて引き返す。')">③ 不気味さを感じて引き返す。（体力+3、元のルートに沿って1マス戻る）</button>
   </div>
 
   <!-- 結果モーダル -->
@@ -312,13 +312,13 @@
       const text = {
         "石碑に祈りを捧げる": "石碑が光り、「ありがとう……」という声が聞こえた。",
         "石碑の写真を撮る": "霊異写真を撮ってしまい、恐怖のあまりカメラを落としてしまった。",
-        "不気味さを感じて帰る": "無事にこの場から離れることができた。",
+        "不気味さを感じて引き返す。": "無事にこの場から離れることができた。",
       };
 
        const status = {
         "石碑に祈りを捧げる": "体力 −5 ／ 霊圧 ＋2",
         "石碑の写真を撮る": "霊圧 ＋2 ／ 道具カードを1枚失う",
-        "不気味さを感じて帰る": "体力 ＋3 ／ 元のルートに沿って1マス戻る"
+        "不気味さを感じて引き返す。": "体力 ＋3 ／ 元のルートに沿って1マス戻る"
       };
 
       document.getElementById("resultText").innerText = text[choice];
