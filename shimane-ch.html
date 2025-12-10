@@ -291,7 +291,7 @@
 
   <div class="options">
     <button class="option-btn" onclick="showResult('骰子點數 4～6')">① 骰子點數 4～6。（獲得1張道具卡）</button>
-    <button class="option-btn" onclick="showResult('骰子點數 1～3')">② 骰子點數 1～3。（獲得1張道具卡）</button>
+    <button class="option-btn" onclick="showResult('骰子點數 1～3')">② 骰子點數 1～3。（失去1張道具卡）</button>
   </div>
 
 <!-- 結果モーダル -->
@@ -310,12 +310,12 @@
     function showResult(choice) {
      const text = {
         "骰子點數 4～6": " 沒有被村民發現，成功前進村莊的中心。",
-        "骰子點數 1～3": "被村民發現，遭到追趕。",     
+        "骰子點數 1～3": "突然被村民發現，遭到追趕。",     
     }; 
 
     const status = {
         "骰子點數 4～6": "獲得1張道具卡。",
-        "骰子點數 1～3": "獲得1張道具卡。",
+        "骰子點數 1～3": "失去1張道具卡。",
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";

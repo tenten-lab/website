@@ -291,7 +291,7 @@
 
   <div class="options">
     <button class="option-btn" onclick="showResult('サイコロの出目が 4～6')">① サイコロの出目が 4～6。（道具カードを1枚引く） </button>
-    <button class="option-btn" onclick="showResult('サイコロの出目が 1～3')">② サイコロの出目が 1～3。（道具カードを1枚引く）</button>
+    <button class="option-btn" onclick="showResult('サイコロの出目が 1～3')">② サイコロの出目が 1～3。（道具カードを1枚失う）</button>
   </div>
 
   <!-- 結果モーダル -->
@@ -315,7 +315,7 @@
 
       const status = {
         "サイコロの出目が 4～6": "道具カードを1枚引く。",
-        "サイコロの出目が 1～3": "道具カードを1枚引く。",
+        "サイコロの出目が 1～3": "道具カードを1枚失う。",
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";

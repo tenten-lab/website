@@ -289,7 +289,7 @@
 
   <div class="options">
     <button class="option-btn" onclick="showResult('勝利')">① 勝利……站到鋼琴前。（體力−1，向左移動2格）</button>
-    <button class="option-btn" onclick="showResult('敗北')">② 敗北……走向廚房。（體力−3，靈壓−2）</button>
+    <button class="option-btn" onclick="showResult('敗北')">② 敗北……走向廚房。（體力−3，抽1張道具卡）</button>
   </div>
 
 <!-- 結果モーダル -->
@@ -313,7 +313,7 @@
 
       const status = {
         "勝利": "體力 −1 ／ 向左移動2格",
-        "敗北": "體力 −3 ／ 靈壓 −2",
+        "敗北": "體力 −3 ／ 抽1張道具卡",
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";
