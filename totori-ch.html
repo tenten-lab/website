@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鳥取の物語</title>
- <style>
+  <style>
     /* 背景設定 + 霧氣效果 */
     body {
       margin: 0;
@@ -31,42 +31,43 @@
 
     /* --- 語言切換按鈕（右上角固定） --- */
     .language-switch {
-     position: absolute;
-     top: 70px;  /* --- 位置 --- */ 
-     right: 15px;
-     display: flex;
-     gap: 8px;
-     z-index: 999;
-     }
+      position: absolute;
+      top: 70px;
+      right: 15px;
+      display: flex;
+      gap: 8px;
+      z-index: 999;
+    }
 
     .language-switch button {
-     background: rgba(255,255,255,0.85);
-     border: 2px solid #cc3388;
-     color: #cc3388;
-     padding: 4px 8px;
-     border-radius: 6px;
-     font-size: 12px;
-     cursor: pointer;
-     transition: all 0.2s;
-     }
+      background: rgba(255,255,255,0.85);
+      border: 2px solid #cc3388;
+      color: #cc3388;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
 
-   .language-switch button:hover {
-    background: #cc3388;
-    color: white;
-     }
+    .language-switch button:hover {
+      background: #cc3388;
+      color: white;
+    }
 
     .content {
       padding: 160px 20px 20px 20px; 
-     /* 上方留出標題和語言框空間 */
       max-width: 900px;
       margin: 0 auto;
       background: rgba(255,255,255,0.9);
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
     }
 
     /* 標題 */
-   h1 {
+    h1 {
       margin-top: 40px;
       font-size: 3em;
       color: #ffdddd;
@@ -74,7 +75,6 @@
       position: relative;
       z-index: 2; /* 讓標題在霧氣之上 */
     }
-
 
     /* 故事圖片 */
     .story-image {
@@ -89,18 +89,18 @@
     }
 
     /* 故事文字 */
-  .story-text {
-  max-width: 700px;
-  text-align: left;
-  margin: 20px auto;
-  font-size: 20px;
-  line-height: 1.8;
-  text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
-  padding: 0 15px;
-  position: relative;
-  z-index: 2;
-  color: #642100; /* 暖黃色，更陰森又明顯 */
-}
+    .story-text {
+      max-width: 700px;
+      text-align: left;
+      margin: 20px auto;
+      font-size: 20px;
+      line-height: 1.8;
+      text-shadow: 1px 1px 10px rgba(0,0,0,0.7);
+      padding: 0 15px;
+      position: relative;
+      z-index: 2;
+      color: #642100; /* 暖色，陰森又清楚 */
+    }
 
     /* 選項按鈕 */
     .options {
@@ -145,36 +145,74 @@
 
     .modal-content {
       background-color: white;
-      padding: 30px;
+      padding: 24px 24px 20px;
       border-radius: 15px;
-      width: 300px;
+      width: 320px;
       text-align: center;
       animation: fadeIn 0.4s ease;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.6);
     }
 
     /* Modal 文字 */
     .modal-content p {
-    color: #000; /* 黑色文字 */
-    font-weight: bold;
-     }
+      margin: 0 0 10px;
+      color: #000;
+      font-weight: bold;
+    }
 
-      @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.8); }
-      to { opacity: 1; transform: scale(1); }
+    /* 結局文 */
+    #resultText {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* 体力・霊圧の変化表示（置中・赤系） */
+    #statusText {
+      font-size: 16px;
+      color: #B22222;
+      margin-top: 8px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .home-btn,
+    .ref-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .ref-btn {
+      background-color: #f5f0f0;
+      color: #4b2e1e;
+      border: 1px solid #c0a090;
+    }
+
+    .ref-btn:hover {
+      background-color: #e7dbd6;
     }
 
     .home-btn {
-      margin-top: 20px;
       background-color: #4b2e1e;
       color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 8px;
-      cursor: pointer;
     }
 
     .home-btn:hover {
       background-color: #754b34;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* 手機響應式 */
@@ -183,17 +221,18 @@
         font-size: 2em;
         margin-top: 20px;
       }
-     
-     .language-switch {
-       top: 50px;   /* 可以調整上下位置 */
-       right: 10px; /* 距離右邊 */
-      }
-      .language-switch button {
-       font-size: 12px;  /* 手機字體稍大 */
-       padding: 4px 8px;
+
+      .language-switch {
+        top: 50px;
+        right: 10px;
       }
 
-     .content {
+      .language-switch button {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .content {
         padding: 140px 15px 15px 15px;
       }
 
@@ -203,12 +242,12 @@
       }
 
       .story-text {
-    max-width: 90% !important;
-    text-align: left !important;
-    font-size: 16px !important;
-    line-height: 1.6 !important;
-    padding: 0 10px !important;
-  }
+        max-width: 90% !important;
+        text-align: left !important;
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        padding: 0 10px !important;
+      }
 
       .option-btn {
         width: 80%;
@@ -220,12 +259,17 @@
         width: 80%;
         padding: 20px;
       }
+
+      .modal-buttons {
+        flex-direction: row;
+        gap: 8px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>鳥取縣−米子城的活人獻祭</h1>
+  <h1>鳥取縣 - 米子城活人獻祭</h1>
  <!-- 語言切換，固定 -->
  <div class="language-switch">
     <button onclick="location.href='totori.html'">日本語</button>
@@ -234,39 +278,53 @@
   <img src="totori.png" alt="鳥取" class="story-image">
 
   <div class="story-text">
-天正19年，我們打算在湊山興建城池，但天守閣總是在施工途中遭遇大雨沖毀，工程進度一直無法推進。<br>
-「主公，天守閣又倒塌了……照這樣下去……」<br>
-正當大家不知如何是好時，一名大臣提出建議：<br>
-「要平息這個詛咒，唯有活人獻祭可行。特別是獻上村中美麗的少女。我們已找到一名名叫久美的少女，只待主公批准！」<br>
-隨後，一名未滿十六歲的少女被推了進來。<br>
-她大聲喊叫：「為什麼要為了建城而獻上人命！如果我被葬在這裡，即便死去，我也絕不會原諒這座城！」<br>
+天正19年，我們吉川廣家打算在湊山建一座城池，但當進度到天守部份時，總是在施工途中遭遇大雨沖毀，工程進度一直無法推進。 <br>
+「主公，天守又崩毀了……照這樣下去城池會無法順利完成……」  <br>
+正當大家不知如何是好時，一名大臣提出建議： <br>
+「要平息這個詛咒，唯有活人獻祭可行。特別是獻上村中美麗的少女。我們已找到一名名叫久美的少女，只待主公批准！」 <br>
+隨後，一名未滿16歲的少女被推了進來，為了不讓她逃跑而強硬的壓制著她。 <br>
+她一邊抵抗一邊大聲喊叫： <br>
+「為什麼要為了建城而獻上人命！如果我被葬在這裡，即便死去，我也絕不會原諒這座城！」 <br>
     <p style="text-align: center;">
-<strong><font color="#EA0000">現在，你作為吉川廣家
-<br>從下列選項中選擇行動。</font></strong></p>
+<strong><font color="#EA0000">作為吉川廣家的家主，該如何決斷呢？ 
+<br>請從下列選項中決定接下來的行動。 </font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('按照大臣的建議，批准以久美作為祭品獻出')">① 按照大臣的建議，批准以久美作為祭品獻出。（體力+1、靈壓 -2） </button>
-    <button class="option-btn" onclick="showResult('阻止活人獻祭儀式')">② 阻止活人獻祭儀式。（體力−2、靈壓+2）</button>
-    <button class="option-btn" onclick="showResult('以祭祀或神事代替活人獻祭')">③ 以祭祀或神事代替活人獻祭。（體力−1、靈壓＋1） </button>
+    <button class="option-btn" onclick="showResult('將久美作為祭品獻出')">① 將久美作為祭品獻出。（體力−5，靈壓+1） </button>
+    <button class="option-btn" onclick="showResult('阻止活人獻祭儀式')">② 阻止活人獻祭儀式。（體力−2） </button>
+    <button class="option-btn" onclick="showResult('提出以祭祀或神事代替活人獻祭')">③ 提出以祭祀或神事代替活人獻祭。（靈壓+2，失去1張道具卡）</button>
 
   </div>
 
+<!-- 結果モーダル -->
   <div id="resultModal" class="modal">
     <div class="modal-content">
       <p id="resultText"></p>
-      <button class="home-btn" onclick="goHome()">🏠 ホームへ戻る</button>
+      <p id="statusText"></p>
+      <div class="modal-buttons">
+        <button class="ref-btn" onclick="goRef()">原故事介紹</button>
+        <button class="home-btn" onclick="goHome()">遊戲故事<br>一覽</button>
+      </div>
     </div>
   </div>
 
   <script>
     function showResult(choice) {
      const text = {
-        "按照大臣的建議，批准以久美作為祭品獻出": "然而雨停了，工程順利進行。領內卻充滿深沉的悲傷與不滿，這將在往後留下禍根。你的名聲以「功績與冷酷」被世人流傳。",
-        "阻止活人獻祭儀式": "領民對你讚譽有加，但天氣依然不佳，工程依然艱難。",
-        "以祭祀或神事代替活人獻祭": "久美得以獲救，城池順利完成。最終這座城不再被活人獻祭的詛咒威脅，繁榮昌盛，被譽為「成功驅除詛咒的城」。",
+        "將久美作為祭品獻出": "雨停了，工程順利進行。領內卻充滿深沉的悲傷與不滿，這將在往後留下禍根。 ",
+        "阻止活人獻祭儀式": "領民讚譽有加，但天候依然不佳。 ",
+        "提出以祭祀或神事代替活人獻祭": "久美得以獲救，這座城不再被活人獻祭的詛咒威脅，城池也順利完成了。",
       }; 
-      document.getElementById("resultText").innerText = text[choice];
+
+        const status = {
+          "將久美作為祭品獻出": "體力 −5 ／ 靈壓 +1",
+          "阻止活人獻祭儀式": "體力 −2",
+          "提出以祭祀或神事代替活人獻祭": "靈壓 +2 ／ 失去 1 張道具卡",
+        };
+        
+      document.getElementById("resultText").innerText = text[choice] || "";
+      document.getElementById("statusText").innerText = status[choice] || "";
       document.getElementById("resultModal").style.display = "flex";
     }
 
@@ -274,6 +332,12 @@
       window.location.href = "index2.html";
     }
 
+    function goRef() {
+      // 原故事參考用的連結（檔名可以依照你實際的頁面調整）
+      window.location.href = "gensaku.html";
+    }
+
+    // 點黑幕關閉
     window.onclick = function(event) {
       const modal = document.getElementById("resultModal");
       if (event.target === modal) {
