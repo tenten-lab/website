@@ -4,295 +4,475 @@
   <meta charset="UTF-8">
   <title>原典紹介</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    /* ========= 全體背景 ========= */
+    /* ===== 全域字型 & 背景 ===== */
     body {
       margin: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
       min-height: 100vh;
-      background: url('都市伝説巡り.png') no-repeat center center fixed;
+      background: url('都市伝説巡り.png') no-repeat center center fixed; /* PC 版背景 */
       background-size: cover;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      color: #3a1b0b;
+      color: #fdf5f5;
+      position: relative;
     }
 
-    /* 手機可以換成手機版背景 */
+    /* 暗霧 */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(0,0,0,0.75),
+                  rgba(0,0,0,0.95));
+      z-index: -1;
+    }
+
+    /* 平板背景 */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      body {
+        background-image: url('都市伝説巡り.png'); /* 你可以換成自己的檔名 */
+        background-position: center top;
+        background-attachment: scroll;
+      }
+    }
+
+    /* 手機背景 */
     @media (max-width: 768px) {
       body {
-        background-image: url('都市伝説巡り_sp.png');
+        background-image: url('都市伝説巡り-手機版.png');
         background-position: center top;
+        background-attachment: scroll;
       }
     }
 
-    /* ========= 頁面上方標題 ========= */
-    .top-header {
-      margin-top: 20px;
-      text-align: center;
-      padding: 10px 18px;
-      background: radial-gradient(circle at 50% 0,
-                  rgba(255,255,255,0.35),
-                  rgba(0,0,0,0.85) 70%);
-      border-radius: 999px;
-      border: 1px solid rgba(255,190,190,0.8);
-      box-shadow: 0 0 18px rgba(0,0,0,0.7);
-      color: #ffecec;
+    /* ===== 頂部標題區 ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 16px 10px 10px;
+      z-index: 20;
+      pointer-events: none;
     }
 
-    .top-header h1 {
+    .title-wrap {
+      pointer-events: auto;
+      background: radial-gradient(circle at 50% 0,
+                  rgba(255,0,60,0.2),
+                  rgba(0,0,0,0.92) 60%,
+                  rgba(0,0,0,0.98) 100%);
+      padding: 10px 48px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,120,150,0.8);
+      box-shadow:
+        0 0 24px rgba(255,0,0,0.8),
+        0 0 55px rgba(0,0,0,0.98);
+      text-align: center;
+      min-width: 280px;
+    }
+
+    .title-main {
       margin: 0;
       font-size: 26px;
-      letter-spacing: 0.2em;
+      letter-spacing: .2em;
+      color: #fff5f8;
+      text-shadow:
+        0 0 8px rgba(255,100,120,0.9),
+        0 0 18px rgba(0,0,0,1);
     }
 
-    .top-header .sub {
-      font-size: 13px;
-      margin-top: 3px;
+    .title-sub-ja {
+      display: block;
+      margin-top: 4px;
+      font-size: 14px;
+      color: #ffd6de;
+      letter-spacing: .18em;
+    }
+
+    .title-sub-zh {
+      display: block;
+      margin-top: 2px;
+      font-size: 12px;
+      color: #ffbfcf;
       opacity: 0.9;
-      letter-spacing: 0.15em;
+      letter-spacing: .08em;
     }
 
     @media (max-width: 768px) {
-      .top-header {
-        margin-top: 16px;
-        padding: 8px 14px;
+      .title-wrap {
+        padding: 8px 18px 10px;
+        border-radius: 16px;
+        max-width: 92%;
       }
-      .top-header h1 {
+      .title-main {
         font-size: 20px;
+        letter-spacing: .16em;
       }
-      .top-header .sub {
+      .title-sub-ja {
+        font-size: 12px;
+      }
+      .title-sub-zh {
         font-size: 11px;
       }
     }
 
-    /* ========= 地區標籤 ========= */
-    .tabs {
-      margin-top: 18px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .tabs button {
-      border-radius: 8px 8px 0 0;
-      border: 1px solid #b08a5b;
-      background: #f7e3c4;
-      padding: 6px 14px;
-      font-size: 14px;
-      cursor: pointer;
-      color: #5b3518;
-      box-shadow: 0 -1px 0 #fdf5e8 inset;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .tabs button.active {
-      background: #f2d3a0;
-      transform: translateY(-2px);
-      box-shadow:
-        0 -1px 0 #fff inset,
-        0 2px 6px rgba(0,0,0,0.45);
-      font-weight: bold;
-    }
-
-    .tabs button:hover {
-      background: #fbe1b6;
-    }
-
-    @media (max-width: 768px) {
-      .tabs button {
-        font-size: 13px;
-        padding: 6px 10px;
-      }
-    }
-
-    /* ========= 書本容器 ========= */
-    .book-wrapper {
-      margin-top: 10px;
-      padding: 18px 10px 30px;
-      max-width: 1100px;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-
-    /* 左右箭頭 */
-    .nav-arrow {
-      border: none;
-      background: rgba(0,0,0,0.55);
-      color: #ffecec;
-      width: 40px;
-      height: 60px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 22px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
-      transition: transform 0.15s, background 0.15s;
-    }
-
-    .nav-arrow:hover {
-      background: rgba(0,0,0,0.8);
-      transform: translateY(-2px);
-    }
-
-    .nav-arrow:disabled {
-      opacity: 0.35;
-      cursor: default;
-      transform: none;
-    }
-
-    @media (max-width: 768px) {
-      .book-wrapper {
-        padding: 12px;
-      }
-      .nav-arrow {
-        width: 34px;
-        height: 46px;
-        font-size: 18px;
-      }
-    }
-
-    /* ========= 書本本體 ========= */
-    .book {
-      margin: 0 14px;
-      background: radial-gradient(circle at 50% 0,
-                  rgba(255,255,255,0.35),
-                  rgba(50,25,5,0.95) 65%);
-      padding: 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,220,200,0.8);
-      box-shadow:
-        0 14px 30px rgba(0,0,0,0.9),
-        0 0 18px rgba(0,0,0,0.7);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      perspective: 2000px; /* 3D 效果 */
-      box-sizing: border-box;
-    }
-
-    @media (max-width: 768px) {
-      .book {
-        grid-template-columns: 1fr;
-        max-width: 700px;
-      }
-    }
-
-    /* ========= 每一頁 ========= */
-    .page {
-      background: #fdf6e6;
-      border-radius: 10px;
-      box-shadow:
-        0 0 0 1px rgba(200,170,120,0.7) inset,
-        0 6px 20px rgba(0,0,0,0.35);
-      padding: 14px 16px;
-      box-sizing: border-box;
-      position: relative;
-      overflow: hidden;
-      transform-style: preserve-3d;
-      transition: transform 0.6s ease, box-shadow 0.6s ease;
-    }
-
+    /* ===== 主框：搜尋 + 內容 ===== */
     .page-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 120px 16px 32px;
+      box-sizing: border-box;
+    }
+
+    .panel {
+      background: radial-gradient(circle at 0 0,
+                rgba(255,255,255,0.12),
+                rgba(10,0,20,0.92) 55%,
+                rgba(0,0,0,0.98) 100%);
+      border-radius: 18px;
+      padding: 18px 18px 22px;
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.8),
+        0 0 18px rgba(255,120,160,0.35);
+      border: 1px solid rgba(255,160,190,0.7);
+      backdrop-filter: blur(5px);
+    }
+
+    /* ===== 搜尋 & 篩選列 ===== */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .search-box {
+      flex: 1 1 200px;
       position: relative;
-      z-index: 2;
     }
 
-    /* 左頁 / 右頁翻動的支點 */
-    .page.left {
-      transform-origin: right center;
-    }
-    .page.right {
-      transform-origin: left center;
-    }
-
-    /* 翻頁動畫：往前（右頁翻過去） */
-    .page.right.flip-forward {
-      transform: rotateY(-180deg);
-      box-shadow:
-        -10px 0 30px rgba(0,0,0,0.7);
+    .search-box input {
+      width: 100%;
+      padding: 8px 10px 8px 28px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,200,210,0.8);
+      font-size: 14px;
+      background: rgba(20,0,20,0.85);
+      color: #ffeef5;
+      outline: none;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
     }
 
-    /* 翻頁動畫：往回（左頁翻回來） */
-    .page.left.flip-back {
-      transform: rotateY(180deg);
-      box-shadow:
-        10px 0 30px rgba(0,0,0,0.7);
+    .search-box input::placeholder {
+      color: #ffccd5;
+      opacity: 0.7;
     }
 
-    /* 手機版只顯示左頁（單頁模式） */
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      opacity: 0.8;
+    }
+
+    .region-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .region-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      background: linear-gradient(90deg, #5f1830, #3a0d25);
+      color: #ffe9f0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.6);
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+
+    .region-btn:hover {
+      background: linear-gradient(90deg, #cc365f, #7a213a);
+      transform: translateY(-1px);
+    }
+
+    .region-btn.active {
+      background: linear-gradient(90deg, #ff6a8f, #e73563);
+      color: #2b000c;
+      font-weight: 700;
+    }
+
     @media (max-width: 768px) {
-      .page.right {
-        display: none;
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .region-filters {
+        justify-content: center;
       }
     }
 
-    /* ========= 頁內布局 ========= */
-    .page-header {
+    /* ===== 統計列 ===== */
+    .stats {
+      font-size: 12px;
+      color: #ffdde8;
+      margin-bottom: 8px;
+      text-align: right;
+      opacity: 0.9;
+    }
+
+    /* ===== 卡片列表 ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at 30% 0,
+                 rgba(255,210,230,0.18),
+                 rgba(20,0,25,0.96));
+      border-radius: 14px;
+      padding: 10px 10px 12px;
       display: flex;
       gap: 10px;
-      align-items: center;
-      margin-bottom: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,160,190,0.8);
+      transition: 0.22s;
+      align-items: flex-start;
     }
 
-    .page-img {
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 20px rgba(0,0,0,0.95),
+        0 0 16px rgba(255,150,190,0.6);
+    }
+
+    .card-thumb {
       width: 80px;
       height: 80px;
-      border-radius: 8px;
+      border-radius: 10px;
       object-fit: cover;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.4);
       flex-shrink: 0;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.9);
+      background: #000;
     }
 
-    .page-title {
-      font-size: 15px;
-      font-weight: 900;
-      color: #5b3518;
+    .card-body {
+      flex: 1;
+      min-width: 0;
     }
 
-    .page-region {
-      font-size: 12px;
-      color: #9b6b33;
-      margin-top: 2px;
-    }
-
-    .page-body {
-      margin-top: 6px;
-      font-size: 14px;
-      line-height: 1.6;
-      color: #3f260f;
-    }
-
-    .page-body .jp {
-      margin-bottom: 6px;
-      white-space: pre-line;
-    }
-
-    .page-body .zh {
-      font-size: 13px;
-      color: #7b5030;
-      white-space: pre-line;
-    }
-
-    /* 日文＋中文標籤 */
-    .lang-label {
+    .card-region {
       font-size: 11px;
-      color: #b37a3a;
+      color: #ffb6c9;
+      letter-spacing: .12em;
       margin-bottom: 2px;
-      letter-spacing: 0.09em;
     }
 
-    /* ========= 頁碼 / 狀態列 ========= */
-    .status-bar {
-      margin-top: 10px;
-      margin-bottom: 14px;
-      text-align: center;
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin: 0 0 2px;
+      color: #ffeef5;
+    }
+
+    .card-title-zh {
+      font-size: 11px;
+      color: #ffd6e2;
+      margin: 0 0 6px;
+    }
+
+    .card-pref {
+      font-size: 11px;
+      color: #ffd1da;
+      margin-bottom: 4px;
+    }
+
+    .card-snippet {
+      font-size: 11px;
+      color: #ffe2ee;
+      opacity: 0.9;
+      line-height: 1.5;
+    }
+
+    /* ===== Modal 詳細 ===== */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 16px;
+      box-sizing: border-box;
+    }
+
+    .modal-content {
+      background: radial-gradient(circle at 0 0,
+                  rgba(255,255,255,0.1),
+                  #15000a 55%,
+                  #040003 100%);
+      width: 90%;
+      max-width: 900px;
+      border-radius: 18px;
+      display: grid;
+      grid-template-columns: 1.1fr 1.4fr;
+      gap: 0;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.95);
+      border: 1px solid rgba(255,160,190,0.8);
+      max-height: 92vh;
+    }
+
+    .modal-image-wrap {
+      position: relative;
+      background: #000;
+    }
+
+    .modal-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .modal-region-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(0,0,0,0.8);
+      padding: 4px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: #ffdce4;
+      border: 1px solid rgba(255,160,190,0.8);
+    }
+
+    .modal-body {
+      padding: 14px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      overflow-y: auto;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      margin: 0;
+      color: #ffeef7;
+    }
+
+    .modal-title-zh {
+      margin: 0;
       font-size: 13px;
-      color: #fbe9d6;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      color: #ffd5e5;
+    }
+
+    .modal-pref {
+      font-size: 12px;
+      color: #ffccdd;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    .label {
+      font-size: 11px;
+      color: #ffbcd4;
+      margin-top: 6px;
+      margin-bottom: 2px;
+      letter-spacing: .15em;
+    }
+
+    .text-block {
+      font-size: 13px;
+      line-height: 1.7;
+      background: radial-gradient(circle at 0 0,
+                  rgba(255,255,255,0.05),
+                  rgba(0,0,0,0.9));
+      border-radius: 10px;
+      padding: 8px 10px;
+      border: 1px solid rgba(255,150,190,0.35);
+    }
+
+    .text-block.zh {
+      font-size: 13px;
+      color: #ffecf3;
+    }
+
+    .modal-footer {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: none;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 12px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.8);
+      white-space: nowrap;
+    }
+
+    .btn-close {
+      background: linear-gradient(135deg, #ffb3c8, #ff829f);
+      color: #3b0010;
+    }
+
+    .btn-link {
+      background: linear-gradient(135deg, #2a1c4f, #412b80);
+      color: #f5eefe;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(0,0,0,0.9);
+    }
+
+    /* 手機版 Modal 單欄 */
+    @media (max-width: 768px) {
+      .modal-content {
+        grid-template-columns: 1fr;
+        width: 96%;
+        max-width: 560px;
+      }
+      .modal-body {
+        padding: 12px;
+      }
     }
 
     /* 右下角回首頁 */
@@ -300,7 +480,7 @@
       position: fixed;
       right: 18px;
       bottom: 18px;
-      background: #ffb5b5;
+      background: radial-gradient(circle at 30% 30%, #ffe6ea, #ff7ca1);
       color: #600030;
       border-radius: 50%;
       width: 56px;
@@ -310,306 +490,297 @@
       align-items: center;
       font-size: 26px;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.85);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.7);
+      z-index: 50;
       text-decoration: none;
-      z-index: 30;
+      transition: 0.2s;
     }
 
     .home-fab:hover {
-      background: #ff9797;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.85);
     }
 
     @media (max-width: 768px) {
       .home-fab {
-        width: 48px;
-        height: 48px;
+        width: 50px;
+        height: 50px;
         font-size: 22px;
-        right: 12px;
-        bottom: 12px;
+        right: 14px;
+        bottom: 14px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- 頁面標題：原典紹介（原典解說） -->
-  <div class="top-header">
-    <h1>原典紹介</h1>
-    <div class="sub">（原典解說）</div>
+<header>
+  <div class="title-wrap">
+    <p class="title-main">原典紹介</p>
+    <span class="title-sub-ja">ー 都市伝説のもとになった物語集 ー</span>
+    <span class="title-sub-zh">都市傳說原故事一覽</span>
   </div>
+</header>
 
-  <!-- 地區標籤 -->
-  <div class="tabs">
-    <button class="tab-btn active" data-region="hokkaido" onclick="selectRegion('hokkaido')">北海道地方</button>
-    <button class="tab-btn" data-region="tohoku" onclick="selectRegion('tohoku')">東北地方</button>
-    <button class="tab-btn active" data-region="kanto" onclick="selectRegion('kanto')">関東地方</button>
-    <button class="tab-btn" data-region="chubu" onclick="selectRegion('chubu')">中部地方</button>
-    <button class="tab-btn active" data-region="kinki" onclick="selectRegion('kinki')">近畿地方</button>
-    <button class="tab-btn" data-region="chugoku" onclick="selectRegion('chugoku')">中国地方</button>
-     <button class="tab-btn active" data-region="shikoku" onclick="selectRegion('shikoku')">四国地方</button>
-    <button class="tab-btn" data-region="kyushu" onclick="selectRegion('kyushu')">九州地方</button>
-     <button class="tab-btn active" data-region="okinawa" onclick="selectRegion('okinawa')">沖縄地方</button>
-    <!-- 之後可以再加：東北 / 中部 / 関西 / 中国 / 四国 / 九州・沖縄 -->
-  </div>
-
-  <!-- 頁碼顯示 -->
-  <div class="status-bar" id="statusBar">
-    北海道：1–2ページ
-  </div>
-
-  <!-- 書本 + 箭頭 -->
-  <div class="book-wrapper">
-    <button class="nav-arrow" id="prevBtn" onclick="prevPage()">◀</button>
-
-    <div class="book">
-      <!-- 左頁 -->
-      <div class="page left">
-        <div class="page-inner">
-          <div class="page-header">
-            <img class="page-img" id="leftImg" src="" alt="">
-            <div>
-              <div class="page-title" id="leftTitle"></div>
-              <div class="page-region" id="leftRegion"></div>
-            </div>
-          </div>
-          <div class="page-body">
-            <div class="lang-label">日本語</div>
-            <div class="jp" id="leftJp"></div>
-            <div class="lang-label">（中文）</div>
-            <div class="zh" id="leftZh"></div>
-          </div>
-        </div>
+<div class="page-inner">
+  <div class="panel">
+    <!-- 搜尋 & 篩選列 -->
+    <div class="controls">
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input id="searchInput" type="text" placeholder="都道府県名・地名・キーワード検索 / 關鍵字搜尋">
       </div>
 
-      <!-- 右頁 -->
-      <div class="page right">
-        <div class="page-inner">
-          <div class="page-header">
-            <img class="page-img" id="rightImg" src="" alt="">
-            <div>
-              <div class="page-title" id="rightTitle"></div>
-              <div class="page-region" id="rightRegion"></div>
-            </div>
-          </div>
-          <div class="page-body">
-            <div class="lang-label">日本語</div>
-            <div class="jp" id="rightJp"></div>
-            <div class="lang-label">（中文）</div>
-            <div class="zh" id="rightZh"></div>
-          </div>
-        </div>
+      <div class="region-filters">
+        <button class="region-btn active" data-region="all">すべて</button>
+        <button class="region-btn" data-region="北海道">北海道</button>
+        <button class="region-btn" data-region="東北">東北</button>
+        <button class="region-btn" data-region="関東">関東</button>
+        <button class="region-btn" data-region="中部">中部</button>
+        <button class="region-btn" data-region="近畿">近畿</button>
+        <button class="region-btn" data-region="中国・四国">中国・四国</button>
+        <button class="region-btn" data-region="九州・沖縄">九州・沖縄</button>
       </div>
     </div>
 
-    <button class="nav-arrow" id="nextBtn" onclick="nextPage()">▶</button>
-  </div>
+    <div class="stats" id="stats"></div>
 
-  <!-- 回首頁 -->
-  <a href="index2.html" class="home-fab">🏠</a>
+    <!-- 卡片列表 -->
+    <div class="cards" id="cards"></div>
+  </div>
+</div>
+
+<!-- 詳細 Modal -->
+<div class="modal" id="storyModal">
+  <div class="modal-content">
+    <div class="modal-image-wrap">
+      <img id="modalImg" src="" alt="story">
+      <div class="modal-region-tag" id="modalRegion"></div>
+    </div>
+    <div class="modal-body">
+      <div>
+        <h2 class="modal-title" id="modalTitleJa"></h2>
+        <p class="modal-title-zh" id="modalTitleZh"></p>
+        <p class="modal-pref" id="modalPref"></p>
+
+        <div class="label">【 日本語 】</div>
+        <div class="text-block" id="modalTextJa"></div>
+
+        <div class="label">【 中文 】</div>
+        <div class="text-block zh" id="modalTextZh"></div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-close" onclick="closeModal()">✕ 閉じる / 關閉</button>
+        <!-- 如果之後每篇有「原典連結」可以用這個按鈕帶連結 -->
+        <a href="#" class="btn btn-link" id="modalLink" target="_blank" style="display:none;">
+          🔗 原典紹介ページ
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 回首頁 (故事一覽 or 主首頁) -->
+<a href="index.html" class="home-fab">🏠</a>
 
 <script>
-  /* ========= 故事資料（示範） =========
-     之後你只要在這裡增加每一頁的內容就好
-     一個物件 = 書的一頁
-  */
-  const storyData = {
-    hokkaido: [
-      {
-        title: "北海道 − 網走監獄",
-        regionLabel: "北海道地方・網走市",
-        img: "hokaido.png",
-        jp: "修学旅行で訪れた雪の網走監獄。\n凍えるような寒さの中、展示室に入ると、\n一体の囚人人形の眼差しに心を掴まれる。\n次の瞬間、耳元に怒号混じりの機械音が響いた。\n「早く作業を続けろ！　休むな！　お前は囚人だろうが！」\n\n頭痛とともに視界が揺れ、人形がゆっくりと手を伸ばしてくる——。",
-        zh: "在雪地中的網走監獄修學旅行。\n你踏進刺骨寒意裡的展示室時，突然被一尊囚犯人形的眼神牢牢吸住。\n下一秒，耳邊傳來吼叫與機械聲混雜的咆哮：「快給我繼續作業！不准休息！你可是囚犯啊！」\n\n頭一陣抽痛，視野開始晃動，那尊人形竟像活了一樣，慢慢朝你伸出手——。"
-      },
-      {
-        title: "北海道 − トンネルに残る声",
-        regionLabel: "北海道某所",
-        img: "hokaido.png",
-        jp: "網走からの帰り道、バスは古いトンネルを通り抜けようとしていた。\n霧のような雪がフロントガラスを叩き、車内は静まり返っている。\nふと、助手席のスピーカーから小さな囁き声が聞こえた。\n「……まだ、出られないんだ」\n\n振り向いても、そこには誰もいない。\nただ、さっき見た囚人人形の顔だけが頭から離れなかった。",
-        zh: "從網走返回的路上，巴士正要駛入一條老舊隧道。\n霧一般的雪花打在擋風玻璃上，車內安靜得只剩暖氣聲。\n這時，副駕座旁的喇叭裡傳來細微的低語：\n「……我還、出不去啊。」\n\n你猛然回頭，身後空無一人。\n腦海中卻再次浮現，那尊囚犯人形扭曲的臉。"
+  // ======== 這裡放「原故事資料」 ========
+  // 之後你只要一直往裡面加就好
+  // region: 北海道 / 東北 / 関東 / 中部 / 近畿 / 中国・四国 / 九州・沖縄
+  const stories = [
+    {
+      id: "hokkaido-abashiri",
+      region: "北海道",
+      prefecture: "北海道",
+      titleJa: "網走監獄",
+      titleZh: "網走監獄",
+      thumb: "hokaido.png",
+      image: "hokaido.png",
+      textJa: "北海道の厳しい寒さの中に佇む旧・網走刑務所。今は観光地となっているが、かつて過酷な労働に苦しんだ囚人たちの怨念が残っていると言われる。夜の展示室では、時折誰も触れていないはずの器具が軋む音を立て、見回りの警備員の背後に、囚人服を着た影が立っていたという……。",
+      textZh: "坐落在北海道嚴寒之中的舊網走刑務所，現在雖已成為觀光景點，卻被認為仍殘留著當年囚犯的怨念。據說在夜裡的展示室，有時會傳出明明沒有人碰卻自行作響的器具聲，巡邏的警備員背後，還有人目擊穿著囚服的黑影悄然佇立……",
+      originUrl: "" // 如果有外部原典介紹頁就填網址，沒有就留空
+    },
+    {
+      id: "tokyo-sendagaya",
+      region: "関東",
+      prefecture: "東京都",
+      titleJa: "千駄ヶ谷トンネル",
+      titleZh: "千駄谷隧道",
+      thumb: "tokyo.png",
+      image: "tokyo.png",
+      textJa: "東京・千駄ヶ谷トンネルは、周辺で多くの事故が起きたことから『首都高の心霊スポット』として知られている。深夜、トンネルを通過した運転手が、バックミラーに逆さまの男の姿を見たという証言や、電話越しに事故当日のニュースが流れてきたという怪談が語り継がれている。",
+      textZh: "位於東京的千駄谷隧道，因周邊多次發生交通事故，被稱為首都高速上的靈異地帶。傳聞深夜開車通過隧道的駕駛，曾在後照鏡中看見倒掛在天花板上的男子身影，也有人接起手機，聽見對面傳來的竟是「自己出事當天的新聞報導」……這些離奇故事至今仍在人們口中流傳。",
+      originUrl: ""
+    },
+    {
+      id: "miyazaki-aoshima",
+      region: "九州・沖縄",
+      prefecture: "宮崎県",
+      titleJa: "青島・グリーンパークの噂",
+      titleZh: "青島綠園的傳聞",
+      thumb: "miyazaki.png",
+      image: "miyazaki.png",
+      textJa: "南国の雰囲気漂う宮崎・青島の一角にあるグリーンパーク。昼間は家族連れで賑わうが、閉園後の夜には、公園内の遊具がひとりでに揺れ、誰も乗っていないブランコから笑い声が聞こえると言われる。海から吹き上げる湿った風が、いつの間にか冷たい囁きに変わる時、そこに『見えない子どもたち』が集まってくるのだという……。",
+      textZh: "充滿南國氣息的宮崎青島一隅，有座名為綠園的公園。白天時親子遊客絡繹不絕，但據說在閉園後的夜裡，園內的遊具會自己搖晃，空無一人的鞦韆上，隱約傳來孩童的笑聲。從海面吹來的濕潤海風，某一刻開始變得陰冷，據說那正是「看不見的孩子們」聚集而來的時刻……",
+      originUrl: ""
+    }
+  ];
+
+  const cardsContainer = document.getElementById("cards");
+  const searchInput = document.getElementById("searchInput");
+  const statsEl = document.getElementById("stats");
+  const regionButtons = document.querySelectorAll(".region-btn");
+
+  let currentRegion = "all";
+  let currentKeyword = "";
+
+  function renderCards() {
+    const keyword = currentKeyword.trim().toLowerCase();
+
+    const filtered = stories.filter(st => {
+      // 地區篩選
+      if (currentRegion !== "all" && st.region !== currentRegion) return false;
+
+      // 關鍵字搜尋：縣名、標題、內文
+      if (keyword) {
+        const haystack = [
+          st.prefecture,
+          st.titleJa,
+          st.titleZh,
+          st.textJa,
+          st.textZh
+        ].join(" ").toLowerCase();
+
+        if (!haystack.includes(keyword)) return false;
       }
-    ],
-
-    kanto: [
-      {
-        title: "東京都 − 千駄ヶ谷トンネルの影",
-        regionLabel: "関東地方・東京都",
-        img: "tokyo.png",
-        jp: "深夜、タクシーの後部座席で仕事の電話をしていた。\n「はい、ではその内容で確定いたします。……もしもし？」\n突然、回線が途切れ、車内の空気が重くなる。\n\n運転手が短く悲鳴をあげた。\n前方を見ると、トンネルの天井から逆さにぶら下がる男の姿――\n血まみれの顔が、ちょうどあなたの目線の高さにあった。",
-        zh: "深夜，你坐在計程車後座講著工作電話。\n「好的，那就照這個內容確認……喂？喂？」\n通話突然中斷，車內的空氣像被壓低了幾度。\n\n司機短促地尖叫出聲。\n你抬頭望去，只見隧道天花板上，有個男人倒吊著身體，\n滿臉是血，視線剛好與你平行對上。"
-      },
-      {
-        title: "東京都 − 電話の向こう側",
-        regionLabel: "関東地方・東京都",
-        img: "tokyo.png",
-        jp: "その瞬間、あなたのスマートフォンが鳴る。\n画面には見覚えのない番号が表示されていた。\n\n恐る恐る出ると、聞こえてきたのはニュース番組の音声だった。\n『本日深夜、千駄ヶ谷トンネルにて自損事故が発生し、\n　タクシーの乗客と運転手が死亡しました――』\n\n通話は、そこでぷつりと途切れた。",
-        zh: "就在那一刻，你的手機忽然震動響起。\n螢幕上顯示著一串完全沒看過的號碼。\n\n你鼓起勇氣接起電話，耳邊卻傳來新聞播報的聲音：\n「今日深夜，千駄谷隧道發生一起自撞事故，\n　計程車內的乘客與司機皆當場身亡——」\n\n話音落下，通話也隨即中斷。"
-      }
-    ]
-  };
-
-  let currentRegion = "hokkaido";
-  let currentIndex = 0; // 指向「左頁」的頁碼（陣列 index）
-
-  const leftPageEl   = document.querySelector(".page.left");
-  const rightPageEl  = document.querySelector(".page.right");
-
-  const leftImg   = document.getElementById("leftImg");
-  const leftTitle = document.getElementById("leftTitle");
-  const leftRegion= document.getElementById("leftRegion");
-  const leftJp    = document.getElementById("leftJp");
-  const leftZh    = document.getElementById("leftZh");
-
-  const rightImg   = document.getElementById("rightImg");
-  const rightTitle = document.getElementById("rightTitle");
-  const rightRegion= document.getElementById("rightRegion");
-  const rightJp    = document.getElementById("rightJp");
-  const rightZh    = document.getElementById("rightZh");
-
-  const statusBar = document.getElementById("statusBar");
-  const prevBtn   = document.getElementById("prevBtn");
-  const nextBtn   = document.getElementById("nextBtn");
-
-  function isMobile() {
-    return window.innerWidth <= 768;
-  }
-
-  function updateStatusBar() {
-    const pages = storyData[currentRegion] || [];
-    const total = pages.length;
-    let leftNo  = currentIndex + 1;
-    let rightNo = isMobile() ? null : (currentIndex + 2 <= total ? currentIndex + 2 : null);
-    let text = currentRegionLabel(currentRegion) + "：";
-
-    if (isMobile()) {
-      text += leftNo + " / " + total + "ページ";
-    } else {
-      if (rightNo) {
-        text += leftNo + "–" + rightNo + "ページ（全" + total + "ページ）";
-      } else {
-        text += leftNo + "ページ（全" + total + "ページ）";
-      }
-    }
-    statusBar.textContent = text;
-  }
-
-  function currentRegionLabel(region) {
-    switch (region) {
-      case "hokkaido": return "北海道";
-      case "kanto":    return "関東";
-      default:         return region;
-    }
-  }
-
-  function renderPages() {
-    const pages = storyData[currentRegion] || [];
-
-    // 左頁資料
-    const leftData = pages[currentIndex];
-    if (leftData) {
-      leftImg.src = leftData.img || "";
-      leftImg.alt = leftData.title || "";
-      leftTitle.textContent  = leftData.title || "";
-      leftRegion.textContent = leftData.regionLabel || "";
-      leftJp.textContent     = leftData.jp || "";
-      leftZh.textContent     = leftData.zh || "";
-    } else {
-      leftImg.src = "";
-      leftTitle.textContent  = "";
-      leftRegion.textContent = "";
-      leftJp.textContent     = "";
-      leftZh.textContent     = "";
-    }
-
-    // 右頁資料（桌機版用）
-    const rightData = pages[currentIndex + 1];
-    if (rightData) {
-      rightImg.src = rightData.img || "";
-      rightImg.alt = rightData.title || "";
-      rightTitle.textContent  = rightData.title || "";
-      rightRegion.textContent = rightData.regionLabel || "";
-      rightJp.textContent     = rightData.jp || "";
-      rightZh.textContent     = rightData.zh || "";
-    } else {
-      rightImg.src = "";
-      rightTitle.textContent  = "";
-      rightRegion.textContent = "";
-      rightJp.textContent     = "";
-      rightZh.textContent     = "";
-    }
-
-    updateStatusBar();
-    updateButtons();
-  }
-
-  function updateButtons() {
-    const pages = storyData[currentRegion] || [];
-    const total = pages.length;
-    // 桌機一次看兩頁；手機一次看一頁
-    const step = isMobile() ? 1 : 2;
-
-    prevBtn.disabled = currentIndex <= 0;
-    // 是否還有下一頁？
-    nextBtn.disabled = currentIndex + step >= total;
-  }
-
-  function selectRegion(region) {
-    currentRegion = region;
-    currentIndex  = 0;
-    // tab 樣式
-    document.querySelectorAll(".tab-btn").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.region === region);
+      return true;
     });
-    renderPages();
-  }
 
-  function nextPage() {
-    const pages = storyData[currentRegion] || [];
-    const total = pages.length;
-    const step = isMobile() ? 1 : 2;
+    statsEl.textContent = `該当：${filtered.length} 件 / 全 ${stories.length} 件`;
 
-    if (currentIndex + step >= total) return;
-
-    // 動畫：右頁往前翻
-    if (!isMobile()) {
-      rightPageEl.classList.add("flip-forward");
-      setTimeout(() => {
-        rightPageEl.classList.remove("flip-forward");
-        currentIndex += step;
-        renderPages();
-      }, 600);
-    } else {
-      // 手機只用淡淡翻動感：右頁動畫看不到，就讓左頁稍微翻一下也可以
-      rightPageEl.classList.add("flip-forward");
-      setTimeout(() => {
-        rightPageEl.classList.remove("flip-forward");
-        currentIndex += step;
-        renderPages();
-      }, 600);
+    cardsContainer.innerHTML = "";
+    if (filtered.length === 0) {
+      cardsContainer.innerHTML = "<p style='font-size:13px; color:#ffdce7; text-align:center; padding:12px 0;'>該当する原典が見つかりませんでした。キーワードや地域を変えてみてください。</p>";
+      return;
     }
+
+    filtered.forEach(st => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.onclick = () => openModal(st);
+
+      const img = document.createElement("img");
+      img.className = "card-thumb";
+      img.src = st.thumb || st.image;
+      img.alt = st.titleJa;
+
+      const body = document.createElement("div");
+      body.className = "card-body";
+
+      const region = document.createElement("div");
+      region.className = "card-region";
+      region.textContent = `${st.region}・${st.prefecture}`;
+
+      const title = document.createElement("p");
+      title.className = "card-title";
+      title.textContent = st.titleJa;
+
+      const titleZh = document.createElement("p");
+      titleZh.className = "card-title-zh";
+      titleZh.textContent = `（${st.titleZh}）`;
+
+      const pref = document.createElement("p");
+      pref.className = "card-pref";
+      pref.textContent = st.prefecture;
+
+      const snippet = document.createElement("p");
+      snippet.className = "card-snippet";
+      const shortText = (st.textJa || "").slice(0, 60);
+      snippet.textContent = shortText + (st.textJa.length > 60 ? "…" : "");
+
+      body.appendChild(region);
+      body.appendChild(title);
+      body.appendChild(titleZh);
+      body.appendChild(snippet);
+
+      card.appendChild(img);
+      card.appendChild(body);
+      cardsContainer.appendChild(card);
+    });
   }
 
-  function prevPage() {
-    if (currentIndex <= 0) return;
-    const step = isMobile() ? 1 : 2;
-
-    // 動畫：左頁往回翻
-    leftPageEl.classList.add("flip-back");
-    setTimeout(() => {
-      leftPageEl.classList.remove("flip-back");
-      currentIndex = Math.max(0, currentIndex - step);
-      renderPages();
-    }, 600);
-  }
-
-  // 螢幕尺寸變化時，更新按鈕狀態
-  window.addEventListener("resize", () => {
-    updateStatusBar();
-    updateButtons();
+  // 搜尋輸入
+  searchInput.addEventListener("input", (e) => {
+    currentKeyword = e.target.value;
+    renderCards();
   });
 
-  // 初始載入
-  renderPages();
+  // 地區按鈕點擊
+  regionButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      regionButtons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentRegion = btn.dataset.region;
+      renderCards();
+    });
+  });
+
+  // Modal 控制
+  const modal = document.getElementById("storyModal");
+  const modalImg = document.getElementById("modalImg");
+  const modalRegion = document.getElementById("modalRegion");
+  const modalTitleJa = document.getElementById("modalTitleJa");
+  const modalTitleZh = document.getElementById("modalTitleZh");
+  const modalPref = document.getElementById("modalPref");
+  const modalTextJa = document.getElementById("modalTextJa");
+  const modalTextZh = document.getElementById("modalTextZh");
+  const modalLink = document.getElementById("modalLink");
+
+  function openModal(story) {
+    modalImg.src = story.image || story.thumb;
+    modalRegion.textContent = `${story.region}・${story.prefecture}`;
+    modalTitleJa.textContent = story.titleJa;
+    modalTitleZh.textContent = `（${story.titleZh}）`;
+    modalPref.textContent = story.prefecture;
+    modalTextJa.textContent = story.textJa;
+    modalTextZh.textContent = story.textZh;
+
+    if (story.originUrl) {
+      modalLink.href = story.originUrl;
+      modalLink.style.display = "inline-flex";
+    } else {
+      modalLink.style.display = "none";
+    }
+
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  window.closeModal = closeModal;
+
+  // 點黑幕關閉
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // ESC 關閉
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.style.display === "flex") {
+      closeModal();
+    }
+  });
+
+  // 初始渲染
+  renderCards();
 </script>
+
 </body>
 </html>

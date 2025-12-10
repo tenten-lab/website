@@ -7,18 +7,20 @@
   <link href="https://fonts.googleapis.com/css2?family=Zen+Dots&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== 背景：暗色＋圖＋霧 ===== */
+    /* ===== 全域字型設定：電腦/平板/手機一致 ===== */
     body {
       margin: 0;
       padding: 0;
-      font-family: "Noto Serif JP", serif;
+      font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
       min-height: 100vh;
+      /* 先給 PC 版背景，平板／手機再用 media query 覆蓋 */
       background: url('都市伝説巡り.png') no-repeat center center fixed;
       background-size: cover;
       color: #2b0000;
       position: relative;
     }
 
+    /* 共用的暗霧效果 */
     body::before {
       content: "";
       position: fixed;
@@ -27,6 +29,24 @@
                   rgba(0,0,0,0.65),
                   rgba(0,0,0,0.9));
       z-index: -1;
+    }
+
+    /* === 平板背景（768px ~ 1024px）=== */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      body {
+        background-image: url('都市伝説巡り.png');
+        background-position: center top;
+        background-attachment: scroll;
+      }
+    }
+
+    /* === 手機背景（<= 768px）=== */
+    @media (max-width: 768px) {
+      body {
+        background-image: url('都市伝説巡り-手機版.png');
+        background-position: center top;
+        background-attachment: scroll; /* 手機上避免 fixed 造成抖動 */
+      }
     }
 
     /* ===== 標題區（發光膠囊風） ===== */
@@ -57,11 +77,11 @@
       min-width: 320px;
     }
 
+    /* 標題字型不再另外指定，跟 body 一樣 → 三種裝置字型一致 */
     #main-title {
       margin: 0;
-      font-family: "Noto Serif JP", system-ui, sans-serif;
-       font-size: 30px;           /* 你可以再微調大小 */
-       letter-spacing: .18em;     /* 保留一點「遊戲感」的間距 */
+      font-size: 30px;
+      letter-spacing: .18em;
       color: #fff5f5;
       text-shadow:
         0 0 8px rgba(255,80,80,0.9),
@@ -173,6 +193,7 @@
       border-radius: 10px;
     }
 
+
     .prefecture-table {
       display: flex;
       flex-wrap: wrap;
@@ -267,19 +288,22 @@
       100% { left: 110%; opacity: 0; }
     }
 
-    /* ===== 手機版 ===== */
+    /* ===== 手機版調整 ===== */
     @media (max-width: 768px) {
       .title-wrap {
         padding: 10px 32px 14px;
         min-width: 260px;
       }
+
       #main-title {
         font-size: 26px;
         letter-spacing: .12em;
       }
+
       .subtitle-ja {
         font-size: 15px;
       }
+
       .subtitle-zh {
         font-size: 12px;
       }
