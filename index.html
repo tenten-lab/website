@@ -13,7 +13,8 @@ body {
   /* 預設當作 PC 版背景 */
   background: url('都市伝説巡り.png') no-repeat center center fixed;
   background-size: cover;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;   /* ✅ 允許垂直滾動 */
 }
 
 /* 平板版背景（橫向 iPad 之類） */
@@ -30,7 +31,8 @@ body {
   body {
     background-image: url('都市伝説巡り-手機版.png');
     background-position: center top;
-    background-attachment: scroll; /* 手機一樣用 scroll 比較穩定 */
+    background-attachment: scroll;
+    background-size: cover;
   }
 }
 

@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>原典紹介</title>
+  <title>原典紹介｜次、どこ？</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -31,7 +31,7 @@
     /* 平板背景 */
     @media (min-width: 769px) and (max-width: 1024px) {
       body {
-        background-image: url('都市伝説巡り.png'); /* 你可以換成自己的檔名 */
+        background-image: url('都市伝説巡り_pad.png'); /* 你可以換成自己的檔名 */
         background-position: center top;
         background-attachment: scroll;
       }
@@ -40,7 +40,7 @@
     /* 手機背景 */
     @media (max-width: 768px) {
       body {
-        background-image: url('都市伝説巡り-手機版.png');
+        background-image: url('都市伝説巡り_sp.png');
         background-position: center top;
         background-attachment: scroll;
       }
@@ -123,7 +123,7 @@
     .page-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 120px 16px 32px;
+      padding: 170px 16px 32px;/* ===== 距離 ===== */
       box-sizing: border-box;
     }
 
@@ -151,26 +151,38 @@
     }
 
     .search-box {
-      flex: 1 1 200px;
+      flex: 1 1 220px;
+      max-width: 480px;
       position: relative;
     }
+   
+    /* ===== 搜尋框修正 ===== */
 
-    .search-box input {
-      width: 100%;
-      padding: 8px 10px 8px 28px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,200,210,0.8);
-      font-size: 14px;
-      background: rgba(20,0,20,0.85);
-      color: #ffeef5;
-      outline: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.7);
-    }
+ .search-box input {
+  width: 100%;
+  box-sizing: border-box;      /* 防止超出容器 */
+  padding: 8px 12px 8px 34px; /* 左側留 icon 位置 */
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.6);
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+}
 
-    .search-box input::placeholder {
-      color: #ffccd5;
-      opacity: 0.7;
-    }
+
+    .search-input-wrap {
+  flex: 1 1 220px;
+  max-width: 480px;
+}
+
+  .search-input-wrap input {
+  width: 100%;
+  box-sizing: border-box;   /* ★ 超重要 */
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
 
     .search-icon {
       position: absolute;
@@ -220,6 +232,10 @@
       .region-filters {
         justify-content: center;
       }
+      .page-inner {
+    padding-top: 150px;
+      }
+
     }
 
     /* ===== 統計列 ===== */
@@ -354,13 +370,14 @@
     .modal-image-wrap {
       position: relative;
       background: #000;
+      overflow: hidden;
     }
 
     .modal-image-wrap img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
+      height: auto;
+      max-height: 100%;
+      object-fit: contain; /* ✅ 不裁切圖片 */
     }
 
     .modal-region-tag {
@@ -419,6 +436,7 @@
       border-radius: 10px;
       padding: 8px 10px;
       border: 1px solid rgba(255,150,190,0.35);
+      white-space: pre-line;   /* ★ 這行超重要：保留 \n → 顯示成換行 */
     }
 
     .text-block.zh {
@@ -473,6 +491,10 @@
       .modal-body {
         padding: 12px;
       }
+      .modal-image-wrap {
+        max-height: 220px;
+      }
+
     }
 
     /* 右下角回首頁 */
@@ -538,8 +560,10 @@
         <button class="region-btn" data-region="関東">関東</button>
         <button class="region-btn" data-region="中部">中部</button>
         <button class="region-btn" data-region="近畿">近畿</button>
-        <button class="region-btn" data-region="中国・四国">中国・四国</button>
-        <button class="region-btn" data-region="九州・沖縄">九州・沖縄</button>
+        <button class="region-btn" data-region="中国">中国</button>
+        <button class="region-btn" data-region="四国">四国</button>
+        <button class="region-btn" data-region="九州">九州</button>
+         <button class="region-btn" data-region="沖縄">沖縄</button>
       </div>
     </div>
 
@@ -589,18 +613,25 @@
   // 之後你只要一直往裡面加就好
   // region: 北海道 / 東北 / 関東 / 中部 / 近畿 / 中国・四国 / 九州・沖縄
   const stories = [
-    {
-      id: "hokkaido-abashiri",
-      region: "北海道",
-      prefecture: "北海道",
-      titleJa: "網走監獄",
-      titleZh: "網走監獄",
-      thumb: "hokaido.png",
-      image: "hokaido.png",
-      textJa: "北海道の厳しい寒さの中に佇む旧・網走刑務所。今は観光地となっているが、かつて過酷な労働に苦しんだ囚人たちの怨念が残っていると言われる。夜の展示室では、時折誰も触れていないはずの器具が軋む音を立て、見回りの警備員の背後に、囚人服を着た影が立っていたという……。",
-      textZh: "坐落在北海道嚴寒之中的舊網走刑務所，現在雖已成為觀光景點，卻被認為仍殘留著當年囚犯的怨念。據說在夜裡的展示室，有時會傳出明明沒有人碰卻自行作響的器具聲，巡邏的警備員背後，還有人目擊穿著囚服的黑影悄然佇立……",
-      originUrl: "" // 如果有外部原典介紹頁就填網址，沒有就留空
-    },
+   {
+  id: "hokkaido-abashiri",
+  region: "北海道",
+  prefecture: "北海道",
+  titleJa: "網走監獄",
+  titleZh: "網走監獄",
+  thumb: "hokaido.png",
+  image: "hokaido.png",
+  textJa: `日本北海道網走市にある網走監獄は、明治時代に建てられた木造の刑務所である。当時、政府はロシアの南下政策に備えるため、急速に北海道の開拓を進めていた。
+  そのため、多くの囚人たちが過酷な労働に従事させられ、北海道の開拓に動員された。作業は非常に厳しく、200人以上の囚人が犠牲となったといわれている。
+  現在でも、網走市では囚人の霊を目撃したという噂が絶えず、囚人墓地では集団の足音が聞こえる。網走監獄博物館では、人形の囚人と目が合ったように感じるなど、不思議な現象が語り継がれている。
+  これらの話は、今なお網走監獄に囚われた魂が存在しているのではないかという都市伝説を生み出している。`,
+
+  textZh: `位於日本北海道網走市的網走監獄，是在明治時代所建造的木造監獄。當時，政府為了防備俄羅斯的南下政策，而加速推動北海道的開發，因此大量囚犯被迫從事艱苦的勞動，並投入北海道的開拓。
+  由於作業環境極為嚴苛，相傳有超過 200 名囚犯因此喪命。 直到現在，網走市仍不時流傳有人目擊囚犯幽靈的傳聞，像是在囚犯墓地中，有人聽見成群的腳步聲；
+  在網走監獄博物館裡，也有人表示曾感覺與博物館所展示囚犯的人偶四目相對等不可思議的現象。 這些故事也衍生出了，至今是否有亡魂被困在網走監獄之中未能解脫的都市傳說。 `,
+  originUrl: ""
+},
+
     {
       id: "tokyo-sendagaya",
       region: "関東",
@@ -609,20 +640,20 @@
       titleZh: "千駄谷隧道",
       thumb: "tokyo.png",
       image: "tokyo.png",
-      textJa: "東京・千駄ヶ谷トンネルは、周辺で多くの事故が起きたことから『首都高の心霊スポット』として知られている。深夜、トンネルを通過した運転手が、バックミラーに逆さまの男の姿を見たという証言や、電話越しに事故当日のニュースが流れてきたという怪談が語り継がれている。",
-      textZh: "位於東京的千駄谷隧道，因周邊多次發生交通事故，被稱為首都高速上的靈異地帶。傳聞深夜開車通過隧道的駕駛，曾在後照鏡中看見倒掛在天花板上的男子身影，也有人接起手機，聽見對面傳來的竟是「自己出事當天的新聞報導」……這些離奇故事至今仍在人們口中流傳。",
+      textJa: "",
+      textZh: "",
       originUrl: ""
     },
     {
       id: "miyazaki-aoshima",
-      region: "九州・沖縄",
+      region: "九州",
       prefecture: "宮崎県",
       titleJa: "青島・グリーンパークの噂",
       titleZh: "青島綠園的傳聞",
       thumb: "miyazaki.png",
       image: "miyazaki.png",
-      textJa: "南国の雰囲気漂う宮崎・青島の一角にあるグリーンパーク。昼間は家族連れで賑わうが、閉園後の夜には、公園内の遊具がひとりでに揺れ、誰も乗っていないブランコから笑い声が聞こえると言われる。海から吹き上げる湿った風が、いつの間にか冷たい囁きに変わる時、そこに『見えない子どもたち』が集まってくるのだという……。",
-      textZh: "充滿南國氣息的宮崎青島一隅，有座名為綠園的公園。白天時親子遊客絡繹不絕，但據說在閉園後的夜裡，園內的遊具會自己搖晃，空無一人的鞦韆上，隱約傳來孩童的笑聲。從海面吹來的濕潤海風，某一刻開始變得陰冷，據說那正是「看不見的孩子們」聚集而來的時刻……",
+      textJa: "",
+      textZh: "",
       originUrl: ""
     }
   ];
