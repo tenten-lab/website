@@ -10,24 +10,23 @@
     body {
       margin: 0;
       font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
-      min-height: 100vh;
-      background: url('都市伝説巡り.png') no-repeat center center fixed; /* PC 版背景 */
-      background-size: cover;
-      color: #fdf5f5;
+      background: none; 
       position: relative;
     }
 
     /* 暗霧 */
-    body::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 50% 0,
-                  rgba(0,0,0,0.75),
-                  rgba(0,0,0,0.95));
-      z-index: -1;
-      pointer-events: none;    /* ✅ 完全不攔截點擊/滑動 */
-    }
+ body::before {
+  content: "";
+  position: fixed;          /* ✅ 改成 fixed（關鍵） */
+  inset: 0;
+  background-image: url('都市伝説巡り.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  z-index: -1;
+  pointer-events: none;
+}
+    /* 電腦背景 */
 
     /* 平板背景 */
     @media (min-width: 769px) and (max-width: 1024px) {
@@ -38,12 +37,10 @@
       }
     }
 
-    /* 手機背景 */
-    @media (max-width: 768px) {
-      body {
-        background-image: url('都市伝説巡り_sp.png');
-        background-position: center top;
-        background-attachment: scroll;
+    /* ✅ 手機常見背景跟著滑 / 抖動：改成 scroll 比較穩 */
+     @media (max-width: 768px){
+       body::before{
+       position: absolute;
       }
     }
 
