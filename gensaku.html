@@ -309,6 +309,15 @@
     min-height: 0;                /* ✅ iOS 必加 */
   }
 
+  @media (max-width: 1024px){
+  .modal-content{
+    height: 92vh;
+    height: 92dvh;      /* 支援的會用 dvh，不支援的會用 vh */
+    max-height: 92vh;
+    max-height: 92dvh;
+  }
+}
+
   .modal-body{
     min-height: 0;                /* ✅ iOS 必加 */
     overflow-y: auto;
@@ -553,28 +562,29 @@
     max-height: 92dvh;
     min-height: 0;
   }
-
+  
   .modal-image-wrap{
-    height: 220px;
+    aspect-ratio: 16 / 9;   /* ✅ 控制比例，不壓縮 */
+    height: auto;           /* ✅ 不要固定高度 */
+    background: #000;       /* 黑邊可接受 */
     overflow: hidden;
     flex-shrink: 0;
   }
 
   .modal-image-wrap img{
-    width:100%;
-    height:100%;
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;    /* ✅ 不裁切、不變形 */
+    display: block;
   }
 
   .modal-body{
-    flex: 1 1 auto;
-    min-height: 0;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    max-height: calc(92dvh - 220px);
-    padding: 12px;
+    -webkit-overflow-scrolling: touch; 
+    max-height: calc(92dvh - (100vw * 9 / 16)); /* 對應 16:9 */
   }
 }
+
 
     /* 右下角回首頁 */
     .home-fab {
