@@ -295,6 +295,27 @@
       }
     }
 
+    /* ✅ iPad / 平板：Modal 內容滑不下去修正 */
+ @media (max-width: 1024px){
+
+  .modal{
+    align-items: stretch;          /* 不要 center，避免高度計算怪 */
+  }
+
+  .modal-content{
+    height: 92vh;                 /* ✅ 用 height，比 max-height 穩 */
+    max-height: 92vh;
+    overflow: hidden;             /* ✅ 把滾動交給 modal-body */
+    min-height: 0;                /* ✅ iOS 必加 */
+  }
+
+  .modal-body{
+    min-height: 0;                /* ✅ iOS 必加 */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
     @media (max-width: 640px) {
       .cards {
         grid-template-columns: 1fr;
