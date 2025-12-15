@@ -59,20 +59,21 @@
     padding: 12px !important;
   }
 
-  .controls {
-    gap: 6px;
-    margin-bottom: 6px;
+  @media (max-width: 768px) {
+  .controls { 
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .search-box {
+    margin: 0 !important;
   }
 
   .search-box input {
-    padding: 6px 10px 6px 32px;
-    font-size: 13px;
+    height: 36px;          /* 明確指定高度 */
+    line-height: 36px;
   }
-
-  .search-icon {
-    left: 8px;
-    font-size: 13px;
-  }
+}
 
    .container{
     height:auto !important;
@@ -1826,6 +1827,20 @@
     } else {
       modalLink.style.display = "none";
     }
+      // 1️⃣ 避免 input / link 自動取得 focus 把畫面拉走
+  if (document.activeElement) {
+    document.activeElement.blur();
+  }
+
+  // 2️⃣ 內文區捲軸回到最上面（❗這行最重要）
+  const modalBody = document.querySelector(".modal-body");
+  if (modalBody) {
+    modalBody.scrollTop = 0;
+    modalBody.scrollTo({ top: 0, behavior: "auto" });
+  }
+
+  // 3️⃣ 顯示 modal（如果你是用 class 控制）
+   modal.classList.add("open");
 
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
