@@ -53,8 +53,9 @@
 }
 
 @media (max-width: 768px) {
-  .panel {
-    padding: 12px 12px 14px;
+    .panel{
+    height:auto !important;
+    min-height:0 !important;
   }
 
   .controls {
@@ -71,7 +72,15 @@
     left: 8px;
     font-size: 13px;
   }
+
+   .container{
+    height:auto !important;
+    min-height:0 !important;
+    align-items:stretch !important;
+    justify-content:flex-start !important;
+    }
 }
+
 
 @media (max-width: 768px){
   .container, .wrapper, .page, .page-inner{
@@ -106,6 +115,10 @@
         0 0 55px rgba(0,0,0,0.98);
       text-align: center;
       min-width: 280px;
+        /* 🔴 新增這三行 */
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 100%;
     }
 
     .title-main {
@@ -506,17 +519,36 @@
     }
 
     /* 手機版 Modal 單欄 */
-   @media (max-width: 768px) {
-  .modal-image-wrap {
-    height: 220px;          /* ✅ 用 height，不用 max-height */
-    overflow: hidden;       /* ✅ 防止圖片撐高 */
-    flex-shrink: 0;         /* ✅ 防止被擠壓 */
+@media (max-width: 768px){
+
+  .modal{
+    align-items: center;        /* ✅ 不要頂在上面，iOS 比較穩 */
   }
 
-  .modal-image-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;      /* 或 contain，看你要裁不裁 */
+  .modal-content{
+    grid-template-columns: 1fr; /* ✅ 單欄 */
+    width: 96%;
+    max-width: 560px;
+    max-height: 92dvh;
+  }
+
+  .modal-image-wrap{
+    height: 220px;              /* ✅ 用固定 height */
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .modal-image-wrap img{
+    width:100%;
+    height:100%;
+    object-fit: cover;          /* 想不裁圖就改 contain */
+  }
+
+  .modal-body{
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;  /* ✅ iOS 必加 */
+    max-height: calc(92dvh - 220px);    /* ✅ 給它明確可滾高度 */
+    padding: 12px;
   }
 }
 
