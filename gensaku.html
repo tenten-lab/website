@@ -518,22 +518,23 @@
       box-shadow: 0 5px 14px rgba(0,0,0,0.9);
     }
 
-    /* 手機版 Modal 單欄 */
 @media (max-width: 768px){
 
   .modal{
-    align-items: center;        /* ✅ 不要頂在上面，iOS 比較穩 */
+    align-items: stretch;
   }
 
   .modal-content{
-    grid-template-columns: 1fr; /* ✅ 單欄 */
+    display: flex;
+    flex-direction: column;
     width: 96%;
     max-width: 560px;
     max-height: 92dvh;
+    min-height: 0;
   }
 
   .modal-image-wrap{
-    height: 220px;              /* ✅ 用固定 height */
+    height: 220px;
     overflow: hidden;
     flex-shrink: 0;
   }
@@ -541,13 +542,15 @@
   .modal-image-wrap img{
     width:100%;
     height:100%;
-    object-fit: cover;          /* 想不裁圖就改 contain */
+    object-fit: cover;
   }
 
   .modal-body{
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;  /* ✅ iOS 必加 */
-    max-height: calc(92dvh - 220px);    /* ✅ 給它明確可滾高度 */
+    -webkit-overflow-scrolling: touch;
+    max-height: calc(92dvh - 220px);
     padding: 12px;
   }
 }
