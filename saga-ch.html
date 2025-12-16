@@ -287,12 +287,12 @@
 然而，車卻絲毫沒有要停下的跡象。<br>
 「優人！前面、看前面啊！！」」
     <p style="text-align: center;">
-    <strong><font color="#EA0000">緊握方向盤且來蓄積力量，閃避眼前的女子吧！ <br>擲2顆骰子，將骰出的點數加總。</font></strong></p>
+    <strong><font color="#EA0000">緊握方向盤且來蓄積力量，閃避眼前的女子吧！<br>擲2顆骰子，點數相加的結果將影響後續發展。 </font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('擲骰總和為8以上')">① 擲骰總和為8以上（體力−1，可自由移動3格）</button>
-    <button class="option-btn" onclick="showResult('擲骰總和為7以下')">② 擲骰總和為7以下（移動到離目的地最遠的玩家的格子）</button>
+    <button class="option-btn" onclick="showResult('合計8點以上')">① 合計8點以上（體力−1，可自由移動3格）</button>
+    <button class="option-btn" onclick="showResult('合計7點以下')">② 合計7點以下（移動到離目的地最遠的玩家的格子）</button>
   </div>
 
 <!-- 結果モーダル -->
@@ -310,13 +310,13 @@
   <script>
     function showResult(choice) {
      const text = {
-        "擲骰總和為8以上": " 成功閃避，繼續前往目的地。 ",
-        "擲骰總和為7以下": "閃避失敗，且車子打滑了。",
+        "合計8點以上": " 成功閃避，安全到家。 ",
+        "合計7點以下": "閃避失敗，且車子打滑了。",
       }; 
 
       const status = {
-        "擲骰總和為8以上": "體力 −1 ／ 可自由移動3格",
-        "擲骰總和為7以下": "移動到離目的地最遠的玩家的格子",
+        "合計8點以上": "體力 −1 ／ 可自由移動3格",
+        "合計7點以下": "移動到離目的地最遠的玩家的格子",
       };
       
     document.getElementById("resultText").innerText = text[choice] || "";

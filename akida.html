@@ -292,8 +292,8 @@
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（左へ1マス進む）</button>
-    <button class="option-btn" onclick="showResult('敗北')">② 敗北。（右へ1マス進む）</button>
+    <button class="option-btn" onclick="showResult('勝利')">① 勝利。（左へ1マス移動する）</button>
+    <button class="option-btn" onclick="showResult('敗北')">② 敗北。（右へ1マス移動する）</button>
   </div>
 
   <!-- 結果モーダル -->
@@ -316,8 +316,8 @@
       }; 
 
       const status = {
-        "勝利": "左へ1マス進む。",
-        "敗北": "右へ1マス進む。",
+        "勝利": "左へ1マス移動する。",
+        "敗北": "右へ1マス移動する。",
       };
       
       document.getElementById("resultText").innerText = text[choice] || "";
