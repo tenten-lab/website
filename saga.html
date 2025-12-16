@@ -287,12 +287,12 @@
 それなのに、車は止まる気配がない。 <br>
 「優人！前、前見て！！」<br>
     <p style="text-align: center;">
-    <strong><font color="#EA0000">ハンドルを握りしめて力を蓄え、目の前の女を回避せよ！<br>2個サイコロを振り、出目を合計する。 </font></strong></p>
+    <strong><font color="#EA0000">ハンドルを握りしめて力を蓄え、目の前の女を回避せよ！<br>2個のサイコロを振り、出目の合計で結末が変わる。</font></strong></p>
   </div>
 
   <div class="options">
-    <button class="option-btn" onclick="showResult('出目の合計が8以上')">① 出目の合計が8以上。（体力−1、自由に3マス移動する） </button>
-    <button class="option-btn" onclick="showResult('出目の合計が7以下')">② 出目の合計が7以下。（目的地に最も遠いプレイヤーのいるマスに移動する） </button>
+    <button class="option-btn" onclick="showResult('合計が8以上')">① 合計が8以上。（体力−1、自由に3マス移動する） </button>
+    <button class="option-btn" onclick="showResult('合計が7以下')">② 合計が7以下。（目的地に最も遠いプレイヤーのいるマスに移動する） </button>
   </div>
 
   <!-- 結果モーダル -->
@@ -311,13 +311,13 @@
   <script>
     function showResult(choice) {
      const text = {
-        "出目の合計が8以上": "回避成功し、安全に帰宅した。",
-        "出目の合計が7以下": "回避できず、車がスリップした。",
+        "合計が8以上": "回避成功し、安全に帰宅した。",
+        "合計が7以下": "回避できず、車がスリップした。",
       }; 
 
        const status = {
-        "出目の合計が8以上": "体力 −1 ／ 自由に3マス移動する",
-        "出目の合計が7以下": "目的地に最も遠いプレイヤーのいるマスに移動する。",
+        "合計が8以上": "体力 −1 ／ 自由に3マス移動する",
+        "合計が7以下": "目的地に最も遠いプレイヤーのいるマスに移動する。",
       };
 
       document.getElementById("resultText").innerText = text[choice] || "";
